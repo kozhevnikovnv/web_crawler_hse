@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>| Михаил Коротеев</title>
+<meta content="Практическая работа - служебные команды терминала" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Михаил Коротеев" property="og:title"/>
+<meta content="https://koroteev.site/text/os11-2/" property="og:url"/>
+<meta content="Практическая работа - служебные команды терминала" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Михаил Коротеев" name="twitter:title"/>
+<meta content="Практическая работа - служебные команды терминала" name="twitter:description"/>
+<meta content="https://koroteev.site/text/os11-2/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2022-09-27T12:49:07+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/text/os11-2/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--textbook_page wide">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<nav class="toc page__content">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#практическая-работа---служебные-команды-терминала">Практическая работа - служебные команды терминала</a>
+<ul>
+<li><a href="#цель-работы">Цель работы</a></li>
+<li><a href="#задания-к-работе">Задания к работе</a></li>
+<li><a href="#методические-указания">Методические указания</a></li>
+<li><a href="#контрольные-вопросы">Контрольные вопросы</a></li>
+<li><a href="#дополнительные-задания">Дополнительные задания</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork" style="width: 95%">
+<meta content="" itemprop="headline"/>
+<meta content="Практическая работа - служебные команды терминала" itemprop="description"/>
+<meta content="2022-09-27T12:49:07+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">
+</h1>
+<p class="page__meta">
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          3 мин на чтение
+        
+        
+          
+         (4.658 символов)
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<h3 id="практическая-работа---служебные-команды-терминала">Практическая работа - служебные команды терминала</h3>
+<h4 id="цель-работы">Цель работы</h4>
+<p>Научиться основным навыкам работы в многопользовательском режиме, переключению между терминалами и самым базовым командам - <em>tty, who, whoami, sudo, su, less, who, exit, shutdown, grep</em>.</p>
+<h4 id="задания-к-работе">Задания к работе</h4>
+<ol>
+<li>Откройте первый виртуальный терминал и залогиньтесь.</li>
+<li>Выполните команду tty.</li>
+<li>Выполните команду pwd.</li>
+<li>Повторите предыдущие пункты для второго и третьего виртуального терминала.</li>
+<li>Откройте эмулятор терминала в графическом режиме и введите команду tty.</li>
+<li>Выполните команду who. Посмотрите в справке, что она показывает.</li>
+<li>Выполните команду whoami. Прочитайте справку про нее.</li>
+<li>Перейдите в первый виртуальный терминал и разлогиньтесь.</li>
+<li>Вернитесь в графическое окружение и еще раз просмотрите вывод команды who. Объясните ее результат.</li>
+<li>Откройте файл /etc/passwd при помощи программы-пейджера.</li>
+<li>Найдите в этом файле запись о вашем текущем пользователе при помощи команды grep.</li>
+<li>Изучите команду man и прочитайте справку по всем командам, использованным в данной лабораторной.</li>
+</ol>
+<h4 id="методические-указания">Методические указания</h4>
+<p>Операционная система Linux, как и ее предшественник - UNIX изначально создавалась для многопользовательской работы. Для организации многопользовательской работы при загрузки системы создается семь виртуальных устройств (это число может меняться в зависимости от дистрибутива, но семь - это стандартное количество). Раньше предполагалось, что за ними будут работать из разных мест при помощи оконечных устройств (терминалов или тонких клиентов), но сейчас это уже не очень актуально. Обычно на последнем, седьмом терминале запускается графическая оболочка, если она установлена в данном дистрибутиве.</p>
+<p>Для того, чтобы узнать, номер текущего терминала, можно использовать команду tty (см. man tty). Команда очень проста и не требует параметров. Пример работы tty:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">tty</span>  
+/dev/tty1
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Чтобы узнать, какие пользователи в каких терминалах залогинены в системе, можно использовать команду who:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span><span class="nb">who 
+</span>root tty1 Feb 17 17:11 
+user tty2 Feb 17 17:12 
+user tty5 Feb 17 17:40
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Иногда возникает необходимость выполнить некоторые действия от имени другого пользователя (например, от имени root). Это можно сделать, открыв новый терминальный сеанс, но можно и иначе, в текущем сеансе. Для этого используется команда su. Эта команда по умолчанию (без параметров) открывает сеанс суперпользователя, выполняющийся внутри сеанса непривилегированного пользователя. Пример выполнения команды su:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>su 
+Password: 
+<span class="o">[</span>root@localhost user]#
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Еще один пример, с явным указанием имени пользователя:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>su stud 
+Password:  
+<span class="o">[</span>stud@localhost ~]<span class="err">$</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Для окончания пользовательского сеанса, запущенного командой su, или выхода из терминала, используется команда exit или комбинация клавиш Ctrl+D. В любом случае система закроет сеанс и отобразит строку приглашения.</p>
+<p>Очень часто при работе с командной строкой приходится просматривать довольно длинные файлы. Для того, чтобы можно было перемещаться по файлу, содержимое которого не помещается на одном экране были созданы специальные программы-пейджеры. Это не текстовый редактор, а только средство просмотра. Самый стандартный на сегодня - программа less. Ей можно передать имя файла таким образом:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>less filename
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Познакомьтесь с ней, прочитав интерактивную справку. Для того, чтобы закрыть ее необходимо нажать кнопку q.</p>
+<p>Также часто приходится искать определенную строку в файле или в выводе других команд. Для этого используют утилиту grep. Ей передаётся два параметра - строка поиска и имя файла вот так:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nb">grep </span>koroteev /etc/passwd
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Дополнительная информация об указанных командах доступна в справочном руководстве формата man или info.</p>
+<p>Еще одно важное замечание. При работе с эмулятором терминала в графическом режиме, копирование и вставка работают с комбинациями клавиш Ctrl + Shift+C и Ctrl + Shift+V. Это потому, что комбинацией клавиш Ctrl + C аварийно завершается (прерывается) выполнение текущей команды.</p>
+<h4 id="контрольные-вопросы">Контрольные вопросы</h4>
+<ol>
+<li>Какой каталог будет установлен текущим сразу же после входа пользователя в систему?</li>
+<li>Какой каталог будет установлен текущим после выполнения команды su?</li>
+<li>Какой терминал (tty) будет открыт по нажатию Ctrl+F7?</li>
+<li>Как и где в Linux можно вводить команды командной строки?</li>
+</ol>
+<h4 id="дополнительные-задания">Дополнительные задания</h4>
+<ol>
+<li>Подключитесь к данной машине через ssh и введите команду who. Объясните, что значит ее результат.</li>
+<li>Загрузить систему в текстовом режиме и войти с собственной учетной записью</li>
+<li>Ознакомиться со справкой по команде shutdown;</li>
+<li>С её помощью перезагрузить виртуальную машину;</li>
+<li>С её помощью выключить виртуальную машину;</li>
+<li>Запустить отложенное выключение виртуальной машины на 2 минуты.</li>
+</ol>
+</section>
+<footer class="page__meta">
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2022-09-27T12:49:07+00:00">September 27, 2022</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/text/os11-1/" title="
+">Предыдущая</a>
+<a class="pagination--pager" href="/text/os11-3/" title="Управление файлами в Linux
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

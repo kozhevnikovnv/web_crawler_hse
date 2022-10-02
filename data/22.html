@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Фракталы обычно не самоподобны | Михаил Коротеев</title>
+<meta content="Опубликован перевод видео про фракталы и фрактальную размерность. Оказывается, даже те, кто помнит определение фрактала, совершенно неправильно представляют себе, что это такое и зачем они нужны." name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Фракталы обычно не самоподобны" property="og:title"/>
+<meta content="https://koroteev.site/scipop/3b1b-fractals/" property="og:url"/>
+<meta content="Опубликован перевод видео про фракталы и фрактальную размерность. Оказывается, даже те, кто помнит определение фрактала, совершенно неправильно представляют себе, что это такое и зачем они нужны." property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Фракталы обычно не самоподобны" name="twitter:title"/>
+<meta content="Опубликован перевод видео про фракталы и фрактальную размерность. Оказывается, даже те, кто помнит определение фрактала, совершенно неправильно представляют себе, что это такое и зачем они нужны." name="twitter:description"/>
+<meta content="https://koroteev.site/scipop/3b1b-fractals/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2020-04-04T00:00:00+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/scipop/3b1b-fractals/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--single None">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<div itemscope="" itemtype="https://schema.org/Person">
+<div class="author__avatar">
+<img alt="Михаил Коротеев" itemprop="image" src="/assets/images/avatar3.jpg"/>
+</div>
+<div class="author__content">
+<h3 class="author__name" itemprop="name">Михаил Коротеев</h3>
+<div class="author__bio" itemprop="description">
+<p>Есть такая профессия - Родину автоматизировать.</p>
+</div>
+</div>
+<div class="author__urls-wrapper">
+<button class="btn btn--inverse">Связаться со мной</button>
+<ul class="author__urls social-icons">
+<li><a href="https://koroteev.site" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fas fa-fw fa-link"></i><span class="label">Website</span></a></li>
+<li><a href="https://github.com/koroteevmv" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-github"></i><span class="label">GitHub</span></a></li>
+<li><a href="https://www.youtube.com/channel/UCPe6h6MY8XZpLV7oRLqRUwQ" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-youtube"></i><span class="label">YouTube</span></a></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i><span class="label">Vkontakte</span></a></li>
+<!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+</ul>
+</div>
+</div>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="Фракталы обычно не самоподобны" itemprop="headline"/>
+<meta content="Опубликован перевод видео про фракталы и фрактальную размерность. Оказывается, даже те, кто помнит определение фрактала, совершенно неправильно представляют себе, что это такое и зачем они нужны." itemprop="description"/>
+<meta content="2020-04-04T00:00:00+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Фракталы обычно не самоподобны
+</h1>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-04-04T00:00:00+00:00">April 4, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          14 мин на чтение
+        
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<!-- Courtesy of embedresponsively.com //-->
+<div class="responsive-video-container">
+<iframe allowfullscreen="" frameborder="0" mozallowfullscreen="" src="https://www.youtube-nocookie.com/embed/f9oDe4Yq4E0" webkitallowfullscreen=""></iframe>
+</div>
+<p>Подписывайтесь на канал, там будет выходить еще много полезного и интересного про математику.</p>
+<!-- Copy and paste the converted output. -->
+<!-----
+NEW: Check the "Suppress top comment" option to remove this info from the output.
+
+Conversion time: 0.466 seconds.
+
+
+Using this Markdown file:
+
+1. Paste this output into your source file.
+2. See the notes and action items below regarding this conversion run.
+3. Check the rendered output (headings, lists, code blocks, tables) for proper
+   formatting and use a linkchecker before you publish this page.
+
+Conversion notes:
+
+* Docs to Markdown version 1.0β29
+* Thu Nov 19 2020 05:16:54 GMT-0800 (PST)
+* Source doc: script  DRT1
+* This is a partial selection. Check to make sure intra-doc links work.
+----->
+<p><a href="https://www.youtube.com/watch?v=gB9n2gHsHN4&amp;list=PLhgyvraU60gWzFBXWWmO_YXbOUX1sJWJX&amp;index=4&amp;t=15s">Оригинал видео</a></p>
+<p>Кто не любит фракталы? Это прекрасная смесь простоты и сложности, включая все эти бесконечно повторяющиеся узоры.</p>
+<p>Программисты особенно любят их, потому что часто требуется удивительно мало кода, чтобы создать изображения, более замысловатые, чем человек смел бы надеяться нарисовать.</p>
+<p>Но многие на самом деле даже не знают определение фрактала; по крайней мере не то, которое Бенуа Мандельброт, отец геометрии фракталов, имел в виду.</p>
+<p>Частое заблуждение состоит в том что фракталы это фигуры, которые полностью повторяют себя. Например, эта фигура, похожая на снежинку — она называется снежинкой фон Коха — состоит из трёх различных сегментов, и каждый из них абсолютно самоподобен, то есть когда вы увеличиваете его, у вас получается копия, неотличимая от оригинала.</p>
+<p>Аналогично, знаменитый треугольник Серпинского состоит из трёх меньших копий самого себя.</p>
+<p>И не поймите меня неправильно, самоподобные фигуры без сомнения красивы, и являются хорошей моделью для настоящих фракталов, но идея Мандельброта была гораздо шире, его мотивацией была не красота, но куда более прагматичное желание смоделировать природу таким способом, который учитывает неровности.</p>
+<p>В некотором смысле, фрактальная геометрия это бунт против классического матанализа, основная идея которого в том, что всё будет очень гладким, если достаточно увеличить.</p>
+<p>Но Мандельброту это казалось чересчур идеальным, или по крайней мере бесполезно абстрактным, ведь в результате модели не смогут честь мелкие детали того, что они моделировали, а это может иметь значение!</p>
+<p>Он обнаружил, что самоподобные фигуры дают основу для моделирования закономерностей в некоторых формах неровностей. Но популярное мнение, что фракталы это именно самоподобные фигуры, тоже чересчур идеализировано, а это по иронии судьбы, идёт наперекор самой идее, лежащей в основе фрактальной геометрии.</p>
+<p>Настоящее определение фрактала имеет отношение к идее дробной размерности — главной темы этого видео. Видите ли, в некотором смысле можно определить слово «размерность» так, что треугольник Серпинского приблизительно 1,585 мерный; кривая фон Коха приблизительно 1,262-мерная; береговая линия Британии оказывается где-то 1,21-мерной. И в общем случае, можно построить фигуру, размерность которой — любое положительное вещественное число, не обязательно целое.</p>
+<p>Думаю, когда я впервые услышал, как кто-то упомянул о дробной размерности, я подумал: что за чушь, да? Ну то есть, математики явно просто выдумали это.</p>
+<p>Размерность это то, что обычно имеет смысл только для натуральных чисел, так? Прямая одномерна; плоскость двумерна; пространство, в котором мы живём, трёхмерно, и так далее.</p>
+<p>На самом деле, любой студент, только что узнавший на линейной алгебре формальное определение размерности <em>в том контексте</em>, согласится, что она осмыслена только для целых чисел.</p>
+<p>И естественно идея фрактальной размерности просто выдумана. В смысле, это математика, здесь <em>всё</em> просто выдумано.</p>
+<p>Но вопрос в том, является ли она полезной конструкцией, чтобы моделировать мир. И я думаю, что вы согласитесь, когда узнаете, как определяется фрактальная размерность, это нечто, что начинаешь видеть почти всюду, куда ни глянь.</p>
+<p>На самом деле имеет смысл начать обсуждение, глядя только на абсолютно самоподобные фигуры. Точнее, я начну с четырёх фигур, три из которых даже не фракталы: отрезок, квадрат, куб и треугольник Серпинского. Все эти фигуры самоподобны. Отрезок можно разделить на два отрезка поменьше, каждый из которых это точная копия исходного, просто уменьшенная вдвое. Квадрат можно разбить на четыре квадрата поменьше, каждый из которых — точная копия исходного, уменьшенная вдвое.</p>
+<p>Точно так же, куб можно разбить на восемь кубов поменьше, и снова каждый из них это вдвое уменьшенная копия. И базовая характеристика треугольника Серпинского это то, что он состоит из трёх меньших копий самого себя, и длина стороны каждой из этих копий равна половине длины стороны исходного треугольника.</p>
+<p>Интересно сравнить, как мы всё это измеряем. Мы можем сказать, что длина меньшего отрезка равна половине длины исходного, и что площадь меньшего квадрата равна четверти площади исходного, у меньшего куба в восемь раз меньший объем, чем у исходного, а у треугольника Серпинского…</p>
+<p>… ну, мы сейчас обсудим, как его измерять. Что нам нужно, так это слово, обобщающее идеи длины, площади и объёма, но которое я могу применить ко всем этим фигурам. Обычно в математике используется слово «Мера», но я думаю, что может быть более наглядно говорить о «массе». Представьте, что все эти фигуры сделаны из металла: тонкий провод, плоский лист, сплошной куб, и некая сетка Серпинского. Фрактальная размерность тесно связана с тем, как меняется масса этих фигур, когда вы их масштабируете.</p>
+<p>Польза в обсуждении самоподобных фигур в том, что они дают нам чёткое понимание того, как сравнивать массы.</p>
+<p>Когда вы уменьшаете отрезок вдвое,</p>
+<p>масса также уменьшается вдвое, что можно интуитивно понять, поскольку требуется два маленьких отрезка, чтобы собрать один большой.</p>
+<p>Когда вы уменьшаете квадрат вдвое, его масса уменьшается вчетверо, и это снова можно увидеть, просто сложив из четырёх маленьких квадратов исходный.</p>
+<p>Точно так же, когда вы уменьшаете куб вдвое, его масса уменьшается в восемь раз, или в «два в кубе» раз, потому что нужно восемь маленьких кубов, чтобы собрать исходный.</p>
+<p>А когда вы уменьшаете вдвое треугольник Серпинского, согласитесь, имеет смысл сказать, что его масса уменьшается втрое! Я имею в виду, что нужно в точности три копии поменьше, чтобы собрать оригинал.</p>
+<p>Но заметьте, что для отрезка, квадрата и куба, число раз, в которой изменяется масса, это точная целая степень одной второй.</p>
+<p>На самом деле эта степень и есть размерность каждой фигуры.</p>
+<p>Более того, можно сказать что <em>значение</em> выражения «эта фигура двумерна», то что определяет «два» в двумерном, это когда при растяжении на какое-то число,</p>
+<p>масса этого объекта изменяется на это число во второй степени.</p>
+<p>И может быть, когда мы говорим, что тело трёхмерно, мы имеем в виду, что при растяжении в какое-то количество раз, его масса изменяется как <em>третья</em> степень этого числа.</p>
+<p>Итак, если это наше понятие размерности, какую размерность имеет треугольник Серпинского?</p>
+<p>Хочется сказать, что когда вы уменьшаете его вдвое, его масса уменьшается вдвое в степени… ну в той, которая равна его размерности. Но из-за того, что он самоподобен, мы знаем, что его масса уменьшается втрое.</p>
+<p>Так что это за число D такое, что возведя одну вторую в степень D мы получим одну третью?</p>
+<p>Ну, это то же, что спросить, 2 в какой степени равно 3, тот самый вопрос, отвечают на который логарифмы.</p>
+<p>И если вы возьмёте калькулятор и посчитаете логарифм 3 по основанию 2, вы получите что-то около 1,585. Так что в этом смысле, треугольник Серпинского не одномерен, хотя вы можете определить кривую, проходящую через все его точки, но он и не двумерен, хотя находится в плоскости. Вместо этого он 1,585-мерен. И когда вы хотите описать его массу, ни длина ни площадь не выглядят подходящими понятиями.Если бы вы попробовали, длина бы оказалась бесконечной, а площадь — нулевой.</p>
+<p>Вместо этого вам нужен какой-то 1,585-мерный аналог длины.</p>
+<p>Давайте посмотрим на  другой самоподобный фрактал, кривую фон Коха.</p>
+<p>Эта кривая состоит из четырёх меньших копий самой себя, каждая из которых это копия исходной, уменьшенная втрое.</p>
+<p>Так что масштаб уменьшается втрое, а масса уменьшается вчетверо.</p>
+<p>Это значит, что размерность должна быть таким числом D, что когда мы возводим ⅓ в степень D, мы получаем одну четвёртую.</p>
+<p>Но это тоже самое, что сказать 3 в какой степени равно 4. Так что вы можете ввести в калькулятор логарифм по основанию 3 от 4, и получить что-то около 1.262 так что в каком-то смысле кривая фон Коха 1,262-мерный объект.</p>
+<p>Вот другой интересный пример. Это что-то вроде кривой фон Коха с прямыми углами.</p>
+<p>Она строится из восьми своих копий, где каждая уменьшена в четыре раза.</p>
+<p>Так что если вы хотите узнать её размерность, это должно быть число D такое, что ¼ в степени D равняется 1/8, числу раз, в которое уменьшилась масса.</p>
+<p>И в этом случае нужное нам число это логарифм по основанию 4 от 8, а это ровно три вторых. Получается, что этот фрактал в точности полутора-мерен.</p>
+<p>Имеет ли смысл то, о чём я говорю? Это выглядит странно, но всё основано лишь на масштабировании и сравнении масс.</p>
+<p>Всё, что я описал до этого момента, можно назвать «размерностью подобия».</p>
+<p>Она хорошо служит для того, чтобы хотя бы оправдать идею фрактальной размерности, но есть одна проблема.</p>
+<p>Это не общее понятие. Я имею в виду, что когда мы рассуждали о том, как меняется масса фигур, мы использовали тот факт, что они самоподобны, что мы можем собрать их из меньших копий их самих.</p>
+<p>Но это кажется слишком ограниченным. В конце концов большинство двумерных фигур не самоподобны.</p>
+<p>Например круг, внутренность окружности. Мы знаем, что он двумерен, и мы можем сказать, что это так, потому что при масштабировании вдвое, его масса (пропорциональная площади) увеличивается в квадрат этого значения, в данном случае — в 4 раза. Но нет никакого способа, чтобы из четырёх кругов поменьше сложить один круг побольше.</p>
+<p>Так как же мы знаем, что у большего круга точно в четыре раза большая масса?</p>
+<p>Ответ на этот вопрос требует более строго математического описания нашего понятия массы, поскольку мы ведь работаем не с физическими предметами, сделанными из вещества. А с геометрическими объектами, которые находятся в абстрактном пространстве.</p>
+<p>Есть несколько способов такого описания, но вот наиболее распространённый. Покройте плоскость сеткой и закрасьте те клетки на сетке, которые пересекаются с кругом. Теперь, посчитайте их.</p>
+<p>Подсознательно мы догадываемся, что круг двумерен, и число квадратов сетки, с которыми он соприкасается, должно быть пропорционально его площади.</p>
+<p>Разумный способ проверить это эмпирически, это увеличить круг во сколько-то раз, например, вдвое, и посчитать, сколько квадратов сетки касаются увеличенной версии. У вас должно получиться, что это число увеличивается приблизительно как квадрат масштаба, то есть в этом случае их должно быть в четыре раза больше.</p>
+<p>Ну… признаюсь, то, что вы видите на экране не очень убедительно, но это потому что сетка слишком редкая.</p>
+<p>Вот если бы вы взяли намного более мелкую сетку, которая лучше подходит нашему намерению измерить площадь круга, то закономерность, что число квадратиков увеличивается вчетверо, когда круг увеличивается в два раза, стала бы более очевидной.</p>
+<p>Признаюсь, что когда я делал эту анимацию, я был поражен тем, как медленно это значение сходится к четырём.</p>
+<p>Вот как нужно думать об этом: если бы вы построили график зависимости масштаба от числа квадратов, с которыми круг соприкасается на этом масштабе, ваши данные должны быть близки к идеальной параболе, так как число коснувшихся квадратов приблизительно пропорционально квадрату масштаба.</p>
+<p>Для всё больших и больших масштабов, что на самом деле эквивалентно взятию всё более мелкой сетки, данные будут всё ближе к идеальной параболе.</p>
+<p>Теперь вернёмся обратно к фракталам. Давайте сыграем в эту игру с треугольником Серпинского, считая, сколько квадратов соприкасаются с этой фигурой.</p>
+<p>Как вы думаете, каким образом их число изменится, если увеличить масштаб вдвое и снова пересчитать количество соприкасающихся квадратов?</p>
+<p>Что ж, отношение квадратов, соприкасающихся с большим треугольником, к числу квадратов в маленьком должно быть около трёх. В конце концов, больший треугольник просто составлен из трёх копий маленького треугольника.</p>
+<p>Об этом также можно думать как о двух в степени размерности фрактала, которая, как мы уже выяснили, около 1,585.</p>
+<p>Так что если бы вы нарисовали график зависимости масштаба и числа квадратов, соприкасающихся с треугольником Серпинского, данные получились бы близкими к кривой формы y=x^(1,585), только умноженной на какую-то постоянную.</p>
+<p>Но самое важное, причина, по которой я говорю об этом, это что мы можем сыграть в эту игру с несамоподобными фигурами, которые тем не менее имеют какие-то неровности. Классическим примером является береговая линия Британии. Если вы поместите эту береговую линию в плоскость и посчитаете со сколькими квадратами она соприкасается, а затем увеличите ее и снова посчитаете, сколько квадратов касаются увеличенной версии, вы обнаружите, что число квадратов, касающихся береговой линии увеличивается приблизительно как масштаб в степени 1.21.</p>
+<p>Да, интересно было бы узнать, как бы вы на самом деле смогли вычислить это число. Представьте, что я дал вам какую-то фигуру, а вы способный программист. Как бы вы вычислили это число?</p>
+<p>Я имею ввиду, что если вы растянете фигуру в какое-то число раз, которое я назову «s», количество касающихся её квадратов должно быть равно какой-то постоянной, умноженной на s в какой-то там степени, эта степень и есть число, которое мы ищем.</p>
+<p>Если у вас есть какой-то график данных, похожий на кривую, которая есть график аргумента, возведённого в какую-то степень, может быть сложно понять, какая именно степень должна быть,</p>
+<p>так что обычный трюк в этом случае взять логарифм обеих частей. При этом размерность должна выпасть из степени и у нас будет простое линейное соответствие. Идея в том, что если вы построите график логарифма масштаба к логарифму числа квадратов, касающихся береговой линии,</p>
+<p>отношение должно выглядеть как прямая, и угол наклона этой прямой должен быть равен размерности.</p>
+<p>Это значит, что если бы перепробовали кучу разных масштабов, пересчитали число касающихся квадратов в каждом случае, а затем отметили бы все эти точки на логарифмическом графике, можно было бы с помощью линейной регрессии найти прямую, которая наилучшим образом описывает ваши данные, и если посмотреть на угол наклона этой прямой, вы узнаете эмпирическое значение размерности того, что изучаете. Мне кажется, что это делает идею фрактальной размерности намного более реальной и естественной, в сравнении с абстрактными идеальными фигурами.</p>
+<p>И как только вы начнёте мыслить о размерности таким образом, вы, мой друг, готовы услышать определение фрактала.</p>
+<p>По сути, фракталы это фигуры, размерность которых не целая, а какое-то дробное число.</p>
+<p>Что действительно здорово, так это, что есть качественный способ сказать, что фигура неровная, и что она остается неровной, если её масштабировать.</p>
+<p>Строго говоря, есть чуть более правильное определение, которое я включил в описание видео, но описанная идея нецелой размерности почти полностью описывает понятие неровности, которое мы хотели.</p>
+<p>Есть, правда, ещё один нюанс, о котором я не сказал, но о котором сказать стоит. Дело в том, что эта размерность, по крайней мере, как я её описал, используя метод подсчёта квадратов, иногда может меняться в зависимости от того как сильно вы масштабируете.</p>
+<p>Например, вот фигура в трёхмерном пространстве, которая на расстоянии выглядит как прямая. В пространстве, кстати, нужно считать пересечения с трёхмерной сеткой маленьких кубиков, а не квадратиков, но это работает точно так же.</p>
+<p>На масштабах, когда толщина фигуры намного меньше размера кубов, она выглядит одномерной, то есть количество кубов, которые она пересекает, пропорционально её длине.</p>
+<p>Но когда вы увеличите её, окажется что это труба, которая касается кубов своей поверхностью, так что она выглядит двумерной, и количество касающихся её кубов пропорционально квадрату масштаба.</p>
+<p>Но на самом деле это не труба, она сделана из часто закрученных маленьких кривых, так что когда вы ещё увеличите масштаб, кубы смогут поймать подробные детали этих кривых, и фигура снова выглядит одномерной, то есть число кубов, её касающихся, пропорционально масштабу увеличения.</p>
+<p>Так что присвоение размерности фигуре может быть не таким простым и оставляет простор для разных определения и разных соглашений.</p>
+<p>В чисто математической ситуации действительно есть несколько определений размерности, но все они сосредоточены на пределе этой размерности на всё более и более мелких масштабах.</p>
+<p>Вы можете думать об этом как о пределе наклона графика, когда вы двигаетесь всё дальше и дальше вправо.</p>
+<p>Так что чисто геометрическая фигура, чтобы быть фракталом, должна продолжать выглядеть неровной даже если вы масштабируете её бесконечно долго.</p>
+<p>Но на более прикладном уровне, как в примере с береговой линией Британии, не имеет смысла говорить о пределе на всё больших масштабах. Я имею ввиду, что на каком-то масштабе вы упрётесь в атомы.</p>
+<p>Вместо этого нужно смотреть на достаточно большой разброс масштабов от очень больших до очень маленьких, и вычислять размерность на каждом из них.</p>
+<p>И в этом более прикладном случае, фигура обычно считается фракталом только, если измеренная размерность остаётся приблизительно постоянной на различных масштабах.</p>
+<p>Например, береговая линия Британии не только выглядит 1,21-мерной на большом расстоянии. Даже если вы увеличите её в тысячу раз, уровень неровности остаётся порядка 1,21.</p>
+<p>И это тот смысл, в котором многие природные объекты самоподобны, хотя они не идеально самоподобны.</p>
+<p>Но идеально самоподобные фигуры играют важную роль во фрактальной геометрии. Ведь они дают нам простые в описании, неслоожные примеры этого феномена неровности, неровности, которая остается постоянной на разных масштабах, на сколь угодно малых масштабах.</p>
+<p>А это важно! Это даёт нам примитивные инструменты для моделирования фрактальных феноменов. Но я думаю, что также важно не думать о них, как о базовых примерах фракталов, поскольку в общем фракталы имеют намного больше качеств.</p>
+<p>Я действительно думаю, что это одна из тех идей, однажды узнав о которых, вы начнете смотреть на мир совершенно по другому. Что нам дает это число, эта фрактальная размерность, так это численный способ описать неровность. Например, береговая линия Норвегии 1,52-мерна, что есть числовой способ сказать о том, что она <em>намного</em> более изрезанная, чем береговая линия Британии.</p>
+<p>Поверхность спокойного океана имеет фрактальную размерность лишь чуть более двух, а во время шторма эта размерность становится ближе к 2,3.</p>
+<p>На самом деле, фрактальная размерность не просто часто возникает в природе, это хороший способ отличить природные объекты от объектов, созданных человеком.</p>
+<p>В качестве финальной анимации я хочу показать вам фрактал из капризных букв пи. Но сначала я хочу сказать спасибо тем, кто поддерживает этот канал. Прежде всего тем из вас, кто поддерживает меня на патреоне. У подписчиков есть ранний доступ к видео об основах анализа пока я делаю их, и было очень здорово услышать комментарии и советы от тех, кто просмотрел эти видео. Данное видео также частично поддержано Affirm. Это финансово-техническая компания, где я когда-то работал, и в настоящее время они очень разрослись. Им всегда нужны талантливые разработчики и исследователи, и я знаю, что многие из вас, хотя и смотрят видео о фрактальной размерности для развлечения, и есть эти таланты. Как я уже сказал, в прошлой жизни, до того как я погрузился в математику, я был в их команде исследования данных, и могу вам сказать, что там работают потрясающие люди. То есть, я работал с умными ребятами до этого, но в Affirm просто необыкновенная концентрация великолепных умов и технологий. Я думаю, это одна из тех вещей, когда умные люди привлекают больше умных людей, и этот цикл всё продолжается, если вы понимаете о чём я. Они подходят к потребительским кредитам достаточно новым способом, которым, похоже, никто другой не занимается, так что им всегда нужны способные люди, чтобы делать то, что они делают. Если вы хотите подать резюме, ссылка перед вами на экране, и так же есть в описании, и это специальная ссылка, то есть если вы перейдёте по ней и подадите резюме, то и Affirm и я будем знать, что вы узнали о них из этого видео. Это просто способ узнать, насколько эффективен такой подход, так что даже если вы не подадите резюме сейчас же, а вернётесь через несколько дней, для чистоты данных поможет, если вы всё равно пройдёте по этой ссылке. Так что вам следует зайти к ним, а теперь та финальная анимация, которую я обещал.</p>
+</section>
+<footer class="page__meta">
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-tags"></i> Метки: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/tags/#3b1b" rel="tag">3b1b</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#math" rel="tag">math</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#translation" rel="tag">translation</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#video" rel="tag">video</a>
+</span>
+</p>
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-folder-open"></i> Разделы: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/categories/#scipop" rel="tag">scipop</a>
+</span>
+</p>
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2020-04-04T00:00:00+00:00">April 4, 2020</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/scipop/peterson-essay/" title="Руководство по написанию эссе
+">Предыдущая</a>
+<a class="pagination--pager" href="/scipop/translate-mlops/" title="Как будет выглядеть машинное обучение, если добавить к нему DevOps?
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

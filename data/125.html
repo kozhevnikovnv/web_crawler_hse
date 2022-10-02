@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ORM</title>
+<meta charset="utf-8"/>
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<link href="/assets/shower/themes/ribbon/styles/styles.css" rel="stylesheet"/>
+<style>
+        .shower {
+            --slide-ratio: calc(16 / 12);
+        }
+    </style>
+<style>
+
+        html{
+            background-color: #000;
+        }
+
+        body{
+            min-height: 0;
+            background-color: #000;
+        }
+
+        #cover h2 {
+            margin: 30px 0 0;
+            /*color: white;*/
+            text-align: center;
+            font-size: 70px;
+        }
+
+        #cover p {
+            margin: 10px 0 0;
+            text-align: center;
+            color: white;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        #cover p a {
+            /*color: white;*/
+        }
+
+        #temp {
+            display: none;
+            visibility: hidden;
+        }
+
+        section {
+            font-size: 20px;
+        }
+
+        section h2 {
+            font-size: 50px;
+        }
+
+        .slide{
+            line-height: 1.2em;
+            font-size: 1em;
+        }
+
+        .slide ol, .slide ul {
+            line-height: 1em;
+        }
+
+        .slide pre {
+            overflow-x: hidden; 
+            overflow-y: hidden; 
+            line-height: 1.2em;
+            /*font-size: 1em;*/
+        }
+
+        img {
+            max-height: 550px;
+            width: auto;
+        }
+
+        img#cover{
+            height: 100%;
+            width: auto;
+        }
+
+        .slide .shout {
+            font-size: 120px;
+        }
+
+        .mjx-chtml{
+        	font-size: 25px !important;
+        }
+
+        section > div.presentation, section > img{
+		  margin: 0;
+		  position: absolute;
+		  top: 460px;
+		  left: 50%;
+		  -ms-transform: translate(-50%, -50%);
+		  transform: translate(-50%, -50%);
+		}
+    </style>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+	   MathJax.Hub.Config({
+	     extensions: ["tex2jax.js"],
+	     jax: ["input/TeX", "output/HTML-CSS"],
+	     tex2jax: {
+	       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+	       processEscapes: true
+	     },
+	     "HTML-CSS": { availableFonts: ["TeX"] }
+	   });
+	</script>
+</head>
+<body class="shower list">
+<div id="temp">
+<h3 id="работа-с-бд">Работа с БД</h3>
+<h4 id="cassandra">Cassandra</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-80.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="couchdb">CouchDB</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-81.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="leveldb">LevelDB</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-82.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="mysql">MySQL</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-83.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="mongodb">MongoDB</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-84.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="neo4j">Neo4j</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-85.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="postgresql">PostgreSQL</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-86.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="redis">Redis</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-87.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="sqlite">SQLite</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-88.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="elasticsearch">ElasticSearch</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-89.png" style="width: 800px;" title="ORM"/></p>
+<h3 id="что-такое-orm">Что такое ORM?</h3>
+<p>ORM также может означать: англ. Object Role Model, рус. Модель ролей объекта — методика концептуального проектирования информационных систем, включающая собственную графическую нотацию.</p>
+<p>ORM (англ. Object-Relational Mapping, рус. объектно-реляционное отображение, или преобразование) — технология программирования, которая связывает базы данных с концепциями объектно-ориентированных языков программирования, создавая «виртуальную объектную базу данных». Существуют как проприетарные, так и свободные реализации этой технологии. Подход реализует концепцию «абстракция от хранилищ».</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-1.png" style="width: 800px;" title="ORM"/></p>
+<p>Необходимо обеспечить работу с данными в терминах классов, а не таблиц данных, и, напротив, преобразовать термины и данные классов в данные, пригодные для хранения в СУБД. В общем, необходимо избавиться от необходимости писать SQL-код для взаимодействия в СУБД.</p>
+<p>Принцип действия
+Разработано множество пакетов, устраняющих необходимость в преобразовании объектов для хранения в реляционных базах данных.</p>
+<p>Некоторые пакеты решают эту проблему, предоставляя библиотеки классов, способных выполнять такие преобразования автоматически. Имея список таблиц в базе данных и объектов в программе, они автоматически преобразуют запросы из одного вида в другой. В результате, например, запроса объекта «человек» необходимый SQL-запрос будет сформирован и выполнен, а результаты «волшебным» образом преобразованы в объекты «номер телефона» внутри программы.</p>
+<p>С точки зрения программиста система должна выглядеть как постоянное хранилище объектов. Он может просто создавать объекты и работать с ними как обычно, а они автоматически будут сохраняться в реляционной базе данных.</p>
+<p>На практике всё не так просто и очевидно. Все системы ORM обычно проявляют себя в том или ином виде, уменьшая в некотором роде возможность игнорирования базы данных. Более того, слой транзакций может быть медленным и неэффективным (особенно в терминах сгенерированного SQL). Все это может привести к тому, что программы будут работать медленнее и использовать больше памяти, чем программы, написанные «вручную».</p>
+<p>Но ORM избавляет программиста от написания большого количества кода, часто однообразного и подверженного ошибкам, тем самым значительно повышая скорость разработки. Кроме того, большинство современных реализаций ORM позволяют программисту при необходимости самому жёстко задать код SQL-запросов, который будет использоваться при тех или иных действиях (сохранение в базу данных, загрузка, поиск и т. д.) с постоянным объектом.</p>
+<p>Чтобы этот чудесный подход работал необходимо движение база данных -&gt; ORM -&gt; объекты. Наоборот это работает только на очень маленьких БД.</p>
+<p>Оказывается, я 15 лет назад уже использовал этот подход, когда хранил данные экземпляров классов в файле, но я не догадался воткнуть между файлами и классами SQL. Наверное нужно предложить убрать прокладку в виде SQL и назвать это продвинутым ORM.</p>
+<h3 id="основы-sequelize">Основы Sequelize</h3>
+<p>Sequelize — это ORM (Object-Relational Mapping — объектно-реляционное отображение или преобразование) для работы с такими СУБД (системами управления (реляционными) базами данных, Relational Database Management System, RDBMS), как Postgres, MySQL, MariaDB, SQLite и MSSQL. Это далеко не единственная ORM для работы с названными базами данных (далее — БД), но, лга одна из самых продвинутых и, что называется, “battle tested” (проверенных временем).</p>
+<p>ORM хороши тем, что позволяют взаимодействовать с БД на языке приложения (JavaScript), т.е. без использования специально предназначенных для этого языков (SQL). Тем не менее, существуют ситуации, когда запрос к БД легче выполнить с помощью SQL (или можно выполнить только c помощью него).</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>yarn add sequelize
+npm i sequelize
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h4 id="подключение-к-бд">Подключение к БД</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-2.png" style="width: 800px;" title="ORM"/></p>
+<p>Проверка подключения. По умолчанию после того, как установки соединения, оно остается открытым. Для его закрытия следует вызвать метод sequelize.close().</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-3.png" style="width: 800px;" title="ORM"/></p>
+<h3 id="модели">Модели</h3>
+<p>Модель — это абстракция, представляющая таблицу в БД.</p>
+<p>Модель сообщает Sequelize несколько вещей о сущности (entity), которую она представляет: название таблицы, то, какие колонки она содержит (и их типы данных) и др.</p>
+<p>У каждой модели есть название. Это название не обязательно должно совпадать с названием соответствующей таблицы. Обычно, модели именуются в единственном числе (например, User), а таблицы — во множественном (например, Users). Sequelize выполняет плюрализацию (перевод значения из единственного числа во множественное) автоматически.</p>
+<p>Модели могут определяться двумя способами:</p>
+<ul>
+<li>путем вызова sequelize.define(modelName, attributes, options)</li>
+<li>путем расширения класса Model и вызова init(attributes, options)</li>
+</ul>
+<p>После определения, модель доступна через sequelize.model + название модели.</p>
+<h4 id="определение-моделей">Определение моделей</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-4.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-5.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="плюрализация-названия">Плюрализация названия</h4>
+<p>Автоматическую плюрализацию названия таблицы можно отключить с помощью настройки freezeTableName, как на слайде вверху
+или глобально, как на слайде внизу
+В этом случае таблица будет называться User.</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-6.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="явное-задание-названия">Явное задание названия</h4>
+<p>Название таблицы может определяться в явном виде:
+В этом случае таблица будет называться Employees.</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-7.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="запись-изменений-в-бд">Запись изменений в БД</h4>
+<p>Синхронизация модели с таблицей:</p>
+<ul>
+<li>User.sync() — создает таблицу при отсутствии (существующая таблица остается неизменной)</li>
+<li>User.sync({ force: true }) — удаляет существующую таблицу и создает новую</li>
+<li>User.sync({ alter: true }) — приводит таблицу в соответствие с моделью</li>
+</ul>
+<p>Возвращает промис
+Синхронизация всех моделей
+Удаление таблицы</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-8.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="удаление-всех-таблиц">Удаление всех таблиц</h4>
+<p>Удаление всех таблиц:
+Sequelize принимает настройку match с регулярным выражением, позволяющую определять группу синхронизируемых таблиц:
+Обратите внимание: вместо синхронизации в продакшне следует использовать миграции.</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-9.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="автоматические-поля">Автоматические поля</h4>
+<p>По умолчанию Sequelize автоматически добавляет в создаваемую модель поля createAt и updatedAt с типом DataTypes.DATE. Это можно изменить как на слайде слева.
+Названные поля можно отключать по отдельности и переименовывать как на слайде справа.</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-10.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-11.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="задание-типа-поля">Задание типа поля</h4>
+<p>Если для колонки определяется только тип данных, синтаксис определения атрибута может быть сокращен следующим образом как на слайде слева:
+По умолчанию значением колонки является NULL. Это можно изменить с помощью настройки defaultValue (определив “дефолтное” значение) как на слайде справа сверху:
+В качестве дефолтных могут использоваться специальные значения как на слайде справа внизу.</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-12.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-13.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="типы-данных">Типы данных</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-14.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-15.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-16.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-18.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-19.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="uuid">UUID</h4>
+<p>UUID может генерироваться автоматически:</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-17.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="настройка-колонки">Настройка колонки.</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-20.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-21.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-22.png" style="width: 800px;" title="ORM"/></p>
+<h3 id="экземпляры">Экземпляры</h3>
+<p>Наш начальный код будет выглядеть следующим образом:</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-23.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="создание-и-обновление-экземпляра">Создание и обновление экземпляра</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-24.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="удаление-и-перезагрузка-экземпляра">Удаление и перезагрузка экземпляра</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-25.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-26.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="сохранение-отдельных-полей">Сохранение отдельных полей</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-27.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="автоматическое-увеличение-значения-поля">Автоматическое увеличение значения поля</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-28.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="автоматическое-увеличение-значения-нескольких-полей">Автоматическое увеличение значения нескольких полей</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-29.png" style="width: 800px;" title="ORM"/></p>
+<p>Также имеется возможность автоматического уменьшения значений полей (decrement()).</p>
+<h3 id="основы-выполнения-запросов">Основы выполнения запросов</h3>
+<h4 id="создание-экземпляра">Создание экземпляра</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-30.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="создание-экземпляра-с-определёнными-полями">Создание экземпляра с определёнными полями</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-31.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="получение-экземпляра">Получение экземпляра</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-32.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="выборка-полей">Выборка полей</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-33.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-34.png" style="width: 800px;" title="ORM"/></p>
+<p>Настройка where позволяет выполнять фильтрацию возвращаемых данных. Существует большое количество операторов, которые могут использоваться совместно с where через Op.</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-35.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-36.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="операторы">Операторы</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-37.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-38.png" style="width: 800px;" title="ORM"/></p>
+<p>Передача массива в where приводит к неявному применению оператора IN:</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-39.png" style="width: 800px;" title="ORM"/></p>
+<p>Операторы Op.and, Op.or и Op.not могут использоваться для создания сложных операций, связанных с логическими сравнениями:</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-40.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-41.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="более-сложные-запросы">Более сложные запросы</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-42.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-43.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-44.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="обновление-экземпляра">Обновление экземпляра</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-45.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="удаление-экземпляра">Удаление экземпляра</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-46.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="создание-нескольких-экземпляров-одновременно">Создание нескольких экземпляров одновременно</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-47.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="сортировка-и-группировка">Сортировка и группировка</h4>
+<p>Настройка order определяет порядок сортировки возвращаемых объектов:</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-48.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-49.png" style="width: 800px;" title="ORM"/></p>
+<p>Синтаксис группировки идентичен синтаксису сортировки, за исключением того, что при группировке не указывается направление. Кроме того, синтаксис группировки может быть сокращен до строки как на слайде сверху
+Настройки limit и offset позволяют ограничивать и/или пропускать определенное количество возвращаемых объектов как на слайде снизу</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-50.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-51.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="полезные-операторы">Полезные операторы</h4>
+<p>Sequelize предоставляет несколько полезных утилит:</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-52.png" style="width: 800px;" title="ORM"/></p>
+<h3 id="поисковые-запросы">Поисковые запросы</h3>
+<p>Настройка raw со значением true отключает “оборачивание” ответа, возвращаемого SELECT, в экземпляр модели.</p>
+<ul>
+<li>findAll() — возвращает все экземпляры модели</li>
+<li>findByPk() — возвращает один экземпляр по первичному ключу
+как на слайде вверху</li>
+</ul>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-53.png" style="width: 800px;" title="ORM"/></p>
+<ul>
+<li>findOne() — возвращает первый или один экземпляр модели (это зависит от того, указано ли условие для поиска)
+как на слайде в центре</li>
+</ul>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-54.png" style="width: 800px;" title="ORM"/></p>
+<p>findOrCreate() — возвращает или создает и возвращает экземпляр, а также логическое значение — индикатор создания экземпляра. Настройка defaults используется для определения значений по умолчанию. При ее отсутствии, для заполнения полей используется значение, указанное в условии
+как на слайде внизу</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-55.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="findandcountall">findAndCountAll()</h4>
+<p>findAndCountAll() — комбинация findAll() и count. Может быть полезным при использовании настроек limit и offset, когда мы хотим знать точное число записей, совпадающих с запросом. Возвращает объект с двумя свойствами:
+count — количество записей, совпадающих с запросом (целое число) 
+rows — массив объектов</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-56.png" style="width: 800px;" title="ORM"/></p>
+<h3 id="геттеры-сеттеры-и-виртуальные-атрибуты">Геттеры, сеттеры и виртуальные атрибуты</h3>
+<p>Sequelize позволяет определять геттеры и сеттеры для атрибутов моделей, а также виртуальные атрибуты — атрибуты, которых не существует в таблице и которые заполняются или наполняются (имеется ввиду популяция) Serquelize автоматически. Последние могут использоваться, например, для упрощения кода.</p>
+<p>Геттер — это функция get(), определенная для колонки как в верхней части слайда</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-57.png" style="width: 800px;" title="ORM"/></p>
+<p>Геттер вызывается автоматически при чтении поля.</p>
+<p>Обратите внимание: для получения значения поля в геттере мы использовали метод getDataValue(). Если вместо этого указать this.username, то мы попадем в бесконечный цикл.</p>
+<p>Сеттер — это функция set(), определенная для колонки. Она принимает значение для установки как в нижней части слайда</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-58.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="автоматический-вызов-сеттера">Автоматический вызов сеттера</h4>
+<p>Сеттер вызывается автоматически при создании экземпляра.
+В сеттере можно использовать значения других полей:</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-59.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="совместное-использование">Совместное использование</h4>
+<p>Геттеры и сеттеры можно использовать совместно. Допустим, что у нас имеется модель Post с полем content неограниченной длины, и в целях экономии памяти мы решили хранить в БД содержимое поста в сжатом виде. Обратите внимание: многие современные БД выполняют сжатие (компрессию) данных автоматически.</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-60.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="сжатие-данных">Сжатие данных</h4>
+<p>Представим, что у нас имеется модель User с полями firstName и lastName, и мы хотим получать полное имя пользователя. Для этого мы можем создать виртуальный атрибут со специальным типом DataTypes.VIRTUAL:
+В таблице не будет колонки fullName, однако мы сможем получать значение этого поля, как если бы оно существовало на самом деле.</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-61.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="валидация-и-ограничения">Валидация и ограничения</h4>
+<p>Наша моделька будет выглядеть так:
+Отличие между выполнением валидации и применением или наложением органичение на значение поля состоит в следующем:</p>
+<p>валидация выполняется на уровне Sequelize; для ее выполнения можно использовать любую функцию, как встроенную, так и кастомную; при провале валидации, SQL-запрос в БД не отправляется;
+ограничение определяется на уровне SQL; примером ограничения является настройка unique; при провале ограничения, запрос в БД все равно отправляется</p>
+<p>В приведенном примере мы ограничили уникальность имени пользователя с помощью настройки unique. При попытке записать имя пользователя, которое уже существует в БД, возникнет ошибка SequelizeUniqueConstraintError.</p>
+<p>По умолчанию колонки таблицы могут быть пустыми (нулевыми). Настройка allowNull со значением false позволяет это запретить. Обратите внимание: без установки данной настройки хотя бы для одного поля, можно будет выполнить такой запрос: User.create({}).</p>
+<p>Валидаторы позволяют проводить проверку в отношении каждого атрибута модели. Валидация автоматически выполняется при запуске методов create(), update() и save(). Ее также можно запустить вручную с помощью validate().</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-62.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="validatorjs">validator.js</h4>
+<p>Как было отмечено ранее, мы можем определять собственные валидаторы или использовать встроенные (предоставляемые библиотекой validator.js).</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-63.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-64.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="кастомизация-сообщения-об-ошибке">Кастомизация сообщения об ошибке</h4>
+<p>Для кастомизации сообщения об ошибке можно использовать объект со свойством msg как на слайде сверху</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-65.png" style="width: 800px;" title="ORM"/></p>
+<p>В этом случае для указания аргументов используется свойство args. Как на слайде по средедине</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-66.png" style="width: 800px;" title="ORM"/></p>
+<p>Для поля, которое может иметь значение null, встроенные валидаторы пропускаются. Это означает, что мы, например, можем определить поле, которое либо должно содержать строку длиной 5-10 символов, либо должно быть пустым: Как внизу на слйде</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-67.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="кастомные-валидаторы-для-нулевых-полей">Кастомные валидаторы для нулевых полей</h4>
+<p>Обратите внимание, что для нулевых полей кастомные валидаторы выполняются:</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-68.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="валидация-модели-в-целом">Валидация модели в целом</h4>
+<p>Мы можем выполнять валидацию не только отдельных полей, но и модели в целом. В следующем примере мы проверяем наличие или отсутствии как поля latitude, так и поля longitude (либо должны быть указаны оба поля, либо не должно быть указано ни одного):</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-69.png" style="width: 800px;" title="ORM"/></p>
+<h3 id="необработанные-запросы">Необработанные запросы</h3>
+<p>sequelize.query() позволяет выполнять необработанные SQL-запросы (raw queries). По умолчанию данная функция возвращает массив с результатами и объект с метаданными, при этом, содержание последнего зависит от используемого диалекта. На слайде вверху</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-70.png" style="width: 800px;" title="ORM"/></p>
+<p>Если нам не нужны метаданные, для правильного форматирования результата можно воспользоваться специальными типами запроса (query types). В середине слайда</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-71.png" style="width: 800px;" title="ORM"/></p>
+<p>Для привязки результатов необработанного запроса к модели используются настройки model и, опционально, mapToModel:. Внизу слайда</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-72.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="пример-использования-других-настроек">Пример использования других настроек</h4>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-73.png" style="width: 800px;" title="ORM"/></p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-74.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="настройка-nest">Настройка nest</h4>
+<p>Если название атрибута в таблице содержит точки, то результирующий объект может быть преобразован во вложенные объекты с помощью настройки nest.</p>
+<p>Без nest: true: на слайде вверху</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-75.png" style="width: 800px;" title="ORM"/></p>
+<p>С nest: true: на слайде внизу</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-76.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="замены-в-запросе">Замены в запросе</h4>
+<p>Замены при выполнении запроса могут производиться двумя способами:</p>
+<p>с помощью именованных параметров (начинающихся с :)
+с помощью неименованных параметров (представленных ?)</p>
+<p>Заменители (placeholders) передаются в настройку replacements в виде массива (для неименованных параметров) или в виде объекта (для именованных параметров):</p>
+<p>если передан массив, ? заменяется элементами массива в порядке их следования
+если передан объект, :key заменяются ключами объекта. При отсутствии в объекте ключей для заменяемых значений, а также в случае, когда ключей в объекте больше, чем заменяемых значений, выбрасывается исключение</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-77.png" style="width: 800px;" title="ORM"/></p>
+<p>Более сложные примеры замены в нижней  части слайде</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-78.png" style="width: 800px;" title="ORM"/></p>
+<h4 id="привязка-параметров">Привязка параметров</h4>
+<p>Кроме замены, можно выполнять привязку (bind) параметров. Привязка похожа на замену, но заменители обезвреживаются (escaped) и вставляются в запрос, отправляемый в БД, а связанные параметры отправляются в БД по отдельности. Связанные параметры обозначаются с помощью $число или $строка:</p>
+<p>если передан массив, $1 будет указывать на его первый элемент (bind[0])
+если передан объект, $key будет указывать на object[‘key’]. Каждый ключ объекта должен начинаться с буквы. $1 является невалидным ключом, даже если существует object[‘1’]
+в обоих случаях для сохранения знака $ может использоваться $$</p>
+<p>Связанные параметры не могут быть ключевыми словами SQL, названиями таблиц или колонок. Они игнорируются внутри текста, заключенного в кавычки. Кроме того, в postgres может потребоваться указывать тип связываемого параметра в случае, когда он не может быть выведен на основании контекста — $1::varchar.</p>
+<p><img alt="ORM" class="align-center" src="/assets/images/wd_text/wd43-79.png" style="width: 800px;" title="ORM"/></p>
+</div>
+<header class="caption">
+<h1>ORM</h1>
+<!-- <p>Yours Truly, Famous Inc.</p> -->
+</header>
+<section class="slide">
+<h2 class="shout">ORM</h2>
+</section>
+<footer class="badge">
+<a href="https://github.com/shower/shower">Build with shower</a>
+</footer>
+<script src="/assets/shower/shower.js"></script>
+<!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+<script type="text/javascript">
+        
+        const content = document.querySelector('#temp');
+        const childern = content.childNodes;
+
+        let current_slide;
+        let points;
+        let code;
+        let image;
+        let misc;
+
+        function commit() {
+            if (current_slide) {
+
+                const elems = [image, code, points, misc];
+
+                let slide;
+
+                elems.forEach(elem => {
+                    if (elem) {
+                        // console.log("ИТЕРАЦИЯ " + current_slide);
+                        // console.log([image, code, points, misc]);
+
+                        slide = document.createElement('section');
+                        slide.className = "slide";
+                        let slide_header = document.createElement('h2');
+                        slide_header.innerHTML = current_slide;
+                        slide.appendChild(slide_header);
+
+                        slide.appendChild(elem);
+
+                        document.body.appendChild(slide);
+
+                        fit_in_slide(elem);
+                    }
+                });
+
+                misc = undefined;
+                points = undefined;
+                image = undefined;
+                code = undefined;
+            }
+        }
+
+        function fit_in_slide(element) {
+            console.log("ИТЕРАЦИЯ " + current_slide);
+            console.log(element);
+
+            let ratio = Math.min(
+            	550 / element.offsetHeight,
+            	// 1600 / element.offsetWidth,
+            	);
+
+
+            let new_size = Math.sqrt(ratio) / 1.2;
+            if (new_size > 2.5) {
+                new_size = 2.5
+            }
+            element.style["font-size"] = new_size + "em";
+
+            new_size = Math.pow(ratio, 1.1) * 12;
+            if (new_size > 30) {
+                new_size = 30
+            }
+
+            ratio = Math.min(
+            	550 / element.offsetHeight,
+            	1600 / element.offsetWidth,
+            	);
+
+            new_size = Math.pow(ratio, 1.1) * 12;
+            if (new_size > 30) {
+                new_size = 30
+            }
+
+            console.log(element.innerHTML);            
+            console.log(element.querySelectorAll("*"));            
+            console.log(element.querySelectorAll("pre"));
+
+            element.querySelectorAll("pre").forEach(e => {
+                e.style["font-size"] = new_size + "px";
+                e.style["line-height"] = new_size * 1.2 + "px";
+            });
+
+            element.querySelectorAll("span").forEach(e => {
+            	console.log("found");
+                e.style["font-size"] = new_size + "px";
+                e.style["line-height"] = new_size * 1.2 + "px";
+            });
+
+            console.log(
+                // realHeight, ratio, 
+                new_size, 
+                element.offsetHeight,
+                element.offsetWidth);
+
+            return element;
+        }
+
+        childern.forEach(elem => {
+            if (elem.tagName == "H3") {
+                commit();
+                let slide = document.createElement('section');
+                slide.className = "slide";
+                let slide_header = document.createElement('h2');
+                slide_header.className = "shout shrink"
+                slide_header.innerHTML = elem.innerHTML;
+                slide.appendChild(slide_header);
+
+                // slide.appendChild(elem);
+
+                document.body.appendChild(slide);
+            }
+
+            if (elem.tagName == "H3" || elem.tagName == "H4") {
+                commit();
+                current_slide = elem.innerHTML;
+            }
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("notice--info")) {
+                let list = elem.getElementsByTagName('ol')[0];
+
+                list.childNodes.forEach(elem => {
+                    elem.className = "next";
+                });
+
+                points = list;
+                // points = fit_in_slide(points);
+            } 
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("highlighter-rouge")) {
+                code = elem;
+                commit()
+                // code = fit_in_slide(code);
+            } 
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("presentation")) {
+                misc = elem;
+                // misc = fit_in_slide(misc);
+                commit();
+            } 
+
+            else if (elem.tagName == "P" && elem.getElementsByTagName('img').length > 0) {
+                image = elem.getElementsByTagName('img')[0];
+                image.style.width = "auto";
+                commit();
+            } 
+        });
+
+        commit();
+
+        content.remove();
+
+    </script>
+<div class="progress"></div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

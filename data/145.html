@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Вывод и предсказания. Часть 2: статистика | Михаил Коротеев</title>
+<meta content="Перевод второй из трех статей про сравнение двух подходов к моделированию данных - статистическому и обучающему. Вторая часть посвящена связи простых алгоритмов машинного обучения и статистических моделей. Очень рекомендуется к прочтению всем заинетерсованным. Будет интересна как новичкам, так и продолжающим изучать машинное обучение." name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Вывод и предсказания. Часть 2: статистика" property="og:title"/>
+<meta content="https://koroteev.site/scipop/inference-and-prediction-2/" property="og:url"/>
+<meta content="Перевод второй из трех статей про сравнение двух подходов к моделированию данных - статистическому и обучающему. Вторая часть посвящена связи простых алгоритмов машинного обучения и статистических моделей. Очень рекомендуется к прочтению всем заинетерсованным. Будет интересна как новичкам, так и продолжающим изучать машинное обучение." property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Вывод и предсказания. Часть 2: статистика" name="twitter:title"/>
+<meta content="Перевод второй из трех статей про сравнение двух подходов к моделированию данных - статистическому и обучающему. Вторая часть посвящена связи простых алгоритмов машинного обучения и статистических моделей. Очень рекомендуется к прочтению всем заинетерсованным. Будет интересна как новичкам, так и продолжающим изучать машинное обучение." name="twitter:description"/>
+<meta content="https://koroteev.site/scipop/inference-and-prediction-2/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2021-05-03T00:00:00+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/scipop/inference-and-prediction-2/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--single None">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<div itemscope="" itemtype="https://schema.org/Person">
+<div class="author__avatar">
+<img alt="Михаил Коротеев" itemprop="image" src="/assets/images/avatar3.jpg"/>
+</div>
+<div class="author__content">
+<h3 class="author__name" itemprop="name">Михаил Коротеев</h3>
+<div class="author__bio" itemprop="description">
+<p>Есть такая профессия - Родину автоматизировать.</p>
+</div>
+</div>
+<div class="author__urls-wrapper">
+<button class="btn btn--inverse">Связаться со мной</button>
+<ul class="author__urls social-icons">
+<li><a href="https://koroteev.site" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fas fa-fw fa-link"></i><span class="label">Website</span></a></li>
+<li><a href="https://github.com/koroteevmv" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-github"></i><span class="label">GitHub</span></a></li>
+<li><a href="https://www.youtube.com/channel/UCPe6h6MY8XZpLV7oRLqRUwQ" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-youtube"></i><span class="label">YouTube</span></a></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i><span class="label">Vkontakte</span></a></li>
+<!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+</ul>
+</div>
+</div>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="Вывод и предсказания. Часть 2: статистика" itemprop="headline"/>
+<meta content="Перевод второй из трех статей про сравнение двух подходов к моделированию данных - статистическому и обучающему. Вторая часть посвящена связи простых алгоритмов машинного обучения и статистических моделей. Очень рекомендуется к прочтению всем заинетерсованным. Будет интересна как новичкам, так и продолжающим изучать машинное обучение." itemprop="description"/>
+<meta content="2021-05-03T00:00:00+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Вывод и предсказания. Часть 2: статистика
+</h1>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-03T00:00:00+00:00">May 3, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          19 мин на чтение
+        
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<aside class="sidebar__right sticky">
+<nav class="toc">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#продолжаем-о-модели-машинного-обучения">Продолжаем о модели машинного обучения</a></li>
+<li><a href="#вывод---статистический-подход">Вывод - статистический подход</a>
+<ul>
+<li><a href="#что-означают-коэффициенты-модели">Что означают коэффициенты модели?</a></li>
+<li><a href="#измеряя-неопределенность">Измеряя неопределенность</a></li>
+<li><a href="#стандартная-ошибка-отрицательного-логарифмического-правдоподобия">Стандартная ошибка отрицательного логарифмического правдоподобия</a></li>
+<li><a href="#остальные-статистики-z-оценки-p-значения-доверительные-интервалы">Остальные статистики: z-оценки, p-значения, доверительные интервалы</a></li>
+</ul>
+</li>
+<li><a href="#тестирование-гипотезы-и-оценка-параметров">Тестирование гипотезы и оценка параметров</a>
+<ul>
+<li><a href="#частотное-тестирование-гипотезы">Частотное тестирование гипотезы</a></li>
+<li><a href="#байесовское-оценивание-параметров">Байесовское оценивание параметров</a></li>
+</ul>
+</li>
+<li><a href="#проведение-экспериментов">Проведение экспериментов</a>
+<ul>
+<li><a href="#всегда-спрашивайте-что-это-значит">Всегда спрашивайте, что это значит,</a></li>
+<li><a href="#тестирование-предлагаемых-решений">Тестирование предлагаемых решений</a></li>
+<li><a href="#причинность">Причинность</a></li>
+<li><a href="#сравнение-моделей-по-критерию-акаике">Сравнение моделей по критерию Акаике</a></li>
+<li><a href="#на-пути-к-синтезу">На пути к синтезу</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+<p><a href="https://www.countbayesie.com/blog/2021/1/4/inference-and-prediction-part-2-statistics">Оригинал</a></p>
+<p>В <strong>первой части этой</strong> серии статей мы создали простую нейронную сеть (персептрон) для моделирования проблемы рейтинга кликов (CTR) для веб-сайта с заявлениями о приеме на работу. В конце нашего процесса мы осознали ограничения предсказания и классификации для решения проблемы, связанной с моделированием CTR. Самое большое озарение, которое мы получили, заключалось в том, что настоящая цель, моделирование ставки, заключалась в том, чтобы понять <strong>свойства самой модели</strong>, а не ее результат.</p>
+<p>В этой следующей части нашей серии мы сосредоточимся на проблеме <strong>логического вывода</strong>, которая обычно является областью статистики. Когда мы делаем вывод, нас гораздо больше интересуют свойства самой модели, а не только ее прогнозы. Поскольку цель этой серии - показать связь между машинным обучением и статистикой, мы продолжим наш пример с того места, где остановились, создавая все части нашей статистической модели с нуля.</p>
+<h1 id="продолжаем-о-модели-машинного-обучения">Продолжаем о модели машинного обучения</h1>
+<p>В качестве напоминания давайте вернемся к процессу, который мы разработали в прошлый раз, и посмотрим, как он может напрямую привести нас к статистической модели.</p>
+<p>Мы начали с набора данных, представляющего информацию о пользователях веб-сайта, которые просматривали вакансии и либо подавали заявки, либо нет. Это список имеющихся у нас функций, охватывающий информацию о сходстве различных частей поиска с публикацией, возрасте публикации и категории, в которой была опубликована вакансия (у нас также есть константа для целей моделирования):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="n">features</span>
+<span class="o">&gt;</span> <span class="p">[</span><span class="s">' main_query_tfidf '</span><span class="p">,</span>
+ <span class="s">'query_jl_score'</span><span class="p">,</span>
+ <span class="s">'query_title_score'</span><span class="p">,</span>
+ <span class="s">'job_age_days'</span><span class="p">,</span>
+ <span class="s">'job_16140'</span><span class="p">,</span>
+ <span class="s">'job_31542'</span><span class="p">,</span>
+ <span class="s">'job_41757'</span><span class="p">,</span>
+ <span class="s">'job_42467'</span><span class="p">,</span>
+ <span class="s">'job_45300'</span><span class="p">,</span>
+ <span class="s">'job_51966'</span><span class="p">,</span>
+ <span class="s">'job_67237'</span><span class="p">,</span>
+ <span class="s">'job_69982'</span><span class="p">,</span>
+ <span class="s">'job_77312'</span><span class="p">,</span>
+ <span class="s">'job_82238'</span><span class="p">,</span>
+ <span class="s">'job_other'</span><span class="p">,</span>
+ <span class="s">'const'</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Эти функции находятся в матрице X и сопровождают вектор y результатов. Оба они были разделены на наборы данных для тестирования и обучения.</p>
+<p>Наша модель представляла собой персептрон, который мы можем представить как:</p>
+
+\[y = g(X w)\]
+
+<p>Где g - нелинейная функция (мы выбираем логистическую функцию), а w - набор весов. В коде модель выглядит так:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">prediction</span> <span class="o">=</span> <span class="n">logistic</span> <span class="p">(</span><span class="n">jnp</span><span class="p">.</span><span class="n">dot</span> <span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Мы также исследовали, как на самом деле <em>обучается</em> машинное обучение. Чтобы оптимизировать веса, мы использовали <strong>отрицательное логарифмическое правдоподобие</strong> и <strong>градиентный спуск</strong>, чтобы найти такие значения весов, которое оптимизирует вероятность того, что данные будут предоставлены нашей моделью. JAX сыграл важную роль в процессе, упростившем вычисление производных. Мы снова будем использовать эти методы в этом посте.</p>
+<p>Теперь мы можем перейти к рассмотрению этого как <em>статистической</em> проблемы.</p>
+<h1 id="вывод---статистический-подход">Вывод - статистический подход</h1>
+<p>Опираясь на библиотеки и программные пакеты, мы обычно используем разные инструменты для машинного обучения и статистики. Для работы с машинным обучением, которую мы проделали в предыдущем посте, полезные пакеты для решения этой проблемы могут включать scikit-learn или Keras, тогда как для статистической работы мы будем использовать такую ​​библиотеку, как statsmodels. Хотя эти инструменты чрезвычайно полезны, они могут скрыть связь между статистикой и машинным обучением. Написав эти инструменты сами с нуля, мы увидим, насколько они близки. Фактически, чтобы продолжить моделирование для статистики, мы можем начать именно с того места, где остановились, нам просто нужно немного изменить нашу точку зрения.</p>
+<p>Персептрон, который мы построили в первой части, <em>идентичен</em> <strong>логистической регрессии</strong>. При статистике мы не просто рассматриваем наши характеристики и веса в качестве входных данных, чтобы помочь нам предсказать результат, но и реальную модель того, как устроен мир. Вот изображение, которое показывает, как мы можем переосмыслить наш перцептрон из прошлого раза:</p>
+<p><img alt="alt_text" src="/assets/images/inference-and-prediction-2/image6.png" title="image_tooltip"/></p>
+<p>Хотя перцептрон может ощущаться совершенно иначе, чем логистическая регрессия, их реализация идентична.</p>
+<p>В статистике мы представляем каждый из весов как коэффициент в нашей формуле, а единица смещения от персептрона становится свободным коэффициентом в линейном уравнении. Модель гласит, что каждый признак имеет линейную связь с логическими шансами пользователя, подавшего заявку на вакансию. Если вы хотите немного глубже понять, вот более ранний пост для понимания <a href="https://www.countbayesie.com/blog/2019/6/12/logistic-regression-from-bayes-theorem">взаимосвязи между теоремой Байеса и логистической регрессией</a>.</p>
+<p>Это означает, что мы создаем модель, которая поможет нам понять, как каждая из функций может повлиять на вероятность того, что пользователь подаст заявку на работу на веб-сайте.</p>
+<h2 id="что-означают-коэффициенты-модели">Что означают коэффициенты модели?</h2>
+<p>Самое первое, что мы хотим спросить после обучения нашей модели: «Что мы узнали о наших коэффициентах?» Мы можем поместить их в датафрейм и начать изучать:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="n">stats_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span> <span class="p">()</span>
+<span class="n">stats_df</span> <span class="p">[</span><span class="s">'feature'</span><span class="p">]</span> <span class="o">=</span> <span class="n">features</span>
+<span class="n">stats_df</span> <span class="p">[</span><span class="s">'coef'</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Теперь мы можем взглянуть на то, что узнали. Эти коэффициенты может немного сложнее понять так как они представляют логарифмическую вероятность, но мы можем играть с этим немного чтобы получить лучшее представление:</p>
+<p><img alt="alt_text" src="/assets/images/inference-and-prediction-2/image2.png" title="image_tooltip"/></p>
+<p>В качестве общего руководства: <strong>положительные</strong> значения означают, что по мере увеличения значения данного признака увеличивается и частота возникновения целевого события. Например, query_title_score показывает, насколько название должности похоже на строку запроса (чем выше, тем больше похоже). Мы видим, что этот коэффициент положительный, что означает, что чем больше название вакансии похоже на поиск пользователя, тем больше вероятность того, что пользователь подаст заявку.</p>
+<p>Сразу видно, что в этом <em>есть смысл</em>. Если бы это значение было отрицательным, это было бы удивительно и противоречило нашей интуиции. Это одна из причин, по которой даже при прогнозировании важен логический вывод. Если это значение было отрицательным, возможно, мы ошибаемся в том, как устроен мир … или, может быть, в нашем коде есть ошибка.</p>
+<p><strong>Отрицательные</strong> значения означают обратное. Коэффициент для job_ages_days отрицательный, что означает, что чем старше публикация, тем меньше вероятность того, что пользователь подаст заявку.</p>
+<p>Поскольку мы <em>стандартизирован</em> большинство наших значений (кроме категорий должностей), это означает, что значение 0 эквивалентно с_реднему значению этого признака_. Это полезно, потому что означает, что мы можем игнорировать многие из наших коэффициентов, когда хотим сравнить значения (мы увидим это чуть позже).</p>
+<p>Мы также <em>нормализовали</em> наши значения путем деления на стандартное отклонение, что означает, что мы можем более или менее судить о важности характеристики по <strong>абсолютной величине коэффициента</strong>. Например, чтобы компенсировать негативное влияние нахождения в категории вакансий job_16140, вам понадобится query_title_score примерно на 4 стандартных отклонения от среднего значения лучше среднего!</p>
+<p>Наш <strong>свободный коэффициент</strong> (здесь ‘const’), когда все наши функции нормализованы, становится логарифмической <strong>априорной вероятностью</strong> подачи заявки пользователем (вот целый пост об <a href="https://www.countbayesie.com/blog/2019/8/14/prior-probability-in-logistic-regression">априорной вероятности в логистической регрессии</a>). Мы не совсем все нормализовали, но достаточно близко, чтобы увидеть это. Мы можем использовать логистическую функцию, чтобы преобразовать логарифмические шансы обратно в вероятности. Давайте посмотрим, какой должна быть априорная вероятность в этой модели:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">logistic</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">086176</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">DeviceArray</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11044773</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">).</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Вы можете видеть, что она не сильно отличается от доли единиц в наших обучающих данных (если мы центрировали все, это было бы еще ближе):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">y_train</span><span class="p">.</span><span class="nb">sum</span> <span class="p">()</span> <span class="o">/</span> <span class="n">y_train</span><span class="p">.</span><span class="n">shape</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">DeviceArray</span> <span class="p">(</span><span class="mf">0.08990832</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Мы можем использовать эту модель, чтобы ответить на простые вопросы, которые могут возникнуть об ожидаемом поведении нашего сайта вакансий . Предположим, что кто-то, управляющий учетными записями, относящимися к job_16140, пришел и спросил вас:</p>
+<p><em>По какой ставке я должен сказать клиентам, люди будут подавать заявки?</em></p>
+<p>Мы можем очень легко это оценить. Поскольку все наши функции, не относящиеся к категории вакансий, имеют среднее значение по центру, в среднем они будут равны нулю, поэтому мы можем их игнорировать. Категории должностей являются взаимоисключающими, поэтому единственными значениями в нашей модели будут свободный коэффициент и  1 для job_16140. Это означает, что наш ответ:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">logistic</span> <span class="p">(</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">463745</span> <span class="o">+</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">086176</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">DeviceArray</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0724318</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Теперь пора перейти к самому важному вопросу статистики: насколько мы уверены в этом?</p>
+<h2 id="измеряя-неопределенность">Измеряя неопределенность</h2>
+<p>Каждый из коэффициентов, полученных нашей моделью, является лишь <em>точечной оценкой</em>. Мы узнали это, найдя набор весов, который дает наиболее вероятное объяснение результатов с учетом данных, но что, если бы у нас было больше данных? И разве немного другой коэффициент не может достаточно правдоподобно объяснить данные?</p>
+<p>В машинном обучении мы рассматриваем каждую из этих оценок как конкретное значение, но в статистике мы рассматриваем их как <em>среднее значение нормального распределения возможных оценок</em>. Теперь нам нужно вычислить стандартное отклонение этих распределений, в данном случае обычно называемое <strong>стандартной ошибкой</strong>.</p>
+<h2 id="стандартная-ошибка-отрицательного-логарифмического-правдоподобия">Стандартная ошибка отрицательного логарифмического правдоподобия</h2>
+<p>Существует действительно интересная связь между нашей целевой функцией, отрицательной логарифмической вероятностью и стандартной ошибкой. Напомним, что мы нашли оптимальные веса, используя первую производную отрицательного логарифмического правдоподобия для оптимизации. Оказывается, мы можем использовать вторую производную этой функции, чтобы определить, насколько мы уверены!</p>
+<p>Поскольку в качестве функции оптимизации мы использовали отрицательное логарифмическое правдоподобие, оказалось, что <em>квадратный корень из обратной диагонали гессиана</em> дает нам стандартную ошибку наших коэффициентов. Это много, поэтому давайте рассмотрим это в коде!</p>
+<p>Сначала нам нужно получить <strong>гессиан</strong>, который представляет собой ужасающее название матрицы, представляющей вторую частную производную нашей функции, что само по себе является довольно пугающим способом сказать, «насколько широки кривые нашей функции в больших измерениях». Разве вы не рады, что у нас есть JAX?</p>
+<p>Вот эффективная реализация JAX для эффективного вычисления Гессе:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">jacfwd</span><span class="p">,</span> <span class="n">jacrev</span>
+<span class="k">def</span> <span class="nf">hessian</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">jacfwd</span><span class="p">(</span><span class="n">jacrev</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Теперь нам нужно получить гессиан в точке, где мы нашли оптимальные веса, а именно:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="n">our_hessian</span> <span class="o">=</span> <span class="n">hessian</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">neg_log_likelihood</span> <span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span> <span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="n">our_hessian</span><span class="p">.</span><span class="n">shape</span>
+<span class="o">&gt;</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Как видите, это матрица размером 16 x 16, представляющая как изменяется каждый вес при изменении другого. Для вычисления наших стандартных ошибок все, что нас волнует, - это диагональ этого (потому что мы предполагаем, что каждый коэффициент не зависит от других):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">our_hessian_diag</span> <span class="o">=</span> <span class="n">jnp</span><span class="p">.</span><span class="n">diag</span> <span class="p">(</span><span class="n">our_hessian</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Обратное к этому дает нам нашу дисперсию …</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">coef_variance</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span> <span class="n">our_hessian_diag</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>И, конечно же, мы бы не назвали это σ<sup>2, </sup>если бы нам не нужно было наше стандартное отклонение, а именно:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">stats_df</span> <span class="p">[</span><span class="s">"se"</span><span class="p">]</span> <span class="o">=</span> <span class="n">jnp</span><span class="p">.</span><span class="n">sqrt</span> <span class="p">(</span><span class="n">coef_variance</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Наконец, мы можем увидеть, как наши стандартная ошибка наших коэффициентов:</p>
+<p><img alt="alt_text" src="/assets/images/inference-and-prediction-2/image3.png" title="image_tooltip"/></p>
+<p>Это было совсем немного работы, но теперь вся остальная статистика выпадает из этого почти тривиально!</p>
+<h2 id="остальные-статистики-z-оценки-p-значения-доверительные-интервалы">Остальные статистики: z-оценки, p-значения, доверительные интервалы</h2>
+<p>После вычисления стандартной ошибки удивительное количество статистики может быть получено с помощью относительно простых преобразований. Мы начнем с вычисления <strong>z-оценки</strong>, которая, по сути, показывает, на сколько стандартных отклонений от нормального распределения со средним значением 0 будет наше наблюдаемое среднее значение. Это очень просто вычислить:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">stats_df</span> <span class="p">[</span><span class="s">'z-score'</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats_df</span> <span class="p">[</span><span class="s">'coef'</span><span class="p">]</span> <span class="o">/</span> <span class="n">stats_df</span> <span class="p">[</span><span class="s">'se'</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p><strong>P-значения</strong> измеряют вероятность того, что z-оценка будет стандартным отклонением от среднего. Мы можем легко вычислить это как:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">jax.scipy.stats</span> <span class="kn">import</span> <span class="n">норма</span>
+<span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">vmap</span>
+<span class="n">stats_df</span> <span class="p">[</span><span class="s">'p-value'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">vmap</span> <span class="p">(</span><span class="n">norm</span><span class="p">.</span><span class="n">cdf</span><span class="p">)</span> <span class="p">(</span>
+    <span class="n">jnp</span><span class="p">.</span><span class="n">array</span> <span class="p">(</span><span class="n">stats_df</span> <span class="p">[</span><span class="s">'z-score'</span><span class="p">]</span> <span class="p">.</span><span class="nb">abs</span> <span class="p">())))</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Лично я не большой поклонник p-значения, но они могут быть очень полезны для быстрого обобщения результатов нашей регрессии. Что они сбивают с толку, так это «вероятность того, что мы получили этот результат, если истинное значение коэффициента было ровно 0».</p>
+<p>Намного более полезным является то, что мы хотели бы иметь нижнюю и верхнюю границы для нашей оценки для 95% <strong>доверительного интервала</strong>. Здесь я использую термин «доверительный интервал», чтобы обозначить, что мы на 95% уверены, что истинное значение находится где-то между нижней и верхней границей (lb и ub):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">stats_df</span> <span class="p">[</span><span class="s">'lb'</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats_df</span> <span class="p">[</span><span class="s">'coef'</span><span class="p">]</span> <span class="o">-</span> <span class="n">stats_df</span> <span class="p">[</span><span class="s">'se'</span><span class="p">]</span> <span class="o">*</span><span class="mi">2</span>
+<span class="n">stats_df</span> <span class="p">[</span><span class="s">'ub'</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats_df</span> <span class="p">[</span><span class="s">'coef'</span><span class="p">]</span> <span class="o">+</span> <span class="n">stats_df</span> <span class="p">[</span><span class="s">'se'</span><span class="p">]</span> <span class="o">*</span><span class="mi">2</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>И теперь у нас есть все основные результаты, которые вы ожидаете от такого инструмента, как statsmodels:</p>
+<p><img alt="alt_text" src="/assets/images/inference-and-prediction-2/image5.png" title="image_tooltip"/></p>
+<p>Стоит уделить время тому, чтобы поразмыслить, как далеко мы ушли от прошлого поста, и при этом следить за непрерывным потоком небольших изменений в нашей первоначальной работе над персептроном!</p>
+<h1 id="тестирование-гипотезы-и-оценка-параметров">Тестирование гипотезы и оценка параметров</h1>
+<p>В том, что мы узнали об этих коэффициентах, содержится удивительное количество важной статистической информации. Мы можем трактовать эту информацию немного по-разному, чтобы прийти к нашим данным с точки зрения <strong>частотности</strong> или <strong>байесовской</strong> точки зрения. Мы можем визуализировать все эти свойства для коэффициента job_69982:</p>
+<p><img alt="alt_text" src="/assets/images/inference-and-prediction-2/image8.png" title="image_tooltip"/></p>
+<p>Мы можем визуализировать все, что мы узнали о наших весах.</p>
+<p>Понимая различные интерпретации свойств, которые мы видим здесь, мы можем использовать нашу модель как твердую отправную точку для частотного или байесовского анализа.</p>
+<h2 id="частотное-тестирование-гипотезы">Частотное тестирование гипотезы</h2>
+<p>С точки зрения частотности p-значения каждого коэффициента говорят нам, следует ли нам отвергать <em>нулевую гипотезу</em> H<sub>0</sub>. В этом конкретном случае нулевая гипотеза состоит в том, что коэффициент равен 0. В конкретном случае job_69982 мы можем просмотреть результаты здесь как пример <strong>проверки значимости нулевой гипотезы</strong>, где мы проверяем, имеет ли job_69982 влияние на пользователя, применяющего. При p-значении 0,028074 мы отклонили бы нулевую гипотезу, учитывая общий порог значимости 0,05.</p>
+<p>Если вы когда-нибудь находили статистику сложной дл японимания, вас ждет счастливый сюрприз. Практически каждый частотный статистический тест можно смоделировать как некоторую <em>вариацию нашей линейной модели</em>!</p>
+<p>С небольшим преувеличением можно сказать, что в нашем продолжении примера машинного обучения мы по существу охватили большую часть классической статистики.</p>
+<h2 id="байесовское-оценивание-параметров">Байесовское оценивание параметров</h2>
+<p>Байесовцы гораздо меньше озабочены тем, равен ли коэффициент нулю, и вместо этого сосредотачиваются на том, каким, по нашему мнению, <em>может быть на самом деле значение</em>. То есть мы сосредоточены на <strong>оценке параметров</strong>. С байесовской точки зрения мы рассматриваем w как вектор наших параметров, обычно обозначаемый как θ. В байесовском анализе мы всегда пытаемся решить нашу проблему в терминах теоремы Байеса:</p>
+
+\[P(\theta | Data) = \frac{P(Data|\theta)P(\theta)}{P(Data)}\]
+
+<p>обратите внимание, что P(Data∣θ) - это вероятность, которая напрямую связана с нашей функцией потерь. Если мы предположим единообразную априорность для P(θ) (что-то, с чем мы можем поиграть, изменив в части 3), то мы увидим, что машинное обучение также изучало, является именно этой точной моделью.</p>
+<p>Как байесовцы, мы смотрим на P(θ∣Data) как на распределение убеждений, которое в этой модели на самом деле является <em>многомерным нормальным распределением</em> с вектором средних значений, равным w, и диагональной матрицей Σ, соответствующей изученному нами se. В этом случае мы рассматриваем нижнюю и верхнюю границы каждого параметра как пределы того, что, по нашему мнению, может быть реалистичным значением для этого параметра.</p>
+<p>Таким образом, наша модель обеспечивает основу для начала понимания нашей проблемы как с частотной, так и с байесовской точки зрения! Здесь мы можем увидеть мудрость минимизации отрицательной логарифмической вероятности, поскольку это позволяет нам связать машинное обучение с двумя разными взглядами на статистику в одной модели. Теперь мы исследуем, как мы можем использовать все это, чтобы начать решать проблемы, связанные с CTR.</p>
+<h1 id="проведение-экспериментов">Проведение экспериментов</h1>
+<p>При моделировании всегда важно, чтобы наши усилия были близки к нашим реальным целям. В этой серии сообщений мы просто заявили, что проблема заключается в «моделировании CTR», но для чего?</p>
+<p>Предположительно, если бы мы были компанией, которая перечисляла объявления о вакансиях, и мы заботились бы о ставке, которую соискатели применяют к объявлениям, мы бы хотели увеличить эту ставку. Взгляд на нашу модель помогает нам подумать о том, как мы начали бы решать эту проблему. Посмотрев на нашу модель, мы можем увидеть, что мы очень уверены в том, что query_title_score имеет большое влияние на частоту, которую применяют люди.</p>
+<p>Это сразу же наводит нас на мысль:</p>
+<p><em>Если есть способ увеличить среднее сходство между названием должности и запросом, это должно увеличить процент подачи заявок?</em></p>
+<p>Это приводит нас к следующему вопросу «как мы можем это сделать?»</p>
+<h2 id="всегда-спрашивайте-что-это-значит">Всегда спрашивайте, что это значит,</h2>
+<p>Но прежде чем приступить к решению этой проблемы, очень важно, чтобы мы всегда задавались вопросом, что модель говорит нам о мире, и можем ли мы сформировать какое-либо связное понимание вокруг этого.</p>
+<p>Например, однажды я работал в компании, которая пыталась повысить продажи менее популярных товаров, подняв их выше в результатах поиска. С чисто модельной точки зрения это имеет смысл: товары с лучшими позициями продаются лучше. Но он не дает ответа на вопросы о том, <strong>почему</strong> товары вообще находятся в лучшем положении: как правило, это потому, что они лучше продаются. Когда мы проводили этот эксперимент, за некоторыми исключениями, мы обычно обнаружили, что товары не работали лучше (в некоторых случаях они работали хуже!), когда их искусственно перемещали на лучшие позиции.</p>
+<p>Итак, в нашем случае мы должны спросить себя: почему мы думаем, что может возникнуть большая разница между названием должности и запросом, и дает ли любой из этих случаев возможность исправить настоящую проблему.</p>
+<p>Один случай может заключаться в том, что кто-то ищет “Data Scientist”, а результат - “Accountant”. Предположим, это происходит из-за того, что в описании есть слова «ввод <strong>данных</strong>» и «бакалавр <strong>наук</strong>». В этом случае слова другие, равно как и их значения. Если мы каким-то образом искусственно изменим название должности для лучшего соответствия, мы только <em>расстроим пользователя</em>.</p>
+<p>Однако другой случай, когда пользователь выполняет поиск «специалист по данным» и появляется «Associate Researcher (ML)». Предположим, что «Associate Researcher (ML)» на самом деле то же самое, что и специалист по данным, но пользователь сбит с толку и поэтому не подает заявку.</p>
+<p>Оба этих сценария правдоподобны, я лично считаю, что первый более вероятен, но реальная сила статистики в том, что нам не нужно спорить о том, какое влияние произведут изменения,  <strong>мы можем проверить</strong>!</p>
+<h2 id="тестирование-предлагаемых-решений">Тестирование предлагаемых решений</h2>
+<p>Для решения этой проблемы команда машинного обучения разработала умную модель обработки естественного языка, которая переписывает названия должностей, чтобы иметь более высокую вероятность совпадения с семантически похожими поисковыми запросами. Это отличная новость, но очевидный вопрос, который нам нужно задать, - это «действительно ли это работает?».</p>
+<p>Чтобы протестировать нашу модель переписывания заголовков, мы решаем провести контролируемый эксперимент. Мы назначим 20% наших пользователей в тестовую группу, где заголовки в результате будут переписаны на основе запроса, а у остальных будет такой же опыт, как и раньше.</p>
+<p>После некоторого запуска эксперимента у нас есть новый набор данных: X_exp и y_exp. Они используют ту же настройку, что и наши исходные данные, с одной новой функцией, показывающей, был ли пользователь “in_test”.</p>
+<p>Теперь мы действительно можем увидеть красоту моделей, интерпретируемых как последовательность гипотез о влиянии коэффициента. Прежде чем строить модель с данными нашего эксперимента, мы должны сначала подумать о том, что мы надеемся увидеть в результатах.</p>
+<p>Наша цель состоит в том, чтобы пользователи из нашей тестовой группы подавали заявки с большей скоростью, чем все остальные. Итак, мы хотим видеть, что наш коэффициент положительный. С точки зрения классической статистики мы хотим, чтобы p-значение было очень маленьким (даже байесовцы могут использовать это как полезную эвристику). Если это произойдет, это означает, что у нас есть веские доказательства того, что наша логика перезаписи заголовка сработала!</p>
+<p>Чтобы проанализировать наши результаты, мы можем построить новую версию нашей модели с дополнительными коэффициентами, показывающими, был ли пользователь в тестовой группе. Обратите внимание, что теперь, когда мы выполнили всю работу по созданию наших необходимых функций, создание этой новой модели с нуля не так уж и много:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="n">key</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">PRNGKey</span> <span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">w_exp</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">uniform</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> 
+                        <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_exp</span> <span class="p">.</span><span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">],),</span> 
+                        <span class="n">minval</span> <span class="o">=</span> <span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">maxval</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">000001</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">300</span><span class="p">):</span>
+    <span class="n">w_exp</span> <span class="o">-</span> <span class="o">=</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">d_nll_wrt_w_c</span> <span class="p">(</span><span class="n">y_exp</span><span class="p">,</span> <span class="n">X_exp</span><span class="p">,</span> <span class="n">w_exp</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="n">neg_log_likelihood</span> <span class="p">(</span><span class="n">y_exp</span><span class="p">,</span> <span class="n">X_exp</span> <span class="p">,</span> <span class="n">w_exp</span><span class="p">))</span>
+<span class="o">&gt;</span> <span class="mf">257385.67</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>После повторения процесса построения датафрейма статистики у нас есть следующие результаты:</p>
+<p><img alt="alt_text" src="/assets/images/inference-and-prediction-2/image1.png" title="image_tooltip"/></p>
+<p>Глядя на результаты наших тестов, можно сказать, что они выглядят не слишком обнадеживающе для нашего нового инструмента перезаписи.</p>
+<p>Когда мы смотрим на результаты для in_test, они выглядят плохо. Коэффициент немного отрицательный (хотя и очень незначительно), но, что хуже всего, p-значение велико.</p>
+<p>P-значения не говорят нам всего, может быть, просто недостаточно данных? Мы можем понять это, посмотрев на нижнюю и верхнюю границы нашей оценки. Если это большие числа, это означает, что существует большая неуверенность в том, какое значение может быть на самом деле, а это значит, что мы действительно не знаем. К сожалению, в этом случае эти числа довольно близки к 0, что статистически означает, что наш умный переписчик заголовков, вероятно, не работает …</p>
+<p>… за исключением того, что мы упускаем <em>важную</em> часть головоломки моделирования!</p>
+<h2 id="причинность">Причинность</h2>
+<p>Здесь мы видим наглядный урок того, почему для нас так важно понимать, что, по нашему мнению, произойдет, когда мы проведем наш эксперимент. Вначале мы заявили, что наш редактор заголовка должен увеличить query_title_score, но мы <em>включили</em> query_title_score в нашу модель. Поскольку единственное влияние, теоретически оказываемое переписчиком, заключалось в улучшении query_title_score, контроль этого в нашей модели скроет влияние, которое оказал тест!</p>
+<p>То есть существует <em>причинно-следственная связь</em> между тестом и query_title_score, наблюдая query_title_score в нашей модели, мы удаляем любую информацию, которую мы получили о тесте.</p>
+<p>Чтобы решить эту проблему, нам нужно перестроить модель, у которой нет query_title_score.</p>
+<p>Вот код для этого:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="n">key</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">PRNGKey</span> <span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">X_exp_no_qs</span> <span class="o">=</span> <span class="n">jnp</span><span class="p">.</span><span class="n">array</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">delete</span> <span class="p">(</span><span class="n">X_exp</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">w_exp_no_qs</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">uniform</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> 
+                        <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">X_exp_no_qs</span><span class="p">.</span><span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">],),</span> 
+                        <span class="n">minval</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span>
+                        <span class="n">maxval</span> <span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Мы пропустим код для обучения, поскольку мы уже видели его несколько раз, и проверим, что наш коэффициент in_test говорит нам теперь, когда мы правильно моделируем причинно-следственную связь:</p>
+<p><img alt="alt_text" src="/assets/images/inference-and-prediction-2/image9.png" title="image_tooltip"/></p>
+<p>Теперь, когда мы правильно моделируем нашу проблему, мы видим, что результаты значительны!</p>
+<p>И теперь мы видим, что in_test имеет строго положительное значение с чрезвычайно низким значением p. Теперь мы почти уверены, что наш переписчик удался!</p>
+<p>Однако наша первоначальная экспериментальная модель не бесполезна. Если вы знаете, что обработка должна влиять на один из коэффициентов модели, я всегда рекомендую посмотреть, может ли включение этой функции устранить значимость тестового коэффициента (или значительно снизить ее). Это очень помогает при отладке экспериментов. Если бы мы включили query_title_score, а in_test все еще был значимым, это означало бы, что есть что-то еще, не контролируемое в модели, что заставляло нашу тестовую группу работать лучше. У меня такое случалось в прошлых экспериментах, и это жизненно важный инструмент для правильного выполнения тестов.</p>
+<h2 id="сравнение-моделей-по-критерию-акаике">Сравнение моделей по критерию Акаике</h2>
+<p>Поскольку в последнем разделе мы построили две модели, неплохо уделить время обсуждению того, как мы сравниваем модели в статистике. В машинном обучении нас в первую очередь интересуют выходные данные модели, поэтому мы придумываем различные метрики, чтобы сравнить прогнозы модели с наблюдаемыми результатами. В статистике нас в первую очередь интересуют параметры и сложность модели.</p>
+<p>Обычное измерение для оценки моделей в статистике - это некоторая форма информационного критерия, который уравновешивает вероятность данных, заданных в модели, со сложностью модели. Наиболее распространенным является информационный критерий Акаике (AIC). В случае, когда k - количество параметров в модели, а L - вероятность, AIC определяется как:\</p>
+
+\[AIC = 2 k -2 ln(L)\]
+
+<p>Поскольку мы используем отрицательную логарифмическую правдоподобие, мы бы просто имели:</p>
+
+\[AIC = 2 k - 2 nll\]
+
+<p>Абсолютное значение этой метрики не имеет значения, но в целом, чем меньше баллов, тем лучше, когда мы сравниваем модели, обученные на одних и тех же данных. Обычно мы хотим, чтобы при добавлении параметров мы уменьшали AIC. Мы можем увидеть, как работали наши модели:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">aic</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span> 
+    <span class="n">nll</span> <span class="o">=</span> <span class="n">neg_log_likelihood</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nll</span>
+<span class="n">aic</span> <span class="p">(</span><span class="n">y_exp</span><span class="p">,</span> <span class="n">X_exp</span><span class="p">,</span> <span class="n">w_exp</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="mi">514803</span><span class="p">,</span><span class="mi">34</span>
+<span class="n">aic</span> <span class="p">(</span><span class="n">y_exp</span><span class="p">,</span> <span class="n">X_exp_no_qs</span><span class="p">,</span> <span class="n">w_exp_no_qs</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="mi">515627</span><span class="p">,</span><span class="mi">5</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Мы видим, что добавление оценки запроса обеспечивает гораздо более низкий AIC. Это означает, что добавление только этого одного параметра к нашей модели значительно повысило правдоподобие. Единственная причина, по которой нам нужно было удалить эту важную функцию, заключалась в том, что она влияла на нашу способность понимать результаты нашего теста.</p>
+<h2 id="на-пути-к-синтезу">На пути к синтезу</h2>
+<p>Основным ограничением статистического вывода является то, что он традиционно имеет тенденцию избегать вычислительного мышления. Статистика на протяжении большей части своей истории не является предметом для <em>хакеров</em>. Статистическое программное обеспечение, как и статистические тесты, оставалось непрозрачным и загадочным. Студенты, изучающие статистику, могут формально вывести закрытое решение для версии регрессии МНК, но после этого все будет делаться некоторым стандартизированным пакетом программного обеспечения. Полагаться на абстракцию - это хорошо, но без возможности построения статистики с нуля мало места для игр, экспериментов и исследований.</p>
+<p>Именно здесь машинное обучение и, в частности, глубокое обучение действительно проявили себя в последнее десятилетие. Посмотрите любое выступление экспертов в области машинного обучения, и вы почувствуете невероятную игривость. Я до сих пор помню волнение, с которым наблюдал за выступлениями Джеффри Хинтона в 2012 году. Почти все инновации, возникающие в результате глубокого обучения, исходят от кого-то, кто спрашивает: «Что произойдет, если мы попробуем это?»</p>
+<p>Точно так же создание нейронной сети не является загадкой для практиков. Любой, кто серьезно интересуется нейронными сетями и машинным обучением, быстро получает опыт создания сети с нуля, а затем экспериментирует с этим дизайном, чтобы увидеть, что еще они могут сделать. Статистики могут критиковать глубокое обучение за его отсутствие строгости, и в этой критике есть определенная ценность, но отсутствие игры в статистике остается, пожалуй, самым большим ее недостатком.</p>
+<p>Но теперь вы видите, как все работает в статистической модели, построенной на основе простой математики и линейной алгебры! В части 3 мы продолжим наше исследование, применив причинно-следственное исследование подхода машинного обучения, уделяя внимание пониманию наших моделей, которые мы получаем из мира статистических выводов. По правде говоря, между этими двумя понятиями нет разделения, только восхитительные возможности математических исследований.</p>
+</section>
+<footer class="page__meta">
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-tags"></i> Метки: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/tags/#article" rel="tag">article</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#machine-learning" rel="tag">machine-learning</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#translation" rel="tag">translation</a>
+</span>
+</p>
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-folder-open"></i> Разделы: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/categories/#scipop" rel="tag">scipop</a>
+</span>
+</p>
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2021-05-03T00:00:00+00:00">May 3, 2021</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/scipop/inference-and-prediction-1/" title="Вывод и предсказания. Часть 1: машинное обучение
+">Предыдущая</a>
+<a class="pagination--pager" href="/scipop/mlops-transformation-3-principles/" title="MLOps меняет процесс разработки моделей машинного обучения
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

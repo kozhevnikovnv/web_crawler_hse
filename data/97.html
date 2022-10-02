@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Черновик учебника | Михаил Коротеев</title>
+<meta content="!!!!!!!!!!!!!Регуляризация" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Черновик учебника" property="og:title"/>
+<meta content="https://koroteev.site/text/ml/" property="og:url"/>
+<meta content="!!!!!!!!!!!!!Регуляризация" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Черновик учебника" name="twitter:title"/>
+<meta content="!!!!!!!!!!!!!Регуляризация" name="twitter:description"/>
+<meta content="https://koroteev.site/text/ml/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2022-09-27T12:49:07+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/text/ml/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--textbook_page wide">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<nav class="toc page__content">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#регуляризация">!!!!!!!!!!!!!Регуляризация</a>
+     -  <a href="#проблема-переобучения">Проблема переобучения</a>
+     -  <a href="#функция-ошибки">Функция ошибки</a>
+     -  <a href="#регулярная-линейная-регрессия">Регулярная линейная регрессия</a>
+     -  <a href="#нормальное-уравнение">Нормальное уравнение</a>
+     -  <a href="#регулярная-логистическая-регрессия">Регулярная логистическая регрессия</a>
+     -  <a href="#единичный-вектор-постоянного-признака">Единичный вектор постоянного признака</a>
+<ul>
+<li><a href="#диагностика-систем-машинного-обучения">Диагностика систем машинного обучения</a>
+<ul>
+<li><a href="#оценка-качества-модели">Оценка качества модели</a></li>
+<li><a href="#выбор-модели-model-selection">Выбор модели (model selection)</a></li>
+<li><a href="#использование-валидационного-набора">Использование валидационного набора</a></li>
+<li><a href="#диагностика-недо--и-переобучения">Диагностика недо- и переобучения</a></li>
+<li><a href="#регуляризация-и-переобучение">Регуляризация и переобучение</a></li>
+<li><a href="#кривые-обучения">Кривые обучения</a></li>
+<li><a href="#метрики-ошибок-для-смещенных-классов">Метрики ошибок для смещенных классов</a></li>
+<li><a href="#данные-для-машинного-обучения">Данные для машинного обучения</a></li>
+</ul>
+</li>
+<li><a href="#обучение-с-помощью-больших-наборов-данных">Обучение с помощью больших наборов данных</a>
+<ul>
+<li><a href="#стохастический-градиентный-спуск">Стохастический градиентный спуск</a></li>
+<li><a href="#мини-пакетный-градиентный-спуск">Мини-пакетный градиентный спуск</a></li>
+<li><a href="#стохастическая-градиентная-сходимость">Стохастическая градиентная сходимость</a></li>
+<li><a href="#онлайн-обучение">Онлайн обучение</a></li>
+</ul>
+</li>
+<li><a href="#кластеризация">Кластеризация</a>
+<ul>
+<li><a href="#представление-модели">Представление модели</a></li>
+<li><a href="#алгоритм-k-средних">Алгоритм K средних</a></li>
+<li><a href="#функция-ошибки-1">Функция ошибки</a></li>
+<li><a href="#выбор-количества-кластеров">Выбор количества кластеров</a></li>
+<li><a href="#обзор-методов-кластеризации">Обзор методов кластеризации</a></li>
+</ul>
+</li>
+<li><a href="#понижение-размерности">Понижение размерности</a>
+<ul>
+<li><a href="#постановка-задачи">Постановка задачи</a></li>
+<li><a href="#метод-главных-компонент">Метод главных компонент</a></li>
+<li><a href="#алгоритм-анализа-основных-компонентов">Алгоритм анализа основных компонентов</a></li>
+<li><a href="#выбор-количества-основных-компонентов">Выбор количества основных компонентов</a></li>
+<li><a href="#рекомендации-по-применению-pca">Рекомендации по применению PCA</a></li>
+<li><a href="#обзор-других-методов-понижения-размерности">Обзор других методов понижения размерности</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork" style="width: 95%">
+<meta content="Черновик учебника" itemprop="headline"/>
+<meta content="!!!!!!!!!!!!!Регуляризация" itemprop="description"/>
+<meta content="2022-09-27T12:49:07+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Черновик учебника
+</h1>
+<p class="page__meta">
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          39 мин на чтение
+        
+        
+          
+         (62.902 символов)
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<h2 id="регуляризация">!!!!!!!!!!!!!Регуляризация</h2>
+<h4 id="проблема-переобучения">Проблема переобучения</h4>
+<p>Регуляризация предназначена для решения проблемы переобучения.</p>
+<p>Недообучение - это проблема выбора гипотезы, когда форма нашей функции h плохо отражает тренд данных. Обычно это вызвано слишком простой функцией или использует слишком мало функций. например. если взять</p>
+<p id="gdcalert89"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image89.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert90">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image89.png" title="image_tooltip"/>
+, то мы делаем первоначальное предположение о том, что линейная модель хорошо подгоняет учебные данные и сможет обобщить, но это может быть не так.</p>
+<p>С другой стороны, чрезмерная или высокая дисперсия или переобучение вызвано функцией гипотезы, которая подходит к имеющимся данным, но не позволяет хорошо обобщать предсказание новых данных. Обычно это вызвано сложной функцией, которая создает много ненужных кривых и углов, не связанных с данными.</p>
+<p>Эта терминология применяется как к линейной, так и к логистической регрессии. Существует два основных варианта решения проблемы переобучения:</p>
+<p>1) Уменьшить количество признаков:</p>
+<p>a) Вручную выберите, какие признаки сохранить.</p>
+<p>b) Использовать алгоритм выбора модели.</p>
+<p>2) Регуляризация</p>
+<p>Сохраните все признаки, но уменьшите параметры b<sub>j</sub>.</p>
+<p>Регуляризация работает хорошо, когда у нас много полезных признаков.</p>
+<h4 id="функция-ошибки">Функция ошибки</h4>
+<p>Если мы переобучаем нашу функцию гипотезы, мы можем уменьшить вес, который привносят некоторые члены в нашей функции, увеличивая их вклад в функцию ошибки.</p>
+<p>Скажем, мы хотели сделать следующую функцию более квадратичной:</p>
+<p id="gdcalert90"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image90.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert91">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image90.png" title="image_tooltip"/></p>
+<p>Мы хотим устранить влияние b<sub>3</sub> и b<sub>4</sub>. Если мы не избавимся от этих признаков и не изменим форму нашей гипотезы, мы можем вместо этого изменить нашу функцию стоимости:</p>
+<p id="gdcalert91"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image91.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert92">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image91.png" title="image_tooltip"/></p>
+<p>В конце мы добавили два дополнительных термина, чтобы раздуть стоимость b<sub>3</sub> и b<sub>4</sub>. Теперь, чтобы функция ошибки приблизилась к нулю, нам нужно будет уменьшить значения b<sub>3</sub> и b<sub>4</sub> до нуля. Это в свою очередь значительно уменьшит значения b<sub>3</sub>x<sup>3</sup> и b<sub>4</sub>x<sup>4</sup> в нашей функции.</p>
+<p>Мы могли бы также регуляризовать все наши параметры в одном суммировании:</p>
+<p id="gdcalert92"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image92.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert93">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image92.png" title="image_tooltip"/></p>
+<p>где λ или лямбда - параметр регуляризации. Он определяет, насколько сильно штрафуются высокие значения параметров регрессии.</p>
+<p>Используя вышеприведенную функцию стоимости с дополнительным суммированием, мы можем сгладить выход нашей функции гипотез, чтобы уменьшить переобучение. Если лямбда выбрана слишком большой, она может слишком сильно сгладить функцию и вызвать недооценку.</p>
+<h4 id="регулярная-линейная-регрессия">Регулярная линейная регрессия</h4>
+<p>Мы можем применить регуляризацию как к линейной регрессии, так и к логистической регрессии. Сначала рассмотрим случай линейной регрессии.</p>
+<p>Градиентный спуск</p>
+<p>Мы изменим нашу функцию градиентного спуска, чтобы отделить b<sub>0</sub> от остальных параметров, потому что мы не хотим штрафовать b<sub>0</sub>:</p>
+<p id="gdcalert93"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image93.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert94">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image93.png" title="image_tooltip"/></p>
+<p>Множитель</p>
+<p id="gdcalert94"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image94.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert95">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image94.png" title="image_tooltip"/>
+ выполняет регуляризацию.</p>
+<p>С некоторыми манипуляциями наше правило обновления также может быть представлено как:</p>
+<p id="gdcalert95"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image95.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert96">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image95.png" title="image_tooltip"/></p>
+<p>Первый член в приведенном выше уравнении,</p>
+<p id="gdcalert96"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image96.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert97">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image96.png" title="image_tooltip"/>
+ всегда будет меньше 1. Интуитивно вы можете видеть его как уменьшение значения b<sub>j</sub> на некоторую величину при каждом обновлении.</p>
+<p>Обратите внимание, что второй член теперь точно такой же, как и раньше.</p>
+<h4 id="нормальное-уравнение">Нормальное уравнение</h4>
+<p>Теперь давайте подходим к регуляризации с использованием альтернативного метода неитеративного нормального уравнения.</p>
+<p>Чтобы добавить в регуляризацию, уравнение совпадает с нашим оригиналом, за исключением того, что мы добавляем еще один член в круглые скобки:</p>
+<p id="gdcalert97"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image97.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert98">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image97.png" title="image_tooltip"/></p>
+<p>L - матрица с 0 в левом верхнем углу и 1 вниз по диагонали, 0 - везде вне диагонали. Она должна иметь размерность (n + 1) × (n + 1). Интуитивно это - единичная матрица (хотя мы не включаем x<sub>0</sub>), умноженная на одно действительное число λ.</p>
+<p>Напомним, что если m ≤ n, то матрица</p>
+<p id="gdcalert98"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image98.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert99">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image98.png" title="image_tooltip"/>
+ необратима. Однако, когда мы добавляем член λ⋅L, то</p>
+<p id="gdcalert99"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image99.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert100">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image99.png" title="image_tooltip"/>
+ становится обратимой матрицей.</p>
+<h4 id="регулярная-логистическая-регрессия">Регулярная логистическая регрессия</h4>
+<p>Мы можем регуляризовать логическую регрессию так же, как мы регуляризируем линейную регрессию. Начнем с функции ошибки. Можно регуляризовать функцию ошибки, добавив к концу дополнительное слагаемое:</p>
+<p id="gdcalert100"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image100.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert101">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image100.png" title="image_tooltip"/></p>
+<p>Как и при линейной регрессии, мы захотим отдельно обновить b<sub>0</sub> и остальные параметры, потому что мы не хотим регуляризовать b<sub>0</sub>.</p>
+<p id="gdcalert101"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image101.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert102">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image101.png" title="image_tooltip"/></p>
+<p>Это идентично алгоритму градиентного спуска, представленному для линейной регрессии.</p>
+<h4 id="единичный-вектор-постоянного-признака">Единичный вектор постоянного признака</h4>
+<p>Как оказалось, очень важно добавить постоянный признак в свой обучающий набор, прежде чем начинать обучение модели. Обычно этот признак - всего лишь набор из единиц для всех ваших учебных примеров. Конкретно, если X - матрица признаков, то X<sub>0</sub> является вектором с единицами.</p>
+<p>Предположим, вы проектируете модель, которая предсказывает цену дома на основе некоторых признаков. В этом случае чем помогает этот единичный вектор? Предположим, что простая модель включает признаки, которые прямо пропорциональны ожидаемой цене, то есть если признак X<sub>i</sub> увеличивается, ожидаемая цена y также будет увеличиваться. Так, например, мы могли бы иметь два признака: размер дома в м<sup>2</sup> и количество комнат.</p>
+<p>Когда вы обучаете свою модель, вы начнете с добавления одного вектора X<sub>0</sub>. Затем вы можете после обучения узнать, что вес для вашей первоначальной функции - это некоторое значение b<sub>0</sub>. Но что это значит на практике? Давайте предположим, что кто-то знает, что у вас есть рабочая модель для цен на жилье. Оказывается, что для этого примера, если они спросят, сколько денег они могут ожидать, продавая дом, вы можете сказать, что как минимум b<sub>0</sub> долларов (или рандов), прежде чем вы даже используете свою обученную модель. Как и вышеприведенная аналогия, постоянная b<sub>0</sub> несколько устойчива, когда все ваши входы являются нулями. Конкретно, это цена дома без комнат, который не занимает никакую площадь.</p>
+<p>Однако это объяснение имеет некоторые недостатки, потому что, если у вас есть некоторые функции, которые снижают цену, например возраст дома, то b<sub>0</sub> не может быть абсолютным минимумом цены. Это связано с тем, что возраст может снизить цену. Более простой и грубый способ выразить это состоит в том, что компонент b<sub>0</sub> вашей модели представляет собой неотъемлемое смещение модели. Другие функции затем выражают импульс, чтобы отойти от этой позиции смещения.</p>
+<p>Признак «смещения» (bias feature) - это просто способ переместить вектор наилучшего соответствия, чтобы лучше соответствовать данным. Например, рассмотрим проблему обучения с помощью одного признака X<sub>1</sub>. Формула без функции X<sub>0</sub> - это просто b<sub>1</sub> * X<sub>1</sub> = y. Это показано как линия, которая всегда проходит через начало координат с наклоном y / theta. слагаемое x<sub>0</sub> позволяет линии проходить через другую точку на оси y. Это почти всегда будет лучше соответствовать. Не все же наилучшие подходящие линии проходят через начало координат (0,0)?</p>
+<h3 id="диагностика-систем-машинного-обучения">Диагностика систем машинного обучения</h3>
+<p>Ошибки в ваших прогнозах можно устранить с помощью следующих способов:</p>
+<ol>
+<li>Получение дополнительных примеров в обучающую выборку;</li>
+<li>Попытка использования меньших наборов признаков;</li>
+<li>Попытка использования дополнительных признаков;</li>
+<li>Попытки использования полиномиальных признаков;</li>
+<li>Увеличение или уменьшение λ.</li>
+</ol>
+<p>Не следует просто выбирать один из этих путей наугад. Мы рассмотрим диагностические методы для выбора одного из вышеуказанных решений путем тщательного исследования процесса обучения модели.</p>
+<h4 id="оценка-качества-модели">Оценка качества модели</h4>
+<p>Гипотеза может иметь низкую ошибку для примеров из обучающей выборки, но все же быть неточной (из-за переобучения). Используя набор обучающих примеров, мы можем разбить данные на два набора: набор для обучения и набор для тестов.</p>
+<p>Новая процедура с использованием этих двух наборов:</p>
+<ol>
+<li>Обучите b и минимизируйте</li>
+</ol>
+<p id="gdcalert102"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image102.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert103">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image102.png" title="image_tooltip"/>
+ с помощью обучающего набора;</p>
+<ol>
+<li>Вычислите ошибку тестового набора</li>
+</ol>
+<p id="gdcalert103"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image103.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert104">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image103.png" title="image_tooltip"/></p>
+<p>Ошибка тестового набора</p>
+<p>для регрессии:</p>
+<p id="gdcalert104"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image104.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert105">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image104.png" title="image_tooltip"/></p>
+<p>для классификации:</p>
+<p id="gdcalert105"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image105.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert106">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image105.png" title="image_tooltip"/>
+. где</p>
+<p id="gdcalert106"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image106.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert107">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image106.png" title="image_tooltip"/></p>
+<p>Ошибка классификации дает нам долю тестового набора, которая была ошибочно классифицирована.</p>
+<h4 id="выбор-модели-model-selection">Выбор модели (model selection)</h4>
+<p>Просто потому, что алгоритм обучения хорошо подходит для тренировочного набора, это не значит, что это хорошая гипотеза. Ошибка вашей гипотезы, измеренная в наборе данных, с которым вы подготовили параметры, будет ниже, чем на любом другом наборе данных.</p>
+<p>Чтобы выбрать модель вашей гипотезы, вы можете проверить каждую степень полинома и посмотреть на результат ошибки. Метод без использования третьего, валидационного набора (обратите внимание: это плохой метод - не используйте его) выглядел бы следующим образом:</p>
+<ol>
+<li>Оптимизируйте параметры b, используя обучающий набор для каждой степени полинома.</li>
+<li>Найдите степень полинома d с наименьшей ошибкой, используя тестовый набор.</li>
+<li>Оцените ошибку обобщения, также используя тестовый набор с</li>
+</ol>
+<p id="gdcalert107"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image107.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert108">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image107.png" title="image_tooltip"/>
+ , (d = theta от полинома с более низкой ошибкой);</p>
+<p>В этом случае мы обучили одну переменную d или степень полинома, используя тестовый набор. Это приведет к тому, что наше значение ошибки будет больше для любого другого набора данных.</p>
+<p>Подобные переменные, не являющиеся параметрами гипотезы, но так или иначе влияющие на точность нашей модели называются гиперпараметрами модели. Обучение гиперпараметров - более сложный и долгий путь и он требует проведения специальной процедуры.</p>
+<h4 id="использование-валидационного-набора">Использование валидационного набора</h4>
+<p>Чтобы решить эту проблему, мы можем ввести третий набор, валидационный набор, чтобы использовать его как промежуточный набор для обучения гиперпараметров. Тогда наш тестовый набор даст нам точную, не оптимистичную ошибку.</p>
+<p>Один из возможных примеров разбивки нашего набора данных на три набора:</p>
+<ol>
+<li>Обучающий набор (train set): первые 60%;</li>
+<li>Валидационный набор (validation set): следующие 20%;</li>
+<li>Тестовый набор (test set): последние 20%.</li>
+</ol>
+<p>Этот лишь одна из самых простых схем разбиения набора данных. С помощью специальной техники - кросс-валидации или перекрестной проверки - процесс разбиения набора автоматизируется и становится более робастным. Пока не будем рассматривать эту продвинутую технику выбора модели.</p>
+<p>Теперь мы можем вычислить три отдельных значения ошибки для трех разных наборов.</p>
+<p>Метод выбора гипотезы с помощью валидационного набора (обратите внимание: этот метод предполагает, что мы не используем регуляризацию и на валидационном наборе)</p>
+<ol>
+<li>Оптимизируйте параметры b, используя набор тренировок для каждой степени полинома.</li>
+<li>Найдите степень полинома d с наименьшей ошибкой, используя валидационный набор.</li>
+<li>Оцените ошибку обобщения, используя тестовый набор с</li>
+</ol>
+<p id="gdcalert108"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image108.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert109">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image108.png" title="image_tooltip"/>
+(где  b - параметры от полинома с более низкой ошибкой);</p>
+<p>Таким образом, степень полинома d не была обучена с использованием тестового набора.</p>
+<p>Имейте в виду, что использование валидационного набора для выбора d означает, что мы также не можем использовать его для процесса проверки правильности установки значения лямбда.</p>
+<h4 id="диагностика-недо--и-переобучения">Диагностика недо- и переобучения</h4>
+<p id="gdcalert109"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image109.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert110">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image109.png" title="image_tooltip"/></p>
+<p>В этом разделе мы рассмотрим взаимосвязь между степенью полинома d и недо- или переообучением нашей гипотезы. Нам нужно различать, является ли проблемой, которая способствует плохим предсказаниям, смещение (bias) или дисперсия (variance) функции гипотезы. Высокое смещение чаще недообучается, а высокая дисперсия чаще переобучается. Нам нужно найти золотую середину между этими двумя крайностями.</p>
+<p>Ошибка обучения будет уменьшаться по мере увеличения степени d многочлена. В то же время ошибка перекрестной проверки будет уменьшаться по мере увеличения d до точки, а затем она увеличивается с увеличением d, образуя выпуклую кривую.</p>
+<ul>
+<li>Высокое смещение (недообучение): как</li>
+</ul>
+<p id="gdcalert110"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image110.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert111">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image110.png" title="image_tooltip"/>
+, так и</p>
+<p id="gdcalert111"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image111.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert112">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image111.png" title="image_tooltip"/>
+ будут высокими. Кроме того,</p>
+<p id="gdcalert112"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image112.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert113">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image112.png" title="image_tooltip"/>
+.</p>
+<ul>
+<li>Высокая дисперсия (переобучение):</li>
+</ul>
+<p id="gdcalert113"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image113.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert114">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image113.png" title="image_tooltip"/>
+ будет низкой, а</p>
+<p id="gdcalert114"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image114.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert115">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image114.png" title="image_tooltip"/>
+ будет намного больше, чем</p>
+<p id="gdcalert115"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image115.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert116">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image115.png" title="image_tooltip"/>
+.</p>
+<p>При выборе из многих значений d можно построить зависимость ошибок на обучающем и валидационных наборах на графике зависимости от d. Такой график наглядно показывает области недо- и переобучения и выглядит подобно следующему:</p>
+<p id="gdcalert116"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image116.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert117">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image116.png" title="image_tooltip"/></p>
+<h4 id="регуляризация-и-переобучение">Регуляризация и переобучение</h4>
+<p>Вместо того, чтобы смотреть на степень d, способствующую смещению / дисперсии, теперь мы рассмотрим параметр регуляризации λ.</p>
+<ul>
+<li>Большой λ: высокое смещение (недообучение);</li>
+<li>Малый λ: высокая дисперсия (переобучение).</li>
+</ul>
+<p>Большая лямбда сильно штрафует все параметры b, что значительно упрощает линию нашей результирующей функции, поэтому вызывает недообучение.</p>
+<p>Отношение λ к набору тренировок и набору дисперсий выглядит следующим образом:</p>
+<ul>
+<li>Низкий λ:</li>
+</ul>
+<p id="gdcalert117"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image117.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert118">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image117.png" title="image_tooltip"/>
+ низкий, а</p>
+<p id="gdcalert118"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image118.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert119">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image118.png" title="image_tooltip"/>
+ высокий (высокая дисперсия / переобучение);</p>
+<ul>
+<li>Оптимальное значение λ:</li>
+</ul>
+<p id="gdcalert119"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image119.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert120">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image119.png" title="image_tooltip"/>
+ и</p>
+<p id="gdcalert120"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image120.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert121">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image120.png" title="image_tooltip"/>
+ низки и</p>
+<p id="gdcalert121"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image121.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert122">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image121.png" title="image_tooltip"/>
+;</p>
+<ul>
+<li>Большой λ: оба</li>
+</ul>
+<p id="gdcalert122"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image122.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert123">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image122.png" title="image_tooltip"/>
+ и</p>
+<p id="gdcalert123"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image123.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert124">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image123.png" title="image_tooltip"/>
+ будут высокими (недообучение / высокое смещение).</p>
+<p>Опять же, можно построить зависимость ошибок от параметра регуляризации для наглядного поиска оптимального значения λ:</p>
+<p id="gdcalert124"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image124.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert125">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image124.png" title="image_tooltip"/></p>
+<p>Чтобы выбрать вид  модели и параметр регуляризации λ одновременно, нам нужно:</p>
+<ol>
+<li>Создайте список возможных значения λ (например, λ∈ {0, 0.01, 0.02, 0.04, 0.08, 0.16, 0.32, 0.64, 1.28, 2.56 ,5.12, 10.24});</li>
+<li>Создайте набор моделей с разной степенью или любыми другими вариантами;</li>
+<li>Начните итерировать по λ и для каждого λ итерировать по всем моделям, чтобы обучать параметры b;</li>
+<li>Вычислите ошибку валидационного набора, используя обученные b (вычисленные с λ) на</li>
+</ol>
+<p id="gdcalert125"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image125.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert126">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image125.png" title="image_tooltip"/>
+ без регуляризации или λ = 0;</p>
+<ol>
+<li>Выберите лучшую комбинацию, которая дает самую низкую ошибку на валидационном  наборе;</li>
+<li>Используя наилучшую комбинацию b и λ, примените ее на</li>
+</ol>
+<p id="gdcalert126"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image126.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert127">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image126.png" title="image_tooltip"/>
+, чтобы увидеть, дает ли она хорошее обобщение задачи.</p>
+<h4 id="кривые-обучения">Кривые обучения</h4>
+<p>Тренировка квадратичной функции на трех примерах легко даст нулевую  ошибку, потому что мы всегда можем найти квадратичную кривую, которая точно касается 3 точек. По мере увеличения обучающего набора ошибка для квадратичной функции будет возрастать. Значение ошибки будет стабилизироваться после определенного значения m или размера набора тренировок.</p>
+<table>
+<tr>
+<td>
+<p id="gdcalert127"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image127.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert128">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<img alt="alt_text" src="images/image127.png" title="image_tooltip" width=""/>
+</td>
+<td>
+<p id="gdcalert128"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image128.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert129">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<img alt="alt_text" src="images/image128.png" title="image_tooltip" width=""/>
+</td>
+</tr>
+</table>
+<p>Если алгоритм обучения страдает от высокого смещения, получение большего количества данных по обучению не может (само по себе) существенно улучшить эффективность. Если алгоритм обучения страдает от большой дисперсии, скорее всего, получение большего количества данных по обучению повысит общую эффективность обучения.</p>
+<p>Типичным правилом при выполнении диагностики является:</p>
+<ul>
+<li>Дополнительные примеры в обучающей выборке устраняют высокую дисперсию, но не помогают при высоком смещении;</li>
+<li>Меньшие функции устраняют высокую дисперсию, но помогают пир высоком смещении;</li>
+<li>Дополнительные признаки устраняют высокое смещение, но не высокую дисперсию;</li>
+<li>Добавление полиномиальных признаков устраняют высокое смещение, но не высокую дисперсию;</li>
+<li>При использовании градиентного спуска уменьшение лямбда может исправить высокое смещение, и увеличение лямбда может исправить высокую дисперсию;</li>
+<li>При использовании нейронных сетей небольшие нейронные сети более подвержены недобучению, а большие - переобучению. Перекрестная проверка размера сети - это хороший способ выбора архитектуры нейронной сети.</li>
+</ul>
+<p>Рекомендуемый подход к решению проблем машинного обучения:</p>
+<ul>
+<li>Начните с простого алгоритма, быстро реализуйте его и проверьте его на ранней стадии.</li>
+<li>Стройте кривые обучения, чтобы решить, поможет ли добавление данных, признаков или что-то другое</li>
+<li>Анализ ошибок: вручную проверьте ошибки на примерах в валидационном наборе и попытайтесь определить общие зависимости.</li>
+</ul>
+<p>Важно, чтобы результаты проверки качества модели были выражены как одно интегральное числовое значение. В противном случае сложно оценить производительность вашего алгоритма.</p>
+<h4 id="метрики-ошибок-для-смещенных-классов">Метрики ошибок для смещенных классов</h4>
+<p>Иногда трудно сказать, является ли уменьшение ошибки на самом деле улучшением алгоритма.</p>
+<p>Например: при прогнозировании диагнозов рака на обучающей выборке, где у 0,5% примеров есть рак, мы обнаруживаем, что наш алгоритм после обучения имеет ошибку в 1%. Однако, если бы мы просто классифицировали каждый отдельный пример как 0, то наша ошибка уменьшилась бы до 0,5%, хотя мы не улучшили алгоритм.</p>
+<p>Обычно такая ситуация происходит при использовании наборов данных со смещенными классами; то есть, когда один из классов очень редок во всем наборе данных. Или, по-другому говоря, когда у нас есть больше примеров из одного класса, чем из другого класса.</p>
+<p>Для этого мы можем использовать метрики, связанные с понятиями полноты и точности(precision/recall).</p>
+<p>Рассмотрим возможные варианты классификации обучающих примеров в задаче бинарной классификации:</p>
+<ul>
+<li>Прогнозируемый: 1, Фактический: 1 - Истинный положительный (true positive, TP);</li>
+<li>Прогнозируемый: 0, Фактический: 0 - Истинный отрицательный (true negative);</li>
+<li>Прогнозируемый: 0, Фактический, 1 - Ложноотрицательный (false negative);</li>
+<li>Прогнозируемый: 1, Фактический: 0 - Ложноположительный (false positive).</li>
+</ul>
+<p>Классическая метрика точности (accuracy) показывает следующее: из всех пациентов, какую долю мы предсказали правильно, то есть</p>
+<p id="gdcalert129"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image129.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert130">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image129.png" title="image_tooltip"/>
+.</p>
+<p>Тем не менее, у этой метрики есть одна особенность которую необходимо учитывать. Она присваивает всем примерам одинаковый вес, что может быть некорректно в случае если распределение документов в обучающей выборке сильно смещено в сторону какого-то одного или нескольких классов. В этом случае у классификатора есть больше информации по этим классам и соответственно в рамках этих классов он будет принимать более адекватные решения. На практике это приводит к тому, что вы имеете точность, скажем, 80%, но при этом в рамках какого-то конкретного класса классификатор работает из рук вон плохо не определяя правильно даже треть документов.</p>
+<p>Точность (precision): из всех пациентов, у которых мы предсказали y=1, какая доля действительно имеет рак?</p>
+<p id="gdcalert130"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image130.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert131">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image130.png" title="image_tooltip"/></p>
+<p>Полнота (recall): из всех пациентов, у которых действительно рак, у какой доли мы его распознали?</p>
+<p id="gdcalert131"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image131.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert132">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image131.png" title="image_tooltip"/></p>
+<p>Эти две метрики дают нам лучшее представление о том, как работает наш классификатор. Мы хотим, чтобы точность и отзыв были высокими.</p>
+<p>В примере в начале раздела, если мы классифицируем всех пациентов как 0, тогда наш отзыв будет</p>
+<p id="gdcalert132"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image132.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert133">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image132.png" title="image_tooltip"/>
+, поэтому, несмотря на более низкий процент ошибок, мы можем быстро увидеть, что этот алгоритм хуже.</p>
+<p>Обратите внимание: если алгоритм предсказывает только один класс, как в одном из примеров, точность не определена, так как невозможно делить на 0.</p>
+<p>Нам может потребоваться уверенное предсказание двух классов с использованием логистической регрессии. Один из способов - увеличить наш порог предсказания:</p>
+<ul>
+<li>Прогнозировать 1, если:</li>
+</ul>
+<p id="gdcalert133"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image133.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert134">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image133.png" title="image_tooltip"/></p>
+<ul>
+<li>Прогнозировать 0, если:</li>
+</ul>
+<p id="gdcalert134"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image134.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert135">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image134.png" title="image_tooltip"/></p>
+<p>Таким образом, мы прогнозируем рак, только если у пациента есть вероятность как минимум 70%. Выполняя это, мы будем иметь более высокую точность, но более низкую полноту.</p>
+<p>В противоположном примере мы можем снизить наш порог:</p>
+<ul>
+<li>Прогнозировать 1, если:</li>
+</ul>
+<p id="gdcalert135"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image135.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert136">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image135.png" title="image_tooltip"/></p>
+<ul>
+<li>Прогнозировать 0, если:</li>
+</ul>
+<p id="gdcalert136"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image136.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert137">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image136.png" title="image_tooltip"/></p>
+<p>Таким образом, мы получаем очень безопасное предсказание. Это приведет к более высокой полноте, но более низкой точности. Чем выше пороговое значение, тем больше точность и тем ниже полнота. Чем ниже порог, тем больше полнота и тем ниже точность. Чтобы превратить эти две метрики в одно число, мы можем взять значение F.</p>
+<p>Один из способов - взять среднее:</p>
+<p id="gdcalert137"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image137.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert138">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image137.png" title="image_tooltip"/>
+. Это не работает. Если мы прогнозируем все y = 0, то это приведет к среднему показателю, несмотря на то, что полнота такого алгоритма равна 0. Если мы прогнозируем все примеры как y = 1, то очень высокая полнота вызовет среднее значение, несмотря на точность 0.</p>
+<p>Лучше всего вычислить оценку F1 (F-Score) - среднее геометрическое из этих двух показателей:</p>
+<p id="gdcalert138"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image138.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert139">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image138.png" title="image_tooltip"/></p>
+<p>Чтобы показатель F был высоким, как точность, так и отзыв должны быть высокими.</p>
+<h4 id="данные-для-машинного-обучения">Данные для машинного обучения</h4>
+<p>В некоторых случаях «неполный алгоритм» при наличии достаточных данных может превосходить превосходный алгоритм с меньшим количеством данных.</p>
+<p>Мы должны выбрать наши признаки таким образом, чтобы иметь достаточно информации для построения адекватной модели. Полезным эмпирическим тестом для проверки достаточности набора признаков  является следующее правило: учитывая вход x, сможет ли эксперт-человек уверенно предсказать y?</p>
+<p>Если у нас есть алгоритм с низким смещением, то чем больше мы используем обучающий набор, тем меньше мы будем переообучаться и тем точнее алгоритм будет работать на тестовой выборке. Таким образом можно сформулировать золотое правило машинного обучения: нужно взять как можно больше данных и как можно более вариативный алгоритм.</p>
+<h3 id="обучение-с-помощью-больших-наборов-данных">Обучение с помощью больших наборов данных</h3>
+<p>В некоторых областях существует возможность использовать для машинного обучения весьма большие наборы данных. Наборы данных часто могут приближаться к таким размерам, как m = 100 000 000. В этом случае наш шаг градиентного спуска должен будет суммировать все сто миллионов примеров. Мы хотим попытаться избежать этого - подходы для этого описаны ниже.</p>
+<h4 id="стохастический-градиентный-спуск">Стохастический градиентный спуск</h4>
+<p>Стохастический градиентный спуск (stochastic gradient decsent, SGD) является альтернативой классическому (или пакетному, batch gradient descent, BGD) градиентному спуску, более эффективен и масштабируется для больших наборов данных.</p>
+<p>Стохастический градиентный спуск формализуетсяя другим, но схожим образом:</p>
+<p id="gdcalert139"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image139.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert140">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image139.png" title="image_tooltip"/></p>
+<p>Единственная разница в вышеперечисленной функции затрат заключается в устранении константы m в \(\dfrac{1}{2}\)</p>
+<p id="gdcalert140"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image140.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert141">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image140.png" title="image_tooltip"/></p>
+<p>Алгоритм выглядит следующим образом</p>
+<p>Случайно «перетасовать» набор данных</p>
+<p>Для i = 1 … m</p>
+<p id="gdcalert141"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image141.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert142">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image141.png" title="image_tooltip"/></p>
+<p>Этот алгоритм будет пытаться одновременно подгонять один пример обучения. Таким образом, мы можем добиться прогресса в градиентном спуске без необходимости сначала сканировать все примеры обучения. Стохастический градиентный спуск вряд ли сходится на глобальном минимуме и вместо этого будет беспорядочно перемещаться вокруг него, но обычно дает результат, достаточно близкий. Стохастический градиентный спуск обычно занимает 1-10 проходов через набор данных, чтобы приблизиться к глобальному минимуму.</p>
+<h4 id="мини-пакетный-градиентный-спуск">Мини-пакетный градиентный спуск</h4>
+<p>Мини-пакетный градиентный спуск иногда может быть даже быстрее, чем стохастический градиентный спуск. Вместо использования всех m-примеров, как при пакетном градиентном спуске, и вместо использования только одного примера, как при стохастическом градиентном спуске, мы будем использовать некоторое промежуточное число примеров b.</p>
+<p>Типичные значения для b варьируются от 2 до 100 или около того.</p>
+<p>Например, при b = 10 и m = 1000:</p>
+<p>Повторение:</p>
+<p>Для i = 1,11,21,31, …, 991</p>
+<p id="gdcalert142"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image142.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert143">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image142.png" title="image_tooltip"/></p>
+<p>Мы просто суммируем более десяти примеров за раз. Преимущество вычисления более чем одного примера за раз заключается в том, что мы можем использовать векторизованные реализации над примерами b.</p>
+<h4 id="стохастическая-градиентная-сходимость">Стохастическая градиентная сходимость</h4>
+<p>Как выбрать скорость обучения α для стохастического градиентного спуска? Кроме того, как мы отлаживаем стохастический градиентный спуск, чтобы убедиться, что он приближается к глобальному оптимуму?</p>
+<p>Одна из стратегий заключается в построении средней стоимости гипотезы, применяемой к кажущимся 1000 примерам обучения. Мы можем вычислить и сохранить эти затраты во время итераций спуска градиента.</p>
+<p>С меньшей скоростью обучения возможно, что вы можете получить немного лучшее решение со стохастическим градиентным спуском. Это связано с тем, что стохастический градиентный спуск будет колебаться и скакать по глобальному минимуму, и он будет делать небольшие случайные скачки с меньшей скоростью обучения.</p>
+<p>Если вы увеличите количество примеров, в среднем превышающих производительность вашего алгоритма, линия графика станет более плавной. При очень небольшом числе примеров для среднего, линия будет слишком шумной, и будет трудно найти тренд.</p>
+<p>Одна из стратегий, позволяющих фактически сходиться на глобальном минимуме, заключается в медленном уменьшении α по времени. Однако это не часто делается, потому что люди не хотят возиться с еще большим количеством гиперпараметров.</p>
+<h4 id="онлайн-обучение">Онлайн обучение</h4>
+<p>При непрерывном потоке пользователей на веб-сайт мы можем запустить бесконечный цикл, который получает (x, y), где мы собираем некоторые действия пользователя для функций в x, чтобы предсказать некоторое поведение y.</p>
+<p>Вы можете обновлять b для каждой отдельной пары (x, y) по мере их сбора. Таким образом, вы можете адаптироваться к новым действиям пользователей, так как вы постоянно обновляете параметры модели.</p>
+<h3 id="кластеризация">Кластеризация</h3>
+<p>Обучение без учителя является противоположностью обучению с учителем, потому что оно использует немаркированный набор тренировок, а не размеченный. Другими словами, у нас нет вектора y ожидаемых результатов, у нас есть только набор данных, в которых мы можем найти структуру.</p>
+<p>Кластеризация (или кластерный анализ) — это задача разбиения множества объектов на группы, называемые кластерами. Внутри каждой группы должны оказаться «похожие» объекты, а объекты разных группы должны быть как можно более отличны. Главное отличие кластеризации от классификации состоит в том, что перечень групп четко не задан и определяется в процессе работы алгоритма.</p>
+<p>Кластеризация хороша для:</p>
+<ul>
+<li>Сегментация рынка</li>
+<li>Анализ социальной сети</li>
+<li>Организация компьютерных кластеров</li>
+<li>Астрономический анализ данных</li>
+</ul>
+<h4 id="представление-модели">Представление модели</h4>
+<p>Пусть X — множество объектов, Y — множество номеров (имён, меток) кластеров. Задана функция расстояния между объектами</p>
+<p id="gdcalert143"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image143.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert144">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image143.png" title="image_tooltip"/>
+. Имеется конечная обучающая выборка объектов</p>
+<p id="gdcalert144"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image144.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert145">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image144.png" title="image_tooltip"/>
+. Требуется разбить выборку на непересекающиеся подмножества, называемые кластерами, так, чтобы каждый кластер состоял из объектов, близких по метрике</p>
+<p id="gdcalert145"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image145.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert146">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image145.png" title="image_tooltip"/>
+, а объекты разных кластеров существенно отличались. При этом каждому объекту</p>
+<p id="gdcalert146"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image146.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert147">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image146.png" title="image_tooltip"/>
+ приписывается номер кластера</p>
+<p id="gdcalert147"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image147.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert148">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image147.png" title="image_tooltip"/>
+.</p>
+<p>Алгоритм кластеризации — это функция</p>
+<p id="gdcalert148"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image148.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert149">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image148.png" title="image_tooltip"/>
+, которая любому объекту</p>
+<p id="gdcalert149"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image149.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert150">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image149.png" title="image_tooltip"/>
+ ставит в соответствие номер кластера</p>
+<p id="gdcalert150"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image150.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert151">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image150.png" title="image_tooltip"/>
+. Множество Y в некоторых случаях известно заранее, однако чаще ставится задача определить оптимальное число кластеров, с точки зрения того или иного критерия качества кластеризации.</p>
+<p>Наши основные переменные:</p>
+<ul>
+<li>K (количество кластеров)</li>
+<li>Тренировочный набор</li>
+</ul>
+<p id="gdcalert151"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image151.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert152">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image151.png" title="image_tooltip"/></p>
+<ul>
+<li>Где</li>
+</ul>
+<p id="gdcalert152"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image152.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert153">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image152.png" title="image_tooltip"/></p>
+<h4 id="алгоритм-k-средних">Алгоритм K средних</h4>
+<p>Алгоритм k-средних (K-Means) является самым популярным и широко используемым алгоритмом для автоматической группировки данных в когерентные подмножества.</p>
+<p>Основная идея алгоритма выражена в следующих шагах:</p>
+<ol>
+<li>Случайно инициализируйте две точки в наборе данных, называемые центроидами кластера.</li>
+<li>Назначение кластера: назначьте все примеры в одну из двух групп на основе того, какой кластер-центроид ближе всего к примеру.</li>
+<li>Переместите центроид: вычислите средние значения для всех точек внутри каждой из двух групп кластеров кластеров, а затем переместите точки центроида кластера на эти средние.</li>
+<li>Повторно запустите (2) и (3), пока мы не найдем наши кластеры.</li>
+</ol>
+<p>Обратите внимание, что мы не будем использовать соглашение x<sub>0</sub> = 1.</p>
+<p>Первый цикл алгоритма - это назначение центроидов кластеров. Мы создаем вектор c, где c<sup>(i)</sup> представляет центроид, назначенный примеру x<sup>(i)</sup>. Мы можем написать операцию шага назначения кластеров математически следующим образом:</p>
+<p id="gdcalert153"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image153.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert154">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image153.png" title="image_tooltip"/></p>
+<p>Каждый элемент</p>
+<p id="gdcalert154"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image154.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert155">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image154.png" title="image_tooltip"/>
+ содержит индекс центроида, который имеет минимальное расстояние до</p>
+<p id="gdcalert155"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image155.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert156">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image155.png" title="image_tooltip"/>
+.</p>
+<p>По соглашению мы возводим правую сторону в квадрат, что делает функцию, которую мы пытаемся свести к минимуму, более быстро возрастающей. Это в основном просто удобное соглашение. Но соглашение, которое помогает уменьшить количество вычислений, потому что евклидово расстояние требует квадратного корня, но отменяется.</p>
+<p>Второй цикл алгоритма - это перемещение центроидов, где мы перемещаем каждый центроид в среднем по своей группе. Более формально уравнение для этого цикла выглядит следующим образом:</p>
+<p id="gdcalert156"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image156.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert157">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image156.png" title="image_tooltip"/></p>
+<p>Где каждый из</p>
+<p id="gdcalert157"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image157.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert158">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image157.png" title="image_tooltip"/></p>
+<ul>
+<li>примеры обучения, назначенные группе</li>
+</ul>
+<p id="gdcalert158"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image158.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert159">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image158.png" title="image_tooltip"/>
+.</p>
+<p>Если у вас есть центроид кластера, которому соответствуют 0 точек, вы можете случайно повторно инициализировать этот центроид для новой точки. Вы также можете просто исключить эту группу кластеров.</p>
+<p>После ряда итераций алгоритм сходится, и новые итерации не влияют существенно на положение центроидов кластеров.</p>
+<p>Некоторые наборы данных не имеют реального внутреннего разделения или естественной структуры. Алгоритмы типа К-средних могут равномерно сегментировать такие данные в подмножества, поэтому даже в этом случае могут быть полезны.</p>
+<h4 id="функция-ошибки-1">Функция ошибки</h4>
+<p>Вспомним некоторые параметры, которые мы использовали в нашем алгоритме:</p>
+<p id="gdcalert159"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image159.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert160">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image159.png" title="image_tooltip"/></p>
+<ul>
+<li>индекс кластера (1,2, …, K), к которому в настоящее время назначается пример x (i)</li>
+</ul>
+<p id="gdcalert160"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image160.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert161">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image160.png" title="image_tooltip"/></p>
+<ul>
+<li>кластеризованный центроид k (μ<sub>k</sub>∈ℝ<sup>n</sup>)</li>
+</ul>
+<p id="gdcalert161"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image161.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert162">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image161.png" title="image_tooltip"/></p>
+<ul>
+<li>кластерный кластер кластера, которому присвоен пример x<sup>(i)</sup>;</li>
+</ul>
+<p>Используя эти переменные, мы можем определить нашу функцию стоимости:</p>
+<p id="gdcalert162"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image162.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert163">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image162.png" title="image_tooltip"/></p>
+<p>Наша цель оптимизации состоит в том, чтобы свести к минимуму все наши параметры, используя указанную выше функцию стоимости:</p>
+<p id="gdcalert163"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image163.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert164">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image163.png" title="image_tooltip"/></p>
+<p>То есть мы находим все значения в наборах <em>c</em>, представляющие все наши кластеры, и μ, представляющие все наши центроиды, которые минимизируют среднее значение расстояний каждого примера обучающей выборки до его соответствующего кластерного центра.</p>
+<p>На этапе назначения кластеров наша цель заключается в следующем:</p>
+<p>Минимизируйте J(…) с</p>
+<p id="gdcalert164"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image164.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert165">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image164.png" title="image_tooltip"/>
+ (удерживая</p>
+<p id="gdcalert165"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image165.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert166">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image165.png" title="image_tooltip"/>
+ фиксированным)</p>
+<p>В шаге централизованного шага наша цель:</p>
+<p>Минимизируйте J (…) с помощью</p>
+<p id="gdcalert166"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image166.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert167">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image166.png" title="image_tooltip"/></p>
+<p>В ходе работы алгоритма k-средних общая ошибка модели не может увеличиваться. При нормальном ходе обучения она всегда должна уменьшаться.</p>
+<p>Существует рекомендуемый метод изначального задания центроидов кластеров -  случайная инициализация. Причем:</p>
+<ol>
+<li>Убедитесь, что количество ваших кластеров меньше числа ваших учебных примеров.</li>
+<li>Случайно выберите примеры обучения K.</li>
+<li>Установите</li>
+</ol>
+<p id="gdcalert167"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image167.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert168">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image167.png" title="image_tooltip"/>
+, равный этим примерам K.</p>
+<p>Алгоритм K-средних может застревать в локальных оптимумах. Чтобы уменьшить вероятность этого, вы можете запустить алгоритм для многих различных случайных инициализаций. В случаях, когда K &lt;10, настоятельно рекомендуется запускать цикл случайных инициализаций.</p>
+<h4 id="выбор-количества-кластеров">Выбор количества кластеров</h4>
+<p>Выбор K может быть довольно произвольным и неоднозначным. Метод локтя: отслеживайте стоимость J и количество кластеров K. Функция стоимости должна уменьшаться по мере увеличения количества кластеров, а затем выходить на плато. Выберите K в точке, где функция ошибки начинает выравниваться (точка локтя, elbow point). Однако довольно часто кривая очень постепенная, поэтому нет четкого локтя.</p>
+<p>J всегда будет уменьшаться по мере увеличения K. Единственное исключение - если k-средства застревают в плохом локальном оптимуме.</p>
+<p>Другой способ выбора K - наблюдать, насколько хорошо k-означает выполнение в нисходящей цели. Другими словами, вы выбираете K, который окажется наиболее полезным для какой-то цели, которую вы пытаетесь достичь от использования этих кластеров.</p>
+<h4 id="обзор-методов-кластеризации">Обзор методов кластеризации</h4>
+<p>Существует большое количество алгоритмов кластеризации. Среди них выделяют линейные и нелинейные алгоритмы. К линейным алгоритмам относятся:</p>
+<ol>
+<li>линейный алгоритм k-средних;</li>
+<li>нечеткий алгоритм кластеризации c-mean;</li>
+<li>иерархический алгоритм кластеризации;</li>
+<li>алгоритм кластеризации Гаусса (EM);</li>
+<li>алгоритм кластеризации пороговых значений качества;</li>
+</ol>
+<p>Некоторые алгоритмы нелинейной кластеризации:</p>
+<ul>
+<li>алгоритм кластеризации на основе MST;</li>
+<li>алгоритмы кластеризации ядра k-mean;</li>
+<li>алгоритм кластеризации на основе плотности;</li>
+</ul>
+<h3 id="понижение-размерности">Понижение размерности</h3>
+<h4 id="постановка-задачи">Постановка задачи</h4>
+<p>Вы когда-нибудь работали над набором данных с более чем тысячей функций? Как насчет более 50 000 функций? Это очень сложная задача, особенно если вы не знаете, с чего начать. Наличие большого числа переменных является одновременно благом и проклятием. Замечательно, что у нас есть масса данных для анализа, но проводить его одновременно сложно из-за размера.</p>
+<p>Невозможно проанализировать каждую переменную на микроскопическом уровне. Может потребоваться несколько дней или месяцев для проведения значимого анализа. Не говоря уже о количестве вычислительной мощности, которое это займет. Нам нужен лучший способ справиться с большими размерными данными, чтобы мы могли быстро извлечь из него шаблоны и идеи.</p>
+<p>Мы можем существенно уменьшить количество имеющихся признаков, если у нас много избыточных данных. Для этого мы найдем две сильно коррелированные признаки, на их основе создадим новый признак, который точно описывает оба.</p>
+<p>Выполнение уменьшения размерности уменьшит общие данные, которые мы должны хранить в памяти компьютера, и ускорит алгоритм обучения.</p>
+<p>При уменьшении размерности мы уменьшаем количество признаков, а не наше количество примеров. Наша переменная m останется прежнего размера; n, число признаков, каждый из которых переносится из</p>
+<p id="gdcalert168"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image168.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert169">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image168.png" title="image_tooltip"/>
+ в</p>
+<p id="gdcalert169"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image169.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert170">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image169.png" title="image_tooltip"/>
+, будет уменьшено.</p>
+<p>Нелегко визуализировать данные более трех измерений. Мы можем уменьшить размер наших данных до 3 или менее, чтобы можно было построить визуализацию, облегчающую понимание зависимостей в данных.</p>
+<p>Нам нужно найти новые функции z<sub>1</sub>, z<sub>2</sub> (и, возможно, z<sub>3</sub>), которые могут эффективно суммировать все остальные функции.Пример: сотни признаков, связанных с экономической системой страны, могут быть объединены в один, которую можно охарактеризовать «Экономическая деятельность».</p>
+<p>По мере того, как объем генерации и сбор аданных все больше возрастает, визуализация и выведение умозаключений становятся все более сложными. Одним из наиболее распространенных способов визуализации является использование диаграмм. Предположим, что у нас есть 2 переменные: возраст и высота.</p>
+<p>Теперь рассмотрим случай, в котором мы имеем, скажем, 100 переменных (p = 100). В этом случае мы можем иметь 100 (100-1) / 2 = 5000 разных графиков. Не имеет смысла визуализировать каждый из них отдельно, не так ли? В таких случаях, когда мы имеем большое количество переменных, лучше выбрать подмножество этих переменных (p &lt;&lt; 100), которое фиксирует столько информации, сколько исходный набор переменных.</p>
+<p>Поясним это на простом примере. Рассмотрим приведенное ниже изображение:</p>
+<p id="gdcalert170"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image170.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert171">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image170.png" title="image_tooltip"/></p>
+<p>Здесь мы имеем веса подобных объектов в Kg (X1) и Pound (X2). Если мы будем использовать обе эти переменные, они будут передавать аналогичную информацию. Таким образом, имеет смысл использовать только одну переменную. Мы можем преобразовать данные из 2D (X1 и X2) в 1D (Y1), как показано ниже:</p>
+<p id="gdcalert171"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image171.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert172">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image171.png" title="image_tooltip"/></p>
+<p>Аналогично, мы можем уменьшить p размерности данных в подмножество k размерностей (k &lt;&lt; n). Это называется уменьшением размерности.</p>
+<h4 id="метод-главных-компонент">Метод главных компонент</h4>
+<p>Наиболее популярным алгоритмом сокращения размерности является метод главных компонент (principal component analysis, PCA). В этом методе переменные преобразуются в новый набор переменных, которые являются линейной комбинацией исходных переменных. Эти новые переменные известны как основные или главные компоненты. Они получаются таким образом, что первый компонент учитывает большую часть возможного изменения исходных данных, после чего каждый последующий компонент имеет максимально возможную дисперсию.</p>
+<p>Второй главный компонент должен быть ортогонален первому главному компоненту. Другими словами, он делает все возможное, чтобы зафиксировать дисперсию данных, которые не были захвачены первым основным компонентом. Для двумерного набора данных могут быть только два главных компонента.</p>
+<p>Учитывая две функции: x<sub>1</sub> и x<sub>2</sub>, мы хотим найти одну такую переменную, которая эффективно описывает обе функции одновременно. Затем мы сопоставляем наши старые функции с этой новой строкой, чтобы получить новую отдельную функцию. То же самое можно сделать с тремя функциями, где мы сопоставляем их с плоскостью.</p>
+<p>Цель PCA - уменьшить среднее значение всех расстояний каждой функции до линии проецирования. Это называется ошибка проецирования. Уменьшите от 2d до 1d: найдите направление (вектор</p>
+<p id="gdcalert172"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image172.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert173">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image172.png" title="image_tooltip"/>
+, на который нужно проецировать данные, чтобы минимизировать ошибку проецирования.</p>
+<p>Более общий случай таков:</p>
+<p>Понижение от n-мерности до k-размерности: найдите k векторов</p>
+<p id="gdcalert173"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image173.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert174">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image173.png" title="image_tooltip"/>
+ на которые нужно проецировать данные, чтобы свести к минимуму ошибка проектирования.</p>
+<p>Если мы перейдем от 3d к 2d, мы будем проектировать наши данные на два направления (плоскость), поэтому k будет равно 2.</p>
+<p>PCA не является линейной регрессией. В линейной регрессии мы минимизируем квадрат ошибки от каждой точки до нашей линии предиктора. Это вертикальные расстояния. В PCA мы минимизируем кратчайшее расстояние или кратчайшие ортогональные расстояния до наших точек данных. В более общем плане, в линейной регрессии, мы берем все наши примеры в x и применяем параметры в Θ для предсказания y. В PCA мы берем ряд функций</p>
+<p id="gdcalert174"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image174.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert175">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image174.png" title="image_tooltip"/>
+ и находим среди них наиболее близкий общий набор данных. Мы не пытаемся предсказать какой-либо результат, и мы не применяем к ним тета-веса.</p>
+<h4 id="алгоритм-анализа-основных-компонентов">Алгоритм анализа основных компонентов</h4>
+<p>Основные компоненты чувствительны к шкале измерения, теперь, чтобы исправить эту проблему, мы должны всегда стандартизировать переменные перед применением PCA. Прежде чем мы сможем применить PCA, необходимо выполнить предварительную обработку данных. Данный набор тренировок: x<sup>(1)</sup>, x<sup>(2)</sup>, …, x<sup>(m)</sup>, необходимо привести к одной шкале соответствующими методами (масштабирование признаков/ нормализация по среднему):</p>
+<p id="gdcalert175"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image175.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert176">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image175.png" title="image_tooltip"/></p>
+<ol>
+<li>Вычислить ковариационную матрицу</li>
+</ol>
+<p id="gdcalert176"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image176.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert177">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image176.png" title="image_tooltip"/></p>
+<ol>
+<li>
+<p>Вычислить собственные векторы ковариационной матрицы Σ</p>
+</li>
+<li>
+<p>Взять первые k столбцов матрицы U и вычислить z.</p>
+</li>
+</ol>
+<p>Мы будем назначать первые k столбцов U переменной, называемой «Ur». Это будет n × k матрица. Мы вычисляем z так:</p>
+<p id="gdcalert177"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image177.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert178">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image177.png" title="image_tooltip"/></p>
+<h4 id="выбор-количества-основных-компонентов">Выбор количества основных компонентов</h4>
+<p>Как выбрать k, также называемое числом главных компонентов? Напомним, что k - размерность, которую мы уменьшаем до.</p>
+<p>Один из способов выбора k состоит в следующем:</p>
+<ol>
+<li>Учитывая среднюю квадратную ошибку проекции:</li>
+</ol>
+<p id="gdcalert178"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image178.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert179">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image178.png" title="image_tooltip"/>
+,</p>
+<ol>
+<li>Также дано полное изменение данных:</li>
+</ol>
+<p id="gdcalert179"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image179.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert180">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image179.png" title="image_tooltip"/>
+,</p>
+<ol>
+<li>Выберите k как наименьшее значение, такое, что:</li>
+</ol>
+<p id="gdcalert180"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image180.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert181">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image180.png" title="image_tooltip"/>
+.</p>
+<p>Другими словами, квадратная ошибка проекции, деленная на общее изменение, должна быть меньше одного процента, так что 99% дисперсии сохраняется.</p>
+<ol>
+<li>Алгоритм выбора k</li>
+<li>Попробуйте PCA с k = 1,2, …</li>
+<li>Вычислить U_{r}, z, x</li>
+</ol>
+<p>Проверьте приведенную выше формулу, что 99% дисперсии сохраняется. Если нет, перейдите к шагу 1 и увеличьте k. Это дает нам матрицу S. Мы можем проверить 99% сохраняемой дисперсии с использованием матрицы S следующим образом:</p>
+<p id="gdcalert181"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image181.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert182">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image181.png" title="image_tooltip"/></p>
+<h4 id="рекомендации-по-применению-pca">Рекомендации по применению PCA</h4>
+<p>Наиболее распространенным применением PCA является ускорение обучения с учителем.</p>
+<p>Учитывая набор тренировок с большим количеством функций (например,</p>
+<p id="gdcalert182"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image182.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert183">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image182.png" title="image_tooltip"/>
+), мы можем использовать PCA для уменьшения числа признаков в каждом примере обучающего набора (например,</p>
+<p id="gdcalert183"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image183.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert184">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image183.png" title="image_tooltip"/>
+).</p>
+<p>Обратите внимание, что мы должны определить сокращение PCA от</p>
+<p id="gdcalert184"><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt;  gd2md-html alert: inline image link here (to images/image184.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br/>(<a href="#">Back to top</a>)(<a href="#gdcalert185">Next alert</a>)<br/><span style="color: red; font-weight: bold">&gt;&gt;&gt;&gt;&gt; </span></p>
+<p><img alt="alt_text" src="images/image184.png" title="image_tooltip"/>
+ только на обучающем наборе, а не на валидационных или тестовых наборах. Вы можете применить отображение z<sup>(i)</sup> к вашим наборам перекрестной проверки и тестирования после того, как они определены в наборе обучения.</p>
+<p>Вот некоторые из преимуществ применения уменьшения размерности к набору данных:</p>
+<ul>
+<li>Пространство, необходимое для хранения данных, уменьшается по мере уменьшения количества измерений</li>
+<li>Меньшие размеры приводят к меньшему времени вычисления / обучения</li>
+<li>Некоторые алгоритмы не работают хорошо, когда в данных присутствует большая размерность. Поэтому необходимо уменьшить размерность, чтобы алгоритм был полезным</li>
+<li>Он решает проблему мультиколлинеарности, удаляя избыточные признаки. Например, у вас есть две переменные - «время, затрачиваемое на беговую дорожку в считанные минуты» и «сжигаемые калории». Эти переменные сильно коррелируют, поскольку чем больше времени вы проводите на беговой дорожке, тем больше калорий вы будете сжигать. Следовательно, нет смысла хранить оба значения, поскольку только один из них делает то, что вам нужно</li>
+<li>Это помогает визуализировать данные. Как обсуждалось ранее, очень сложно визуализировать данные в более высоких измерениях, поэтому сокращение нашего пространства до 2D или 3D может позволить нам более четко строить и наблюдать рисунки</li>
+</ul>
+<p>Не следует использовать PCA в качестве попытки предотвратить переобучение. Мы могли бы подумать, что сокращение количества признаков с помощью PCA было бы эффективным способом решения проблемы переобучения. Это может работать, но не рекомендуется, поскольку он не учитывает значения наших результатов y. Использование только регуляризации будет по крайней мере столь же эффективным.</p>
+<p>Не предполагайте заранее, что вам необходимо использовать PCA. Сначала попробуйте выполнить полный алгоритм машинного обучения без PCA. Затем используйте PCA, если это необходимо.</p>
+<h4 id="обзор-других-методов-понижения-размерности">Обзор других методов понижения размерности</h4>
+<p>Метод главных компонент далеко не единственный метод, использующийся для понижения размерности в данных. В статье <a href="https://paperpile.com/c/jyUyF3/3KBg">(Sharma 2018)</a> приводится обзор следующих широко распространенных алгоритмов:</p>
+<ol>
+<li>Удаление отсутствующих значений (Missing Value Ratio): если в наборе данных слишком много отсутствующих значений, мы используем этот подход для уменьшения числа переменных. Мы можем отбросить переменные с большим количеством недостающих значений в них;</li>
+<li>Фильтр с низкой дисперсией (Low Variance filter): мы применяем этот подход для определения и отбрасывания постоянных переменных из набора данных. Целевая переменная не подвержена чрезмерному воздействию переменных с низкой дисперсией, и, следовательно, эти переменные можно безопасно удалить;</li>
+<li>Фильтр с высокой корреляцией (High Correlation filter): пара переменных с высокой корреляцией увеличивает мультиколлинеарность в наборе данных. Таким образом, мы можем использовать эту технику, чтобы найти высококоррелированные признаки и соответственно отбросить их;</li>
+<li>Случайный лес: это один из наиболее часто используемых методов, который говорит о важности каждого признака, присутствующего в наборе данных. Мы можем найти важность каждого признака и сохранить самые лучшие признаки, что приведет к уменьшению размерности;</li>
+<li>Методы последовательного исключения признаков и последовательного включения признаков требуют большого вычислительного времени и поэтому обычно используются для небольших наборов данных;</li>
+<li>Факторный анализ: этот метод лучше всего подходит для ситуаций, когда мы имеем сильно коррелированный набор переменных. Он делит переменные на основе их корреляции в разные группы и представляет каждую группу с коэффициентом;</li>
+<li>Анализ главных компонент: это один из наиболее широко используемых методов обработки линейных данных. Он делит данные на набор компонентов, которые стараются объяснить как можно большую дисперсию;</li>
+<li>Анализ независимых компонент (ICA): мы можем использовать ICA для преобразования данных в независимые компоненты, которые описывают данные с использованием меньшего количества компонентов;</li>
+<li>ISOMAP: Мы используем этот метод, когда данные сильно нелинейны;</li>
+<li>t-SNE: Этот метод также хорошо работает, когда данные сильно нелинейны. Он отлично работает для визуализации;</li>
+<li>UMAP: Этот метод хорошо работает для данных с высокой размерностью. Его время работы короче по сравнению с t-SNE.</li>
+</ol>
+</section>
+<footer class="page__meta">
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2022-09-27T12:49:07+00:00">September 27, 2022</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/text/md24/" title="Progressive Web Apps
+">Предыдущая</a>
+<a class="pagination--pager" href="/text/ml0/" title="Введение в машинное обучение
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

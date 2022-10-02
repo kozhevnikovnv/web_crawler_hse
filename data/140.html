@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Лучшие научные публикации о машинном обучении 2020 года | Михаил Коротеев</title>
+<meta content="Такая статья должна была выйти давно. Даже при всей поверхностности, приведенная экспертом подборка дает общее представление о тенденциях в изучении машинного обучения. Внутри много ссылок на источники." name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Лучшие научные публикации о машинном обучении 2020 года" property="og:title"/>
+<meta content="https://koroteev.site/scipop/best-ai-papers-2020/" property="og:url"/>
+<meta content="Такая статья должна была выйти давно. Даже при всей поверхностности, приведенная экспертом подборка дает общее представление о тенденциях в изучении машинного обучения. Внутри много ссылок на источники." property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Лучшие научные публикации о машинном обучении 2020 года" name="twitter:title"/>
+<meta content="Такая статья должна была выйти давно. Даже при всей поверхностности, приведенная экспертом подборка дает общее представление о тенденциях в изучении машинного обучения. Внутри много ссылок на источники." name="twitter:description"/>
+<meta content="https://koroteev.site/scipop/best-ai-papers-2020/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2021-05-09T00:00:00+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/scipop/best-ai-papers-2020/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--single None">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<div itemscope="" itemtype="https://schema.org/Person">
+<div class="author__avatar">
+<img alt="Михаил Коротеев" itemprop="image" src="/assets/images/avatar3.jpg"/>
+</div>
+<div class="author__content">
+<h3 class="author__name" itemprop="name">Михаил Коротеев</h3>
+<div class="author__bio" itemprop="description">
+<p>Есть такая профессия - Родину автоматизировать.</p>
+</div>
+</div>
+<div class="author__urls-wrapper">
+<button class="btn btn--inverse">Связаться со мной</button>
+<ul class="author__urls social-icons">
+<li><a href="https://koroteev.site" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fas fa-fw fa-link"></i><span class="label">Website</span></a></li>
+<li><a href="https://github.com/koroteevmv" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-github"></i><span class="label">GitHub</span></a></li>
+<li><a href="https://www.youtube.com/channel/UCPe6h6MY8XZpLV7oRLqRUwQ" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-youtube"></i><span class="label">YouTube</span></a></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i><span class="label">Vkontakte</span></a></li>
+<!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+</ul>
+</div>
+</div>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="Лучшие научные публикации о машинном обучении 2020 года" itemprop="headline"/>
+<meta content="Такая статья должна была выйти давно. Даже при всей поверхностности, приведенная экспертом подборка дает общее представление о тенденциях в изучении машинного обучения. Внутри много ссылок на источники." itemprop="description"/>
+<meta content="2021-05-09T00:00:00+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Лучшие научные публикации о машинном обучении 2020 года
+</h1>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-09T00:00:00+00:00">May 9, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          8 мин на чтение
+        
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<aside class="sidebar__right sticky">
+<nav class="toc">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#обработка-естественного-языка">Обработка естественного языка</a>
+<ul>
+<li><a href="#gpt-3">GPT-3</a></li>
+<li><a href="#альберт-облегченный-bert">АЛЬБЕРТ: облегченный BERT</a></li>
+<li><a href="#за-пределами-точности-поведенческое-тестирование-моделей-нлп-с-помощью-checklist">За пределами точности: поведенческое тестирование моделей НЛП с помощью CheckList</a></li>
+<li><a href="#linformer">Linformer</a></li>
+<li><a href="#языковые-модели-plug-and-play">Языковые модели Plug and Play</a></li>
+<li><a href="#reformer">Reformer</a></li>
+<li><a href="#performers">Performers</a></li>
+</ul>
+</li>
+<li><a href="#компьютерное-зрение">Компьютерное зрение</a>
+<ul>
+<li><a href="#изображение-стоит-16x16-слов">Изображение стоит 16x16 слов</a></li>
+<li><a href="#обучение-без-учителя-предположительно-симметричных-деформируемых-трехмерных-объектов">Обучение без учителя предположительно симметричных деформируемых трехмерных объектов</a></li>
+<li><a href="#генеративное-предварительное-обучение-из-пикселей">Генеративное предварительное обучение из пикселей</a></li>
+</ul>
+</li>
+<li><a href="#обучение-с-подкреплением">Обучение с подкреплением</a>
+<ul>
+<li><a href="#глубокое-обучение-с-подкреплением-и-его-нейробиологические-последствия">Глубокое обучение с подкреплением и его нейробиологические последствия</a></li>
+<li><a href="#обучение-с-подкреплением-на-основе-дофамина">Обучение с подкреплением на основе дофамина</a></li>
+<li><a href="#лотерейные-билеты-в-обучении-с-подкреплением-и-нлп">Лотерейные билеты в обучении с подкреплением и НЛП</a></li>
+<li><a href="#что-можно-получить-за-счет-внутреннего-вознаграждения">Что можно получить за счет внутреннего вознаграждения</a></li>
+</ul>
+</li>
+<li><a href="#разное">Разное</a>
+<ul>
+<li><a href="#automl-zero">AutoML-Zero</a></li>
+<li><a href="#переосмысление-пакетной-нормализации-для-метаобучения">Переосмысление пакетной нормализации для метаобучения.</a></li>
+<li><a href="#метаобучение-без-запоминания">Метаобучение без запоминания</a></li>
+<li><a href="#понимание-эффективности-maml">Понимание эффективности MAML</a></li>
+<li><a href="#ваш-классификатор-втайне-является-энергетической-моделью">Ваш классификатор втайне является энергетической моделью</a></li>
+<li><a href="#обратный-инжиниринг-глубоких-сетей-relu">Обратный инжиниринг глубоких сетей ReLU</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+<p><a href="https://analyticsindiamag.com/top-machine-learning-research-papers-released-in-2020/">Оригинал</a></p>
+<p>Уже в середине последнего месяца года, сайт arxiv.org, популярный репозиторий исследовательских работ поуже засвидетельствовал около 600 загрузок. Это должно дать представление о темпах, с которыми продвигаются исследования в области машинного обучения; однако отследить всю эту исследовательскую работу практически невозможно. Каждый год исследования, которые получают максимум шума, обычно исходят от таких компаний, как Google и Facebook; от ведущих университетов, таких как MIT; из исследовательских лабораторий; и, что наиболее важно, по результатам конференций, таких как NeurIPS или ACL.</p>
+<ul>
+<li><a href="https://analyticsindiamag.com/everything-so-far-in-cvpr-2020-conference/">CVPR</a>: 1470 допущенных работ по компьютерному зрению принято из 6656 заявок.</li>
+<li><a href="https://analyticsindiamag.com/iclr-2020-conference-papers/">ICLR</a>: 687 из 2594 статей попали на ICLR 2020 - показатель принятия 26,5%.</li>
+<li><a href="https://analyticsindiamag.com/papers-icml-2020-research-conference/">ICML</a>: из 4990 заявок было принято 1088 статей.</li>
+</ul>
+<p>В этой статье мы составили список интересных исследовательских работ по машинному обучению, которые наделали шума в этом году.</p>
+<h2 id="обработка-естественного-языка">Обработка естественного языка</h2>
+<h3 id="gpt-3">GPT-3</h3>
+<p>Это основополагающая <a href="https://arxiv.org/pdf/2005.14165.pdf">статья,</a> в которой представлена ​​самая популярная модель машинного обучения года - GPT-3. В статье под названием «Трансформеры мало обучаются» команда OpenAI использовала ту же модель и архитектуру, что и GPT-2, которая включает модифицированную инициализацию, предварительную нормализацию и обратимую токенизацию, а также чередование плотных и локально полосчатых шаблонов разреженного внимания в слои трансформатора. В то время как модель GPT-3 показывала многообещающие результаты в настройках нулевого и одноразового выстрелов, в настройке нескольких выстрелов она иногда превосходила самые современные модели.</p>
+<h3 id="альберт-облегченный-bert">АЛЬБЕРТ: облегченный BERT</h3>
+<p>Обычно увеличение размера модели при предварительном обучении представлений на естественном языке часто приводит к повышению производительности последующих задач, но время обучения увеличивается. Для решения этих проблем авторы в своей <a href="https://analyticsindiamag.com/iclr-2020-conference-papers/">работе</a> представили два метода уменьшения параметров, чтобы снизить потребление памяти и увеличить скорость обучения BERT. Авторы также использовали самоконтролируемую функцию потерь, которая фокусируется на моделировании согласованности между предложениями и помогает целевым задачам, зависящим от нескольких предложений. Согласно результатам, эта модель показала новые рекордные результаты в тестах GLUE, RACE и отряда, имея меньшее количество параметров по сравнению с BERT-large.</p>
+<p>Прочитайте статью <a href="https://arxiv.org/pdf/1909.11942v6.pdf">здесь</a>.</p>
+<h3 id="за-пределами-точности-поведенческое-тестирование-моделей-нлп-с-помощью-checklist">За пределами точности: поведенческое тестирование моделей НЛП с помощью CheckList</h3>
+<p>Microsoft Research вместе с Вашингтонским и Калифорнийским университетами в этой статье представила методологию, не зависящую от модели и не зависящую от задачи, для тестирования моделей НЛП, известную как CheckList (контрольный список). Он также получил награду за лучшую работу на конференции ACL в этом году. Он включал матрицу общих лингвистических возможностей и типов тестов, которые облегчают всестороннее формирование идей тестирования, а также программный инструмент для быстрого создания большого и разнообразного количества тестовых примеров.</p>
+<p>Прочитайте статью <a href="https://arxiv.org/abs/2005.04118">здесь</a>.</p>
+<h3 id="linformer">Linformer</h3>
+<p>Linformer - это архитектура трансформеров, предназначенная для устранения узкого места в них, связанного с самовниманием. Он снижает сложность механизма самовнимания до O(n) операций как в пространственной, так и во временной сложности. Это новый механизм самовнимания, который позволяет исследователям вычислять контекстное отображение за линейное время и память вне зависимости от длины последовательности.</p>
+<p>Подробнее о бумаге <a href="https://arxiv.org/abs/2006.04768">здесь</a>.</p>
+<h3 id="языковые-модели-plug-and-play">Языковые модели Plug and Play</h3>
+<p>Языковые модели Plug and Play (<a href="https://analyticsindiamag.com/what-are-plug-and-play-language-models-pplm-nlp/">PPLM</a>) представляют собой комбинацию предварительно обученных языковых моделей с одним или несколькими простыми классификаторами атрибутов. Это, в свою очередь, помогает в создании текста без какого-либо дополнительного обучения. По словам авторов, образцы моделей продемонстрировали контроль над настроением генерируемого текста, а обширные автоматизированные и аннотированные оценки показали согласованность атрибутов и беглость.</p>
+<p>Прочитайте статью  <a href="https://arxiv.org/pdf/1912.02164v4.pdf">здесь</a>.</p>
+<h3 id="reformer">Reformer</h3>
+<p>В этом исследователи Google <a href="https://arxiv.org/pdf/2001.04451v2.pdf%5C">статье</a> представили Reformer. Эта работа продемонстрировала, что архитектура Transformer может эффективно выполняться на длинных последовательностях и с небольшой памятью. Авторы считают, что способность обрабатывать длинные последовательности открывает возможность использования Reformer для решения многих генеративных задач. Помимо создания очень длинного связного текста, Reformer может использовать возможности моделей-трансформеров в других областях, таких как прогнозирование временных рядов, создание музыки, изображений и видео.</p>
+<p>Прочитайте статью  <a href="https://arxiv.org/pdf/2001.04451v2.pdf%5C">здесь</a>.</p>
+<h3 id="performers">Performers</h3>
+<p>Чтобы преодолеть ограничения разреженных трансформеров, Google в другой статье представил Performer, который использует эффективную (линейную) структуру обобщенного внимания и может напрямую повлиять на исследования в области анализа биологической последовательности и т. д. Авторы заявили, что современная биоинформатика может получить огромную пользу от более быстрых и точных языковых моделей для разработки новых вакцин на основе наночастиц.</p>
+<p>Прочитайте статью  <a href="https://analyticsindiamag.com/transformers-attention-google-introduces-performers/">здесь</a>.</p>
+<h2 id="компьютерное-зрение">Компьютерное зрение</h2>
+<h3 id="изображение-стоит-16x16-слов">Изображение стоит 16x16 слов</h3>
+<p><img alt="alt_text" src="/assets/images/2021-05-09/image1.png" title="image_tooltip"/></p>
+<p>Ирония заключается в том, что одна из популярных языковых моделей, трансформеры, была создана для решения задач компьютерного зрения. В этой <a href="https://analyticsindiamag.com/computer-vision-text-caption-google/4">статье</a> авторы утверждали, что визуальные трансформеры могут идти в ногу с современными моделями в тестах распознавания изображений, достигая точности 88,36% в ImageNet и 94,55% в CIFAR-100. Для этого трансформер компьютерного зрения получает входные данные в виде одномерной последовательности эмбеддингов токенов. Затем изображение преобразуется в последовательность плоских 2D-участков. Трансформеры в этой работе используют постоянную ширину на всех своих слоях.</p>
+<p>Прочитайте статью  <a href="https://openreview.net/pdf?id=YicbFdNTTy">здесь</a>.</p>
+<h3 id="обучение-без-учителя-предположительно-симметричных-деформируемых-трехмерных-объектов">Обучение без учителя предположительно симметричных деформируемых трехмерных объектов</h3>
+<p><img alt="alt_text" src="/assets/images/2021-05-09/image3.png" title="image_tooltip"/></p>
+<p>Победитель премии CVPR за лучшую статью, в этой работе авторы предложили метод изучения категорий трехмерных деформируемых объектов из необработанных одноэкранных изображений без внешнего контроля. В этом методе используется автоэнкодер, который учитывает каждое входное изображение по глубине, альбедо, точке обзора и освещенности. Авторы продемонстрировали, что рассуждения об освещении могут использоваться для использования симметрии основного объекта, даже если внешний вид не является симметричным из-за затенения.</p>
+<p>Прочитайте статью  <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Wu_Unsupervised_Learning_of_Probably_Symmetric_Deformable_3D_Objects_From_Images_CVPR_2020_paper.pdf">здесь</a>.</p>
+<h3 id="генеративное-предварительное-обучение-из-пикселей">Генеративное предварительное обучение из пикселей</h3>
+<p>В этой <a href="https://cdn.openai.com/papers/Generative_Pretraining_from_Pixels_V2.pdf">статье</a> исследователи OpenAI изучили, могут ли модели обучаться полезным представлениям изображений. Для этого исследователи обучили последовательный трансформер авторегрессионному предсказанию пикселей, не используя знания входной 2D-структуры. Несмотря на обучение в ImageNet с низким разрешением без классов, исследователи обнаружили, что масштабная модель GPT-2 изучает четкие представления изображений, измеренные с помощью линейного зондирования, точной настройки и классификации с низким объемом данных. На CIFAR-10 он достиг точности 96,3%, превзойдя контролируемую Wide ResNet, и точность 99,0% с полной тонкой настройкой и соответствием верхним контролируемым предварительно обученным моделям. Еще более крупная модель, обученная на смеси ImageNet и веб-изображений, может конкурировать с самоконтролируемыми тестами на ImageNet, достигая 72,0% точности (наилучший результат на сегодняшний день).</p>
+<p>Прочитайте статью  <a href="https://cdn.openai.com/papers/Generative_Pretraining_from_Pixels_V2.pdf">здесь</a>.</p>
+<h2 id="обучение-с-подкреплением">Обучение с подкреплением</h2>
+<h3 id="глубокое-обучение-с-подкреплением-и-его-нейробиологические-последствия">Глубокое обучение с подкреплением и его нейробиологические последствия</h3>
+<p>В этой статье авторы представили высокоуровневое введение в <a href="https://analyticsindiamag.com/deep-reinforcement-learning-neuroscience-applications/">глубокий RL</a>, обсудили некоторые из его первоначальных приложений в нейробиологии, а также рассмотрели его более широкое значение для исследований мозга и поведения и завершили список. возможностей для следующего этапа исследования. Хотя DeepRL кажется многообещающим, авторы писали, что работа над ним все еще продолжается, и его применение в нейробиологии следует рассматривать как прекрасную возможность. Например, глубокий RL обеспечивает основанную на агентах структуру для изучения того, как вознаграждение формирует представление, и как представление, в свою очередь, влияет на обучение и принятие решений - две проблемы, которые вместе охватывают большую часть того, что является наиболее важным для нейробиологии.</p>
+<p>Прочитайте статью  <a href="https://arxiv.org/pdf/2007.03750.pdf">здесь</a>.</p>
+<h3 id="обучение-с-подкреплением-на-основе-дофамина">Обучение с подкреплением на основе дофамина</h3>
+<p>Причины того, почему люди делают определенные вещи, часто связаны с <a href="https://analyticsindiamag.com/deepmind-neuroscience-reinforcement-learning-dopamine-temporal-difference/">дофамином</a>, гормоном, который действует как система вознаграждения (например: лайки на вашей странице в Instagram). Итак, оглядываясь назад, DeepMind с помощью лабораторий Гарварда проанализировал дофаминовые клетки у мышей и зафиксировал, как мыши получали вознаграждение, когда они изучали задачу. Затем они проверили эти записи на соответствие активности дофаминовых нейронов с помощью стандартных алгоритмов временной разницы. В этой статье был предложен отчет об обучении с подкреплением на основе дофамина, вдохновленный недавними исследованиями искусственного интеллекта по распределенному обучению с подкреплением. Авторы предположили, что мозг представляет возможные будущие награды не как единое среднее значение, а как распределение вероятностей, эффективно представляя несколько будущих результатов одновременно и параллельно.</p>
+<p>Прочитайте статью  <a href="https://www.nature.com/articles/s41586-019-1924-6">здесь</a>.</p>
+<h3 id="лотерейные-билеты-в-обучении-с-подкреплением-и-нлп">Лотерейные билеты в обучении с подкреплением и НЛП</h3>
+<p>В этой статье авторы объединили обработку естественного языка (НЛП) и обучение с подкреплением (RL). Они исследовали как повторяющиеся модели LSTM, так и крупномасштабные модели, основанные на трансформерах для НЛП и пространственные задачи дискретного действия для RL. Результаты показали, что гипотеза лотерейного билета не ограничивается контролируемым обучением естественных изображений, а скорее представляет собой более широкое явление в глубоких нейронных сетях.</p>
+<p>Прочитайте статью  <a href="https://openreview.net/pdf?id=S1xnXRVFwH">здесь</a>.</p>
+<h3 id="что-можно-получить-за-счет-внутреннего-вознаграждения">Что можно получить за счет внутреннего вознаграждения</h3>
+<p><img alt="alt_text" src="/assets/images/2021-05-09/image2.png" title="image_tooltip"/></p>
+<p>В этой статье авторы исследовали, может ли <a href="https://analyticsindiamag.com/reward-function-reinforcement-learning/">функция вознаграждения</a> сама по себе быть хорошим локусом усвоенных знаний. Они предложили масштабируемую структуру для изучения полезных внутренних функций вознаграждения на протяжении нескольких жизненных циклов опыта и показали, что возможно изучить и зафиксировать знания о долгосрочном исследовании и эксплуатации в качестве функции вознаграждения.</p>
+<p>Прочитайте статью  <a href="https://arxiv.org/pdf/1912.05500">здесь</a>.</p>
+<h2 id="разное">Разное</h2>
+<h3 id="automl-zero">AutoML-Zero</h3>
+<p>Развитие AutoML в основном сосредоточено на архитектуре нейронных сетей, где в качестве строительных блоков используются сложные слои, спроектированные экспертами, или аналогичные ограничительные пространства поиска. В этой <a href="https://analyticsindiamag.com/automl-drawbacks-automl-zero-google-brain-new-approach/">статье</a> авторы показали, что AutoML может пойти дальше с AutoML Zero, который автоматически обнаруживает полные алгоритмы машинного обучения, просто используя базовые математические операции в качестве строительных блоков. Исследователи продемонстрировали это, представив новую структуру, которая значительно снизила человеческую предвзятость за счет универсального пространства поиска.</p>
+<p>Прочитайте статью  <a href="https://arxiv.org/pdf/2003.03384v1.pdf">здесь</a>.</p>
+<h3 id="переосмысление-пакетной-нормализации-для-метаобучения">Переосмысление пакетной нормализации для метаобучения.</h3>
+<p>Пакетная нормализация - важный компонент конвейеров метаобучения. Однако есть несколько проблем. Итак, в этой статье авторы оценили ряд подходов к пакетной нормализации для сценариев метаобучения и разработали новый подход - TaskNorm. Эксперименты показали, что выбор пакетной нормализации оказывает значительное влияние как на точности классификации и время обучения и для подходов <a href="https://analyticsindiamag.com/how-to-make-meta-learning-more-effective/">мета-обучения</a>, основанных на градиенте, так и на безградиентных подходов. Было обнаружено, что TaskNorm постоянно улучшает производительность.</p>
+<p>Прочитайте статью <a href="https://arxiv.org/pdf/2003.03284">здесь</a>.</p>
+<h3 id="метаобучение-без-запоминания">Метаобучение без запоминания</h3>
+<p>Алгоритмы метаобучения требуют, чтобы задачи были взаимоисключающими, чтобы ни одна модель не могла решить все задачи одновременно. В этой статье авторы разработали цель мета-регуляризации, используя теорию информации, которая успешно использует данные из не исключающих друг друга задач для эффективной адаптации к новым задачам.</p>
+<p>Прочитайте статью  <a href="https://arxiv.org/pdf/1912.03820v3.pdf">здесь</a>.</p>
+<h3 id="понимание-эффективности-maml">Понимание эффективности MAML</h3>
+<p>Метаобучение, не зависящее от модели (MAML) состоит из циклов оптимизации, в которых внутренний цикл может эффективно изучать новые задачи. В этой статье авторы продемонстрировали, что повторное использование функций является доминирующим фактором и привело к алгоритму ANIL (Almost No Inner Loop) - упрощению MAML, в котором внутренний цикл удаляется для всех, кроме (зависящей от задачи) головы лежащей в основе нейронной сети. сеть.</p>
+<p>Прочитайте статью  <a href="https://openreview.net/pdf?id=rkgMkCEtPB">здесь</a>.</p>
+<h3 id="ваш-классификатор-втайне-является-энергетической-моделью">Ваш классификатор втайне является энергетической моделью</h3>
+<p>В этой статье предлагается попытаться переосмыслить стандартный дискриминантый классификатор как модель, основанную на энергии. В этом случае, как пишут авторы, стандартные вероятности классов могут быть легко вычислены. Они <a href="https://analyticsindiamag.com/classifier-architecture-energy-based-models-deep-learning-google/">продемонстрировали</a>, что обучение совместного распределения на основе энергии улучшает калибровку, надежность, обнаружение раздачи-распределения, а также позволяет предлагаемой модели генерировать выборки, конкурирующие по качеству с последними подходами к GAN. Эта работа улучшает недавно предложенные методы для расширения обучения энергетических моделяй. Такой подход также первым достиг производительности, соперничающей с современными достижениями как в генеративном, так и в дискриминантом обучении в рамках одной гибридной модели.</p>
+<p>Прочитайте статью <a href="https://arxiv.org/pdf/1912.03263">здесь</a>.</p>
+<h3 id="обратный-инжиниринг-глубоких-сетей-relu">Обратный инжиниринг глубоких сетей ReLU</h3>
+<p>В этой статье исследуется общепринятое мнение о том, что нейронные сети не могут быть восстановлены по его выходным данным, поскольку они зависят от его параметров очень нелинейным образом. Авторы утверждали, что, наблюдая только его выходные данные, можно определить архитектуру, веса и смещения неизвестной глубокой сети ReLU. Разделив набор границ области на компоненты, связанные с конкретными нейронами, исследователи показали, что можно восстановить веса нейронов и их расположение в сети.</p>
+<p>Прочитайте статью  <a href="https://arxiv.org/pdf/1910.00744.pdf">здесь</a>.</p>
+<p>(Примечание: список составлен без определенного порядка и представляет собой компиляцию, основанную на репутации издателей, восприятии этой исследовательской работы на популярных форумах и отзывах экспертов в социальных сетях. Если вы считаете, что мы пропустили какую-либо исключительную исследовательскую работу, пожалуйста, прокомментируйте ниже)</p>
+</section>
+<footer class="page__meta">
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-tags"></i> Метки: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/tags/#article" rel="tag">article</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#machine-learning" rel="tag">machine-learning</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#translation" rel="tag">translation</a>
+</span>
+</p>
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-folder-open"></i> Разделы: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/categories/#scipop" rel="tag">scipop</a>
+</span>
+</p>
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2021-05-09T00:00:00+00:00">May 9, 2021</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/scipop/mlops-ml-metadata-google-introduction/" title="ML MetaData: контроль версий для машинного обучения
+">Предыдущая</a>
+<a class="pagination--pager" href="/course/linux-playlist/" title="UNIX
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

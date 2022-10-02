@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Три подводных камня машинного обучения и как их избежать | Михаил Коротеев</title>
+<meta content="Перевод статьи из Nature, в которой инженеры Google рассуждают о типичных трудностях в разработки систем машинного обучения" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Три подводных камня машинного обучения и как их избежать" property="og:title"/>
+<meta content="https://koroteev.site/scipop/habr-ml-tricks/" property="og:url"/>
+<meta content="Перевод статьи из Nature, в которой инженеры Google рассуждают о типичных трудностях в разработки систем машинного обучения" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Три подводных камня машинного обучения и как их избежать" name="twitter:title"/>
+<meta content="Перевод статьи из Nature, в которой инженеры Google рассуждают о типичных трудностях в разработки систем машинного обучения" name="twitter:description"/>
+<meta content="https://koroteev.site/scipop/habr-ml-tricks/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2020-04-22T00:00:00+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/scipop/habr-ml-tricks/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--single None">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<div itemscope="" itemtype="https://schema.org/Person">
+<div class="author__avatar">
+<img alt="Михаил Коротеев" itemprop="image" src="/assets/images/avatar3.jpg"/>
+</div>
+<div class="author__content">
+<h3 class="author__name" itemprop="name">Михаил Коротеев</h3>
+<div class="author__bio" itemprop="description">
+<p>Есть такая профессия - Родину автоматизировать.</p>
+</div>
+</div>
+<div class="author__urls-wrapper">
+<button class="btn btn--inverse">Связаться со мной</button>
+<ul class="author__urls social-icons">
+<li><a href="https://koroteev.site" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fas fa-fw fa-link"></i><span class="label">Website</span></a></li>
+<li><a href="https://github.com/koroteevmv" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-github"></i><span class="label">GitHub</span></a></li>
+<li><a href="https://www.youtube.com/channel/UCPe6h6MY8XZpLV7oRLqRUwQ" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-youtube"></i><span class="label">YouTube</span></a></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i><span class="label">Vkontakte</span></a></li>
+<!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+</ul>
+</div>
+</div>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="Три подводных камня машинного обучения и как их избежать" itemprop="headline"/>
+<meta content="Перевод статьи из Nature, в которой инженеры Google рассуждают о типичных трудностях в разработки систем машинного обучения" itemprop="description"/>
+<meta content="2020-04-22T00:00:00+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Три подводных камня машинного обучения и как их избежать
+</h1>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-04-22T00:00:00+00:00">April 22, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          8 мин на чтение
+        
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<aside class="sidebar__right sticky">
+<nav class="toc">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#три-проблемы">Три проблемы</a>
+<ul>
+<li><a href="#неправильное-разделение-данных">Неправильное разделение данных</a></li>
+<li><a href="#скрытые-переменные">Скрытые переменные</a></li>
+<li><a href="#непонимание-цели">Непонимание цели</a></li>
+</ul>
+</li>
+<li><a href="#что-дальше">Что дальше?</a></li>
+<li><a href="#литература">Литература</a></li>
+</ul>
+</nav>
+</aside>
+<p><a href="https://m.habr.com/ru/company/sciberia/blog/498310/">Публикация на Хабре</a></p>
+<p>Ученые из бесчисленных областей обращаются к алгоритмическому анализу данных, Патрик Райли из Google призывает к четким стандартам научных исследований и отчетов.</p>
+<p>Оригинал: <a href="https://www.nature.com/articles/d41586-019-02307-y">Three pitfalls to avoid in machine learning</a>, Nature, 30 июля 2019</p>
+<p><img alt="alt_text" src="https://media.nature.com/lw800/magazine-assets/d41586-019-02307-y/d41586-019-02307-y_16975588.jpg" title="image_tooltip"/></p>
+<blockquote>
+<p>Инженеры TAE Technologies и Google в Калифорнии используют машинное обучение для оптимизации оборудования, производящего высокоэнергетическую плазму.</p>
+</blockquote>
+<blockquote>
+<p>Источник: Liz Kuball, https://media.nature.com/lw800/magazine-assets/d41586-019-02307-y/d41586-019-02307-y_16975588.jpg</p>
+</blockquote>
+<p>Машинное обучение движет прогресс во всех науках. Мощные инструменты выявления закономерностей и прогнозирования помогают ученым во всех областях - от совершенствования процессов синтеза молекул и обнаружения скрытых сигналов в статистике, до улучшения медицинской диагностики и открытия фундаментальных частиц.</p>
+<p>Однако, инструменты машинного обучения могут обернуться ловушками - ложноположительными результатами, логическими тупиками и ошибками. Многие алгоритмы настолько сложны, что невозможно проверить все их параметры или проанализировать, как именно преобразуются входные данные. По мере того, как эти алгоритмы применяются все более широко, возрастают риски неправильной интерпретации, ошибочных выводов и напрасных усилий ученых.</p>
+<p>Это не новые проблемы. Развитие машинного обучения сдерживается так называемой “проблемой танка” на протяжении десятилетий. Оригинальное исследование, по всей видимости, появилось еще в 60-х ([1] - самая ранняя публикация по данной теме; благодарность разработчику ПО Джеффу Кауфману) и было покрыто туманом веков, но история такова. Исследователь создали алгоритм, распознающий танки на фотографиях, предоставленных военными. Модель успешно определяла танки на тестовых изображениях. Но она давала сбой на более новых фотографиях с полей. Почему? Версии расходятся, но изображения, на которых она была обучена, содержали общие детали - танки появлялись в утреннем свете, либо под облаками. Так что алгоритм научился распознавать такие моменты, а не само присутствие танка.</p>
+<p>Происходящая сейчас переоценка ценностей вызвана схожими проблемами [2]. Многие работы по машинному обучению не содержат адекватной постановки эксперимента. Нет единых стандартов анализа. Конкуренция заставляет некоторых исследователей срезать углы и опускать проверки, как только они решают, что достигли желаемых результатов.</p>
+<p>Мы не способны предсказать все трудности, с которым может столкнуться каждое исследование. Но применяющие в своих областях машинное обучение исследователи, как минимум, должны познакомится с распространенными подводными камнями и методами, позволяющими их распознать и избежать.</p>
+<p>Для иллюстрации, я выбрал для освещения три проблемы в машинном обучении, с которыми мы столкнулись и которые преодолели в <a href="http://g.co/research/gas">Google Accelerated Science team</a>.</p>
+<h2 id="три-проблемы">Три проблемы</h2>
+<h3 id="неправильное-разделение-данных">Неправильное разделение данных</h3>
+<p>При построении моделей, практики машинного обучения обычно разделяют данные на обучающую и тестовую выборки. Модель обучается на обучающей выборке, а ее эффективность оценивается по тому, насколько точно она описывает тестовую. Исследователи обычно разделяют данные случайным образом. Однако, данные из реального мира редко носят случайный характер. В них может быть какая-то зависимость от времени - например, изменение способа получения данных, или набора собираемых показателей.</p>
+<p>Такие временнЫе зависимости скрыты, например, в наборах данных по молекулам, использующихся алгоритмами машинного обучения для нахождения кандидатов в лекарственные препараты. Задача состоит в том, чтобы предсказать, насколько эффективно  гипотетическая молекула будет, например, усваиваться организмом или снижать воспаление. Скрининг начинается со сбора данных о молекулах, которые имеют или не имеют необходимого эффекта. Но условия, в которых эти данные собирались могут отличаться от условий, в которых используется обучаемая модель.</p>
+<p>Например, модель может быть построена на основе одного набора молекул, публично доступного, а затем использоваться на другом, проприетарном. Также внимание ученых-химиков часто переключается с одного класса молекул на другой, когда появляются либо отвергаются многообещающие зацепки. Поэтому, исследователи зачастую переоценивают то, насколько хорошо модель будет работать на практике [3]. Это приводит к завышенным ожиданиям и впустую потраченным времени и средствам на неудачно выбранные молекулы. Многие ученые (включая меня) стали жертвой этой ошибки.</p>
+<p>Другими словами, вопрос, на который вы ищете ответ, должен определять способ разделения данных. Если модель предсказывает эффект от добавления нескольких атомов к молекуле, то каждая молекула в тестовом наборе должна иметь соответствующий аналог в обучающем, отличающийся парой атомов. Если вы хотите получить качественные прогнозы на химически разнообразных молекулах, молекулы из тестового набора должны быть непохожи на молекулы из обучающего. Правильный способ разделения данных может быть неочевиден, но тщательные размышления и разные попытки могут навести на правильный путь.</p>
+<h3 id="скрытые-переменные">Скрытые переменные</h3>
+<p>В идеальном эксперименте исследователь изменяет значение определенных переменных и фиксирует значение всех остальных. В реальном мире такой уровень контроля недостижим. Точность приборов изменяется со временем, концентрации реагентов разнятся, условия одного эксперимента могут отличаться от другого, а результаты могут быть зависимы даже от погоды. Такие неконтролируемые переменные пагубно сказываются на обучаемых моделях.</p>
+<p>Например, моя команда в Google работала со стартапом в области ядерного синтеза TAE Technologies в Калифорнии над оптимизацией эксперимента по производству высокоэнергетической плазмы [4]. Мы создавали модели для понимания наилучшего набора настроек аппарата, производящего плазму. Насчитывались сотни управляющих параметров, от того, когда активировать электроды до того, какое напряжение подавать на магниты. Фиксировались множество параметров, включая температуру и спектр.</p>
+<p>Мы использовали данные тысяч запусков аппарата, продолжавшихся многие месяцы. Все настройки варьировались в зависимости от переналадки механизмов, износа компонентов и проверки различных идей. Мы были очень рады, когда создали модель, хорошо предсказывающую для данных настроек, будет ли высока энергия плазмы. Вскоре, оказалось, что наши прогнозы были основаны на ложных предпосылках.</p>
+<p><img alt="alt_text" src="https://media.nature.com/lw800/magazine-assets/d41586-019-02307-y/d41586-019-02307-y_16975584.jpg" title="tooltip"/></p>
+<blockquote>
+<p>Осмотр глаза в больнице Аравнид в Мадурае, Индия. Медицинский персонал совместно с исследователями Google пытаются автоматизировать диагностику слепоты, вызванной диабетом</p>
+</blockquote>
+<blockquote>
+<p>Источник: Atul Loke/The New York Times/Red/eyevine, https://media.nature.com/lw800/magazine-assets/d41586-019-02307-y/d41586-019-02307-y_16975584.jpg</p>
+</blockquote>
+<p>Когда мы обучили модель, использовав только время эксперимента как входную переменную, а не все настройки, мы получили примерно такую же точность предсказания. Почему? Мы считаем, что наша первая модель распознавала временные тренды, а не физические явления. В ходе проведения экспериментов были периоды, когда механизмы работали хорошо, а были - когда не очень. Таким образом, время проведения эксперимента может дать информацию, будет ли плазма на выходе обладать высокой энергией. Более того, было возможно предсказать примерно когда проводился эксперимент по настройкам управляющих параметров - в том, как они изменялись были свои тренды.</p>
+<p>Скрытые переменные могут также порождаться самой постановкой эксперимента. Например, мы со многими коллегами, включая Научно-исследовательский институт Нью-йоркского фонда стволовых клеток, работаем над интерпретацией микроскопических изображений. Изображение представляет собой набор биологических экспериментов на подложке - обычно в виде сетки углублений, содержащих жидкость и клетки. Цель в том, чтобы определить, какие углубления обладают определенными характеристиками, такими как изменение внешнего вида после обработки химикатом. Но биологическое разнообразие предполагает, что каждая подложка будет выглядеть немного по другому. Могут быть также небольшие вариации на самой подложке. Края обычно отличаются от центра, если, например, больше жидкости испарилось с краев, или если подложка наклонена.</p>
+<p>Алгоритм машинного обучения может с легкостью зафиксироваться на этих непреднамеренных вариациях. Например, модель может распознавать углубления на краях подложки. Простой способ проверить, что такое случилось - попробовать предсказать с помощью модели другие вещи - положение углубления на подложке, какая это подложка, или из какого набора это изображение. Если модель это может - следует отнестись к результатам с подозрением.</p>
+<p>Урок таков: нужно использовать несколько моделей машинного обучения для обнаружения неожиданных или скрытых переменных. Одна модель концентрируется на вопросе, который вас волнует - высока ли энергия плазмы, здоровы ли клетки в растворе? Другие выявляют неожиданные факторы. Если они дают устойчивый результат - нормализуйте данные, проведите дальнейшие эксперименты или скорректируйте свои выводы.</p>
+<h3 id="непонимание-цели">Непонимание цели</h3>
+<p>Алгоритмы машинного обучения предполагают задание исследователем функции потерь, которая определяет тяжесть различных ошибок - что лучше: сделать две ошибки в 1% или одну в 2%. На практике обычно используется ограниченный набор таких функций, которых может быть недостаточно для того, что вы действительно хотите.</p>
+<p>Например, мы использовали машинное обучение для помощи в решении частных дифференциальных уравнений. Эти уравнения используются во многих науках: гидродинамике, электродинамике, сопромате, астрофизике и в экономическом моделировании. Часто их нужно решать численно, и мы обучали модели, позволяющие достичь большой точности при ограниченной частоте дискретизации.</p>
+<p>Мы начали с уравнения, описывающего распространение волны воды в одном измерении. Алгоритм должен был предсказывать следующий шаг во времени по текущему состоянию. У нас были две немного различающиеся формулы и мы обучали модели на обеих. Судя по нашей функции ошибки, обе модели были примерно равнозначны. Однако, одна из них выдавала чепуху, а вторая - оставалась близка к нужному результату.</p>
+<p>Почему? Функция потерь, контролировавшая обучение, рассматривала ошибку только на следующем шаге, а не валидность результата на много шагов вперед, что нас, собственно, и интересовало.</p>
+<p>Расходящиеся цели еще всплыли в нашей работе по машинному скринингу диабетической ретинопатии [6], осложнении диабета и самой главной причины предупреждаемой слепоты в мире. Это состояние можно эффективно лечить при условии раннего обнаружения по изображению глазного дна. Мы собрали данные, по которым офтальмологи проставили диагнозы, а затем использовали инструменты машинного обучения для предсказания диагноза. Появились две проблемы.</p>
+<p>Во-первых, разные офтальмологи часто расходились в диагнозе. Поэтому мы поняли, что нельзя основывать нашу модель на единственном предсказании. Также мы не могли использовать простое большинство, так как в медицинских вопросах зачастую спасительным оказывается голос меньшинства. Во-вторых, наша действительная цель - это не распознавание отдельной болезни. Мы должны были задавать другой вопрос: “Нужно ли этому пациенту обратится к врачу?”. Поэтому мы расширили задачи исследования с распознавания отдельной болезни до определения различных состояний.</p>
+<p>Практикам машинного легко зафиксироваться на “очевидной” цели, в рамках которой данные и их атрибуты полностью понятны. Но так они могут заставить алгоритмы решать неверные задачи. Нужно всегда иметь в виду более глобальный замысел, иначе мы получим точные модели, отвечающие на неправильные вопросы.</p>
+<h2 id="что-дальше">Что дальше?</h2>
+<p>Во-первых, эксперты по машинному обучению должны придерживаться высоких стандартов сами и распространять их на своих коллег. Когда в лабораторию поступает новое оборудование, лаборанты должны знать, как оно работает, как его настраивать, как обнаруживать ошибки и знать границы его применимости. Также и с машинным обучением. Здесь нет никакой магии и инструмент должен быть понятен тому, кто его применяет.</p>
+<p>Во-вторых, различные отрасли науки должны выработать чёткие стандарты, как должно проводиться машинное обучение и описываться его результаты. Необходимые меры контроля, проверки значимости и измерения ошибок могут варьироваться в разных областях, и они должны быть ясно выражены, чтобы исследователи, обозреватели и редакторы могли распространять правильные практики.</p>
+<p>В-третьих, образовательные программы по машинному обучению должны включать эти вопросы. Хотя уже существуют некоторые ресурсы (например, <a href="http://ai.google/education">http://ai.google/education</a>), нужно больше. Мы учим алгоритмам и инструментам, но студенты должны больше учиться тому, как применять эти алгоритмы и как критически их анализировать.</p>
+<p>Мы живем в удивительное время - вычислительные мощности, данные и алгоритмы вместе дают нам большие возможности для открытий с помощью машинного обучения. Мы, как сообщество ученых, ответственны за то, чтобы правильно использовать эти возможности.</p>
+<h2 id="литература">Литература</h2>
+<ol>
+<li>Kanal, L. N. &amp; Randall, N. C. In Proc. 1964 19th ACM National Conf. 42.501–42.5020 (ACM, 1964).</li>
+<li>Lipton, Z. C. &amp; Steinhardt, J. Preprint at arXiv. http://arxiv.org/abs/1807.03341 (2018).</li>
+<li>Sheridan, R. P. J. Chem. Inform. Model. 53, 783–790 (2013).</li>
+<li>Baltz, E. A. et al. Sci. Rep. 7, 6425 (2017).</li>
+<li>Bar-Sinai, Y., Hoyer, S., Hickey, J. &amp; Brenner, M. P. Proc. Natl Acad. Sci. USA https://doi.org/10.1073/pnas.1814058116 (2019).</li>
+<li>Gulshan, V. et al. J. Am. Med. Assoc. 316, 2402–2410 (2016).</li>
+</ol>
+</section>
+<footer class="page__meta">
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-tags"></i> Метки: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/tags/#article" rel="tag">article</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#ml" rel="tag">ml</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#translation" rel="tag">translation</a>
+</span>
+</p>
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-folder-open"></i> Разделы: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/categories/#scipop" rel="tag">scipop</a>
+</span>
+</p>
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2020-04-22T00:00:00+00:00">April 22, 2020</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/scipop/translate-mlops/" title="Как будет выглядеть машинное обучение, если добавить к нему DevOps?
+">Предыдущая</a>
+<a class="pagination--pager" href="/talks/interview-ivr/" title="IVR – это паллиативное решение
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

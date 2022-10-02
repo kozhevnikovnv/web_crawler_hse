@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Управление процессами</title>
+<meta charset="utf-8"/>
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<link href="/assets/shower/themes/ribbon/styles/styles.css" rel="stylesheet"/>
+<style>
+        .shower {
+            --slide-ratio: calc(16 / 12);
+        }
+    </style>
+<style>
+
+        html{
+            background-color: #000;
+        }
+
+        body{
+            min-height: 0;
+            background-color: #000;
+        }
+
+        #cover h2 {
+            margin: 30px 0 0;
+            /*color: white;*/
+            text-align: center;
+            font-size: 70px;
+        }
+
+        #cover p {
+            margin: 10px 0 0;
+            text-align: center;
+            color: white;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        #cover p a {
+            /*color: white;*/
+        }
+
+        #temp {
+            display: none;
+            visibility: hidden;
+        }
+
+        section {
+            font-size: 20px;
+        }
+
+        section h2 {
+            font-size: 50px;
+        }
+
+        .slide{
+            line-height: 1.2em;
+            font-size: 1em;
+        }
+
+        .slide ol, .slide ul {
+            line-height: 1em;
+        }
+
+        .slide pre {
+            overflow-x: hidden; 
+            overflow-y: hidden; 
+            line-height: 1.2em;
+            /*font-size: 1em;*/
+        }
+
+        img {
+            max-height: 550px;
+            width: auto;
+        }
+
+        img#cover{
+            height: 100%;
+            width: auto;
+        }
+
+        .slide .shout {
+            font-size: 120px;
+        }
+
+        .mjx-chtml{
+        	font-size: 25px !important;
+        }
+
+        section > div.presentation, section > img{
+		  margin: 0;
+		  position: absolute;
+		  top: 460px;
+		  left: 50%;
+		  -ms-transform: translate(-50%, -50%);
+		  transform: translate(-50%, -50%);
+		}
+    </style>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+	   MathJax.Hub.Config({
+	     extensions: ["tex2jax.js"],
+	     jax: ["input/TeX", "output/HTML-CSS"],
+	     tex2jax: {
+	       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+	       processEscapes: true
+	     },
+	     "HTML-CSS": { availableFonts: ["TeX"] }
+	   });
+	</script>
+</head>
+<body class="shower list">
+<div id="temp">
+<h3 id="что-такое-процесс">Что такое процесс?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Процесс - это программа, запущенная на выполнение в оперативной памяти.</li>
+<li>Одна программа может порождать несколько процессов.</li>
+<li>Одну программу можно запустить несколько раз, и это будут разные процессы.</li>
+<li>Все процессы выполняются независимо друг от друга, они изолированы операционной системой.</li>
+<li>У каждого процесса есть свой выделенный участок памяти, в память других процессов ему доступ запрещен.</li>
+</ol>
+</div>
+<h3 id="что-такое-многозадачность">Что такое многозадачность?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>В каждый момент в операционной системе выполняется множество процессов.</li>
+<li>На одном ядре ЦП может выполняться только одна последовательность инструкций одновременно.</li>
+<li>Операционная система постоянно переключает процессы на выполнение.</li>
+<li>Иногда переключение происходит добровольно, но чаще - нет.</li>
+<li>Сам процесс не имеет контроля над тем, когда его переключат.</li>
+<li>Большинство современных операционных систем реализуют вытесняющую многозадачность.</li>
+</ol>
+</div>
+<h3 id="в-каких-состояниях-может-находиться-процесс">В каких состояниях может находиться процесс?</h3>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-6.png" style="width: 600px;" title="this"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Создание нового процесса - довольно длительный для компьютера процесс.</li>
+<li>После создания процесс в состоянии готовности становится в очередь.</li>
+<li>Когда очередь подходит, он начинает выполняться на процессоре.</li>
+<li>Если во время выполнения процесс завершается, ОС его уничтожает и очищает память.</li>
+<li>Если во время выполнения проходит квант времени, ОС опять ставит его в очередь.</li>
+<li>Если во время выполнения процесс блокируется, ОС его приостанавливает.</li>
+<li>Когда придет внешнее событие, разблокирующее процесс, он опять становится в состояние готовности.</li>
+<li>Существует много разных реализаций очереди процессов, с приоритетами и без.</li>
+</ol>
+</div>
+<h3 id="какую-информацию-ос-хранит-о-процессе">Какую информацию ОС хранит о процессе?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>У каждого процесса есть численный идентификатор.</li>
+<li>С каждым процессом связан пользователь-владелец.</li>
+<li>У каждого процесса (за исключением одного) есть процесс-родитель.</li>
+<li>ОС хранит информацию о процессах в специальном разделе - файловой системе /proc.</li>
+<li>ОС запоминает статистическую информацию о потреблении процессами ресурсов.</li>
+<li>Большая часть информации о процессах скрыта. Например, открытые файловые дескрипторы.</li>
+</ol>
+</div>
+<h3 id="как-процессы-связаны-с-терминалами">Как процессы связаны с терминалами?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Каждый процесс при запуске связывается с определенным терминалом.</li>
+<li>Это может быть виртуальный терминал, графическая программа или эмулятор.</li>
+<li>Это связывание используется для разделения потоков ввода-вывода.</li>
+<li>При запуске процесса терминал блокируется.</li>
+<li>Некоторые процессы не связаны с терминалами.</li>
+</ol>
+</div>
+<h3 id="как-посмотреть-выполняемые-процессы">Как посмотреть выполняемые процессы?</h3>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-8.png" style="width: 600px;" title="this"/></p>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-9.png" style="width: 600px;" title="this"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Самая распространенная команда - ps.</li>
+<li>По умолчанию она показывает только процессы текущего пользователя, связанные с текущим терминалом.</li>
+<li>Полный список процессов можно посмотреть командой ps aux.</li>
+<li>Интерактивную информацию о процессах показывает программа top.</li>
+<li>Существует улучшенный вариант top - htop.</li>
+<li>С помощью htop можно проводить полноценный мониторинг системы, выполнять операции над процессами.</li>
+</ol>
+</div>
+<h3 id="что-такое-процессы-демоны">Что такое процессы-демоны?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Демоны не связаны с терминалами и не имеют пользовательского интерфейса.</li>
+<li>Они используются для выполнения фоновых операций.</li>
+<li>Большинство демонов - системные службы.</li>
+<li>Можно создать свою собственную программу-демона.</li>
+<li>Существует специальная программа для управления службами.</li>
+</ol>
+</div>
+<h3 id="как-снять-процесс">Как снять процесс?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Завершить текущий процесс в терминале можно комбинацией Ctrl + C.</li>
+<li>Интерактивные программы нужно стараться завершать штатно.</li>
+<li>Снять индивидуальный процесс можно с помощью программы kill.</li>
+<li>Формально, это послание сигнала процессу.</li>
+<li>Для мягкого завершения используется сигнал 15.</li>
+<li>Для того, чтобы снять зависший процесс может понадобится сигнал 9.</li>
+<li>Убить все процессы по имени команды можно командой killall.</li>
+</ol>
+</div>
+<h3 id="как-связаны-родитель-и-потомок">Как связаны родитель и потомок?</h3>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-10.png" style="width: 600px;" title="this"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Для каждого процесса, кроме самого первого существует процесс-родитель.</li>
+<li>Поэтому процессы в Linux образуют дерево.</li>
+<li>При завершении родителя, все его потомки тоже завершаются.</li>
+<li>Процесс наследует от родителя пользователя и права доступа.</li>
+<li>В редких случаях пользователь может измениться.</li>
+</ol>
+</div>
+<h3 id="что-такое-приоритет-процесса">Что такое приоритет процесса?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Приоритет процесса - это число, определяющее, как часто процесс будет получать процессорное время.</li>
+<li>В Linux также используется число nice value - величина, обратная приоритету.</li>
+<li>Nice измеряется от -20 (высший приоритет) до 19 (низший приоритет).</li>
+<li>Пользователь может понизить приоритет своих процессов.</li>
+<li>Повысить приоритет может только суперпользователь.</li>
+<li>Можно запустить процесс с нестандартным приоритетом командой nice -n.</li>
+<li>Можно изменить приоритет уже выполняемого процесса командой renice -n.</li>
+<li>Эти команды задают числа, которые прибавляются к nice value.</li>
+</ol>
+</div>
+<h3 id="что-такое-фоновые-процессы">Что такое фоновые процессы?</h3>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-11.png" style="width: 600px;" title="this"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Можно запустить процесс без привязки к терминалу, в фоновом режиме с помощью &amp;.</li>
+<li>Если мы хотим перевести процесс в состояние остановленный, используется сочетание клавиш «Ctrl + z».</li>
+<li>Можем переместить остановленный процесс на передний план командой fg.</li>
+<li>Можно продолжить выполнение остановленного процесса в фоновом режиме командой bg.</li>
+<li>Используя команду jobs мы можем получить список остановленных и фоновых процессов.</li>
+</ol>
+</div>
+</div>
+<header class="caption">
+<h1>Управление процессами</h1>
+<!-- <p>Yours Truly, Famous Inc.</p> -->
+</header>
+<section class="slide">
+<h2 class="shout">Управление процессами</h2>
+</section>
+<footer class="badge">
+<a href="https://github.com/shower/shower">Build with shower</a>
+</footer>
+<script src="/assets/shower/shower.js"></script>
+<!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+<script type="text/javascript">
+        
+        const content = document.querySelector('#temp');
+        const childern = content.childNodes;
+
+        let current_slide;
+        let points;
+        let code;
+        let image;
+        let misc;
+
+        function commit() {
+            if (current_slide) {
+
+                const elems = [image, code, points, misc];
+
+                let slide;
+
+                elems.forEach(elem => {
+                    if (elem) {
+                        // console.log("ИТЕРАЦИЯ " + current_slide);
+                        // console.log([image, code, points, misc]);
+
+                        slide = document.createElement('section');
+                        slide.className = "slide";
+                        let slide_header = document.createElement('h2');
+                        slide_header.innerHTML = current_slide;
+                        slide.appendChild(slide_header);
+
+                        slide.appendChild(elem);
+
+                        document.body.appendChild(slide);
+
+                        fit_in_slide(elem);
+                    }
+                });
+
+                misc = undefined;
+                points = undefined;
+                image = undefined;
+                code = undefined;
+            }
+        }
+
+        function fit_in_slide(element) {
+            console.log("ИТЕРАЦИЯ " + current_slide);
+            console.log(element);
+
+            let ratio = Math.min(
+            	550 / element.offsetHeight,
+            	// 1600 / element.offsetWidth,
+            	);
+
+
+            let new_size = Math.sqrt(ratio) / 1.2;
+            if (new_size > 2.5) {
+                new_size = 2.5
+            }
+            element.style["font-size"] = new_size + "em";
+
+            new_size = Math.pow(ratio, 1.1) * 12;
+            if (new_size > 30) {
+                new_size = 30
+            }
+
+            ratio = Math.min(
+            	550 / element.offsetHeight,
+            	1600 / element.offsetWidth,
+            	);
+
+            new_size = Math.pow(ratio, 1.1) * 12;
+            if (new_size > 30) {
+                new_size = 30
+            }
+
+            console.log(element.innerHTML);            
+            console.log(element.querySelectorAll("*"));            
+            console.log(element.querySelectorAll("pre"));
+
+            element.querySelectorAll("pre").forEach(e => {
+                e.style["font-size"] = new_size + "px";
+                e.style["line-height"] = new_size * 1.2 + "px";
+            });
+
+            element.querySelectorAll("span").forEach(e => {
+            	console.log("found");
+                e.style["font-size"] = new_size + "px";
+                e.style["line-height"] = new_size * 1.2 + "px";
+            });
+
+            console.log(
+                // realHeight, ratio, 
+                new_size, 
+                element.offsetHeight,
+                element.offsetWidth);
+
+            return element;
+        }
+
+        childern.forEach(elem => {
+            if (elem.tagName == "H3") {
+                commit();
+                let slide = document.createElement('section');
+                slide.className = "slide";
+                let slide_header = document.createElement('h2');
+                slide_header.className = "shout shrink"
+                slide_header.innerHTML = elem.innerHTML;
+                slide.appendChild(slide_header);
+
+                // slide.appendChild(elem);
+
+                document.body.appendChild(slide);
+            }
+
+            if (elem.tagName == "H3" || elem.tagName == "H4") {
+                commit();
+                current_slide = elem.innerHTML;
+            }
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("notice--info")) {
+                let list = elem.getElementsByTagName('ol')[0];
+
+                list.childNodes.forEach(elem => {
+                    elem.className = "next";
+                });
+
+                points = list;
+                // points = fit_in_slide(points);
+            } 
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("highlighter-rouge")) {
+                code = elem;
+                commit()
+                // code = fit_in_slide(code);
+            } 
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("presentation")) {
+                misc = elem;
+                // misc = fit_in_slide(misc);
+                commit();
+            } 
+
+            else if (elem.tagName == "P" && elem.getElementsByTagName('img').length > 0) {
+                image = elem.getElementsByTagName('img')[0];
+                image.style.width = "auto";
+                commit();
+            } 
+        });
+
+        commit();
+
+        content.remove();
+
+    </script>
+<div class="progress"></div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

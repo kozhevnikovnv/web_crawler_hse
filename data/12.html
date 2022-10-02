@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>MLOps меняет процесс разработки моделей машинного обучения | Михаил Коротеев</title>
+<meta content="Многие говорят сейчс об MLOps. Каковы его ключевые принципы? Поможет разобраться в этом статья от одного из практикующих экспертов." name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="MLOps меняет процесс разработки моделей машинного обучения" property="og:title"/>
+<meta content="https://koroteev.site/scipop/mlops-transformation-3-principles/" property="og:url"/>
+<meta content="Многие говорят сейчс об MLOps. Каковы его ключевые принципы? Поможет разобраться в этом статья от одного из практикующих экспертов." property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="MLOps меняет процесс разработки моделей машинного обучения" name="twitter:title"/>
+<meta content="Многие говорят сейчс об MLOps. Каковы его ключевые принципы? Поможет разобраться в этом статья от одного из практикующих экспертов." name="twitter:description"/>
+<meta content="https://koroteev.site/scipop/mlops-transformation-3-principles/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2021-05-04T00:00:00+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/scipop/mlops-transformation-3-principles/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--single None">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<div itemscope="" itemtype="https://schema.org/Person">
+<div class="author__avatar">
+<img alt="Михаил Коротеев" itemprop="image" src="/assets/images/avatar3.jpg"/>
+</div>
+<div class="author__content">
+<h3 class="author__name" itemprop="name">Михаил Коротеев</h3>
+<div class="author__bio" itemprop="description">
+<p>Есть такая профессия - Родину автоматизировать.</p>
+</div>
+</div>
+<div class="author__urls-wrapper">
+<button class="btn btn--inverse">Связаться со мной</button>
+<ul class="author__urls social-icons">
+<li><a href="https://koroteev.site" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fas fa-fw fa-link"></i><span class="label">Website</span></a></li>
+<li><a href="https://github.com/koroteevmv" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-github"></i><span class="label">GitHub</span></a></li>
+<li><a href="https://www.youtube.com/channel/UCPe6h6MY8XZpLV7oRLqRUwQ" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-youtube"></i><span class="label">YouTube</span></a></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i><span class="label">Vkontakte</span></a></li>
+<!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+</ul>
+</div>
+</div>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="MLOps меняет процесс разработки моделей машинного обучения" itemprop="headline"/>
+<meta content="Многие говорят сейчс об MLOps. Каковы его ключевые принципы? Поможет разобраться в этом статья от одного из практикующих экспертов." itemprop="description"/>
+<meta content="2021-05-04T00:00:00+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">MLOps меняет процесс разработки моделей машинного обучения
+</h1>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-04T00:00:00+00:00">May 4, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          5 мин на чтение
+        
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<aside class="sidebar__right sticky">
+<nav class="toc">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#контроль-версий-нужен-не-только-для-кода">Контроль версий нужен не только для кода</a></li>
+<li><a href="#встраивайте-предохранители-в-код">Встраивайте предохранители в код</a></li>
+<li><a href="#продукт---это-конвейер-а-не-модель">Продукт - это конвейер, а не модель</a></li>
+</ul>
+</nav>
+</aside>
+<p><a href="https://www.kdnuggets.com/2020/12/mlops-changing-machine-learning-developed.html">Оригинал</a></p>
+<p>Промышленные решения, основанные на машинном обучении - это гораздо больше, чем просто модель. Три ключевые концепции, охватывающие управление версиями, тестирование и конвейеры, являются основой для операций машинного обучения (MLOps), которые помогают группам по анализу данных быстрее и увереннее выпускать модели.</p>
+<p><a href="https://www.linkedin.com/in/skogstrom/">Хенрик Скогстром</a>, руководитель по развитию Valohai.</p>
+<p><img alt="MLOps principles" src="/assets/images/2021-05-04/image4.jpg" title="MLOps principles"/></p>
+<p>Фото <a href="https://unsplash.com/@kellysikkema?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Келли Сиккема</a> на <a href="https://unsplash.com/s/photos/idea?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</p>
+<p>MLOps представляет собой комплекс <a href="https://ml-ops.org/">операций машинного обучения</a>. Это практики, направленные на то, чтобы машинное обучение в промышленной среде было эффективным и бесперебойным. Хотя термин MLOps еще только зарождается, он проводит параллели с DevOps в том смысле, что это не отдельная технология, а общее понимание того, как делать вещи правильным образом.</p>
+<p><a href="https://valohai.com/mlops/">Общие принципы</a> MLOps поощряют аналитиков воспринимать машинное обучение не как отдельные научные эксперименты, а как непрерывный процесс разработки, запуска и поддержки систем машинного обучения для реального использования. Машинное обучение должно быть коллективным, воспроизводимым, непрерывным и протестированным.</p>
+<p>Практическая реализация MLOps включает в себя как принятие определенных передовых методов, так и создание инфраструктуры, поддерживающей эти передовые методы. Давайте рассмотрим три способа, которыми MLOps меняет процесс разработки машинного обучения: его влияние на управление версиями, способы встраивания средств защиты и необходимость сосредоточиться на конвейере машинного обучения.</p>
+<h2 id="контроль-версий-нужен-не-только-для-кода">Контроль версий нужен не только для кода</h2>
+<p>Когда дело доходит до использования машинного обучения в организации, контроль версий должен быть главным приоритетом. Однако эта концепция применима не только к коду, который управляет моделями.</p>
+<p>Контроль версий машинного обучения должен охватывать код, базовые данные и параметры, используемые при обучении алгоритма. Этот процесс жизненно важен для обеспечения масштабируемости и <a href="https://www.wired.com/story/artificial-intelligence-confronts-reproducibility-crisis/">воспроизводимости</a>.</p>
+<p><img alt="MLOps versioning" src="/assets/images/2021-05-04/image3.jpg" title="MLOps versioning"/></p>
+<p>Контроль версий для машинного обучения не ограничивается только кодом, как в традиционном программном обеспечении. <a href="https://www.cs.mcgill.ca/~jpineau/ReproducibilityChecklist.pdf">Контрольный список воспроизводимости</a> служит хорошей отправной точкой для отслеживания того, что ваша система MLOps должна уметь документировать.</p>
+<p>Во-первых, давайте обсудим контроль версий в коде, поскольку большинству специалистов по данным он знаком. Будь то код реализации, используемый для системной интеграции, или код моделирования, который позволяет разрабатывать алгоритмы машинного обучения, должна быть четкая документация любых внесенных изменений. Эта область чаще всего хорошо покрывается, например, использованием Git.</p>
+<p>Контроль версий также должен применяться к данным, используемым для обучения моделей. Сценарии и пользователи постоянно меняются и адаптируются, поэтому логично, что ваши данные не всегда будут выглядеть одинаково.</p>
+<p>Это постоянное изменение означает, что мы всегда должны переучивать модели и проверять их точность с новыми данными. В результате необходим надлежащий контроль версий для обеспечения воспроизводимости.</p>
+<p>Развиваются не только данные, которые мы используем для построения моделей, но и метаданные. Метаданные относятся к собранной информации о базовых данных и обучении модели - они рассказывают нам, как прошел процесс обучения вашей модели. Данные использовались как ожидалось? Какой точности достигла модель?</p>
+<p>Метаданные могут измениться, даже если исходные данные не изменились. Метаданные должны быть строго версионироваться, потому что вам понадобится эталон для последующего обучения моделей.</p>
+<p>Наконец, для самой модели тоже должен быть надлежащий контроль версий. Как у каждого специалист по данным, ваша цель - постоянно повышать точность и надежность моделей машинного обучения, поэтому развивающийся алгоритм должен иметь собственное управление версиями. Это часто называют реестром моделей.</p>
+<p>Технология MLOps поощряет контроль версий для всех компонентов, упомянутых выше, как стандартную практику, и большинство платформ MLOps позволяют легко реализовать это. При правильном управлении версиями вы всегда обеспечиваете воспроизводимость, что имеет решающее значение для управления и обмена знаниями.</p>
+<h2 id="встраивайте-предохранители-в-код">Встраивайте предохранители в код</h2>
+<p>Когда дело доходит до обеспечения безопасности в процессе машинного обучения, она должна быть в коде, а не в вашей голове!</p>
+<p>Стремитесь любой ценой избегать ручных или непоследовательных процессов. Все процедуры для сбора данных, тестирования данных и развертывания модели должны быть записаны в коде, а не в документации процесса, чтобы вы могли быть уверены, что каждая итерация модели будет соответствовать требуемым стандартам.</p>
+<p>Например, очень важно то, как вы тренируете модель машинного обучения. В результате любое небольшое изменение в том, как обучается модель, может привести к проблемам и несогласованности в прогнозах, которые она делает. Из-за этого риска важно встроить эти меры безопасности непосредственно в код.</p>
+<p><img alt="MLOps automation" src="/assets/images/2021-05-04/image2.jpg" title="MLOps automation"/></p>
+<p>Тестирование данных часто проводится ручным способом, но должно быть программным.</p>
+<p>В конвейер машинного обучения должен быть записан код, который защищает то, <a href="https://www.jeremyjordan.me/testing-ml/">как должны выглядеть обучающие данные (тесты перед обучением) и как должна работать обученная модель (тесты после обучения)</a>. Это включает в себя параметры того, какими должны быть ожидаемые прогнозы - это даст вам уверенность в том, что продуктовые модели соответствуют всем установленным вами правилам.</p>
+<p>Самое замечательное в реализации платформы MLOps заключается в том, что все эти шаги самодокументируются и могут использоваться повторно - по крайней мере, до уровня самодокументирования кода. Защитные меры могут быть легко перепрофилированы для других сценариев использования машинного обучения, и могут применяться те же стандарты, например, точность модели.</p>
+<h2 id="продукт---это-конвейер-а-не-модель">Продукт - это конвейер, а не модель</h2>
+<p>Третья концепция MLOps, которую следует осознать, заключается в том, что продуктом является конвейер машинного обучения, а не сама модель. Эта реализация часто характеризуется моделью зрелости, когда организация переходит от <a href="https://cloud.google.com/solutions/machine-learning/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning">ручного процесса к автоматизированному конвейеру</a>.</p>
+<p><img alt="MLOps pipeline" src="/assets/images/2021-05-04/image1.jpg" title="MLOps pipeline"/></p>
+<p>Конечная цель <a href="https://valohai.com/machine-learning-pipeline/">конвейера машинного обучения</a> - создать самовосстанавливающуюся систему.</p>
+<p>Модель машинного обучения важна для решения бизнес-задач и удовлетворения насущных потребностей организации. Однако необходимо <a href="https://www.analyticsinsight.net/forget-the-models-you-need-a-machine-learning-pipeline/">признать, что модель носит временный характер, в отличие от системы, которая ее производит</a>.</p>
+<p>Базовые данные, которые поддерживают модель, будут быстро меняться, и модель будет дрейфовать. Это означает, что в конечном итоге модель придется переобучать и корректировать, чтобы обеспечить точные результаты в новой среде.</p>
+<p>В результате конвейер, который производит точные и эффективные модели машинного обучения, должен быть продуктом, на создание которого специалисты по данным должны сосредоточить все свое внимание. Итак, что же такое конвейер машинного обучения?</p>
+<p>Без MLOps и налаженного конвейера машинного обучения обновление моделей будет трудоемким и трудным. Вместо того, чтобы выполнять эти задачи по отдельности и решать проблемы только по мере их возникновения, конвейер устраняет эту проблему. В нем изложена четкая структура и принципы управления обновлениями и изменениями модели.</p>
+<p>Конвейер машинного обучения включает в себя сбор и предварительную обработку данных, обучение модели машинного обучения, перенос ее в производство и постоянный мониторинг для повторного запуска обучения при снижении точности. Хорошо построенный конвейер помогает масштабировать этот процесс по всей организации, чтобы вы могли максимально использовать производственные модели и гарантировать, что эти возможности всегда работают на должном уровне.</p>
+<p>Развитый конвейер машинного обучения также позволяет вам контролировать, как модели реализуются и используются в бизнесе. Это также улучшает взаимодействие между отделами и позволит другим обращаться к конвейеру, а не к ручным рабочим процессам, чтобы определить, нужно ли вносить изменения. Точно так же он убирает узкие места в производстве и позволяет максимально эффективно использовать возможности в области анализа данных.</p>
+<p>Подводя итог, можно сказать, что есть три основных концепции MLOps, которые должен понимать каждый.</p>
+<ol>
+<li>Контроль версий необходим на протяжении всего процесса машинного обучения. Это включает не только код, но и данные, параметры и метаданные.</li>
+<li>Защитные меры должны работать автоматически - не рискуйте результатами своих моделей машинного обучения, полагаясь на ручные или непоследовательные процессы.</li>
+<li>Наконец, продукт - это конвейер, а не модель машинного обучения. Развитый конвейер - единственный способ поддерживать машинное обучение продуктового уровня в долгосрочной перспективе.</li>
+</ol>
+<p>Биография: <a href="http://www.valohai.com/">Хенрик Скогстрём</a> возглавляет <a href="https://valohai.com/mlops/">внедрение платформы Valohai MLOpsсреде</a> и подробно пишет о передовых методах машинного обучения в производственной. До Валохая Хенрик работал менеджером по продукту в Quest Analytics, чтобы улучшить доступность здравоохранения в США. Запущенный в 2017 году, Valohai является пионером в области MLOps и помогает таким компаниям, как Twitter, LEGO Group и JFrog, быстрее запускать свои модели в производство.</p>
+</section>
+<footer class="page__meta">
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-tags"></i> Метки: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/tags/#article" rel="tag">article</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#machine-learning" rel="tag">machine-learning</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#mlops" rel="tag">mlops</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#translation" rel="tag">translation</a>
+</span>
+</p>
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-folder-open"></i> Разделы: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/categories/#scipop" rel="tag">scipop</a>
+</span>
+</p>
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2021-05-04T00:00:00+00:00">May 4, 2021</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/scipop/inference-and-prediction-2/" title="Вывод и предсказания. Часть 2: статистика
+">Предыдущая</a>
+<a class="pagination--pager" href="/scipop/ml-reproducibility-papers-without-code/" title="Воспроизводимость исследований в области машинного обучения
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

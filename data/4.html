@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Сетевые системы и приложения | Михаил Коротеев</title>
+<meta content="" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="website" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Сетевые системы и приложения" property="og:title"/>
+<meta content="https://koroteev.site/os/" property="og:url"/>
+<meta content="" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Сетевые системы и приложения" name="twitter:title"/>
+<meta content="" name="twitter:description"/>
+<meta content="https://koroteev.site/os/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<link href="https://koroteev.site/os/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--course">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<nav class="nav__list">
+<input id="ac-toc" name="accordion-toc" type="checkbox"/>
+<label for="ac-toc">Выпадающее меню</label>
+<ul class="nav__items">
+<li>
+<a href="/os/"><span class="nav__sub-title">Содержание курса</span></a>
+</li>
+<li>
+<span class="nav__sub-title">1. Основы Linux</span>
+<ul>
+<li><a href="/os/1/0-vm_installation/">Введение</a></li>
+<li><a href="/os/1/1-cli/">Командная строка</a></li>
+<li><a href="/os/1/2-ssh/">Использование ssh</a></li>
+<li><a href="/os/1/3-users/">Пользователи и права</a></li>
+<li><a href="/os/1/4-processes/">Архитектура, пакеты, процессы</a></li>
+</ul>
+</li>
+<li>
+<span class="nav__sub-title">2. Администрирование Linux</span>
+<ul>
+<li><a href="/os/2/1-init/">Управление загрузкой</a></li>
+<li><a href="/os/2/1-filesystems/">Файловые системы</a></li>
+<li><a href="/os/2/3-bash/">Основы скриптов на bash</a></li>
+<li><a href="/os/2/4-text/">Средства обработки текста</a></li>
+<li><a href="/os/2/5-network/">Настройка сети</a></li>
+</ul>
+</li>
+<li>
+<span class="nav__sub-title">3. Сетевое программирование</span>
+<ul>
+<li><a href="/os/3/0-environment/">Настройка окружения Python</a></li>
+<li><a href="/os/3/2-git/">Системы контроля версий</a></li>
+<li><a href="/os/3/3-sockets/">Использование сокетов</a></li>
+<li><a href="/os/3/4-threading/">Асинхронное программирование</a></li>
+<li><a href="/os/4/1-tls/">Безопасность в сетях</a></li>
+<li><a href="/os/4/2-web-server/">Веб-служба</a></li>
+<li><a href="/os/4/5-deploy/">Развертывание приложений</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="Сетевые системы и приложения" itemprop="headline"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Сетевые системы и приложения
+</h1>
+</header>
+<section class="page__content" itemprop="text">
+<aside class="sidebar__right">
+<nav class="toc">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#о-курсе">О курсе</a></li>
+<li><a href="#программа-курса">Программа курса</a></li>
+<li><a href="#тематический-план">Тематический план</a></li>
+<li><a href="#предварительные-требования">Предварительные требования</a></li>
+<li><a href="#материалы-курса">Материалы курса</a></li>
+<li><a href="#источники-информации">Источники информации</a></li>
+<li><a href="#программное-обеспечение">Программное обеспечение</a></li>
+<li><a href="#для-студентов-финансового-университета">Для студентов Финансового университета</a></li>
+</ul>
+</nav>
+</aside>
+<h2 id="о-курсе">О курсе</h2>
+<p>Современному специалисту в области информатики, независимо от специализации, придется работать с сетевыми приложениями, серверным ПО. Серьезное промышленное окружение для разработки предполагает использование специализированных операционных систем, чаще всего из семейства UNIX в качестве основного окружения.</p>
+<p>После изучения этого курса вы будете больше понимать в технологиях и инструментах, которые используются для поддержки сложного процесса производства программ. Вы будете знать основные принципы работы операционных систем, большинство основных концепций разработки, будете уметь настраивать сложное окружение для разработки и сможете автоматизировать свою работу на профессиональном уровне.</p>
+<h2 id="программа-курса">Программа курса</h2>
+<table>
+<tr>
+<th> Название занятия </th>
+<!--     <th> Учебник </th> -->
+<th> Методичка </th>
+<th> Видео </th>
+<th> Слайды </th>
+<th> Тест </th>
+</tr>
+<tr>
+<td class="" colspan="6"> 1. <a href="/os/1/0-vm_installation/"> <b> LX0 Введение в ОС Linux </b> </a> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os00-0/">Лекция: Операционные системы. UNIX. Linux. </a>
+</td>
+<!--       <td> 
+        <a href="/text/os00-0/">Глава</a>
+       </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=fcCX1HnEQ5M">Видео</a>
+</td>
+<td>
+<a href="/pres/os00-0/">Слайды</a>
+</td>
+<td>
+<a href="https://campus.fa.ru/mod/quiz/view.php?id=81999">Тест</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="/text/os00-1/">Лабораторная: Установка Linux в виртуальную машину </a>
+</td>
+<!--       <td> 
+        <a href="/text/os00-1/">Глава</a>
+       </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=WNMyK4QBTS0">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 2. <a href="/os/1/1-cli/"> <b> LX1 Основы командной строки </b> </a> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os11-0/">Лекция: Основы командной строки Linux </a>
+</td>
+<!--       <td> 
+        <a href="/text/os11-0/">Глава</a>
+       </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=QjYEkVXH4t4">Видео</a>
+</td>
+<td>
+<a href="/pres/os11-0/">Слайды</a>
+</td>
+<td>
+<a href="https://campus.fa.ru/mod/quiz/view.php?id=82013">Тест</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="/text/os11-1/">Практика: 10 основных команд </a>
+</td>
+<!--       <td> 
+        <a href="/text/os11-1/">Глава</a>
+       </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=ZccH6NGSHkQ">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os11-2/">Практика: Служебные команды </a>
+</td>
+<!--       <td> 
+        <a href="/text/os11-2/">Глава</a>
+       </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=B7EG9nsSvNk">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os11-3/">Лекция: Работа с файлами </a>
+</td>
+<!--       <td> 
+        <a href="/text/os11-3/">Глава</a>
+       </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="/pres/os11-3/">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os11-4/">Практика: Работа с файлами </a>
+</td>
+<!--       <td> 
+        <a href="/text/os11-4/">Глава</a>
+       </td> -->
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 3. <a href="/os/1/2-ssh/"> <b> LX2 Использование удаленного доступа по SSH </b> </a> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os12-0/">Лекция: Удаленная работа по SSH </a>
+</td>
+<!--       <td> 
+        <a href="/text/os12-0/">Глава</a>
+       </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="/pres/os12-0/">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os12-1/">Практика: SSH </a>
+</td>
+<!--       <td> 
+        <a href="/text/os12-1/">Глава</a>
+       </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=5kJKhd7wEj8">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os12-2/">Практика: Tmux </a>
+</td>
+<!--       <td> 
+        <a href="/text/os12-2/">Глава</a>
+       </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=5t9TW9TnOxU">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 4. <a href="/os/1/3-users/"> <b> LX3 Права и пользователи </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Пользователи и права 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="/pres/os13-0/">Слайды</a>
+</td>
+<td>
+<a href="https://campus.fa.ru/mod/quiz/view.php?id=82138">Тест</a>
+</td>
+</tr>
+<tr>
+<td>   Практика: Управление пользователями 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://drive.google.com/open?id=1YTRkkq2Wdx4y10Prs6qMcxhzro7hMSuS4LMPVaW3Qjc">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=CaqUrvUgtkY">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Права доступа 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://drive.google.com/open?id=1ni6YJvKWqN98dalZ5kUdf3FUyDbnZxuTc0YUl7ejb8Y">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=9v0VsyHgkVU">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 5. <a href="/os/1/4-processes/"> <b> LX4 Процессы и пакеты в Linux </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Управление пакетами 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="/pres/os14-0/">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Управление пакетами 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://drive.google.com/open?id=1Boru2unb7i-ZSFpqhjsrkXdB-NOpyuB8TUbO_jfPBWI">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=KWFiUEUuDJ0">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Лекция: Управление процессами 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="/pres/os14-2/">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Управление процессами 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://drive.google.com/open?id=1YWvk1C7fdQoJXpmPsQrMZsl8rd2mY0CkU4YwRd6vmyg">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=GQJPZFKNgaA">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Дополнительно: Мониторинг процессов в htop 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 6. <a href="/os/2/1-init/"> <b> LX5 Управление загрукой Linux </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Загрузка ОС 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/1DAjtxlHALgO7BfcM74E-8sMSQPLc1CtbQOf8EM3Lkec/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Создание и управление службами 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/17EGC_c3shzYogdov5R30TofuXcfvdM2tYqgWeL8iv4w/edit?usp=sharing">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=Kj_RK3y0U84">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 7. <a href="/os/2/2-filesystems/"> <b> LX6 Управление файловыми системам в Linux </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Файловые системы и разбиение диска 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=QBmAFdeR__s">Видео</a>
+</td>
+<td>
+<a href="https://docs.google.com/presentation/d/11jLNQkWgfyK13_AIVfaSPiznvG8EO-moNG1j46wc4ek/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Файловые системы 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/13N304KHO5ksfqu5tqD36pzfkgy48TFIeZD9EVxVBpbY/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Сетевые файловые системы 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 8. <a href="/os/2/3-bash/"> <b> LX7 Основы скриптов на bash </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Bash как язык программирования 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=2f_TXMcAnJI">Видео</a>
+</td>
+<td>
+<a href="https://docs.google.com/presentation/d/1t02x185xtkJMoK2e3ML6nWPmafBZAa1V4HOdpWLBcmg/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Ваш первый сценарий 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1iA-iQGxkkP5cLKOr0XM9YwjSzL3NY7abo0zU4FvUfMw/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Работа с cron 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1Orqkd3eKcKtjEgOqFVzVxVMhPDRFrYHa-iHiTT_u78g/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Дополнительно: Работа с MD5 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/15T1OX3bYii-PsgaODn0h9-aRgmlje947IRnj6DLg1_I/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 9. <a href="/os/2/4-text/"> <b> LX8 Средства обработки текста </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Команды работы с текстом в Linux 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=col4_j9TsP0">Видео</a>
+</td>
+<td>
+<a href="https://docs.google.com/presentation/d/1N7yc4WVROAaUmB4vWgd21KIi9WRu7MIkn-zkvRTNbYI/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Создание HTML-отчета 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1d1TOeIhPYhkQIklUBLXQToLK4ckctkPmgrNGMQa1paE/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Парсинг лог-файлов 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1pv8XmGzcX_IGE3EwCmyMkMFsax7cpjbxv-NX6M1Wy6E/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 10. <a href="/os/2/5-network/"> <b> LX9 Настройка сетевой среды в Linux </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Основные понятия компьютерных сетей 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/14ULcl1Fq8Qu8ghPOiOs_LIHBQz6Wgy2p6jyzZhE1LRU/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Диагностика сетей 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1iOH61Inpbeh4E4SBvwnzQycFW0Zm6AjLP6LQ-7l7wR0/edit?usp=sharing">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=eAb7pVbOp48">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Дополнительно: Способы сетевых подключений виртуальных машин 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1H1ozZckECh1R4Rj5nP_S8urGUUyRfL-NSHBC_Rn9fvw/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 11. <a href="/os/3/0-environment/"> <b> DO0 Использование Linux для разработки </b> </a> </td>
+</tr>
+<tr>
+<td>   Практика: Настройка рабочего окружения Python в Linux 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=b9tXQsZPJOE">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Vim 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1XmShF_7YvyUUV43iP5F2lkR9oFqQGbnZ8cwYaVHEAaQ/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Лекция: Системное программирование на Python 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/1AvbFCXLp1FWLKC9khjdqGzykNGVa7jeEis5yt8wKC_I/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Файловый менеджер 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1OEd8tlQeB8G2aBxeJSYDEb168NCmVwySZv0oZ7QFzXw/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 12. <a href="/os/3/2-git/"> <b> DO1 Контроль версий: Git и GitHub </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Системы контроля версий - Git и GitHub 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1adG4d1NmxaStrvhnSpt-X0qCW88byvXvJRUxy_bTXtE/edit?usp=sharing">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=HZxQbtYhBYs">Видео</a>
+</td>
+<td>
+<a href="/pres/os32-0/">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Основы работы с СКВ в графическом режиме 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/0_git_basics#1-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B-%D1%81-%D1%81%D0%BA%D0%B2-%D0%B2-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%BC-%D1%80%D0%B5%D0%B6%D0%B8%D0%BC%D0%B5">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=CE2Ek2dNQLE">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Работа с Git в терминале 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/0_git_basics#2-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-git-%D0%B2-%D1%82%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D0%B0%D0%BB%D0%B5">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=TZJKKLTi8b4">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Работа с удаленными репозиториями и GitHub 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/0_git_basics#3-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%D0%B8-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F%D0%BC%D0%B8-%D0%B8-github">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=PYIy3XjC8J0">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 13. <a href="/os/3/3-sockets/"> <b> NP1 Использование сокетов </b> </a> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os33-0/">Лекция: Сетевое программирование на Python с помощью сокетов </a>
+</td>
+<!--       <td> 
+        <a href="/text/os33-0/">Глава</a>
+       </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/14OOCSgNHFRARq5gzsHIGZbr_2_QHU4kXWLFOtSDPdHQ/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Простой эхо-сервер 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/1_echo_server">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=UTalhmE_WcI">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 14. <a href="/os/3/4-threading/"> <b> NP2 Асинхронное программирование </b> </a> </td>
+</tr>
+<tr>
+<td>
+<a href="/text/os34-0/">Лекция: Асинхронное программирование в Python </a>
+</td>
+<!--       <td> 
+        <a href="/text/os34-0/">Глава</a>
+       </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/1loEJNHmKluY0o40Q6iml7m6RG5QYUqZ4wmt1G8TZ23Q/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Многопоточный сервер 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/2_threaded_server">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=_FYcL3tYKec">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Мультипроцессные вычисления 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/3_Parallelism">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Библиотека asyncio 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/4_asyncio_server">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 15. <a href="/os/4/1-tls/"> <b> NP3 Безопасность сетевых приложений </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Основы компьютерной безопасности 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/1PJKt22xLIzULxhTZKL4Wek717z1uXp74oLgupfOabw8/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Симметричное шифрование 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/7_Symmetric_ciphers">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Асимметричное шифрование 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/8_Assymmetric_ciphers">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Протокол рукопожатия 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 16. <a href="/os/4/2-web-server/"> <b> NP4 Веб-сервер </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Установка и настройка веб-сервера в Linux 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/1JxcZDZ50M9MfDWAaramWVneopEvEvQCpXpcSs3kk88g/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Установка Apache 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1yWW0frd1MdW0onBCcwQYSQk_NZWtkNSQ_f9uzCEbA0Q/edit?usp=sharing">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=wdMx35irNKE">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Установка nginx 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Лекция: Web-технологии 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/1_N99bxfJk8thTiNF3FH-_2hLsQdhPWxzGjnYTRd0Dx4/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Простой веб-сервер 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/6_Web_server">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Веб-парсер 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1-8xcdBJ96kir46xRXAaDHcED0vFj6jnJilTk6oeVoFI/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="6"> 17. <a href="/os/4/5-deploy/"> <b> DO2 Создание и развертывание серверного приложения </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Развертывание приложений на сервере 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Создание FTP-сервера 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://github.com/fa-python-network/5_FTP_server">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Развертывание в ручном режиме 
+         </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1NwBwbqkxGtHXiuRLS9lOillQNAmX0sGripX9KiSnxaA/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Развертывание через Git 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Развертывание через Docker 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>   Практика: Создание инсталлятора 
+         </td>
+<!--       <td>  </td> -->
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+</table>
+<h2 id="тематический-план">Тематический план</h2>
+<p>Данный курс призван познакомить с современными инфраструктурными решениями для разработки программного обеспечения, технологиями сетевого программирования. Программа данного курса включает:</p>
+<ul>
+<li>Основы операционной системы Linux</li>
+<li>Основы скриптов на bash</li>
+<li>Удаленное администрирование</li>
+<li>Использование Linux для разработки</li>
+<li>Вопросы настройки окружения разработчика</li>
+<li>Разработка сетевых и асинхронных приложений на Python.</li>
+<li>Использование СКВ Git и GitHub</li>
+<li>Настройка сетевых подключений и служб, основы администрирования ОС</li>
+<li>Вопросы развертывания программ на удаленном сервере</li>
+</ul>
+<h2 id="предварительные-требования">Предварительные требования</h2>
+<p>Для плодотворного изучения данного курса будут необходимы такие навыки:</p>
+<ul>
+<li>Уверенное знание синтаксиса Python</li>
+<li>Основы функционирования компьютера и компьютерных сетей</li>
+</ul>
+<h2 id="материалы-курса">Материалы курса</h2>
+<p>Вы можете познакомиться со всеми материалами курса - презентациями к лекциям, методических рекомендациям к лабораторным работам на <a href="https://drive.google.com/drive/folders/13uDCR9sfJC_QriEBwJlzACwsNhbMxmUV?usp=sharing">Google Диске</a>.</p>
+<ul>
+<li>Плейлист с видео по данному курсу досупен на <a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">YouTube</a>.</li>
+</ul>
+<h2 id="источники-информации">Источники информации</h2>
+<p>Основная литература</p>
+<ul>
+<li><a href="https://roadmap.sh/devops">Дорожная карта DevOps-разработчика</a></li>
+<li>Э. Таненбаум. Современные операционные системы</li>
+<li>М. Кофлер. Linux. Полное руководство</li>
+<li>В. Олифер. Компьютерные сети. Принципы, технологии, протоколы</li>
+<li>Е. Немет. Unix и Linux.Руководство системного администратора.</li>
+<li><a href="https://git-scm.com/book/ru/v2">Pro git</a></li>
+</ul>
+<p>Дополнительная литература</p>
+<ul>
+<li>Б.Уорд. Внутреннее устройство Linux</li>
+<li>Д. Н. Колисниченко. Командная строка Linux</li>
+<li>У. Шоттс. Командная строка Linux. Полное руководство</li>
+<li>Д. Тейлор. Сценарии командной оболочки. Linux, OS X и UNIX</li>
+<li>Д.Н. Колисниченко. Linux. От новичка к профессионалу</li>
+<li>Э. Свейгард. Автоматизация рутинных задач с помощью Python</li>
+<li>Э. Таненбаум. Компьютерные сети</li>
+</ul>
+<p>Видео-ресурсы</p>
+<ul>
+<li><a href="https://www.youtube.com/channel/UCvA_wgsX6eFAOXI8Rbg_WiQ">Канал о Linux и DevOps</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PL1eM6UUA7VFycj34L1zgaCBWhh3Ci9Cp0">Linux Foundation Certified System Administrator</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PL1eM6UUA7VFysNtA0qflCDxpDiZEt7Bep">Системное администрирование Linux</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLtK75qxsQaMLZSo7KL-PmiRarU7hrpnwK">The Linux Basics Course: Beginner to Sysadmin, Step by Step</a></li>
+</ul>
+<h2 id="программное-обеспечение">Программное обеспечение</h2>
+<ul>
+<li><a href="https://www.virtualbox.org/">Oracle VM VirtualBox</a></li>
+<li><a href="https://www.linuxmint.com/download.php">Дистрибутив Linux Mint</a></li>
+<li><a href="https://www.anaconda.com/products/individual">Python 3 Anaconda</a></li>
+<li><a href="https://git-scm.com/">Git</a></li>
+<li>Google Chrome</li>
+</ul>
+<h2 id="для-студентов-финансового-университета">Для студентов Финансового университета</h2>
+<p><a href="https://docs.google.com/document/d/1ALyuwC3muqUuM-VVbydrGWGIkD8yCtcW0P0N0zhCuCU/edit?usp=sharing">Балльно-рейтинговая система</a></p>
+<p><a href="https://docs.google.com/document/d/1eckYbhcpdvc8KKB4o5a1sQbBS_ndc37KKC0c9wI9Fp0/edit?usp=sharing">Программа зачета</a></p>
+<p><a href="https://campus.fa.ru/mod/quiz/view.php?id=322235">Пробное тестирование к зачету</a></p>
+<p><a href="https://campus.fa.ru/mod/quiz/view.php?id=214170">Зачетное тестирование</a></p>
+<p><a href="https://docs.google.com/document/d/1VD4kMGFQRyyyYlSJUaBCFDOJ3exduoo9P3q4KGglrfM/edit?usp=sharing">Программа экзамена</a></p>
+<p><a href="https://docs.google.com/document/d/1dH6XGbeIX3u_xf12GhgpQwCfwg5Cf5jTMX82WkrdhEk/edit?usp=sharing">Инструкция по работе в лаборатории</a></p>
+<p><a href="https://docs.google.com/document/d/1zeSRD8l_7VCUbvPoKeHvHijRWHn5z4d5Vfbh0T2kLWE/edit?usp=sharing">Методические указания по составлению тестовых заданий</a></p>
+</section>
+<footer class="page__meta">
+</footer>
+</div>
+</article>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

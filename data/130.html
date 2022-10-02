@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Научно-популярные статьи и переводы | Михаил Коротеев</title>
+<meta content="" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="website" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Научно-популярные статьи и переводы" property="og:title"/>
+<meta content="https://koroteev.site/scipop/" property="og:url"/>
+<meta content="" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Научно-популярные статьи и переводы" name="twitter:title"/>
+<meta content="" name="twitter:description"/>
+<meta content="https://koroteev.site/scipop/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<link href="https://koroteev.site/scipop/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--category">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<div itemscope="" itemtype="https://schema.org/Person">
+<div class="author__avatar">
+<img alt="Михаил Коротеев" itemprop="image" src="/assets/images/avatar3.jpg"/>
+</div>
+<div class="author__content">
+<h3 class="author__name" itemprop="name">Михаил Коротеев</h3>
+<div class="author__bio" itemprop="description">
+<p>Есть такая профессия - Родину автоматизировать.</p>
+</div>
+</div>
+<div class="author__urls-wrapper">
+<button class="btn btn--inverse">Связаться со мной</button>
+<ul class="author__urls social-icons">
+<li><a href="https://koroteev.site" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fas fa-fw fa-link"></i><span class="label">Website</span></a></li>
+<li><a href="https://github.com/koroteevmv" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-github"></i><span class="label">GitHub</span></a></li>
+<li><a href="https://www.youtube.com/channel/UCPe6h6MY8XZpLV7oRLqRUwQ" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-youtube"></i><span class="label">YouTube</span></a></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i><span class="label">Vkontakte</span></a></li>
+<!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+</ul>
+</div>
+</div>
+</div>
+<div class="archive">
+<h1 class="page__title" id="page-title">Научно-популярные статьи и переводы</h1>
+<div class="entries-list">
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/best-ai-papers-2020/" rel="permalink">Лучшие научные публикации о машинном обучении 2020 года
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-09T00:00:00+00:00">May 9, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          8 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Такая статья должна была выйти давно. Даже при всей поверхностности, приведенная экспертом подборка дает общее представление о тенденциях в изучении машинног...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#machine-learning" rel="tag">machine-learning</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/mlops-ml-metadata-google-introduction/" rel="permalink">ML MetaData: контроль версий для машинного обучения
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-08T00:00:00+00:00">May 8, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          2 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Обзор нового иснтрумента MLOps от Goolge. Это короткое объявление ценно не столько богатым содержанием, сколько обилием ссылок.
+</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#machine-learning" rel="tag">machine-learning</a>
+<span class="sep">, </span>
+<a href="/tags/#mlops" rel="tag">mlops</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/mlops-model-monitoring/" rel="permalink">MLOps: основы мониторинга моделей машинного обучения
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-07T00:00:00+00:00">May 7, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          4 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">От общего описания, к конкретике: по каким принципам и метрикам должен быть организован мониторинг моделей машинного обучения в производственном окружении?
+</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#machine-learning" rel="tag">machine-learning</a>
+<span class="sep">, </span>
+<a href="/tags/#mlops" rel="tag">mlops</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/ml-overview-landscape/" rel="permalink">Обзор MLOps
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-06T00:00:00+00:00">May 6, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          8 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Эксперт попытался дать общую характеристику MLOps. Что это такое, зачем нужно и какие инструменты существуют?
+</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#machine-learning" rel="tag">machine-learning</a>
+<span class="sep">, </span>
+<a href="/tags/#mlops" rel="tag">mlops</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/ml-reproducibility-papers-without-code/" rel="permalink">Воспроизводимость исследований в области машинного обучения
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-05T00:00:00+00:00">May 5, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          7 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Смотрите, к чему приводит палочная система оценки результативности научных исследований. Кризис воспроизводимости обсуждается серьезно. И уже довольно понятн...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#machine-learning" rel="tag">machine-learning</a>
+<span class="sep">, </span>
+<a href="/tags/#reproducibility" rel="tag">reproducibility</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/mlops-transformation-3-principles/" rel="permalink">MLOps меняет процесс разработки моделей машинного обучения
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-04T00:00:00+00:00">May 4, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          5 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Многие говорят сейчс об MLOps. Каковы его ключевые принципы? Поможет разобраться в этом статья от одного из практикующих экспертов.
+</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#machine-learning" rel="tag">machine-learning</a>
+<span class="sep">, </span>
+<a href="/tags/#mlops" rel="tag">mlops</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/inference-and-prediction-2/" rel="permalink">Вывод и предсказания. Часть 2: статистика
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-03T00:00:00+00:00">May 3, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          19 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Перевод второй из трех статей про сравнение двух подходов к моделированию данных - статистическому и обучающему. Вторая часть посвящена связи простых алгорит...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#machine-learning" rel="tag">machine-learning</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/inference-and-prediction-1/" rel="permalink">Вывод и предсказания. Часть 1: машинное обучение
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-01-12T00:00:00+00:00">January 12, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          15 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Перевод первой из трех статей про сравнение двух подходов к моделированию данных - статистическому и обучающему. Первая часть посвящена анализу алгоримтов ма...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#machine-learning" rel="tag">machine-learning</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/watch?v=DxntHp7-wbg">Почему простые числа образуют спирали?
+</a> <a href="/scipop/dider-prime-spirals/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-12-11T00:00:00+00:00">December 11, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Все мы слышали об удивительных закономерностях и паттернах в математике. Некоторые из них настолько красивы и необъяснимы, что люди с радостью приписывают им...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#dider" rel="tag">dider</a>
+<span class="sep">, </span>
+<a href="/tags/#3b1b" rel="tag">3b1b</a>
+<span class="sep">, </span>
+<a href="/tags/#math" rel="tag">math</a>
+<span class="sep">, </span>
+<a href="/tags/#editing" rel="tag">editing</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/watch?v=JwpFvFpbOGc&amp;feature=emb_logo">В чем на самом деле заключается метод обратного распространения?
+</a> <a href="/scipop/sciberia-backpropagation/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-10-28T00:00:00+00:00">October 28, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Мы продолжаем переводить легендарный курс по нейросетям от 3blue1brown. Сегодня речь пойдет о методе обратного распространения — главном алгоритме обучения н...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#sciberia" rel="tag">sciberia</a>
+<span class="sep">, </span>
+<a href="/tags/#3b1b" rel="tag">3b1b</a>
+<span class="sep">, </span>
+<a href="/tags/#math" rel="tag">math</a>
+<span class="sep">, </span>
+<a href="/tags/#editing" rel="tag">editing</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/watch?v=tJZPVIVZ9D4&amp;feature=emb_logo">Как π чуть не стало 6,283185…
+</a> <a href="/scipop/vert-pi/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-10-10T00:00:00+00:00">October 10, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">π, возможно, самая известная широкой аудитории константа в мире. Но вполне вероятно, значение π могло быть равно 6,28…, именно так его использовал Леонард Эй...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#vert" rel="tag">vert</a>
+<span class="sep">, </span>
+<a href="/tags/#3b1b" rel="tag">3b1b</a>
+<span class="sep">, </span>
+<a href="/tags/#math" rel="tag">math</a>
+<span class="sep">, </span>
+<a href="/tags/#editing" rel="tag">editing</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/watch?v=f9oDe4Yq4E0&amp;feature=emb_logo">Градиентный спуск: как учатся нейронные сети
+</a> <a href="/scipop/sciberia-gradient-descent/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-08-10T00:00:00+00:00">August 10, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Мы подготовили долгожданное продолжение лекций по нейросетям. Обучение сложный процесс не только для человека, но и для сущностей, порожденных разумом челове...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#sciberia" rel="tag">sciberia</a>
+<span class="sep">, </span>
+<a href="/tags/#3b1b" rel="tag">3b1b</a>
+<span class="sep">, </span>
+<a href="/tags/#math" rel="tag">math</a>
+<span class="sep">, </span>
+<a href="/tags/#editing" rel="tag">editing</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/watch?v=aoml_Y4DWss">Вероятности вероятностей: #2. Нулевая вероятность не значит «невозможно»
+</a> <a href="/scipop/vert-zero-probability/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-06-03T00:00:00+00:00">June 3, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Представьте монетку, у которой шанс приземлиться «орлом» не 50%, а какое-то иное, неизвестное вам значение. Вы делаете десять бросков, и семь раз выпадает «о...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#vert" rel="tag">vert</a>
+<span class="sep">, </span>
+<a href="/tags/#3b1b" rel="tag">3b1b</a>
+<span class="sep">, </span>
+<a href="/tags/#math" rel="tag">math</a>
+<span class="sep">, </span>
+<a href="/tags/#editing" rel="tag">editing</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/watch?v=kkgE50r6kIM&amp;t=119s">Вероятности вероятностей: #1. Биномиальное распределение
+</a> <a href="/scipop/vert-binomial/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-05-27T00:00:00+00:00">May 27, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Совершая покупки в интернете, вероятно, многим из вас приходилось решать, что лучше: когда у продавца более высокий рейтинг или больше отзывов? Оказывается, ...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#vert" rel="tag">vert</a>
+<span class="sep">, </span>
+<a href="/tags/#3b1b" rel="tag">3b1b</a>
+<span class="sep">, </span>
+<a href="/tags/#math" rel="tag">math</a>
+<span class="sep">, </span>
+<a href="/tags/#editing" rel="tag">editing</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/habr-ml-tricks/" rel="permalink">Три подводных камня машинного обучения и как их избежать
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-04-22T00:00:00+00:00">April 22, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          8 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Перевод статьи из Nature, в которой инженеры Google рассуждают о типичных трудностях в разработки систем машинного обучения
+</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#ml" rel="tag">ml</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/translate-mlops/" rel="permalink">Как будет выглядеть машинное обучение, если добавить к нему DevOps?
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-04-08T00:00:00+00:00">April 8, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          4 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Перевод интересной статьи о сущности и значзначении MLOps - перспективной отрасли управления операциями разработки и интеграции систем машинного обучения.
+</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#ml" rel="tag">ml</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/3b1b-fractals/" rel="permalink">Фракталы обычно не самоподобны
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-04-04T00:00:00+00:00">April 4, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          14 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Опубликован перевод видео про фракталы и фрактальную размерность. Оказывается, даже те, кто помнит определение фрактала, совершенно неправильно представляют ...</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#3b1b" rel="tag">3b1b</a>
+<span class="sep">, </span>
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#video" rel="tag">video</a>
+<span class="sep">, </span>
+<a href="/tags/#math" rel="tag">math</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/peterson-essay/" rel="permalink">Руководство по написанию эссе
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-02-29T00:00:00+00:00">February 29, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          30 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Перевод прекрасного руководства по написанию эссе от профессора Питерсона. Инструкция учит структурированному и организованному процессу написания текстов.
+</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#article" rel="tag">article</a>
+<span class="sep">, </span>
+<a href="/tags/#self-education" rel="tag">self-education</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+<div class="list__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="/scipop/3b1b-blockchain/" rel="permalink">Хотите знать, как устроен Биткоин (и другие криптовалюты)?
+</a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2020-02-18T00:00:00+00:00">February 18, 2020</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          18 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Опубликован перевод самого, наверное, лучшего популярного видео о том, как работает блокчейн и биткоин. Смотрите на канале 3blue1brown русский.
+</p>
+<p class="page__meta">
+<i aria-hidden="true" class="fas fa-fw fa-tags"></i>
+<!-- <span itemprop="keywords"> -->
+<a href="/tags/#3b1b" rel="tag">3b1b</a>
+<span class="sep">, </span>
+<a href="/tags/#translation" rel="tag">translation</a>
+<span class="sep">, </span>
+<a href="/tags/#math" rel="tag">math</a>
+<!-- </span> -->
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

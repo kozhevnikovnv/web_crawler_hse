@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Установка ОС Linux в виртуальную машину | Михаил Коротеев</title>
+<meta content="Зачем пользоваться виртуальной машиной?" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Установка ОС Linux в виртуальную машину" property="og:title"/>
+<meta content="https://koroteev.site/text/os00-1/" property="og:url"/>
+<meta content="Зачем пользоваться виртуальной машиной?" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Установка ОС Linux в виртуальную машину" name="twitter:title"/>
+<meta content="Зачем пользоваться виртуальной машиной?" name="twitter:description"/>
+<meta content="https://koroteev.site/text/os00-1/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2022-09-27T12:49:07+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/text/os00-1/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--textbook_page wide">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<nav class="toc page__content">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#зачем-пользоваться-виртуальной-машиной">Зачем пользоваться виртуальной машиной?</a></li>
+<li><a href="#что-необходимо-для-установки">Что необходимо для установки?</a></li>
+<li><a href="#как-создать-виртуальную-машину">Как создать виртуальную машину?</a></li>
+<li><a href="#как-установить-linux-на-виртуальную-машину">Как установить Linux на виртуальную машину?</a></li>
+<li><a href="#практическая-работа---установка-linux-на-виртуальную-машину">Практическая работа - установка Linux на виртуальную машину</a>
+<ul>
+<li><a href="#цель-работы">Цель работы</a></li>
+<li><a href="#задания-для-выполнения">Задания для выполнения</a></li>
+<li><a href="#методические-указания">Методические указания</a></li>
+<li><a href="#контрольные-вопросы">Контрольные вопросы</a></li>
+<li><a href="#дополнительные-задания">Дополнительные задания</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork" style="width: 95%">
+<meta content="Установка ОС Linux в виртуальную машину" itemprop="headline"/>
+<meta content="Зачем пользоваться виртуальной машиной?" itemprop="description"/>
+<meta content="2022-09-27T12:49:07+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Установка ОС Linux в виртуальную машину
+</h1>
+<p class="page__meta">
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          11 мин на чтение
+        
+        
+          
+         (16.76 символов)
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<h3 id="зачем-пользоваться-виртуальной-машиной">Зачем пользоваться виртуальной машиной?</h3>
+<p><img alt="VM" class="align-center" src="/assets/images/os_text/lx01-1.png" style="width: 750px;" title="VM"/></p>
+<p>Для работы с операционной системой необходимо ее установить на компьютер. Так как это основная программа компьютера, процесс ее установки сильно отличается от установки обычной прикладной программы. Он связан с переразметкой жесткого диска, освобождением места для новой операционной системы, перезаписью системного загрузчика. И в любом случае, в каждый конкретный момент на компьютере может работать только одна операционная система. Чтобы переключиться в другую, вам нужно перезагрузить компьютер и запустить другую установленную операционную систему. Если вы всего лишь хотите попробовать новую для вас среду, это может быть слишком обязывающим. Более того, в этом процессе легко сделать что-то не так, а ошибки чреваты потерей информации и повреждением существующих на компьютере программ и данных.</p>
+<p>Но есть способ избежать лишнего риска и усилий. Существуют специальные программные средства, которые позволяют запускать одну операционную систему внутри другой, как обычную программу. Для этого они эмулируют так называемый виртуальный компьютер (виртуальную машину). А уже с этой виртуальной машиной можно делать все что угодно, в том числе, установить любую операционную систему, без риска навредить основному, физическому компьютеру. Существует несколько таких программ виртуализации одна из самых популярных - бесплатная VirtualBox от Oracle. Ее мы и будем рекомендовать использовать для установки операционной системы Linux.</p>
+<p>Виртуальные машины - это очень полезные программы. И не только чтобы проще можно было пробовать новые операционные системы. Многим разработчикам требуется тестировать работу создаваемой программы в разных операционных системах, разных дистрибутивах или версиях. Часто разработчики создают программы для другой операционной системы, нежели установленная на их рабочем компьютере. Поэтому виртуальные машины - незаменимый инструмент разработки и тестирования программного обеспечения. Есть и еще один способ применения. Некоторые программы настолько сложны в установке, что они распространяются в виде готовой виртуальной машины, чтобы их можно было попробовать, или даже развернуть в виде виртуалки в рабочее окружение. Наконец, виртуальные машины - неотъемлемый инструмент облачных технологий. Многие облачные сервисы работают на виртуальных машинах - так гораздо проще создавать новые конфигурации, а при необходимости - удалить машину и все содержимое.</p>
+<p>Еще одно преимущество виртуальных машин - вы можете одновременно запустить несколько и переключаться между ними без перезагрузки. Они действительно работают как обычные программы - можно запустить столько процессов, сколько помещается в оперативную память.</p>
+<p>Одной из особенностей работы в виртуальной машине является полная изоляция. Все, что происходит в виртуальной машине никак напрямую не влияет на физическую машину (хост). Это очень полезно в плане безопасности. Например, на виртуальной машине можно проверять работу нестабильных или потенциально опасных программ. Кроме того, если вы что-то испортите в виртуальной машине, можно просто начать все заново. А это важно, ведь в процессе обучения мы не должны бояться совершать незнакомые действия.</p>
+<p>Но что, если все-таки хочется при работе в виртуальной машине обратиться вовне? Виртуальные машины можно объединять в сеть. Можно даже создать сеть между виртуальной машиной и основной (хостом). Причем на уровне сетевых протоколов не будет видно никакой разницы между работой с виртуальной или физической машиной. Это делает виртуалки незаменимыми для тестирования сетевых приложений или тестирования настроек сети. Конечно, это подразумевает, что вы можете в виртуальной машине иметь доступ в Интернет. Причем, существует много способов подключения виртуальных машин, о которых мы скажем дальше. И можно, например, эмулировать трансляцию сетевых адресов, если вы хотите сделать такое подключение односторонним.</p>
+<p>Еще одно преимущество работы с виртуальными машинами по сравнению с реальными - возможность в любой момент сделать резервную копию всей виртуальной машины на диск, вместе со всеми данными и установленными программами. Существуют специальные форматы файлов, в которые можно сохранить полностью виртуальную машину. Конечно, такая копия (образ) машины занимает порядочно места (это сильно зависит, сколько места занято на диске виртуальной машины), но она позволяет еще больше обезопасить себя от каких-либо сбоев. Ведь вы можете создать копию машины в момент ее стабильной работы, а если произошел сбой или ошибка, просто восстановиться из нее и продолжать работать или экспериментировать. Главное, не забывать вовремя делать бекапы.</p>
+<p>Но, конечно, у всего есть недостатки. Главный минус виртуальных машин - большое потребление ресурсов компьютера. Чудес не бывает и здесь, и при запуске операционной системы требования по оперативной памяти, процессору и месту на жестком диске никуда не исчезают. Помните, что любая виртуальная машина потребляет ресурсы машины-хоста. Любые программы, выполняющиеся на виртуальной машине в реальности выполняются на физическом процессоре хоста. Так что обмануть процессор и запустить множество тяжелых приложений, которые в нормальном режиме он не тянет, не получится. Кстати, помимо самих программ в виртуальной машине, в этот же момент на процессоре будет выполняться сама основная операционная система, запущенные в ней программы (в том числе сам менеджер виртуальных машин), так что в целом производительность только несколько снижается, но никак не может быть повышена.</p>
+<p>То же самое относится и к памяти. Для работы виртуалки вы должны выделить для нее в реальной оперативной памяти необходимый объем. И еще оставить место для основной системы. А если вы хотите запустить сразу несколько виртуалок - то надо, чтобы суммарный объем их памяти был меньше, чем у вас физически в компьютере. То же можно сказать и про объем жесткого диска. Виртуальная машина хранит все свои файлы на реальном жестком диске, в специальном файле (виртуальном жестком диске). Помните, что для комфортной работы операционной системы нужно как минимум несколько десятков гигабайт пространства. И столько свободного места у вас должно быть на физическом диске.</p>
+<p>Но в реальности, многочисленные плюсы от использования виртуальных машин перевешивают недостатки. Как и любой инструмент, виртуальные машины нужно использовать для решения определенных задач. Иногда бывает такое, что они не нужны или вредны. Но для того, чтобы протестировать операционную систему без реальной установки, нет способа лучше.</p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Установка операционной системы - это сложный и требовательный процесс.</li>
+<li>Виртуальные машины позволяют работать с ОС без установки на реальный компьютер.</li>
+<li>Это сильно упрощает тестирование разных ОС.</li>
+<li>Можно запускать несколько виртуалок одновременно.</li>
+<li>Виртуальные машины безопаснее - можно не бояться сделать что-то не так.</li>
+<li>Между виртуальными машинами можно создавать сети.</li>
+<li>Можно создавать резервные копии виртуальных машин.</li>
+<li>Недостаток виртуальных машин - небольшое снижение производительности.</li>
+</ol>
+</div>
+<h3 id="что-необходимо-для-установки">Что необходимо для установки?</h3>
+<p>Давайте рассмотрим процесс установки ОС Linux на виртуальную машину. Для этого на понадобится, во-первых, сам менеджер виртуальных машин. Это программа, которая управляет виртуалками - позволяет создавать, запускать, удалять виртуальные машины, делать их резервные копии и многое другое. Существует несколько альтернативных программ, но мы будем использовать Oracle VirtualBox. Она бесплатная, дружественная к новичками и имеет широкие возможности. Вы ее можете скачать для своей операционной системы с официального сайта.</p>
+<p>Во-вторых, нам понадобится дистрибутив операционной системы. В случае с Linux мы тоже можем скачать его с официального сайта. Для обучения мы выбрали дистрибутив Linux Mint. Используем дистрибутив Linux Mint, скачанный заранее, в формате iso.</p>
+<p><img alt="distro image" class="align-center" src="/assets/images/os_text/lx01-2.png" style="width: 500px;" title="distro image"/></p>
+<p>Для работы в виртуальной машине необходимо:</p>
+<ol>
+<li>Физический компьютер с основной операционной системой (хост).</li>
+<li>Менеджер виртуальных машин. Рекомендуем использовать Oracle VirtualBox.</li>
+<li>Дистрибутив нужной (гостевой) операционной системы.</li>
+<li>Свободное место на физическом жестком диске и оперативная память для работы.</li>
+<li>Примерно полчаса на установку.</li>
+</ol>
+<h3 id="как-создать-виртуальную-машину">Как создать виртуальную машину?</h3>
+<p>Для начала работы необходимо создать виртуальную машину - то есть программный эмулятор компьютера, в который можно будет установить любую операционную систему и работать с ним изолированно, как с отдельным компьютером.</p>
+<p>Для этого можно нажать соответствующую кнопку, или выбрать пункт меню. Указываем имя, тип и версию ОС. Имя используется для того, чтобы отличить одну виртуалку от другой, ведь мы можем создать их любое количество.</p>
+<p><img alt="vm creation" class="align-center" src="/assets/images/os_text/lx01-3.png" style="width: 750px;" title="vm creation"/></p>
+<p>Обратите внимание на версию и разрядность создаваемой ОС. Она должна соответствовать дистрибутиву, который вы собираетесь установить на виртуальную машину. В нашем случае, выбираем Linux в типе. В поле “Версия” обратите особе внимание на разрядность операционной системы. Все современные дистрибутивы являются 64-разрядными. Бывает такое, что в списке вы видите только 32-разрядные версии. В такой виртуалке 64 дистрибутив работать не будет (наоборот, кстати, все работает - вы можете установить 32-битную ОС в 64-разрядную машину). Обычно, это свидетельствует о том, что на вашем компьютере отключена аппаратная виртуализация. Посмотрите, как включить ее в документации к BIOS вашей материнской платы.</p>
+<p><img alt="ram size" class="align-center" src="/assets/images/os_text/lx01-4.png" style="width: 750px;" title="ram size"/></p>
+<p>Указываем объем памяти. Рекомендуется использовать не менее 1 ГБ памяти для современных дистрибутивов. Лучше резервировать как можно больше памяти, но не более половины от физического объема реального компьютера. Если вы планируете запускать несколько виртуалок одновременно, резервируйте еще меньше памяти, чтобы они все вместе поместились в существующую оперативку. Некоторые минималистичные дистрибутивы, или системы без графической оболочки требуют гораздо меньше оперативной памяти. Например, серверный Debian 10 можно запустить с 192 МБ памяти.</p>
+<p><img alt="hdd creation" class="align-center" src="/assets/images/os_text/lx01-5.png" style="width: 750px;" title="hdd creation"/></p>
+<p>Создаем новый виртуальный жесткий диск. Физически он представляет собой большой файл на вашем жестком диске, а виртуальная машина будет видеть его как отдельный жесткий диск.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-6.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Указываем тип жесткого диска. Это определяет формат файла, который будет использоваться для хранения виртуального жесткого диска. Разные программы виртуализации используют разные форматы жестких дисков. Значение по умолчанию можно оставить, если Вы не планируете миграцию ВМ на другие программы виртуализации.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-7.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Выбираем формат хранения данных (динамический ВЖД или фиксированный). Фиксированный ВЖД сразу займет выбранный вами объем на диске. Динамический жесткий диск будет занимать столько места, сколько занимают на нем фактически записанные файлы виртуальной машины. Рекомендуется всегда выбирать динамический жесткий диск, так как это сильно экономит место на физической машине.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-8.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Указываем размер виртуального жесткого диска и путь его хранения. Если не менять его, то по умолчанию будет выбрана папка, в которой хранятся все виртуальные машины Oracle VM VirtualBox. Обратите внимание на путь к файлу ЖД, если у вас ограничен объем системного раздела. Насчет объема - для современных дистрибутивов достаточно от 20 до 50 ГБ для комфортной работы.</p>
+<p>Теперь виртуальная машина создана. Однако, рекомендуется еще выполнить одну операцию. Выделяем созданную виртуалку и находим в интерфейсе пункт “Настройки”. Здесь можно поменять все настройки виртуального аппаратного обеспечения. Нам нужна вкладка “Дисплей”.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-9.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>В настройках, в пункте «Дисплей» увеличиваем объем видеопамяти до 128 Мб и ставим галочку на пункте «Включить 3D-ускорение» для лучшей визуализации системы.</p>
+<h3 id="как-установить-linux-на-виртуальную-машину">Как установить Linux на виртуальную машину?</h3>
+<p>Теперь наша виртуальная машина создана и настроена. Все готово к началу установки в нее операционной системы. Процесс установки полностью аналогичен установке на реальный компьютер, ведь используется тот же дистрибутив и та же установочная программа. Но сначала нужно подключить образ дистрибутива к виртуальной машине.</p>
+<p>В пункте «Носители» настроек виртуальной машины выбираем образ оптического диска для подключения образа уже существующего диска. Нам нужно выбрать предварительно скачанный образ дистрибутива в формате iso.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-10.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>В принципе, это можно сделать и при первом старте виртуалки.</p>
+<p>Запускаем виртуальную машину.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-11.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Мы видим окно операционной системы, запущенной в режиме LiveCD. Все современные дистрибутивы позволяют вам опробовать работу системы и без установки, но при первой же перезагрузке все данные, настройки и программы не будут сохранены. Поэтому, на надо именно установить ОС.</p>
+<p>Устанавливаем Linux Mint, выбрав соответствующий ярлык на рабочем столе. Мы увидим программу установки:</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-12.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Выбираем язык ОС. Эта настройка влияет и на язык инсталлятора, и на язык системы после установки. Также исходя из выбранного языка будет предложена раскладка клавиатуры.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-13.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Устанавливаем стороннее ПО для видеокарты и устройств, для более комфортного использования ОС. Программы установки этой специальной галочкой удостоверяются, что вы хотите установить некоторые полезные компоненты и драйверы (например, MP3), которые не являются свободными программами.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-14.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Выбираем, как поступить с жестким диском. Если установщик найдет уже установленные ОС, то предложит установить данную систему рядом с ними. Если вы устанавливаете данный дистрибутив как единственный, можно стереть весь диск.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-15.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Подтверждаем намерение стереть весь жесткий диск. После этого уже нельзя будет вернуться назад, ведь новая таблица разделов начнет записываться на жесткий диск. Если мы работаем в виртуалке, то можем ничего не бояться, но на реальном компьютере это подразумевает очистку всех данных с этого жесткого диска.</p>
+<p>После данного шага программа установки начнет копировать файлы операционной системы на диск. Этот процесс может занять несколько минут. Поэтому в это время программа установки предложит вам внести еще некоторые настройки.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-16.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Выбираем часовой пояс в котором мы находимся.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-17.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Выбираем необходимую раскладку клавиатуры.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-18.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>Вносим данные для авторизации как суперпользователь (имя пользователя, пароль), при необходимости отмечаем пункт «Входить в систему автоматически», чтобы не вводить пароль каждый раз. Но это никак не повлияет на безопасность т.к. при выполнении действий, которые могут сильно повлиять на систему, она все равно запросит ввод пароля.</p>
+<p>Внимание! Не забудьте пароль суперпользователя! Иначе придется переустанавливать систему с нуля.</p>
+<p>После этого система начнет установку, а в конце попросит перезагрузить компьютер для завершения установки.</p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/lx01-19.png" style="width: 750px;" title="image_tooltip"/></p>
+<p>При включении появится данное окно. Установка успешно завершена!</p>
+<p>После этого виртуальная машина перезагрузится и вы сможете начать работу в свежей операционной системе. Очень рекомендуем вам погрузиться в ОС, познакомиться с графическим интерфейсом, попользоваться прикладными программами, то есть всячески освоиться в системе. А мы проложим изучением командной строки Linux.</p>
+<h3 id="практическая-работа---установка-linux-на-виртуальную-машину">Практическая работа - установка Linux на виртуальную машину</h3>
+<h4 id="цель-работы">Цель работы</h4>
+<p>Научиться основным приемам работы с виртуальной машиной. Освоить процесс установки операционной системы Linux. Познакомиться с механизмом создания образов виртуальной машины.</p>
+<h4 id="задания-для-выполнения">Задания для выполнения</h4>
+<ol>
+<li>Скачать дистрибутив Linux Mint;</li>
+<li>Создать гостевую машину;</li>
+<li>Запустить виртуальную машину;</li>
+<li>Установить на неё Linux;</li>
+<li>Выключить виртуальную машину;</li>
+<li>Экспортировать её в .OVA образ;</li>
+<li>На его основе создать ещё одну виртуальную машину;</li>
+<li>Поменять название второй виртуальной машины;</li>
+<li>Запустить обе;</li>
+<li>Удалить вторую виртуальную машину (вместе со всеми файлами).</li>
+</ol>
+<h4 id="методические-указания">Методические указания</h4>
+<p>Для успешного выполнения данной работы необходимо познакомиться с понятием виртуализации, виртуальной машины. Пример материалов по теме:</p>
+<ul>
+<li><a href="https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0">Понятие виртуальной машины</a></li>
+<li><a href="http://www.team.ru/virt_intro.php">http://www.team.ru/virt_intro.php</a>
+<!-- * [https://www.oracle.com/ru/virtualization/virtualbox/index.html](https://www.oracle.com/ru/virtualization/virtualbox/index.html) --></li>
+</ul>
+<p>Пошаговое описание процесса создания виртуальной машины и установки Linux Mint в нее описан в предыдущей главе.</p>
+<h4 id="контрольные-вопросы">Контрольные вопросы</h4>
+<ol>
+<li>В чем преимущества работы в виртуальной машине?</li>
+<li>В чем недостатки работы в виртуальной машине?</li>
+<li>Для чего нужен образ виртуальной машины?</li>
+<li>Что такое установка операционной системы?</li>
+<li>Можно ли запустить две виртуальные машины одновременно?</li>
+</ol>
+<h4 id="дополнительные-задания">Дополнительные задания</h4>
+<ol>
+<li>Создайте новую виртуальную машину с жестким диском на 50 ГБ.</li>
+<li>Установите на нее Windows, задав размер раздела 30 ГБ. Если у Вас нет дистрибутива Windows, создайте пустой раздел такого размера с файловой системой NTFS.</li>
+<li>Установите Linux mint на эту виртуальную машину, используя ручной режим разметки диска так, чтобы не стереть существующий раздел NTFS.</li>
+<li>Убедитесь что обе операционные системы загружаются и функционируют.</li>
+<li>С помощью образа виртуальной машины попробуйте перенести ваш виртуальный компьютер на другой физический компьютер. Вся настроенная ОС должна сохраниться.</li>
+<li>Удалите созданные виртуальные машины.</li>
+</ol>
+</section>
+<footer class="page__meta">
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2022-09-27T12:49:07+00:00">September 27, 2022</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/text/os00-0/" title="Операционные системы. UNIX. Linux
+">Предыдущая</a>
+<a class="pagination--pager" href="/text/os11-0/" title="Основы командной строки
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

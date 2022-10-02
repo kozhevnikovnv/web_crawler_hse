@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Progressive Web Apps | Михаил Коротеев</title>
+<meta content="По мотивам статьи" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Progressive Web Apps" property="og:title"/>
+<meta content="https://koroteev.site/text/md24/" property="og:url"/>
+<meta content="По мотивам статьи" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Progressive Web Apps" name="twitter:title"/>
+<meta content="По мотивам статьи" name="twitter:description"/>
+<meta content="https://koroteev.site/text/md24/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2022-09-27T12:49:07+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/text/md24/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--textbook_page wide">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<nav class="toc page__content">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#что-это-такое">Что это такое?</a>
+<ul>
+<li><a href="#разметка">Разметка</a></li>
+<li><a href="#простой-javascript">Простой JavaScript</a></li>
+</ul>
+</li>
+<li><a href="#превращение-сайта-в-pwa">Превращение сайта в PWA</a>
+<ul>
+<li><a href="#манифест">Манифест</a></li>
+<li><a href="#service-worker">Service Worker</a></li>
+<li><a href="#использование-кеша">Использование кеша</a></li>
+<li><a href="#регистрация-service-worker">Регистрация Service Worker</a></li>
+<li><a href="#обзор-сервисного-работника">Обзор сервисного работника</a>
+<ul>
+<li><a href="#что-предоставляют-сервисные-работники">Что предоставляют сервисные работники?</a></li>
+<li><a href="#постепенно-улучшающийся-жизненный-цикл-подобный-приложению">Постепенно улучшающийся жизненный цикл, подобный приложению</a></li>
+<li><a href="#доступ-к-api-кэширования-на-основе-javascript">Доступ к API кэширования на основе JavaScript</a></li>
+<li><a href="#асинхронный-и-управляемый-событиями-api">Асинхронный и управляемый событиями API</a></li>
+<li><a href="#предварительное-кэширование-и-кэширование-во-время-выполнения">Предварительное кэширование и кэширование во время выполнения</a></li>
+<li><a href="#изоляция-от-основного-потока">Изоляция от основного потока</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#создание-pwa-на-react">Создание PWA на React</a>
+<ul>
+<li><a href="#настройка-приложения-react">Настройка приложения React</a></li>
+<li><a href="#регистрация-сервис-воркера">Регистрация сервис-воркера</a></li>
+<li><a href="#улучшение-прогрессивного-характера-приложения">Улучшение прогрессивного характера приложения</a></li>
+<li><a href="#развертывание-pwa">Развертывание PWA</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork" style="width: 95%">
+<meta content="Progressive Web Apps" itemprop="headline"/>
+<meta content="По мотивам статьи" itemprop="description"/>
+<meta content="2022-09-27T12:49:07+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Progressive Web Apps
+</h1>
+<p class="page__meta">
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          27 мин на чтение
+        
+        
+          
+         (44.096 символов)
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<p>По мотивам <a href="https://www.freecodecamp.org/news/build-a-pwa-from-scratch-with-html-css-and-javascript/">статьи</a></p>
+<h3 id="что-это-такое">Что это такое?</h3>
+<p>Прогрессивное web-приложение (англ. progressive web app, PWA) — технология в web-разработке, которая визуально и функционально трансформирует сайт в приложение (мобильное приложение в браузере).</p>
+<p>PWA совмещает в себе свойства нативного приложения и функции браузера, что имеет свои преимущества:</p>
+<ul>
+<li>PWA поддерживается наиболее популярными ОС: Windows, iOS, Android. При этом загрузить можно на десктоп, смартфон, планшет, терминал в торговом зале;</li>
+<li>обновления добавляются разработчиками удалённо. Пользователи видят изменения и улучшения, но им не требуется скачивать эти обновления самостоятельно;</li>
+<li>PWA индексируется Google и другими поисковыми системами;</li>
+<li>благодаря сценарию Service Worker, который запускается браузером в фоновом режиме, и стратегии кэширования обеспечивается возможность работы офлайн;</li>
+<li>front отделён от back’а. Меньше времени и ресурсов тратится на разработку и переработку дизайна и логики взаимодействия PWA с клиентом;</li>
+<li>PWA можно установить без «Play Маркета» и App Store, а также вопреки запрету устанавливать приложения из неизвестных источников. Лояльно относятся к PWA и антивирусные программы. Одновременно с этим передача данных происходит по протоколу HTTPS, поэтому PWA безопасно;</li>
+<li>C февраля 2019 года PWA можно добавлять в App Store и Google Play, давая пользователю возможность скачать приложение из привычного источника.</li>
+</ul>
+<p>Прогрессивное веб-приложение — это веб-приложение, которое предоставляет пользователям возможности, подобные приложениям, с использованием современных веб-возможностей. В конце концов, это обычный веб-сайт, работающий в браузере с некоторыми улучшениями. Это дает вам возможность:</p>
+<p>Чтобы установить его на домашнем экране мобильного устройства
+Чтобы получить к нему доступ в автономном режиме
+Доступ к камере
+Чтобы получать push-уведомления
+Для фоновой синхронизации
+И многое другое.</p>
+<p>Однако, чтобы иметь возможность преобразовать наше традиционное веб-приложение в PWA, нам нужно немного его настроить, добавив файл манифеста веб-приложения и сервис-воркер.</p>
+<p>Полная форма PWA — прогрессивные веб-приложения. PWA — это веб-страница HTML 5. Это веб-приложение, похожее на мобильное приложение, которое хранится непосредственно на мобильном телефоне с веб-сайта. Другими словами, это веб-сайт, который работает в мобильном браузере пользователя. PWA — это новая технология. PWA позволяет сохранить веб-сайт на вашем устройстве. Он создает значок в виде веб-приложения, и этот значок при открытии выглядит как мобильное приложение.</p>
+<p>После того, как на устройстве будет создан значок PWA веб-сайта, все сообщения, открытые с помощью Интернета, автоматически сохраняются на вашем устройстве, которому не требуется Интернет для чтения во второй раз. Это методология, в которой мы сочетаем нативное приложение с функцией браузера.</p>
+<p>Как правило, когда вам нужно создавать приложения, вы должны разрабатывать это приложение для разных платформ, таких как iOS, Android и Windows. Но в случае с PWA вам не нужно разрабатывать отдельные приложения для разных платформ. Вам нужно только создать веб-страницы на основе HTML 5, которые могут работать в любом мобильном браузере.</p>
+<p style="text-align: center; font-size:0.7em;"><img alt="PWA features" class="align-center" src="https://static.javatpoint.com/tutorial/pwa/images/characteristics-of-pwa.png" style="width: 500px;" title="PWA features"/>
+Источник: <a href="https://www.javatpoint.com/progressive-web-applications">Java T Pot</a>.</p>
+<p>Прогрессивные веб-приложения имеют следующие характеристики, которые важно понимать:</p>
+<ul>
+<li>Прогрессивный. Термин «прогрессивный» означает, что приложение PWA должно работать на любом устройстве и повышать производительность мобильного браузера и дизайна пользователя.</li>
+<li>Обнаруживаемый: PWA — это веб-сайт с некоторыми дополнительными функциями. Его можно искать с помощью мобильных поисковых приложений, таких как Google Chrome. Для этого не требуется App Store или Play Store.</li>
+<li>Адаптивный: пользовательский интерфейс прогрессивного веб-приложения должен соответствовать форм-фактору и размеру экрана устройства.</li>
+<li>App-like: приложение PWA должно выглядеть как родное приложение. Хотя методы создания, совместного использования, запуска и обновления PWA полностью отличаются от оригинального приложения.</li>
+<li>Независимость от подключения: работает даже при очень низком уровне подключения.</li>
+</ul>
+<p>Преимущества PWA:</p>
+<ul>
+<li>PWA работает как приложение для мобильных устройств и выглядит очень эффектно.</li>
+<li>Он не нуждается в обновлении.</li>
+<li>Он легко сохраняется в устройстве.</li>
+<li>Он сразу загружается на ваш мобильный.</li>
+<li>Это экономит деньги и время по сравнению с созданием приложений отдельно для Android, iOS и других платформ.</li>
+<li>Пост можно прочитать, даже если нет интернета.</li>
+<li>В нем меньше используются интернет-данные.</li>
+<li>PWA дешевле, чем другие приложения.</li>
+</ul>
+<p>Недостатки PWA:</p>
+<ul>
+<li>Он поддерживает ограниченный мобильный браузер. Он не работает в браузерах Safari, Edge и IE.</li>
+<li>Пользователи iPhone не могут безопасно устанавливать в нем соединения.</li>
+<li>Это позволяет максимально использовать аккумулятор устройства.</li>
+<li>Его нужно разместить на сервере, потому что это веб-приложение.</li>
+<li>Его нельзя загрузить из популярных магазинов приложений, таких как Google Play и Apple App Store.</li>
+<li>PWA не обеспечивает одинаковый уровень поддержки для всех устройств. Например, push-уведомления в PWA работают на Android, но не на iOS.</li>
+<li>Он поддерживает ограниченную аппаратную функциональность.</li>
+</ul>
+<p>Не беспокойтесь об этих новых терминах — мы рассмотрим их ниже.</p>
+<p>Во-первых, нам нужно создать наше традиционное веб-приложение. Итак, начнем с разметки.</p>
+<h4 id="разметка">Разметка</h4>
+<p>После поиска в Интернете простого руководства по PWA все, что я нашел, было либо слишком сложным, либо требовало одной сторонней библиотеки/фреймворка/платформы или другого. Лично я, изучая новую технологию, предпочел бы не отвлекаться на ненужные детали. Поэтому, опираясь на ряд источников, я сам написал простой учебник, который не требует стороннего контента: классическое приложение «Hello World», стиль PWA.</p>
+<p>Создайте каталог для приложения и добавьте подкаталоги js, css и images. Это должно выглядеть так, когда вы закончите:</p>
+<p>/Hello-PWA # Папка проекта
+     /css # Таблицы стилей
+     /js # JavaScript
+     /images # Файлы изображений.</p>
+<p>При написании разметки для Progressive Web App необходимо помнить о двух требованиях:</p>
+<p>Приложение должно отображать некоторый контент, даже если JavaScript отключен. Это не позволяет пользователям видеть пустую страницу, если у них плохое подключение к Интернету или если они используют более старый браузер.
+Он должен быть адаптивным и корректно отображаться на различных устройствах. Другими словами, он должен быть мобильным.
+Для нашего небольшого приложения мы выполним первое требование, просто жестко запрограммировав содержимое, а второе — добавив метатег окна просмотра.</p>
+<p>Для этого создайте файл с именем index.html в корневой папке проекта и добавьте следующую разметку:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Hello World<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/style.css"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;body</span> <span class="na">class=</span><span class="s">"fullscreen"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Hello World!<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>HTML-файл относительно прост. Оборачиваем все в основной тег.</p>
+<p>В index.html</p>
+<p>И создайте панель навигации с тегом nav. Затем div с классом .container будет содержать наши карты, которые мы добавим позже с помощью JavaScript.</p>
+<p>Теперь, когда мы разобрались с этим, давайте стилизуем его с помощью CSS.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/style.css"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Dev'Coffee PWA<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;main&gt;</span>
+      <span class="nt">&lt;nav&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Dev'Coffee<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;ul&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Home<span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>About<span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Blog<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+      <span class="nt">&lt;/nav&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/main&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/app.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Все, что делает эта разметка, это загружает таблицу стилей и устанавливает ширину и масштаб окна просмотра по умолчанию. Текст «привет» жестко закодирован в элементе h1 body, который заключен в контейнер div для упрощения стилизации.</p>
+<p>Затем создайте файл с именем style.css в папке css и добавьте этот код:</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Make content area fill the entire browser window */</span>
+<span class="nt">html</span><span class="o">,</span>
+<span class="nc">.fullscreen</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Center the content in the browser window */</span>
+<span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.title</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">3rem</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Я стилизовал тело так, чтобы оно заполнило всю область просмотра браузера, чтобы упростить центрирование содержимого. Затем содержимое выравнивается по центру, а текст набирается крупным жирным шрифтом без засечек.</p>
+<p>Мы внесем еще несколько дополнений в индексный файл позже в этом руководстве, но по большей части это настолько сложно, насколько может получиться разметка.</p>
+<p>Теперь вы можете протестировать приложение, нажав кнопку предварительного просмотра в скобках. (Молния в верхнем правом углу.) Откроется окно Chrome и откроется ваша страница.</p>
+<p>Теперь, когда у нас есть что-то в браузере, мы воспользуемся Google Lighthouse, чтобы протестировать приложение и посмотреть, насколько хорошо оно соответствует стандартам PWA. Нажмите F12, чтобы открыть панель разработчика в Chrome, и щелкните вкладку аудита, чтобы открыть Lighthouse.</p>
+<p style="text-align: center; font-size:0.7em;"><img alt="Lighthouse" class="align-center" src="https://miro.medium.com/max/1400/1*K2tZFXEpx9i58-BZx8AxUg.png" style="width: 800px;" title="Lighthouse"/>
+Источник: <a href="https://medium.com/james-johnson/a-simple-progressive-web-app-tutorial-f9708e5f2605">Meduim</a>.</p>
+<p>Убедитесь, что опция «Прогрессивное веб-приложение» отмечена. Остальные пока можно снять. Затем нажмите на кнопку «Запустить тесты». Через минуту или две Lighthouse должен предоставить вам оценку и список проверок, которые приложение прошло или не прошло. На этом этапе приложение должно набрать около 45 баллов. Если все было закодировано правильно, вы заметите, что большинство тестов, которые он проходит, связаны с требованиями, которые мы изложили в начале:</p>
+<ol>
+<li>Содержит некоторый контент, когда JavaScript недоступен.</li>
+<li>Имеет тег <code class="language-plaintext highlighter-rouge">&lt;meta name="viewport"&gt;</code> с шириной или начальным масштабом.</li>
+<li>Контент имеет правильный размер для области просмотра.</li>
+</ol>
+<h4 id="простой-javascript">Простой JavaScript</h4>
+<p>Обратите внимание, что я использовал большие изображения, загрузка которых занимает некоторое время. Это покажет вам наилучшим образом силу сервис-воркеров.</p>
+<p>Как я уже говорил ранее, класс .container будет держать наши карты. Поэтому нам нужно его выбрать.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.container</span><span class="dl">"</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">coffees</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Perspiciatis</span><span class="dl">"</span><span class="p">,</span> <span class="na">image</span><span class="p">:</span> <span class="dl">"</span><span class="s2">images/coffee1.jpg</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Voluptatem</span><span class="dl">"</span><span class="p">,</span> <span class="na">image</span><span class="p">:</span> <span class="dl">"</span><span class="s2">images/coffee2.jpg</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Explicabo</span><span class="dl">"</span><span class="p">,</span> <span class="na">image</span><span class="p">:</span> <span class="dl">"</span><span class="s2">images/coffee3.jpg</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Rchitecto</span><span class="dl">"</span><span class="p">,</span> <span class="na">image</span><span class="p">:</span> <span class="dl">"</span><span class="s2">images/coffee4.jpg</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2"> Beatae</span><span class="dl">"</span><span class="p">,</span> <span class="na">image</span><span class="p">:</span> <span class="dl">"</span><span class="s2">images/coffee5.jpg</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2"> Vitae</span><span class="dl">"</span><span class="p">,</span> <span class="na">image</span><span class="p">:</span> <span class="dl">"</span><span class="s2">images/coffee6.jpg</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Inventore</span><span class="dl">"</span><span class="p">,</span> <span class="na">image</span><span class="p">:</span> <span class="dl">"</span><span class="s2">images/coffee7.jpg</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Veritatis</span><span class="dl">"</span><span class="p">,</span> <span class="na">image</span><span class="p">:</span> <span class="dl">"</span><span class="s2">images/coffee8.jpg</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Accusantium</span><span class="dl">"</span><span class="p">,</span> <span class="na">image</span><span class="p">:</span> <span class="dl">"</span><span class="s2">images/coffee9.jpg</span><span class="dl">"</span> <span class="p">},</span>
+<span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Затем мы создаем массив карточек с именами и изображениями.</p>
+<p>С помощью приведенного выше кода мы теперь можем просмотреть массив и отобразить их в HTML-файле. И чтобы все заработало, мы ждем, пока содержимое DOM (Document Object Model) завершит загрузку, чтобы запустить метод showCoffees.</p>
+<p>Мы многое сделали, но пока у нас есть просто традиционное веб-приложение. Итак, давайте изменим это в следующем разделе, представив некоторые функции PWA.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">showCoffees</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">output</span> <span class="o">=</span> <span class="dl">""</span>
+  <span class="nx">coffees</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
+    <span class="p">({</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">image</span> <span class="p">})</span> <span class="o">=&gt;</span>
+      <span class="p">(</span><span class="nx">output</span> <span class="o">+=</span> <span class="s2">`
+              &lt;div class="card"&gt;
+                &lt;img class="card--avatar" src=</span><span class="p">${</span><span class="nx">image</span><span class="p">}</span><span class="s2"> /&gt;
+                &lt;h1 class="card--title"&gt;</span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">&lt;/h1&gt;
+                &lt;a class="card--link" href="#"&gt;Taste&lt;/a&gt;
+              &lt;/div&gt;
+              `</span><span class="p">)</span>
+  <span class="p">)</span>
+  <span class="nx">container</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">output</span>
+<span class="p">}</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">DOMContentLoaded</span><span class="dl">"</span><span class="p">,</span> <span class="nx">showCoffees</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="превращение-сайта-в-pwa">Превращение сайта в PWA</h3>
+<h4 id="манифест">Манифест</h4>
+<p>Этот код просто загружает скрипт сервисного работника и запускает его.</p>
+<p>Добавьте код в свое приложение, включив скрипт непосредственно перед закрывающим тегом &lt;/body&gt; в index.html.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello World"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/index.html"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standalone"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"background_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"white"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"theme_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"white"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<p>Для нашего приложения мы устанавливаем заголовок, его фон и цвета темы и сообщаем браузеру, что его следует рассматривать как отдельное приложение без браузерного хрома.</p>
+<p>Построчно поля выглядят следующим образом:</p>
+<p>name
+Название приложения. Это используется, когда пользователю предлагается установить приложение. Это должно быть полное название приложения.</p>
+<p>short_name
+Это имя не соответствует приложению, поскольку оно будет отображаться на значке приложения. Это должно быть кратко и по делу.</p>
+<p>lang
+Язык по умолчанию, на котором локализовано приложение. В нашем случае английский.</p>
+<p>start_url
+Сообщает браузеру, какую страницу загружать при запуске приложения. Обычно это index.html, но это не обязательно.</p>
+<p>display
+Тип оболочки, в которой должно отображаться приложение. Для нашего приложения мы используем автономный режим, чтобы он выглядел и работал как стандартное нативное приложение. Есть и другие настройки, чтобы сделать его полноэкранным или включить хром браузера.</p>
+<p>background_color
+Цвет заставки, которая открывается при запуске приложения.</p>
+<p>theme_color
+Задает цвет панели инструментов и переключателя задач.</p>
+<p>Чтобы добавить манифест в свое приложение, свяжите его внутри тега заголовка index.html следующим образом:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;head&gt;</span>
+...
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"manifest"</span> <span class="na">href=</span><span class="s">"/manifest.json"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"theme-color"</span> <span class="na">content=</span><span class="s">"white"</span><span class="nt">/&gt;</span>
+...
+<span class="nt">&lt;/head&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Вы также должны объявить цвет темы таким, чтобы он соответствовал цвету, установленному в вашем манифесте, добавив метатег внутри заголовка.</p>
+<p>После предыдущего шага вы могли заметить, что Lighthouse жалуется на отсутствие значков приложений. Хотя это не обязательно для работы приложения в автономном режиме, они позволяют вашим пользователям добавлять приложение на главный экран.</p>
+<p>Чтобы правильно добавить эту функцию, вам понадобится значок приложения, размер которого подходит для браузера, Windows, Mac/iPhone и Android. Это как минимум 7 различных размеров: 128 x 128 пикселей, 144 x 144 пикселей, 152 x 152 пикселей, 192 x 192 пикселей, 256 x 256 пикселей, 512 x 512 пикселей и значок 16 x 16 пикселей. Вместо того, чтобы создавать свои собственные, вы можете загрузить те, которые я создал для этого руководства, с Github. Сохраните их в папке с изображениями и поместите favicon.ico в корневую папку проекта.</p>
+<p>Добавьте значки в файл манифеста после свойства short_name следующим образом:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello World"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images/hello-icon-128.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"128x128"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images/hello-icon-144.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"144x144"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images/hello-icon-152.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"152x152"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images/hello-icon-192.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192x192"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images/hello-icon-256.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"256x256"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images/hello-icon-512.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"512x512"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+  </span><span class="nl">"lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en-US"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/index.html"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standalone"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"background_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"white"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"theme_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"white"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<p>Манифест веб-приложения — это простой файл JSON, который информирует браузер о вашем веб-приложении. Он рассказывает, как он должен вести себя при установке на мобильное устройство или рабочий стол пользователя. А для отображения приглашения «Добавить на главный экран» требуется манифест веб-приложения.</p>
+<p>Теперь, когда мы знаем, что такое веб-манифест, давайте создадим новый файл с именем manifest.json (вы должны назвать его так) в корневом каталоге. Затем добавьте этот блок кода ниже.</p>
+<p>В манифесте.json</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dev'Coffee"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DevCoffee"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.html"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standalone"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"background_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#fdfdfd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"theme_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#db4938"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portrait-primary"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/images/icons/icon-72x72.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w"> </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72x72"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/images/icons/icon-512x512.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w"> </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"512x512"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<p>В конце концов, это просто файл JSON с некоторыми обязательными и необязательными свойствами.</p>
+<p>имя: Когда браузер запускает заставку, это будет имя, отображаемое на экране.</p>
+<p>short_name: это будет имя, отображаемое под ярлыком вашего приложения на главном экране.</p>
+<p>start_url: это будет страница, отображаемая пользователю, когда ваше приложение открыто.</p>
+<p>display: сообщает браузеру, как отображать приложение. Существует несколько режимов, таких как минимальный интерфейс, полноэкранный режим, браузер и т. д. Здесь мы используем автономный режим, чтобы скрыть все, что связано с браузером.</p>
+<p>background_color: Когда браузер запускает заставку, это будет фон экрана.</p>
+<p>theme_color: это будет цвет фона строки состояния, когда мы открываем приложение.</p>
+<p>ориентация: указывает браузеру ориентацию при отображении приложения.</p>
+<p>значки: когда браузер запускает заставку, это будет значок, отображаемый на экране. Здесь я использовал все размеры, чтобы соответствовать предпочтительному значку любого устройства. Но вы можете просто использовать один или два. Тебе решать.</p>
+<p>Манифест веб-приложения — это первый компонент PWA. Это простой файл JSON, который управляет приложением пользователя. Обычно он называется «manifest.json». Это самый важный компонент для присутствия PWA. Когда вы впервые подключаете PWA к сети, мобильный браузер считывает файл «manifest.json» и сохраняет его локально в кэш-памяти.</p>
+<p>Когда в PWA нет доступа к сети, мобильный браузер использует кэш-память приложения для запуска программы PWA в автономном режиме.</p>
+<p>Файл «manifest.json» помогает PWA выглядеть как нативное приложение. С помощью файла manifest.json разработчик PWA может управлять тем, как приложение отображается на экране мобильного устройства пользователя. Разработчик PWA также может установить тему для экрана-заставки мобильного телефона и адресной строки приложения.</p>
+<p>Файл «manifest.json» позволяет разработчику PWA искать централизованное место для метаданных веб-приложения. Файл JSON определяет ссылки на значки и размеры значков, полное и сокращенное имя приложения, типы, цвет фона, тему, местоположения и другие визуальные данные, необходимые для взаимодействия с приложением.</p>
+<p>Теперь, когда у нас есть манифест веб-приложения, давайте добавим его в файл HTML.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"manifest"</span> <span class="na">href=</span><span class="s">"manifest.json"</span> <span class="nt">/&gt;</span>
+<span class="c">&lt;!-- ios support --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"images/icons/icon-72x72.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"images/icons/icon-96x96.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"images/icons/icon-128x128.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"images/icons/icon-144x144.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"images/icons/icon-152x152.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"images/icons/icon-192x192.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"images/icons/icon-384x384.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"images/icons/icon-512x512.png"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"apple-mobile-web-app-status-bar"</span> <span class="na">content=</span><span class="s">"#db4938"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"theme-color"</span> <span class="na">content=</span><span class="s">"#db4938"</span> <span class="nt">/&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Как видите, мы связали наш файл manifest.json с тегом head. И добавьте некоторые другие ссылки, которые обрабатывают поддержку iOS, чтобы отображать значки и раскрашивать строку состояния цветом нашей темы.</p>
+<p>Теперь мы можем погрузиться в заключительную часть и представить сервис-воркера.</p>
+<h4 id="service-worker">Service Worker</h4>
+<p style="text-align: center; font-size:0.7em;"><img alt="Service Worker" class="align-center" src="https://dz2cdn1.dzone.com/storage/temp/12968449-afbeelding-5.png" style="width: 800px;" title="Service Worker"/>
+Источник: <a href="https://dzone.com/articles/how-to-build-a-progressive-web-app-pwa-with-javasc">DZone</a>.</p>
+<p>Как видите, мы связали наш файл manifest.json с тегом head. И добавьте некоторые другие ссылки, которые обрабатывают поддержку iOS, чтобы отображать значки и раскрашивать строку состояния цветом нашей темы.</p>
+<p>Следующим требованием для нашего приложения является регистрация сервис-воркера. Сервисные работники — это, по сути, сценарии, которые запускаются в фоновом режиме для выполнения задач, не требующих взаимодействия с пользователем. Это освобождает основное приложение для ваших пользователей, в то время как работник службы заботится о скучных вещах.</p>
+<p>Для нашего приложения мы будем использовать один для загрузки и кэширования нашего контента, а затем обслуживать его из кэша, когда пользователь находится в автономном режиме.</p>
+<p>Создайте файл с именем sw.js в корневой папке и введите содержимое сценария ниже. Причина, по которой он сохраняется в корне приложения, заключается в том, чтобы предоставить ему доступ ко всем файлам приложения. Это связано с тем, что сервисные работники имеют разрешение на доступ только к файлам в том же каталоге и подкаталогах.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">cacheName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello-pwa</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">filesToCache</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">/index.html</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">/css/style.css</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">/js/main.js</span><span class="dl">'</span>
+<span class="p">];</span>
+
+<span class="cm">/* Start the service worker and cache all of the app's content */</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">install</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">filesToCache</span><span class="p">);</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="cm">/* Serve cached content when offline */</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">fetch</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">response</span> <span class="o">||</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Первые строки скрипта объявляют две переменные: cacheName и filesToCache. cacheName используется для создания автономного кеша в браузере и предоставления нам доступа к нему из Javascript. filesToCache — это массив, содержащий список всех файлов, которые необходимо кэшировать. Эти файлы должны быть записаны в виде URL-адресов. Обратите внимание, что первый — это просто «/», базовый URL-адрес. Это делается для того, чтобы браузер кэшировал index.html, даже если пользователь не вводит это имя файла напрямую.</p>
+<p>Затем мы добавляем функцию для установки сервис-воркера и создания кеша браузера с помощью cacheName. Как только кеш создан, он добавляет все файлы, перечисленные в массиве filesToCache. (Обратите внимание, что хотя этот код работает в демонстрационных целях, он не предназначен для производства, поскольку он остановится, если не сможет загрузить хотя бы один из файлов.)</p>
+<p>Наконец, мы добавляем функцию для загрузки кэшированных файлов, когда браузер не в сети.</p>
+<p>Теперь, когда скрипт Service Worker создан, нам нужно зарегистрировать его в нашем приложении. Создайте файл с именем main.js в папке js и введите следующий код:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">use strict</span><span class="dl">'</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="dl">'</span><span class="s1">serviceWorker</span><span class="dl">'</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span>
+             <span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="dl">'</span><span class="s1">./sw.js</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Этот код просто загружает скрипт сервисного работника и запускает его.</p>
+<p>Добавьте код в свое приложение, включив скрипт непосредственно перед закрывающим тегом <code class="language-plaintext highlighter-rouge">&lt;/body&gt;</code> в index.html.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>...
+<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Теперь мы можем погрузиться в заключительную часть и представить сервис-воркера.</p>
+<p>Итак, давайте создадим наш самый первый сервис-воркер в корневой папке и назовем его serviceWorker.js (имя на ваше усмотрение). Но вы должны положить его в корень, чтобы не ограничивать его область действия одной папкой.</p>
+<p>Кэшировать активы
+В сервисворкер.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">staticDevCoffee</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">dev-coffee-site-v1</span><span class="dl">"</span>
+<span class="kd">const</span> <span class="nx">assets</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/index.html</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/css/style.css</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/js/app.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/images/coffee1.jpg</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/images/coffee2.jpg</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/images/coffee3.jpg</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/images/coffee4.jpg</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/images/coffee5.jpg</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/images/coffee6.jpg</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/images/coffee7.jpg</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/images/coffee8.jpg</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">/images/coffee9.jpg</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">install</span><span class="dl">"</span><span class="p">,</span> <span class="nx">installEvent</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">installEvent</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">staticDevCoffee</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cache</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">assets</span><span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">)</span>
+<span class="p">})</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Сначала этот код выглядит устрашающе, но это всего лишь JavaScript (так что не волнуйтесь).</p>
+<p>Мы объявляем имя нашего кеша staticDevCoffee и ресурсы для хранения в кеше. И чтобы выполнить это действие, нам нужно прикрепить слушателя к себе.</p>
+<p>self — это сервисный работник. Это позволяет нам слушать события жизненного цикла и делать что-то взамен.</p>
+<p>У сервис-воркера есть несколько жизненных циклов, и один из них — событие установки. Он запускается, когда установлен сервис-воркер. Он запускается, как только рабочий процесс выполняется, и вызывается только один раз для каждого сервисного работника.</p>
+<p>Когда событие установки запускается, мы запускаем обратный вызов, который дает нам доступ к объекту события.</p>
+<p>Кэширование чего-либо в браузере может занять некоторое время, поскольку оно асинхронно.</p>
+<p>Поэтому, чтобы справиться с этим, нам нужно использовать функцию waitUntil(), которая, как вы могли догадаться, ожидает завершения действия.</p>
+<p>Когда API кеша готов, мы можем запустить метод open() и создать наш кеш, передав его имя в качестве аргумента в caches.open(staticDevCoffee).</p>
+<p>Затем он возвращает обещание, которое помогает нам хранить наши активы в кеше с помощью cache.addAll(assets).</p>
+<p>Надеюсь, ты все еще со мной.</p>
+<p>Теперь мы успешно кэшировали наши активы в браузере. И в следующий раз, когда мы загрузим страницу, сервис-воркер обработает запрос и получит кеш, если мы не в сети.</p>
+<p>Итак, давайте достанем наш кеш.</p>
+<h4 id="использование-кеша">Использование кеша</h4>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">fetch</span><span class="dl">"</span><span class="p">,</span> <span class="nx">fetchEvent</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">fetchEvent</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">fetchEvent</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">res</span> <span class="o">||</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">fetchEvent</span><span class="p">.</span><span class="nx">request</span><span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">)</span>
+<span class="p">})</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Здесь мы используем событие fetch, чтобы вернуть наши данные. Обратный вызов дает нам доступ к fetchEvent. Затем мы присоединяем responseWith(), чтобы предотвратить ответ браузера по умолчанию. Вместо этого он возвращает обещание, потому что для завершения действия выборки может потребоваться время.</p>
+<p>И когда кеш готов, мы применяем caches.match(fetchEvent.request). Он проверит, соответствует ли что-то в кеше fetchEvent.request. Кстати, fetchEvent.request — это просто наш массив ассетов.</p>
+<p>Затем он возвращает обещание. И, наконец, мы можем вернуть результат, если он существует, или начальную выборку, если нет.</p>
+<p>Теперь наши активы могут кэшироваться и извлекаться сервис-воркером, что немного увеличивает время загрузки наших изображений.</p>
+<p>И самое главное, это делает наше приложение доступным в автономном режиме.</p>
+<p>Но работник службы в одиночку не может сделать работу. Нам нужно зарегистрировать его в нашем проекте.</p>
+<h4 id="регистрация-service-worker">Регистрация Service Worker</h4>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="p">(</span><span class="dl">"</span><span class="s2">serviceWorker</span><span class="dl">"</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span>
+      <span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="dl">"</span><span class="s2">/serviceWorker.js</span><span class="dl">"</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">service worker registered</span><span class="dl">"</span><span class="p">))</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">service worker not registered</span><span class="dl">"</span><span class="p">,</span> <span class="nx">err</span><span class="p">))</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Здесь мы начинаем с проверки, поддерживается ли serviceWorker текущим браузером (поскольку он все еще поддерживается не всеми браузерами).</p>
+<p>Затем мы слушаем событие загрузки страницы, чтобы зарегистрировать нашего работника службы, передав имя нашего файла serviceWorker.js в navigator.serviceWorker.register() в качестве параметра для регистрации нашего работника.</p>
+<p>С этим обновлением мы превратили наше обычное веб-приложение в PWA.</p>
+<p><a href="https://devcoffee-pwa.netlify.app/#">Демонстрация</a></p>
+<h4 id="обзор-сервисного-работника">Обзор сервисного работника</h4>
+<p>Сервисные работники предлагают невероятную полезность, но поначалу с ними может быть сложно работать. Workbox упрощает использование сервис-воркеров. Однако, поскольку сервисные работники решают сложные задачи, любая абстракция этой технологии также будет сложной без ее понимания. Таким образом, эти первые несколько фрагментов документации будут охватывать эту базовую технологию, прежде чем переходить к особенностям Workbox.</p>
+<h5 id="что-предоставляют-сервисные-работники">Что предоставляют сервисные работники?</h5>
+<p>Сервисные работники — это специализированные активы JavaScript, которые действуют как прокси-серверы между веб-браузерами и веб-серверами. Они направлены на повышение надежности за счет предоставления автономного доступа, а также повышения производительности страницы.</p>
+<h5 id="постепенно-улучшающийся-жизненный-цикл-подобный-приложению">Постепенно улучшающийся жизненный цикл, подобный приложению</h5>
+<p>Сервисные работники — это усовершенствование существующих веб-сайтов. Это означает, что если пользователи браузеров, не поддерживающих сервис-воркеры, посещают веб-сайты, которые их используют, базовая функциональность не нарушается. Вот что такое сеть.</p>
+<p>Сервисные работники постепенно улучшают веб-сайты в течение жизненного цикла, аналогичного приложениям для конкретной платформы. Подумайте о том, что происходит, когда нативное приложение устанавливается из магазина приложений:</p>
+<ul>
+<li>Делается запрос на загрузку приложения.</li>
+<li>Приложение скачивается и устанавливается.</li>
+<li>Приложение готово к использованию и может быть запущено.</li>
+<li>Приложение обновляется для новых выпусков.</li>
+</ul>
+<p>Жизненный цикл сервис-воркера аналогичен, но с прогрессивным подходом к улучшению. При самом первом посещении веб-страницы, на которой устанавливается новый сервис-воркер, при первоначальном посещении страницы предоставляется базовая функциональность, пока сервис-воркер загружается. После того, как сервис-воркер установлен и активирован, он управляет страницей, обеспечивая повышенную надежность и скорость.</p>
+<h5 id="доступ-к-api-кэширования-на-основе-javascript">Доступ к API кэширования на основе JavaScript</h5>
+<p>Неотъемлемым аспектом технологии сервис-воркеров является интерфейс Cache, представляющий собой механизм кэширования, полностью отдельный от кэша HTTP. Доступ к интерфейсу Cache можно получить как в рамках сервисного работника, так и в рамках основного потока. Это открывает массу возможностей для пользовательского взаимодействия с экземпляром Cache.</p>
+<p>В то время как на кэш HTTP влияют директивы кэширования, указанные в заголовках HTTP, интерфейс Cache программируется с помощью Javascript. Это означает, что кеширование ответов на сетевые запросы может быть основано на любой логике, которая лучше всего подходит для данного веб-сайта. Например:</p>
+<ul>
+<li>Сохраняйте статические ресурсы в кеше при первом запросе на них и обслуживайте их только из кеша при каждом последующем запросе.</li>
+<li>Сохраняйте разметку страницы в кеше, но обслуживайте разметку из кеша только в автономных сценариях.</li>
+<li>Подавайте устаревшие ответы для определенных ресурсов из кеша, но обновляйте их из сети в фоновом режиме.</li>
+<li>Потоковая передача частичного содержимого из сети и сборка его с помощью оболочки приложения из кеша для повышения производительности восприятия.</li>
+</ul>
+<p>Каждый из них является примером стратегии кэширования. Стратегии кэширования делают возможным работу в автономном режиме и могут обеспечить более высокую производительность за счет обхода проверок повторной проверки с высокой задержкой при запуске HTTP-кэша. Прежде чем погрузиться в Workbox, мы рассмотрим несколько стратегий кэширования и код, который заставляет их работать.</p>
+<h5 id="асинхронный-и-управляемый-событиями-api">Асинхронный и управляемый событиями API</h5>
+<p>Передача данных по сети по своей сути асинхронна. Требуется время, чтобы запросить актив, чтобы сервер ответил на этот запрос и чтобы ответ был загружен. Задействованное время разнообразно и неопределенно. Сервисные работники справляются с этой асинхронностью с помощью API, управляемого событиями, используя обратные вызовы для таких событий, как:</p>
+<ul>
+<li>Когда сервис-воркер устанавливает.</li>
+<li>Когда сервис-воркер активируется.</li>
+<li>Когда сервис-воркер обнаруживает сетевой запрос.</li>
+</ul>
+<p>События можно регистрировать с помощью знакомого API addEventListener. Все эти события потенциально могут взаимодействовать с интерфейсом Cache. В частности, возможность выполнять обратные вызовы при отправке сетевых запросов имеет жизненно важное значение для обеспечения требуемой надежности и скорости.</p>
+<p>Выполнение асинхронной работы в JavaScript предполагает использование промисов. Поскольку промисы также лежат в основе асинхронности и ожидания, эти функции JavaScript также можно использовать для упрощения кода сервис-воркера (и Workbox!) для лучшего взаимодействия с разработчиком.</p>
+<h5 id="предварительное-кэширование-и-кэширование-во-время-выполнения">Предварительное кэширование и кэширование во время выполнения</h5>
+<p>Взаимодействие между сервис-воркером и экземпляром Cache включает две различные концепции кэширования: предварительное кэширование и кэширование во время выполнения. Каждый из них является центральным для преимуществ, которые может предоставить сервисный работник.</p>
+<p>Предварительное кэширование — это процесс предварительного кэширования ресурсов, обычно во время установки сервис-воркера. С помощью предварительного кэширования ключевые статические ресурсы и материалы, необходимые для автономного доступа, могут быть загружены и сохранены в экземпляре Cache. Этот тип кэширования также повышает скорость страницы для последующих страниц, для которых требуются предварительно кэшированные ресурсы.</p>
+<p>Кэширование во время выполнения — это когда стратегия кэширования применяется к ресурсам по мере их запроса из сети во время выполнения. Этот вид кэширования полезен, поскольку гарантирует автономный доступ к страницам и ресурсам, которые пользователь уже посещал.</p>
+<p>В сочетании эти подходы к использованию интерфейса Cache в сервис-воркере обеспечивают огромные преимущества для пользователя и обеспечивают поведение, подобное приложению, для обычных веб-страниц.</p>
+<h5 id="изоляция-от-основного-потока">Изоляция от основного потока</h5>
+<p>Состояние производительности JavaScript — это развивающаяся проблема для Интернета, и с точки зрения пользователя она зависит от возможностей устройства и доступа к высокоскоростному Интернету. Чем больше используется JavaScript, тем сложнее становится создавать быстрые веб-сайты, обеспечивающие восхитительный пользовательский интерфейс.</p>
+<p>Сервис-воркеры похожи на веб-воркеров в том смысле, что вся работа, которую они выполняют, выполняется в их собственных потоках. Это означает, что задачи сервис-воркеров не будут конкурировать за внимание с другими задачами в основном потоке. Сервисные работники изначально ориентированы на пользователя!</p>
+<h3 id="создание-pwa-на-react">Создание PWA на React</h3>
+<p>Прогрессивные веб-приложения (PWA) быстро приобрели популярность как быстродействующие, ориентированные на производительность веб-приложения, оптимизированные для предоставления возможностей, подобных мобильным приложениям. PWA создаются с использованием передовых технологий, таких как HTML, CSS и JavaScript, чтобы обеспечить уровень удобства использования и производительности, сравнимый с родными мобильными приложениями. Они быстро реагируют, потребляют меньше данных и места для хранения, поддерживают push-уведомления и автономное использование в браузере.</p>
+<p>Создание прогрессивного веб-приложения теперь стало тенденцией веб-разработки, которой хочет следовать каждое предприятие. Крупные игроки, такие как Twitter и Flipboard, недавно запустили свои прогрессивные веб-приложения, чтобы предоставлять пользователям мобильные возможности, не требуя от них фактической установки приложения. В этой статье вы узнаете, как создать прогрессивное веб-приложение с помощью React. Итак, приступим.</p>
+<h4 id="настройка-приложения-react">Настройка приложения React</h4>
+<p>Сначала создайте приложение React с помощью create-react-app. Для этого вам необходимо выполнить следующие команды:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>npm <span class="nb">install</span> <span class="nt">-g</span> create-react-app
+create-react-app pwa-app
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Теперь установите React Router:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nb">cd </span>pwa-app
+
+npm <span class="nb">install</span> <span class="nt">--save</span> react-router@3.0.5
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Вам нужно заменить содержимое «src/App.js», используя приведенный ниже код, чтобы получить базовый шаблон с навигацией.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">browserHistory</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">Link</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-router</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">./App.css</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">NavBar</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">navbar</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Feed</span><span class="o">&lt;</span><span class="sr">/Link</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="dl">"</span><span class="s2">/profile</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Profile</span><span class="o">&lt;</span><span class="sr">/Link</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">Template</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">title</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">NavBar</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">page-info</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="nx">This</span> <span class="nx">is</span> <span class="nx">the</span> <span class="p">{</span><span class="nx">title</span><span class="p">}</span> <span class="nx">page</span><span class="p">.</span>
+    <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">Feed</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Template</span> <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Feed</span><span class="dl">"</span><span class="o">/&gt;</span>
+<span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">Profile</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Template</span> <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Profile</span><span class="dl">"</span><span class="o">/&gt;</span>
+<span class="p">);</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">browserHistory</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Feed</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="dl">"</span><span class="s2">/profile</span><span class="dl">"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Profile</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/Router</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Теперь вам нужно будет обновить стили по умолчанию, заменив ваш «src/App.css» стилями ниже, чтобы ваше приложение выглядело чистым.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="nc">.navbar</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#01C8E5</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.navbar</span> <span class="nt">a</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+  <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.page-info</span> <span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h4 id="регистрация-сервис-воркера">Регистрация сервис-воркера</h4>
+<p>Сервисные работники — это прокси-серверы, которые соединяют приложение и сеть. С Service Worker вам придется перехватывать сетевые запросы и сохранять кэшированные файлы. Это позволит вашему приложению работать, даже когда сеть недоступна.</p>
+<p>Создайте пустой файл worker.js в общей папке вашего приложения и добавьте в этот файл следующий код:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td><td class="rouge-code"><pre><span class="c1">// Flag for enabling cache in production</span>
+<span class="kd">var</span> <span class="nx">doCache</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">CACHE_NAME</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">pwa-app-cache</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// Delete old caches</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">activate</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">currentCachelist</span> <span class="o">=</span> <span class="p">[</span><span class="nx">CACHE_NAME</span><span class="p">];</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">keys</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">keyList</span> <span class="o">=&gt;</span>
+        <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">keyList</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">currentCachelist</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}))</span>
+      <span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// This triggers when user starts the app</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">install</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">doCache</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+      <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE_NAME</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">asset-manifest.json</span><span class="dl">'</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+            <span class="p">})</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">assets</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="c1">// We will cache initial page and the main.js</span>
+              <span class="c1">// We could also cache assets like CSS and images</span>
+              <span class="kd">const</span> <span class="nx">urlsToCache</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+                <span class="nx">assets</span><span class="p">[</span><span class="dl">'</span><span class="s1">main.js</span><span class="dl">'</span><span class="p">]</span>
+              <span class="p">];</span>
+              <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">urlsToCache</span><span class="p">);</span>
+            <span class="p">})</span>
+        <span class="p">})</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Here we intercept request and serve up the matching files</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">fetch</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">doCache</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+      <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span> <span class="o">||</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+      <span class="p">})</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Теперь проверьте, поддерживают ли браузеры сервис-воркеры, и после этого зарегистрируйте worker.js. Для этого вам нужно добавить следующий скрипт в файл public/index.html (обратите внимание, что <code class="language-plaintext highlighter-rouge">shrink-to-fit=no</code> из метатега окна просмотра было удалено).</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"theme-color"</span> <span class="na">content=</span><span class="s">"#000000"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"manifest"</span> <span class="na">href=</span><span class="s">"%PUBLIC_URL%/manifest.json"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">href=</span><span class="s">"%PUBLIC_URL%/favicon.ico"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>React App<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;noscript&gt;</span>
+      You need to enable JavaScript to run this app.
+    <span class="nt">&lt;/noscript&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"root"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="dl">'</span><span class="s1">serviceWorker</span><span class="dl">'</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="dl">'</span><span class="s1">worker.js</span><span class="dl">'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">registration</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Worker registration successful</span><span class="dl">'</span><span class="p">,</span> <span class="nx">registration</span><span class="p">.</span><span class="nx">scope</span><span class="p">);</span>
+          <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Worker registration failed</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+          <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Service Worker is not supported by browser.</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Вы должны перезапустить приложение и перезагрузить браузер, после чего вы увидите сообщение «Успешная регистрация рабочего» в консоли разработчика. Теперь восстановите отчет Lighthouse.</p>
+<h4 id="улучшение-прогрессивного-характера-приложения">Улучшение прогрессивного характера приложения</h4>
+<p>Ваше приложение будет отображать пустой корневой div до тех пор, пока не загрузится JavaScript и React не перехватит первоначальный маршрут. Вы должны убедиться, что ваше приложение работает без какой-либо загрузки JS и отображает немного CSS и HTML, прежде чем React вступит в игру. Ваш обновленный index.html будет выглядеть так:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"theme-color"</span> <span class="na">content=</span><span class="s">"#000000"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"manifest"</span> <span class="na">href=</span><span class="s">"%PUBLIC_URL%/manifest.json"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span> <span class="na">href=</span><span class="s">"%PUBLIC_URL%/favicon.ico"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>React App<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="o">&lt;!</span><span class="nt">--</span> <span class="o">...</span> <span class="nt">--</span><span class="o">&gt;</span>
+    <span class="nt">&lt;/style&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;noscript&gt;</span>
+      You need to enable JavaScript to run this app.
+    <span class="nt">&lt;/noscript&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"root"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>Feed<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"page-info"</span><span class="nt">&gt;</span>
+        Loading an awesome app...
+      <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+    <span class="o">&lt;!--</span> <span class="p">...</span> <span class="o">--&gt;</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>    <span class="o">&lt;</span><span class="nt">style</span> <span class="nt">type</span><span class="o">=</span><span class="s1">"text/css"</span><span class="o">&gt;</span>
+      <span class="nt">body</span> <span class="p">{</span>
+        <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+        <span class="nl">font-family</span><span class="p">:</span> <span class="nb">sans-serif</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nc">.navbar</span> <span class="p">{</span>
+        <span class="nl">background-color</span><span class="p">:</span> <span class="m">#01C8E5</span><span class="p">;</span>
+        <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nc">.navbar</span> <span class="nt">a</span> <span class="p">{</span>
+        <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+        <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+        <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nc">.page-info</span> <span class="p">{</span>
+        <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+        <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="dl">'</span><span class="s1">serviceWorker</span><span class="dl">'</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="dl">'</span><span class="s1">worker.js</span><span class="dl">'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">registration</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Worker registration successful</span><span class="dl">'</span><span class="p">,</span> <span class="nx">registration</span><span class="p">.</span><span class="nx">scope</span><span class="p">);</span>
+          <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Worker registration failed</span><span class="dl">'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+          <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Service Worker is not supported by browser.</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h4 id="развертывание-pwa">Развертывание PWA</h4>
+<p>Теперь отсутствует только HTTPS, а кэширование можно исправить после развертывания приложения. Обновите флаг doCache на «true» в файле worker.js. Создайте новый проект в firebase-console и назовите его «Приложение Pwa». Затем выполните следующую команду в каталоге проекта:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>npm <span class="nb">install</span> <span class="nt">-g</span> firebase-tools
+firebase login
+firebase init
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Ваш firebase.json должен выглядеть так:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"hosting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rewrites"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"**"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/index.html"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<p>После инициализации создайте и разверните приложение.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>npm run build
+
+firebase deploy
+</pre></td></tr></tbody></table></code></pre></div></div>
+</section>
+<footer class="page__meta">
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2022-09-27T12:49:07+00:00">September 27, 2022</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/text/md22/" title="Основы React native
+">Предыдущая</a>
+<a class="pagination--pager" href="/text/ml/" title="Черновик учебника
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

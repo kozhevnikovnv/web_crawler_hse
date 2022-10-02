@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Управление пакетами</title>
+<meta charset="utf-8"/>
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<link href="/assets/shower/themes/ribbon/styles/styles.css" rel="stylesheet"/>
+<style>
+        .shower {
+            --slide-ratio: calc(16 / 12);
+        }
+    </style>
+<style>
+
+        html{
+            background-color: #000;
+        }
+
+        body{
+            min-height: 0;
+            background-color: #000;
+        }
+
+        #cover h2 {
+            margin: 30px 0 0;
+            /*color: white;*/
+            text-align: center;
+            font-size: 70px;
+        }
+
+        #cover p {
+            margin: 10px 0 0;
+            text-align: center;
+            color: white;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        #cover p a {
+            /*color: white;*/
+        }
+
+        #temp {
+            display: none;
+            visibility: hidden;
+        }
+
+        section {
+            font-size: 20px;
+        }
+
+        section h2 {
+            font-size: 50px;
+        }
+
+        .slide{
+            line-height: 1.2em;
+            font-size: 1em;
+        }
+
+        .slide ol, .slide ul {
+            line-height: 1em;
+        }
+
+        .slide pre {
+            overflow-x: hidden; 
+            overflow-y: hidden; 
+            line-height: 1.2em;
+            /*font-size: 1em;*/
+        }
+
+        img {
+            max-height: 550px;
+            width: auto;
+        }
+
+        img#cover{
+            height: 100%;
+            width: auto;
+        }
+
+        .slide .shout {
+            font-size: 120px;
+        }
+
+        .mjx-chtml{
+        	font-size: 25px !important;
+        }
+
+        section > div.presentation, section > img{
+		  margin: 0;
+		  position: absolute;
+		  top: 460px;
+		  left: 50%;
+		  -ms-transform: translate(-50%, -50%);
+		  transform: translate(-50%, -50%);
+		}
+    </style>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+	   MathJax.Hub.Config({
+	     extensions: ["tex2jax.js"],
+	     jax: ["input/TeX", "output/HTML-CSS"],
+	     tex2jax: {
+	       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+	       processEscapes: true
+	     },
+	     "HTML-CSS": { availableFonts: ["TeX"] }
+	   });
+	</script>
+</head>
+<body class="shower list">
+<div id="temp">
+<h3 id="как-в-linux-распространяются-программы">Как в Linux распространяются программы?</h3>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-1.png" style="width: 600px;" title="this"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Любая операционная система должна иметь возможность установки сторонних программ.</li>
+<li>Современные сложные программы состоят из многих файлов и требуют специальной процедуры установки.</li>
+<li>Поэтому они распространяются в виде программных пакетов.</li>
+<li>В каждой операционной системе формат пакета свой, даже в разных дистрибутивах разный.</li>
+<li>Программы могут зависеть друг от друга, поэтому у пакетов тоже могут быть зависимости.</li>
+<li>Программы также могут распространяться в виде исходного кода.</li>
+</ol>
+</div>
+<h3 id="что-такое-пакет">Что такое пакет?</h3>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-7.png" style="width: 600px;" title="this"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Пакет содержит всю информацию, которая необходима для установки и работы программы.</li>
+<li>В виде пакетов распространяются программы, прикладные и системные библиотеки.</li>
+<li>Кроме самого кода программы в нем содержатся ее ресурсы, а также инструкции для установки.</li>
+<li>Все дистрибутивы, основанные на Debian, используют deb-пакеты.</li>
+<li>Семейство RedHat использует пакеты RPM.</li>
+<li>Один пакет может зависеть от десятков других.</li>
+</ol>
+</div>
+<h3 id="что-такое-пакетный-менеджер">Что такое пакетный менеджер?</h3>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-2.png" style="width: 800px;" title="this"/></p>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-5.png" style="width: 500px;" title="this"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Пакетный менеджер - это программа, которая автоматизирует работу с пакетами.</li>
+<li>В разных дистрибутивах разные пакетные менеджеры.</li>
+<li>Пакетный менеджер может установить программу из пакета и сам следит за зависимостями.</li>
+<li>Пакетный менеджер - это консольная программа, но есть графические интерфейсы.</li>
+<li>Существуют программные контейнеры, типа flatpack, которые не имеют зависимостей, но весят сильно больше.</li>
+</ol>
+</div>
+<h3 id="что-такое-репозитории-пакета">Что такое репозитории пакета?</h3>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-3.png" style="width: 600px;" title="this"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Репозиторий - это каталог программных пакетов, как магазины приложений.</li>
+<li>Производители популярных дистрибутивов поддерживают собственные репозитории.</li>
+<li>Пакетный менеджер использует репозитории для поиска и установки пакетов, отображения информации.</li>
+<li>К пакетному менеджеру в системе можно подключить несколько репозиториев.</li>
+<li>Существуют сторонние репозитории от производителей программ.</li>
+<li>Каждый дистрибутив может пользоваться репозиториями родственных ему.</li>
+</ol>
+</div>
+<h3 id="как-в-linux-mint-устанавливать-программы">Как в Linux Mint устанавливать программы?</h3>
+<p><img alt="this" class="align-center" src="/assets/images/os_text/os14-8.png" style="width: 600px;" title="this"/></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>tmux
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Команда apt install &lt;packagename&gt; установит программу из репозитория.</li>
+<li>Операции с пакетами обычно требуют привилегий суперпользователя, поэтому sudo apt…</li>
+<li>Для установки программы нужно знать название ее пакета.</li>
+<li>Программа установится только если она есть хотя бы в одном подключенном репозитории.</li>
+<li>Можно указать несколько программ через пробел.</li>
+<li>Обычно при начале работы с дистрибутивом устанавливают программы по списку.</li>
+<li>Опция -y подавляет запрос подтверждения, полезно в скриптах.</li>
+</ol>
+</div>
+<h3 id="какие-еще-операции-с-пакетными-менеджерами-нужно-знать">Какие еще операции с пакетными менеджерами нужно знать?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Команда apt remove &lt;packagename&gt; удаляет пакет. Также можно указать несколько пакетов.</li>
+<li>Команда apt purge удаляет пакет и все связанные файлы, неиспользуемые зависимости.</li>
+<li>Команда apt update обновляет список репозиториев, надо выполнять как можно чаще.</li>
+<li>Команда apt install &lt;packagename&gt; обновляет пакет до новейшей версии.</li>
+<li>Команда apt upgrade обновляет все установленные пакеты. Может работать очень медленно.</li>
+<li>Команда apt dist-upgrade обновляет сам дистрибутив до новейшей версии.</li>
+<li>Команда apt search [keyword] позволяет найти нужный пакет по ключевому слову.</li>
+</ol>
+</div>
+</div>
+<header class="caption">
+<h1>Управление пакетами</h1>
+<!-- <p>Yours Truly, Famous Inc.</p> -->
+</header>
+<section class="slide">
+<h2 class="shout">Управление пакетами</h2>
+</section>
+<footer class="badge">
+<a href="https://github.com/shower/shower">Build with shower</a>
+</footer>
+<script src="/assets/shower/shower.js"></script>
+<!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+<script type="text/javascript">
+        
+        const content = document.querySelector('#temp');
+        const childern = content.childNodes;
+
+        let current_slide;
+        let points;
+        let code;
+        let image;
+        let misc;
+
+        function commit() {
+            if (current_slide) {
+
+                const elems = [image, code, points, misc];
+
+                let slide;
+
+                elems.forEach(elem => {
+                    if (elem) {
+                        // console.log("ИТЕРАЦИЯ " + current_slide);
+                        // console.log([image, code, points, misc]);
+
+                        slide = document.createElement('section');
+                        slide.className = "slide";
+                        let slide_header = document.createElement('h2');
+                        slide_header.innerHTML = current_slide;
+                        slide.appendChild(slide_header);
+
+                        slide.appendChild(elem);
+
+                        document.body.appendChild(slide);
+
+                        fit_in_slide(elem);
+                    }
+                });
+
+                misc = undefined;
+                points = undefined;
+                image = undefined;
+                code = undefined;
+            }
+        }
+
+        function fit_in_slide(element) {
+            console.log("ИТЕРАЦИЯ " + current_slide);
+            console.log(element);
+
+            let ratio = Math.min(
+            	550 / element.offsetHeight,
+            	// 1600 / element.offsetWidth,
+            	);
+
+
+            let new_size = Math.sqrt(ratio) / 1.2;
+            if (new_size > 2.5) {
+                new_size = 2.5
+            }
+            element.style["font-size"] = new_size + "em";
+
+            new_size = Math.pow(ratio, 1.1) * 12;
+            if (new_size > 30) {
+                new_size = 30
+            }
+
+            ratio = Math.min(
+            	550 / element.offsetHeight,
+            	1600 / element.offsetWidth,
+            	);
+
+            new_size = Math.pow(ratio, 1.1) * 12;
+            if (new_size > 30) {
+                new_size = 30
+            }
+
+            console.log(element.innerHTML);            
+            console.log(element.querySelectorAll("*"));            
+            console.log(element.querySelectorAll("pre"));
+
+            element.querySelectorAll("pre").forEach(e => {
+                e.style["font-size"] = new_size + "px";
+                e.style["line-height"] = new_size * 1.2 + "px";
+            });
+
+            element.querySelectorAll("span").forEach(e => {
+            	console.log("found");
+                e.style["font-size"] = new_size + "px";
+                e.style["line-height"] = new_size * 1.2 + "px";
+            });
+
+            console.log(
+                // realHeight, ratio, 
+                new_size, 
+                element.offsetHeight,
+                element.offsetWidth);
+
+            return element;
+        }
+
+        childern.forEach(elem => {
+            if (elem.tagName == "H3") {
+                commit();
+                let slide = document.createElement('section');
+                slide.className = "slide";
+                let slide_header = document.createElement('h2');
+                slide_header.className = "shout shrink"
+                slide_header.innerHTML = elem.innerHTML;
+                slide.appendChild(slide_header);
+
+                // slide.appendChild(elem);
+
+                document.body.appendChild(slide);
+            }
+
+            if (elem.tagName == "H3" || elem.tagName == "H4") {
+                commit();
+                current_slide = elem.innerHTML;
+            }
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("notice--info")) {
+                let list = elem.getElementsByTagName('ol')[0];
+
+                list.childNodes.forEach(elem => {
+                    elem.className = "next";
+                });
+
+                points = list;
+                // points = fit_in_slide(points);
+            } 
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("highlighter-rouge")) {
+                code = elem;
+                commit()
+                // code = fit_in_slide(code);
+            } 
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("presentation")) {
+                misc = elem;
+                // misc = fit_in_slide(misc);
+                commit();
+            } 
+
+            else if (elem.tagName == "P" && elem.getElementsByTagName('img').length > 0) {
+                image = elem.getElementsByTagName('img')[0];
+                image.style.width = "auto";
+                commit();
+            } 
+        });
+
+        commit();
+
+        content.remove();
+
+    </script>
+<div class="progress"></div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Система контроля версий Git | Михаил Коротеев</title>
+<meta content="Основные понятия СКВ" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Система контроля версий Git" property="og:title"/>
+<meta content="https://koroteev.site/text/os32-0/" property="og:url"/>
+<meta content="Основные понятия СКВ" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Система контроля версий Git" name="twitter:title"/>
+<meta content="Основные понятия СКВ" name="twitter:description"/>
+<meta content="https://koroteev.site/text/os32-0/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2022-09-27T12:49:07+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/text/os32-0/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--textbook_page wide">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<nav class="toc page__content">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#основные-понятия-скв">Основные понятия СКВ</a>
+<ul>
+<li><a href="#зачем-контролировать-версии">Зачем контролировать версии?</a></li>
+<li><a href="#как-происходит-контроль-версий-в-ручном-режиме">Как происходит контроль версий в ручном режиме?</a></li>
+<li><a href="#какие-есть-скв">Какие есть СКВ?</a></li>
+<li><a href="#как-скв-меняет-рабочий-процесс">Как СКВ меняет рабочий процесс?</a></li>
+<li><a href="#какие-основные-понятия-скв">Какие основные понятия СКВ?</a></li>
+</ul>
+</li>
+<li><a href="#основы-работы-с-git">Основы работы с Git</a>
+<ul>
+<li><a href="#как-установить-и-настроить-git">Как установить и настроить git?</a></li>
+<li><a href="#какой-простейший-алгоритм-использования-скв">Какой простейший алгоритм использования СКВ?</a></li>
+<li><a href="#как-git-хранит-состояния">Как Git хранит состояния?</a></li>
+<li><a href="#как-посмотреть-историю-коммитов">Как посмотреть историю коммитов?</a></li>
+<li><a href="#как-перейти-к-другому-состоянию">Как перейти к другому состоянию?</a></li>
+<li><a href="#как-посмотреть-изменения">Как посмотреть изменения?</a></li>
+<li><a href="#каков-жизненный-цикл-файла-в-git">Каков жизненный цикл файла в git?</a></li>
+<li><a href="#как-начать-работу-с-репозиторием">Как начать работу с репозиторием?</a></li>
+</ul>
+</li>
+<li><a href="#работа-с-ветвлением">Работа с ветвлением</a>
+<ul>
+<li><a href="#зачем-нужны-ветки">Зачем нужны ветки?</a></li>
+<li><a href="#как-создать-новую-ветку">Как создать новую ветку?</a></li>
+<li><a href="#как-переключиться-на-другую-ветку">Как переключиться на другую ветку?</a></li>
+<li><a href="#как-объединять-ветки">Как объединять ветки?</a></li>
+<li><a href="#как-разрешать-конфликты-слияния">Как разрешать конфликты слияния?</a></li>
+</ul>
+</li>
+<li><a href="#работа-с-удаленными-репозиториями">Работа с удаленными репозиториями</a>
+<ul>
+<li><a href="#зачем-нужны-удаленные-репозитории">Зачем нужны удаленные репозитории?</a></li>
+<li><a href="#что-такое-dvcs">Что такое DVCS?</a></li>
+<li><a href="#как-связать-текущий-репозиторий-с-другим">Как связать текущий репозиторий с другим?</a></li>
+<li><a href="#как-склонировать-репозиторий">Как склонировать репозиторий?</a></li>
+<li><a href="#как-получить-изменения-из-апстрима">Как получить изменения из апстрима?</a></li>
+<li><a href="#как-отправить-изменения-в-апстрим">Как отправить изменения в апстрим?</a></li>
+</ul>
+</li>
+<li><a href="#работа-с-github">Работа с GitHub</a>
+<ul>
+<li><a href="#что-это-такое-и-зачем-это-нужно">Что это такое и зачем это нужно?</a></li>
+<li><a href="#как-создать-репозиторий">Как создать репозиторий?</a></li>
+<li><a href="#что-такое-форк">Что такое форк?</a></li>
+<li><a href="#что-такое-пулл-реквест">Что такое пулл реквест?</a></li>
+</ul>
+</li>
+<li><a href="#использование-gitflow">Использование GitFlow</a>
+<ul>
+<li><a href="#для-чего-это-нужно">Для чего это нужно?</a></li>
+<li><a href="#какие-типы-веток-используются">Какие типы веток используются?</a></li>
+<li><a href="#как-происходит-рабочий-процесс">Как происходит рабочий процесс?</a></li>
+<li><a href="#как-работать-с-веткой-develop">Как работать с веткой develop?</a></li>
+<li><a href="#как-создавать-фичи">Как создавать фичи?</a></li>
+<li><a href="#как-происходит-работа-с-релизами">Как происходит работа с релизами?</a></li>
+<li><a href="#для-чего-нужны-ветки-hotfix">Для чего нужны ветки hotfix?</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork" style="width: 95%">
+<meta content="Система контроля версий Git" itemprop="headline"/>
+<meta content="Основные понятия СКВ" itemprop="description"/>
+<meta content="2022-09-27T12:49:07+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Система контроля версий Git
+</h1>
+<p class="page__meta">
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          15 мин на чтение
+        
+        
+          
+         (23.305 символов)
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<h3 id="основные-понятия-скв">Основные понятия СКВ</h3>
+<h4 id="зачем-контролировать-версии">Зачем контролировать версии?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-1.png" style="width: 800px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Вы разрабатываете большой и длительный проект.</li>
+<li>Большинство работы происходит в текстовых файлах.</li>
+<li>Вы часто вносите изменения и, бывает, откатываетесь назад.</li>
+<li>Вам нужно запоминать некоторые состояния (например, гарантированно стабильно работающие, или окончательные).</li>
+<li>Несколько человек работает одновременно над одним проектом.</li>
+<li>Вы хотите проводить ревизию изменений другого участника.</li>
+<li>Вы или другие работаете распределенно и вам нужно облачное хранилище</li>
+<li>Как Timeshift в Linux.</li>
+<li>Вы хотите отслеживать, кто вносит какие изменения.</li>
+<li>Могут происходить конфликты версий</li>
+</ol>
+</div>
+<h4 id="как-происходит-контроль-версий-в-ручном-режиме">Как происходит контроль версий в ручном режиме?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-2.png" style="width: 500px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>История прошлых версий файла/файлов.</li>
+<li>В простых случаях - рабочий вариант.</li>
+<li>Быстро становится неуправляемой.</li>
+<li>Если работает несколько человек - адище.</li>
+<li>Конфликты версий приходится разрешать в ручном режиме.</li>
+<li>Занимает много места.</li>
+<li>Нет индексации, статистики, blame, синхронизации и прочих плюшек.</li>
+</ol>
+</div>
+<h4 id="какие-есть-скв">Какие есть СКВ?</h4>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Subversion, Mercurial, Team Foundation Server.</li>
+<li>Git - сегодня самая популярная.</li>
+<li>Была создана Линусом Торвальдсом, когда его достали человеки.</li>
+<li>Создана в первую очередь для программистов.</li>
+<li>Знать git - сегодня это обязательно для любого айтишника.</li>
+</ol>
+</div>
+<h4 id="как-скв-меняет-рабочий-процесс">Как СКВ меняет рабочий процесс?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-3.png" style="width: 800px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Ничего не удаляется. Информация не потеряется.</li>
+<li>Нужно решить, как часто делать коммиты.</li>
+<li>Позволяют создавать разные варианты одного документа, т. н. ветки, с общей историей изменений до точки ветвления и с разными — после неё.</li>
+<li>Дают возможность узнать, кто и когда добавил или изменил конкретный набор строк в файле.</li>
+<li>Ведут журнал изменений, в который пользователи могут записывать пояснения о том, что и почему они изменили в данной версии.</li>
+<li>Контролируют права доступа пользователей, разрешая или запрещая чтение или изменение данных, в зависимости от того, кто запрашивает это действие.</li>
+</ol>
+</div>
+<h4 id="какие-основные-понятия-скв">Какие основные понятия СКВ?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-4.png" style="width: 800px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Рабочая директория - папка, в которой хранятся все файлы проекта и в которой работает СКВ.</li>
+<li><strong>Отслеживание файла</strong> - файлы в рабочей директории могут быть добавлены под СКВ или нет. Это сделано для того, чтобы не отслеживать часто меняющиеся, но неважные для рабочего процесса файлы, например: объектные файлы, настройки сборщика и IDE, временные файлы, кэш и так далее.</li>
+<li>**Состояние **- снимок рабочей директории в определенный момент времени.</li>
+<li><strong>Репозиторий</strong> - служебное хранилище СКВ, в котором хранится информация о всех зафиксированных состояниях рабочей директории. Обычно является скрытой подпапкой в рабочей директории, но не входит в нее.</li>
+<li><strong>Коммит</strong> - фиксация изменений в новое состояние.</li>
+<li><strong>История</strong> - упорядоченная последовательность коммитов конкретного проекта начиная от исходного.</li>
+<li><strong>Удаленный репозиторий</strong> - другой репозиторий, часто расположенный на другой машине, с которым можно наладить взаимодействие (синхронизацию). Используется для организации распределенной работы над проектом.</li>
+<li><strong>Клонирование</strong> - создание локальной копии удаленного репозитория. Может происходить по протоколу ssh, HTTPS или просто копи{: .align-center style=”width: 800px;”}рованием архива.</li>
+<li><strong>Апстрим</strong> - обычное название репозитория, служащего исходным для текущего. Обычно обозначается origin.</li>
+</ol>
+</div>
+<h3 id="основы-работы-с-git">Основы работы с Git</h3>
+<h4 id="как-установить-и-настроить-git">Как установить и настроить git?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-5.png" style="width: 600px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Для работы нужно установить клиент git. Обычно это свободные и бесплатные программы.</li>
+<li>Существуют консольные и графические клиенты.</li>
+<li>Существуют под все стандартные платформы.</li>
+<li>В Linux консольный клиент - чаще всего установлен в дистрибутиве по умолчанию.</li>
+<li>Самая распространенная программа под Windows - git-scm.</li>
+<li>После установки нужно произвести первоначальную настройку - ввести имя пользователя и e-mail. Это требуется только для идентификации пользователя. Это не регистрация.</li>
+</ol>
+</div>
+<h4 id="какой-простейший-алгоритм-использования-скв">Какой простейший алгоритм использования СКВ?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nb">cd </span>project/
+git init
+git add main.py
+git commit <span class="nt">-m</span> “Initial commit”
+<span class="c"># . . .</span>
+git commit <span class="nt">-m</span> “New feature added”
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Установить и настроить клиент git</li>
+<li>Создать репозиторий в папке с проектом</li>
+<li>Добавить необходимые файлы под СКВ</li>
+<li>Сделать первоначальный коммит</li>
+<li>Сделать логически завершенный участок работы</li>
+<li>Сделать новый коммит с поясняющим сообщением</li>
+<li>Повторить сколько нужно</li>
+<li>Если что-то сломалось, вы всегда сможете вернуться на любое состояние.</li>
+</ol>
+</div>
+<h4 id="как-git-хранит-состояния">Как Git хранит состояния?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-6.png" style="width: 600px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Связный список - у состояния есть родитель.</li>
+<li>Вычисляет патч между состоянием и его родителем.</li>
+<li>Работает строго построчно.</li>
+</ol>
+</div>
+<h4 id="как-посмотреть-историю-коммитов">Как посмотреть историю коммитов?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-7.png" style="width: 500px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Команда git log выводит описание последних коммитов.</li>
+<li>Обратите внимание, что коммиты идентифицируются хешем. Вы можете использовать этот хэш как ссылку на коммит. Необязательно использовать весь хеш, только уникальную часть.</li>
+<li>при каждом коммите фиксируется дата, время, пользователь, совершивший коммит, сообщение, ссылка на родителя, хеш коммита.</li>
+</ol>
+</div>
+<h4 id="как-перейти-к-другому-состоянию">Как перейти к другому состоянию?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-8.png" style="width: 800px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Команда git checkout приводит состояние рабочей директории в соответствие с выбранным коммитом.</li>
+<li>Если в это время какие-то файлы были изменены, изменения потеряются.</li>
+<li>Можно возвращать не всю рабочую директорию, а только определенные файлы.</li>
+<li>Всегда можно воспользоваться встроенной справкой по командам.</li>
+</ol>
+</div>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-9.jpg" style="width: 800px;" title="image_tooltip"/></p>
+<h4 id="как-посмотреть-изменения">Как посмотреть изменения?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-10.png" style="width: 800px;" title="image_tooltip"/></p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-11.png" style="width: 600px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Команда git diff показывает изменения каждого файла по сравнению с содержанием индекса или, при указании, с любым коммитом.</li>
+<li>Команда показывает, какой текст был удален, а какой - добавлен.</li>
+<li>Очень полезная команда для просмотра изменений.</li>
+<li>Эта команда работает построчно. Если строка изменена, то это будет отображаться как удаление старой версии и вставка новой.</li>
+<li>Существует множество графических реализаций данного функционала</li>
+</ol>
+</div>
+<h4 id="каков-жизненный-цикл-файла-в-git">Каков жизненный цикл файла в git?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-12.png" style="width: 600px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>В Git различают три области: историю зафиксированных состояний, текущее состояние рабочей директории и индекс.</li>
+<li>Рабочая директория - это то, что мы видим в окне проводника. Мы работаем с файлами в ней, можем их редактировать любыми программами как обычно.</li>
+<li>Индекс - это набор файлов рабочей директории, которые отслеживаются СКВ. Когда мы делаем коммит, содержимое индекса записывается в историю состояний.</li>
+<li>Если мы создадим файл в рабочей директории, он не будет отслеживаться СКВ. Это сделано для того, чтобы не вычищать постоянно мусор из служебный файлов.</li>
+<li>Файл можно добавить под СКВ командой git add. в дальнейшем будем говорить только о файлах, отслеживаемых СКВ.</li>
+<li>Если мы изменили файл  в рабочей директории, он становится модифицированным по сравнению с последним коммитом.</li>
+<li>Когда мы делаем коммит, мы записываем новое состояние и все файлы опять становятся неизмененными.</li>
+<li>Во многих графических средах состояние файла отображается цветом для удобства.</li>
+</ol>
+</div>
+<h4 id="как-начать-работу-с-репозиторием">Как начать работу с репозиторием?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-13.png" style="width: 400px;" title="image_tooltip"/></p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-14.png" style="width: 800px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Нативно, гит имеет командный интерфейс. Даже если вы планируете использовать только графические клиенты или IDE с интеграцией, полезно знать основные команды и их применение.</li>
+<li>Команда git init инициализирует пустой репозиторий в текущей папке.</li>
+<li>Команда git add добавляет файлы в индекс.</li>
+<li>Команда git commit фиксирует изменения. При этом в командной строке откроется редактор по умолчанию, чтобы вы могли записать сообщение коммита. Рекомендуется использовать форму git commit -m “Описание изменений”.</li>
+<li>Можно сделать коммит и добавить все новые файлы автоматически с помощью git commit -a</li>
+<li>Коммиту можно назначить метку для упрощения ориентации по истории.</li>
+</ol>
+</div>
+<h3 id="работа-с-ветвлением">Работа с ветвлением</h3>
+<h4 id="зачем-нужны-ветки">Зачем нужны ветки?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-15.png" style="width: 800px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Ветвление происходит, когда мы произвели два разных изменения, основываясь на одном и том же состоянии.</li>
+<li>Часто происходит при командной работе.</li>
+<li>Кажется, что это что-то плохое.</li>
+<li>Git позволяет работать с ветками комфортно и, при необходимости, объединять их.</li>
+<li>Ветвление - это способ изолировать одни изменения от других. Например, разработка одной фичи независимо от хода работ над другой.</li>
+</ol>
+</div>
+<h4 id="как-создать-новую-ветку">Как создать новую ветку?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-16.png" style="width: 500px;" title="image_tooltip"/></p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-17.png" style="width: 500px;" title="image_tooltip"/></p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-18.png" style="width: 500px;" title="image_tooltip"/></p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-19.png" style="width: 500px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Ветки - это специальные указатели на коммиты, которые перемещаются с каждым новым коммитом.</li>
+<li>Создать новую ветку можно командой git branch &lt;name&gt;</li>
+<li>Команда git branch выводит все ветки.</li>
+<li>Ветка по умолчанию по соглашению называется master.</li>
+<li>Git хранит специальный указатель HEAD - он показывает, на какой ветке вы сейчас находитесь</li>
+<li>Чтобы перейти на существующую ветку, вам надо выполнить команду git checkout</li>
+<li>Ветка, на которую указывает HEAD, движется вперёд с каждым коммитом.</li>
+<li>Теперь коммиты, которые мы будем делать, будут относиться к новой ветке.</li>
+</ol>
+</div>
+<h4 id="как-переключиться-на-другую-ветку">Как переключиться на другую ветку?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-20.png" style="width: 500px;" title="image_tooltip"/></p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-21.png" style="width: 500px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>В любой момент можно перейти в другую ветку и начать коммитить в нее.</li>
+<li>При переходе в другую ветку состояние рабочей директории приводится в соответствие с состоянием последнего коммита в этой ветке. Поэтому все изменения будут основываться на том состоянии.</li>
+<li>Переход между ветками откатывает изменения, которые вы делали в другой ветке, но не удаляет их. Все фиксированные изменения сохраняются в истории веток.</li>
+<li>При использовании веток история коммитов уже не будет линейной.</li>
+</ol>
+</div>
+<h4 id="как-объединять-ветки">Как объединять ветки?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-22.png" style="width: 500px;" title="image_tooltip"/></p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-23.png" style="width: 500px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Две ветки можно объединить (слить). Это значит, что мы применяем к файлам изменения, которые произошли и в одной ветке и во второй.</li>
+<li>Команда git merge &lt;branch&gt; сливает указанную ветку в текущую. Это значит, что создастся новый коммит в текущей ветке, учитывающий изменения в указанной.</li>
+<li>Коммиты слияния имеют двух родителей.</li>
+<li>Git автоматически определяет наилучшего общего предка для слияния веток.</li>
+<li>После слияния ветка не уничтожается и над ней можно продолжать работать.</li>
+</ol>
+</div>
+<h4 id="как-разрешать-конфликты-слияния">Как разрешать конфликты слияния?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-24.png" style="width: 600px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li><strong>Если вы изменили одну и ту же часть файла по-разному в двух ветках</strong>, которые собираетесь слить, Git не сможет сделать это чисто. <strong>Такая ситуация называется конфликтом слияния</strong>.</li>
+<li>В таком случае, git приостанавливает слияние до тех пор, пока вы не разрешите конфликт.</li>
+<li>Посмотреть, какие файлы не прошли слияние можно командой git status.</li>
+<li>Содержимое спорных файлов в рабочей директории будет отражать оба конфликтующих варианта текста.</li>
+<li>Чтобы разрешить конфликт, вы должны либо выбрать одну из этих частей, либо как-то объединить содержимое по своему усмотрению.</li>
+<li>После этого необходимо выполнить добавление этих файлов к индексу и коммит для завершения слияния веток.</li>
+</ol>
+</div>
+<h3 id="работа-с-удаленными-репозиториями">Работа с удаленными репозиториями</h3>
+<h4 id="зачем-нужны-удаленные-репозитории">Зачем нужны удаленные репозитории?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-25.png" style="width: 600px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>При командной разработке приходится синхронизировать работу нескольких программистов в одном месте.</li>
+<li>Даже одному разработчику иногда приходится работать и вносить изменения в проект из разных мест.</li>
+<li>Для этого в системах контроля версий предусмотрена возможность связать локальный репозиторий с другим - удаленным.</li>
+<li>При связывании репозиториев возникает возможность отправить изменения, сделанные в локальном репозитории в удаленный и наоборот - скачать изменения из удаленного репозитория в локальный.</li>
+<li><strong>Чтобы просмотреть, какие удалённые серверы у вас уже настроены, следует выполнить команду git remote</strong>. Она перечисляет список имён-сокращений для всех уже указанных удалённых дескрипторов. Если вы склонировали ваш репозиторий, у вас должен отобразиться, по крайней мере, origin — это имя по умолчанию, которое Git присваивает серверу, с которого вы склонировали.</li>
+</ol>
+</div>
+<h4 id="что-такое-dvcs">Что такое DVCS?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-26.png" style="width: 500px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Распределенная модель git позволяет гибко взаимодействовать разработчикам в командном проекте.</li>
+<li>В централизованных системах все разработчики являются узлами сети, более или менее одинаково работающими на центральном хабе.</li>
+<li>Это означает, что если два разработчика склонируют репозиторий и каждый внесет изменения, то первый из них сможет отправить свои изменения в репозиторий без проблем. <strong>Второй разработчик должен слить изменения</strong>, сделанные первым разработчиком, чтобы избежать их перезаписи во время отправки на сервер.</li>
+<li>Однако, в Git’е <strong>каждый разработчик потенциально является и узлом, и хабом</strong>. То есть каждый разработчик может как вносить код в другие репозитории, так и содержать публичный репозиторий, на основе которого работают другие разработчики, и в который они вносят свои изменения.</li>
+</ol>
+</div>
+<h4 id="как-связать-текущий-репозиторий-с-другим">Как связать текущий репозиторий с другим?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>git remote
+origin
+<span class="nv">$ </span>git remote add pb git://github.com/paulboone/ticgit.git
+<span class="nv">$ </span>git remote <span class="nt">-v</span>
+origin  git://github.com/schacon/ticgit.git
+pb  git://github.com/paulboone/ticgit.git
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Чтобы добавить новый удалённый Git-репозиторий под именем-сокращением, к которому будет проще обращаться,** выполните git remote add [сокращение] [url]**</li>
+<li>Теперь вы можете использовать в командной строке имя pb вместо полного URL.</li>
+<li>Если вы хотите извлечь (fetch) всю информацию, которая есть в удаленном репозитории, но нет в вашем, вы можете выполнить git fetch pb.</li>
+<li>Ветка master удаленного репозитория теперь доступна локально как pb/master. Вы можете слить (merge) её в одну из своих веток или перейти на эту ветку, если хотите её проверить.</li>
+</ol>
+</div>
+<h4 id="как-склонировать-репозиторий">Как склонировать репозиторий?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-28.png" style="width: 600px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Для получения копии существующего Git-репозитория, например, проекта, в который вы хотите внести свой вклад, <strong>необходимо использовать команду git clone</strong>.</li>
+<li>Вместо того, чтобы просто получить рабочую копию, <strong>Git получает копию практически всех данных, которые есть на сервере</strong>.</li>
+<li>Эта команда создаёт директорию “libgit2”, инициализирует в ней поддиректорию .git, скачивает все данные для этого репозитория и создаёт (checks out) рабочую копию последней версии. <strong>Если вы зайдёте в новую директорию libgit2, то увидите в ней файлы проекта, готовые для работы или использования</strong>.</li>
+<li><strong>В Git реализовано несколько транспортных протоколов</strong>, которые вы можете использовать. В предыдущем примере использовался протокол https://, вы также можете встретить git:// или user@server:path/to/repo.git, использующий протокол передачи SSH.</li>
+</ol>
+</div>
+<h4 id="как-получить-изменения-из-апстрима">Как получить изменения из апстрима?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-29.png" style="width: 600px;" title="image_tooltip"/></p>
+<p>Важно отметить, что команда git fetch забирает данные в ваш локальный репозиторий, но не модифицирует то, над чем вы работаете в данный момент.</p>
+<p>Можно использовать команду git pull чтобы автоматически получить изменения из удалённой ветви и слить их со своей текущей ветвью.</p>
+<p>Выполнение git pull, как правило, извлекает (fetch) данные с сервера, с которого вы изначально склонировали, и автоматически пытается слить (merge) их с кодом, над которым вы в данный момент работаете.</p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Для получения изменений используется команда <code class="language-plaintext highlighter-rouge">git fetch</code>.</li>
+<li>Чтобы автоматически слить изменения, используется команда <code class="language-plaintext highlighter-rouge">git pull</code>.</li>
+<li>Если необходимо, при выполнении <code class="language-plaintext highlighter-rouge">git pull</code> могут создаваться коммиты слияния.</li>
+</ol>
+</div>
+<h4 id="как-отправить-изменения-в-апстрим">Как отправить изменения в апстрим?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>git push origin master
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Когда вы хотите поделиться своими наработками, вам необходимо отправить (push) их в главный репозиторий.</p>
+<p>Команда для этого действия: git push [удал. сервер] [ветка].</p>
+<p>Если вы и кто-то ещё одновременно клонируете, затем он выполняет команду push, а затем команду push выполняете вы, то ваш push точно будет отклонён.</p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Для отправки своих изменений на сервер применяют команду <code class="language-plaintext highlighter-rouge">git push</code>.</li>
+<li>Эта команда не будет производить автоматических слияний.</li>
+<li>Если на сервере что-то изменилось, ваш <code class="language-plaintext highlighter-rouge">git push</code> будет отклонен.</li>
+<li>В таком случае, нужно выполнить <code class="language-plaintext highlighter-rouge">git pull</code> и затем опять <code class="language-plaintext highlighter-rouge">git push</code>.</li>
+</ol>
+</div>
+<h3 id="работа-с-github">Работа с GitHub</h3>
+<h4 id="что-это-такое-и-зачем-это-нужно">Что это такое и зачем это нужно?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-30.png" style="width: 800px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Гитхаб это крупнейшее хранилище Git репозиториев, а также центр сотрудничества для миллионов разработчиков и проектов.</li>
+<li>Огромный процент репозиториев хранится на Гитхабе.</li>
+<li>Многие проекты с открытым исходным кодом используют его ради Git хостинга, баг-трекера, рецензирования кода и других вещей.</li>
+<li>Гитхаб даже используется для отслеживания динамики популярности языков программирования.</li>
+</ol>
+</div>
+<h4 id="как-создать-репозиторий">Как создать репозиторий?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-31.png" style="width: 400px;" title="image_tooltip"/></p>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-32.png" style="width: 800px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Первым делом нужно создать беcплатную учетную запись.</li>
+<li>В панели управления справа нажмите кнопку “New repository”.</li>
+<li>Всё, что в действительности нужно сделать, так это указать название проекта, все остальные поля опциональны.</li>
+<li>Теперь ваш проект хостится на GitHub и вы можете предоставить ссылку на него любому желающему.</li>
+<li>Все проекты на GitHub доступны как по HTTP https://github.com/&lt;пользователь&gt;/&lt;имя_проекта&gt;, так по SSH.</li>
+<li>Git производит контроль доступа на основании учётных данных пользователя, осуществляющего подключение.</li>
+</ol>
+</div>
+<h4 id="что-такое-форк">Что такое форк?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-33.png" style="width: 500px;" title="image_tooltip"/></p>
+<p>Если вы хотите вносить свой вклад в уже существующие проекты, в которых у нас нет прав на внесения изменений путем отправки (push) изменений, <strong>вы можете создать свое собственное ответвление (“fork”) проекта</strong>.</p>
+<p>Это означает, что GitHub создаст вашу собственную копию проекта, данная копия будет находиться в вашем пространстве имен и вы сможете легко делать изменения путем отправки (push) изменений.</p>
+<p>Таким образом, проекты не обеспокоены тем, чтобы пользователи, которые хотели бы выступать в роли соавторов, имели право на внесение изменений путем их отправки (push). <strong>Люди просто могут создавать свои собственные ветвления (fork), вносить туда изменения, а затем отправлять свои внесенные изменения в оригинальный репозиторий</strong> проекта путем создания запроса на принятие изменений (Pull Request)</p>
+<p>Для того, чтобы создать ответвление проекта (fork), зайдите на страницу проекта и нажмите кнопку “Cоздать ответвление” (“Fork”), которая расположена в правом верхнем углу.</p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Форки нужны для внесения изменений в чужие репозитории.</li>
+<li>Форк - это ваша собственная копия проекта со всеми коммитами и историей.</li>
+<li>При создании форка автоматически проставляется ссылка на изначальный репозиторий.</li>
+<li>Автор репозитория может увидеть, кто его форкнул.</li>
+</ol>
+</div>
+<h4 id="что-такое-пулл-реквест">Что такое пулл реквест?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-34.png" style="width: 800px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>При работе над форком чужого репозитория возникает необходимость отправить свои изменения в апстрим.</li>
+<li>Напрямую писать в репозиторий может только его автор или члены команды разработчика проекта, то есть его владельцы.</li>
+<li>Это сделано для разграничения прав доступа в репозитории.</li>
+<li>Поэтому, вы не сможете напрямую выполнить push в чужой репозиторий.</li>
+<li>Вместо этого вы отправляете pull request - запрос на внесение изменений.</li>
+<li>Этот запрос становится виден автору оригинального репозитория. Он может просмотреть вашу работу и затем либо принять его, либо отклонить.</li>
+<li>Пулл реквесты на гитхабе оформляются как публичные посты, где все участники могут оставлять свои комментарии.</li>
+</ol>
+</div>
+<h3 id="использование-gitflow">Использование GitFlow</h3>
+<h4 id="для-чего-это-нужно">Для чего это нужно?</h4>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Методология работы с git</li>
+<li>Стандартизировать рабочий процесс с использованием веток</li>
+<li>Вводит некоторые полезные и распространенные понятия</li>
+<li>Регламентирует правила слияния веток</li>
+<li>Сводит к минимуму риск выложить нестабильный код в мастер</li>
+<li>Хорошо использовать с непрерывной интеграцией</li>
+<li>Есть инструментальные решения.</li>
+</ol>
+</div>
+<h4 id="какие-типы-веток-используются">Какие типы веток используются?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-35.png" style="width: 600px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>У нас есть две основные ветки: master и develop.</li>
+<li>В ветке master содержится ровно тот же код, что и в рабочей (читай, продакт) версии проекта. А вся работа делается в ветке develop.</li>
+<li>Во время работы на основе develop создаются так называемые feature-ветки. Их может быть неограниченное количество.</li>
+<li>Ветка release используется для подготовки к новому релизу проекта.</li>
+<li>Ветка hotfix служит для срочного исправления багов, найденных, например, на продакте.</li>
+<li>Основа работы с гитфлоу - хранить в мастере только релизный код. Там не допускается рабочий процесс, потенциально приводящий к ошибкам.</li>
+</ol>
+</div>
+<h4 id="как-происходит-рабочий-процесс">Как происходит рабочий процесс?</h4>
+<p><img alt="alt_text" class="align-center" src="/assets/images/os_text/os32-36.png" style="width: 600px;" title="image_tooltip"/></p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>После создания репозитория создается ветка develop. Она является основной рабочей.</li>
+<li>Начинается работа на ветке develop.</li>
+<li>Возникает необходимость опробовать новую штуку – создается feature-ветка и делаются коммиты</li>
+<li>Закончив работу на feature-ветке, вы сливаете ее с develop.</li>
+<li>Если вы довольны текущей версией, но хотите продолжить работу, создается ветка release, куда перемещается текущая версия. Правка багов будет происходить на этой же ветке.</li>
+<li>Когда с веткой release покончено, время слить ее в master и продолжить работу с develop.</li>
+</ol>
+</div>
+<h4 id="как-работать-с-веткой-develop">Как работать с веткой develop?</h4>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Ветвь master создаётся при инициализации репозитория, что должно быть знакомо каждому пользователю Git.</li>
+<li>Параллельно ей также мы создаём ветку для разработки под названием develop.</li>
+<li>Мы считаем ветку origin/master главной. То есть, исходный код в ней должен находиться в состоянии production-ready в любой произвольный момент времени.</li>
+<li>Ветвь origin/develop мы считаем главной ветвью для разработки.</li>
+<li>Эту ветку также можно назвать «интеграционной».</li>
+<li>Когда исходный код в ветви develop готов к релизу, все изменения должны быть влиты в ветвь master и помечены тегом с номером релиза.</li>
+</ol>
+</div>
+<h4 id="как-создавать-фичи">Как создавать фичи?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>git checkout <span class="nt">-b</span> myfeature develop
+Switched to a new branch <span class="s2">"myfeature"</span>
+<span class="c"># . . .</span>
+<span class="nv">$ </span>git checkout develop
+Switched to branch <span class="s1">'develop'</span>
+<span class="nv">$ </span>git merge <span class="nt">--no-ff</span> myfeature
+Updating ea1b82a..05e9557
+<span class="o">(</span>Отчёт об изменениях<span class="o">)</span>
+<span class="nv">$ </span>git branch <span class="nt">-d</span> myfeature
+Deleted branch myfeature <span class="o">(</span>was 05e9557<span class="o">)</span><span class="nb">.</span>
+<span class="nv">$ </span>git push origin develop
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Ветви функциональностей (feature branches), также называемые иногда тематическими ветвями (topic branches), используются для разработки новых функций, которые должны появиться в текущем или будущем релизах.</p>
+<p>Смысл существования ветви функциональности (feature branch) состоит в том, что она живёт так долго, сколько продолжается разработка данной функциональности (фичи).</p>
+<p>Когда работа в ветви завершена, последняя вливается обратно в главную ветвь разработки или же удаляется (в случае неудачного эксперимента).</p>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Ветви feature используются для разработки новых функций, которые должны появиться в текущем или будущем релизах.</li>
+<li>Смысл существования ветви feature состоит в том, что она живёт так долго, сколько продолжается разработка данной фичи.</li>
+<li>Когда работа в ветви завершена, последняя вливается обратно в главную ветвь разработки или же удаляется.</li>
+</ol>
+</div>
+<h4 id="как-происходит-работа-с-релизами">Как происходит работа с релизами?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>git checkout <span class="nt">-b</span> release-1.2 develop
+Switched to a new branch <span class="s2">"release-1.2"</span>
+<span class="nv">$ </span>./bump-version.sh 1.2
+Files modified successfully, version bumped to 1.2.
+<span class="nv">$ </span>git commit <span class="nt">-a</span> <span class="nt">-m</span> <span class="s2">"Bumped version number to 1.2"</span>
+<span class="o">[</span>release-1.2 74d9424] Bumped version number to 1.2
+1 files changed, 1 insertions<span class="o">(</span>+<span class="o">)</span>, 1 deletions<span class="o">(</span>-<span class="o">)</span>
+<span class="nv">$ </span>git checkout master
+Switched to branch <span class="s1">'master'</span>
+<span class="nv">$ </span>git merge <span class="nt">--no-ff</span> release-1.2
+Merge made by recursive.
+<span class="o">(</span>Отчёт об изменениях<span class="o">)</span>
+<span class="nv">$ </span>git tag <span class="nt">-a</span> 1.2
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Ветви release используются для подготовки к выпуску новых версий продукта.</li>
+<li>Они позволяют расставить финальные точки над i перед выпуском новой версии.</li>
+<li>Кроме того, в них можно добавлять минорные исправления, а также подготавливать метаданные для очередного релиза .</li>
+<li>Очередной релиз получает свой номер версии только в тот момент, когда для него создаётся новая ветвь, но ни в коем случае не раньше.</li>
+</ol>
+</div>
+<h4 id="для-чего-нужны-ветки-hotfix">Для чего нужны ветки hotfix?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>git checkout <span class="nt">-b</span> hotfix-1.2.1 master
+Switched to a new branch <span class="s2">"hotfix-1.2.1"</span>
+<span class="nv">$ </span>./bump-version.sh 1.2.1
+Files modified successfully, version bumped to 1.2.1.
+<span class="nv">$ </span>git commit <span class="nt">-a</span> <span class="nt">-m</span> <span class="s2">"Bumped version number to 1.2.1"</span>
+<span class="o">[</span>hotfix-1.2.1 41e61bb] Bumped version number to 1.2.1
+1 files changed, 1 insertions<span class="o">(</span>+<span class="o">)</span>, 1 deletions<span class="o">(</span>-<span class="o">)</span>
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Fixed severe production problem"</span>
+<span class="o">[</span>hotfix-1.2.1 abbe5d6] Fixed severe production problem
+5 files changed, 32 insertions<span class="o">(</span>+<span class="o">)</span>, 17 deletions<span class="o">(</span>-<span class="o">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Ветви hotfix создаются из главной (master) ветви.</li>
+<li>Они нужны для срочного внесения критичных исправлений в текущий релиз, если новый релиз еще не готов.</li>
+</ol>
+</div>
+</section>
+<footer class="page__meta">
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2022-09-27T12:49:07+00:00">September 27, 2022</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/text/os14-2/" title="Управление процессами
+">Предыдущая</a>
+<a class="pagination--pager" href="/text/os33-0/" title="Основы сетевого программирования
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

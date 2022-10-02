@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Основы React native | Михаил Коротеев</title>
+<meta content="Простейшее приложение" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Основы React native" property="og:title"/>
+<meta content="https://koroteev.site/text/md22/" property="og:url"/>
+<meta content="Простейшее приложение" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Основы React native" name="twitter:title"/>
+<meta content="Простейшее приложение" name="twitter:description"/>
+<meta content="https://koroteev.site/text/md22/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2022-09-27T12:49:07+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/text/md22/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--textbook_page wide">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<nav class="toc page__content">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#простейшее-приложение">Простейшее приложение</a></li>
+<li><a href="#стилизация-компонентов">Стилизация компонентов</a>
+<ul>
+<li><a href="#использование-стилей">Использование стилей</a></li>
+<li><a href="#задание-абсолютных-размеров-элементов">Задание абсолютных размеров элементов</a></li>
+<li><a href="#задание-размеров-через-flex">Задание размеров через flex</a></li>
+<li><a href="#задание-относительных-размеров">Задание относительных размеров</a></li>
+<li><a href="#атрибут-flexdirection">Атрибут flexDirection</a></li>
+<li><a href="#атрибут-direction">Атрибут direction</a></li>
+<li><a href="#атрибут-justifycontent">Атрибут justifyContent</a></li>
+<li><a href="#атрибут-alignself">Атрибут alignSelf</a></li>
+<li><a href="#атрибут-alignitems">Атрибут alignItems</a></li>
+<li><a href="#атрибут-aligncontent">Атрибут alignContent</a></li>
+<li><a href="#атрибут-flexwrap">Атрибут flexWrap</a></li>
+</ul>
+</li>
+<li><a href="#интерактивные-элементы">Интерактивные элементы</a>
+<ul>
+<li><a href="#нативные-компоненты">Нативные компоненты</a></li>
+<li><a href="#основные-кнопки">Основные кнопки</a></li>
+<li><a href="#элементы-touchables">Элементы Touchables</a></li>
+<li><a href="#элемент-scrollview">Элемент ScrollView</a></li>
+<li><a href="#анимация">Анимация</a></li>
+</ul>
+</li>
+<li><a href="#хуки">Хуки</a>
+<ul>
+<li><a href="#хук-состояния">Хук состояния</a></li>
+<li><a href="#хук-эффекта">Хук эффекта</a></li>
+<li><a href="#эффекты-со-сбросом">Эффекты со сбросом</a></li>
+</ul>
+</li>
+<li><a href="#навигация">Навигация</a>
+<ul>
+<li><a href="#stacknavigator">StackNavigator</a></li>
+<li><a href="#использование-контекста">Использование контекста</a></li>
+<li><a href="#элемент-tabnavigation">Элемент TabNavigation</a></li>
+<li><a href="#элемент-drawernavigation">Элемент DrawerNavigation</a></li>
+<li><a href="#возврат-к-предыдущему-экрану">Возврат к предыдущему экрану</a></li>
+</ul>
+</li>
+<li><a href="#использование-redux">Использование Redux</a>
+<ul>
+<li><a href="#основные-понятия">Основные понятия</a></li>
+<li><a href="#создание-редьюсера">Создание редьюсера</a></li>
+<li><a href="#добавление-редьюсера-к-приложению">Добавление редьюсера к приложению</a></li>
+</ul>
+</li>
+<li><a href="#использование-fetch-api">Использование Fetch API</a></li>
+</ul>
+</nav>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork" style="width: 95%">
+<meta content="Основы React native" itemprop="headline"/>
+<meta content="Простейшее приложение" itemprop="description"/>
+<meta content="2022-09-27T12:49:07+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Основы React native
+</h1>
+<p class="page__meta">
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          13 мин на чтение
+        
+        
+          
+         (21.109 символов)
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<h3 id="простейшее-приложение">Простейшее приложение</h3>
+<div class="presentation">
+<div data-snack-id="1HTXbUVlF" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h3 id="стилизация-компонентов">Стилизация компонентов</h3>
+<h4 id="использование-стилей">Использование стилей</h4>
+<div class="presentation">
+<div data-snack-id="-RQIGzqtQ" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="задание-абсолютных-размеров-элементов">Задание абсолютных размеров элементов</h4>
+<div class="presentation">
+<div data-snack-id="uT3xZzjaz" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="задание-размеров-через-flex">Задание размеров через flex</h4>
+<div class="presentation">
+<div data-snack-id="MSnr7v6hi" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="задание-относительных-размеров">Задание относительных размеров</h4>
+<div class="presentation">
+<div data-snack-id="1tnfmr23s" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="атрибут-flexdirection">Атрибут flexDirection</h4>
+<div class="presentation">
+<div data-snack-id="P_tLcXKTh" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="атрибут-direction">Атрибут direction</h4>
+<div class="presentation">
+<div data-snack-id="0dJV-dWEF" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="атрибут-justifycontent">Атрибут justifyContent</h4>
+<div class="presentation">
+<div data-snack-id="xx_9w4Zk9" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="атрибут-alignself">Атрибут alignSelf</h4>
+<div class="presentation">
+<div data-snack-id="UuvkX7BlK" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="атрибут-alignitems">Атрибут alignItems</h4>
+<div class="presentation">
+<div data-snack-id="idIEQmD_f" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="атрибут-aligncontent">Атрибут alignContent</h4>
+<div class="presentation">
+<div data-snack-id="h6hGVI5Uf" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="атрибут-flexwrap">Атрибут flexWrap</h4>
+<div class="presentation">
+<div data-snack-id="lSZW04ql_" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h3 id="интерактивные-элементы">Интерактивные элементы</h3>
+<h4 id="нативные-компоненты">Нативные компоненты</h4>
+<div class="presentation">
+<div data-snack-id="_CQlaSdW3" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="основные-кнопки">Основные кнопки</h4>
+<div class="presentation">
+<div data-snack-id="fBwjHBiyb" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="элементы-touchables">Элементы Touchables</h4>
+<div class="presentation">
+<div data-snack-id="QyQnVXfTg" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="элемент-scrollview">Элемент ScrollView</h4>
+<div class="presentation">
+<div data-snack-id="qmR6nFpWq" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="анимация">Анимация</h4>
+<div class="presentation">
+<div data-snack-id="u_oLeNCxg" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h3 id="хуки">Хуки</h3>
+<h4 id="хук-состояния">Хук состояния</h4>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">Example</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">count</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Вы</span> <span class="nx">кликнули</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}</span> <span class="nx">раз</span><span class="p">(</span><span class="nx">а</span><span class="p">)</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> 
+          <span class="na">count</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> 
+        <span class="p">})}</span><span class="o">&gt;</span>
+          <span class="nx">Нажми</span> <span class="nx">на</span> <span class="nx">меня</span>
+        <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">Example</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Объявляем новую переменную состояния "count"</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Вы</span> <span class="nx">нажали</span> <span class="p">{</span><span class="nx">count</span><span class="p">}</span> <span class="nx">раз</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span><span class="o">&gt;</span>
+        <span class="nx">Нажми</span> <span class="nx">на</span> <span class="nx">меня</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">ExampleWithManyStates</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Объявим несколько переменных состояния!</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">age</span><span class="p">,</span> <span class="nx">setAge</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">fruit</span><span class="p">,</span> <span class="nx">setFruit</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">банан</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">todos</span><span class="p">,</span> <span class="nx">setTodos</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([{</span> <span class="na">text</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Изучить хуки</span><span class="dl">'</span> <span class="p">}]);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<h4 id="хук-эффекта">Хук эффекта</h4>
+<p>Иногда мы хотим выполнить дополнительный код после того, как React обновил DOM. Сетевые запросы, изменения DOM вручную, логирование — всё это примеры эффектов, которые не требуют сброса. После того, как мы запустили их, можно сразу забыть о них, ведь больше никаких дополнительных действий не требуется. Давайте сравним, как классы и хуки позволяют нам реализовывать побочные эффекты.</p>
+<p>В классовых React-компонентах метод render сам по себе не должен вызывать никаких побочных эффектов. Он не подходит для этих целей, так как в основном мы хотим выполнить наши эффекты после того, как React обновил DOM.</p>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">Example</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">count</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s2">`Вы нажали </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}</span><span class="s2"> раз`</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">componentDidUpdate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s2">`Вы нажали </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}</span><span class="s2"> раз`</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Вы</span> <span class="nx">нажали</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}</span> <span class="nx">раз</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> 
+          <span class="na">count</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">})}</span><span class="o">&gt;</span>
+          <span class="nx">Нажми</span> <span class="nx">на</span> <span class="nx">меня</span>
+        <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">Example</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s2">`Вы нажали </span><span class="p">${</span><span class="nx">count</span><span class="p">}</span><span class="s2"> раз`</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Вы</span> <span class="nx">нажали</span> <span class="p">{</span><span class="nx">count</span><span class="p">}</span> <span class="nx">раз</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span><span class="o">&gt;</span>
+        <span class="nx">Нажми</span> <span class="nx">на</span> <span class="nx">меня</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<h4 id="эффекты-со-сбросом">Эффекты со сбросом</h4>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">FriendStatus</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">isOnline</span><span class="p">:</span> <span class="kc">null</span> <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">handleStatusChange</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleStatusChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">ChatAPI</span><span class="p">.</span><span class="nx">subscribeToFriendStatus</span><span class="p">(</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">friend</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">handleStatusChange</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">componentWillUnmount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">ChatAPI</span><span class="p">.</span><span class="nx">unsubscribeFromFriendStatus</span><span class="p">(</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">friend</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">handleStatusChange</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">handleStatusChange</span><span class="p">(</span><span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="na">isOnline</span><span class="p">:</span> <span class="nx">status</span><span class="p">.</span><span class="nx">isOnline</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isOnline</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="dl">'</span><span class="s1">Загрузка...</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isOnline</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">В сети</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">Не в сети</span><span class="dl">'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">FriendStatus</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">isOnline</span><span class="p">,</span> <span class="nx">setIsOnline</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">handleStatusChange</span><span class="p">(</span><span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setIsOnline</span><span class="p">(</span><span class="nx">status</span><span class="p">.</span><span class="nx">isOnline</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">ChatAPI</span><span class="p">.</span><span class="nx">subscribeToFriendStatus</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">friend</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">handleStatusChange</span><span class="p">);</span>
+    <span class="c1">// Указываем, как сбросить этот эффект:</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="nx">cleanup</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">ChatAPI</span><span class="p">.</span><span class="nx">unsubscribeFromFriendStatus</span><span class="p">(</span><span class="nx">props</span><span class="p">.</span><span class="nx">friend</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">handleStatusChange</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isOnline</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">'</span><span class="s1">Загрузка...</span><span class="dl">'</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">isOnline</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">В сети</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">Не в сети</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<h3 id="навигация">Навигация</h3>
+<h4 id="stacknavigator">StackNavigator</h4>
+<p>Библиотека <a href="https://reactnavigation.org/">React Navigation</a> помогает организовать приложение, состоящее из нескольких экранов с возможностью передачи информации между этими экранами.</p>
+<p>В версии 6.х интерфейс этой библиотеки сильно изменился. Подробнее в <a href="https://reactnavigation.org/docs/getting-started/">документации</a>.</p>
+<div class="presentation">
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>npx react-native init MySocialNetwork <span class="nt">--version</span> 0.63.2
+<span class="nb">cd </span>MySocialNetwork
+npm run android
+<span class="nb">cp </span>App.js HomeScreen.js
+<span class="nb">cp </span>App.js FriendsScreen.js
+npm <span class="nb">install</span> @react-navigation/native@5.7.3
+npm <span class="nb">install</span> @react-navigation/stack@5.9.0 <span class="se">\</span>
+    @react-native-community/masked-view@0.1.10 <span class="se">\</span>
+    react-native-screens@2.10.1 <span class="se">\</span>
+    react-native-safe-area-context@3.1.4 <span class="se">\</span>
+    react-native-gesture-handler@1.7.0
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StyleSheet</span><span class="p">,</span> <span class="nx">Text</span><span class="p">,</span> <span class="nx">View</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-native</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="nx">Welcome</span> <span class="nx">to</span> <span class="nx">MySocialNetwork</span><span class="o">!&lt;</span><span class="sr">/Text</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">container</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">flex</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="na">backgroundColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#fff</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">alignItems</span><span class="p">:</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">justifyContent</span><span class="p">:</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div data-snack-id="GdVrQcaDa" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<p>Добавим два новых экрана</p>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StyleSheet</span><span class="p">,</span> <span class="nx">Text</span><span class="p">,</span> <span class="nx">View</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-native</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">HomeScreen</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="nx">You</span> <span class="nx">have</span> <span class="p">(</span><span class="kc">undefined</span><span class="p">)</span> <span class="nx">friends</span><span class="p">.</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">HomeScreen</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div data-snack-id="LFEe09Xgh" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StyleSheet</span><span class="p">,</span> <span class="nx">Text</span><span class="p">,</span> <span class="nx">View</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-native</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">FriendsScreen</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">friends</span> <span class="nx">here</span><span class="o">!&lt;</span><span class="sr">/Text</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">FriendsScreen</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div data-snack-id="FUTLWLOtq" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<p>Добавим навигацию:</p>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="c1">// App.js</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">react-native-gesture-handler</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StyleSheet</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-native</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NavigationContainer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-navigation/native</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createStackNavigator</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-navigation/stack</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">HomeScreen</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./HomeScreen</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">FriendsScreen</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./FriendsScreen</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Stack</span> <span class="o">=</span> <span class="nx">createStackNavigator</span><span class="p">();</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">NavigationContainer</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Navigator</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Screen</span>
+            <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">Home</span><span class="dl">"</span>
+            <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">HomeScreen</span><span class="p">}</span>
+          <span class="sr">/</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Screen</span>
+            <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">Friends</span><span class="dl">"</span>
+            <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">FriendsScreen</span><span class="p">}</span>
+          <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/Stack.Navigator</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/NavigationContainer</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<p>Добавим кнопки перехода:</p>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">HomeScreen</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="nx">You</span> <span class="nx">have</span> <span class="p">(</span><span class="kc">undefined</span><span class="p">)</span> <span class="nx">friends</span><span class="p">.</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
+</span>
+        <span class="o">&lt;</span><span class="nx">Button</span>
+          <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Add some friends</span><span class="dl">"</span>
+          <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="dl">'</span><span class="s1">Friends</span><span class="dl">'</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div data-snack-id="vDBqjTeK9" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="использование-контекста">Использование контекста</h4>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="c1">// App.js</span>
+<span class="c1">// ...</span>
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">possibleFriends</span><span class="p">:</span> <span class="p">[</span>
+        <span class="dl">'</span><span class="s1">Alice</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">Sammy</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">],</span>
+      <span class="na">currentFriends</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// ...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre><span class="c1">// App.js</span>
+<span class="c1">// ...</span>
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+
+  <span class="nx">addFriend</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span>
+      <span class="nx">currentFriends</span><span class="p">,</span>
+      <span class="nx">possibleFriends</span><span class="p">,</span>
+    <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span>
+
+    <span class="c1">// Pull friend out of possibleFriends</span>
+    <span class="kd">const</span> <span class="nx">addedFriend</span> <span class="o">=</span> <span class="nx">possibleFriends</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1">// And put friend in currentFriends</span>
+    <span class="nx">currentFriends</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">addedFriend</span><span class="p">)</span>
+
+    <span class="c1">// Finally, update the app state</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="nx">currentFriends</span><span class="p">,</span>
+      <span class="nx">possibleFriends</span><span class="p">,</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+
+  <span class="c1">// ...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1">// FriendsContext.js</span>
+
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">FriendsContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createContext</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre><span class="c1">// App.js</span>
+<span class="c1">// ...</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FriendsContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./FriendsContext</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">FriendsContext</span><span class="p">.</span><span class="nx">Provider</span>
+        <span class="nx">value</span><span class="o">=</span><span class="p">{</span>
+          <span class="p">{</span>
+            <span class="na">currentFriends</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">currentFriends</span><span class="p">,</span>
+            <span class="na">possibleFriends</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">possibleFriends</span><span class="p">,</span>
+            <span class="na">addFriend</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">addFriend</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">NavigationContainer</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Navigator</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Screen</span>
+              <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">Home</span><span class="dl">"</span>
+              <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span>
+            <span class="sr">/</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Screen</span>
+              <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">Friends</span><span class="dl">"</span>
+              <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Friends</span><span class="p">}</span>
+            <span class="sr">/</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/Stack.Navigator</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/NavigationContainer</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/FriendsContext.Provider</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre><span class="c1">// HomeScreen.js</span>
+
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StyleSheet</span><span class="p">,</span> <span class="nx">Text</span><span class="p">,</span> <span class="nx">View</span><span class="p">,</span> <span class="nx">Button</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-native</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FriendsContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./FriendsContext</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Home</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="nx">You</span> <span class="nx">have</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">currentFriends</span><span class="p">.</span><span class="nx">length</span> <span class="p">}</span> <span class="nx">friends</span><span class="o">!&lt;</span><span class="sr">/Text</span><span class="err">&gt;
+</span>
+        <span class="o">&lt;</span><span class="nx">Button</span>
+          <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Add some friends</span><span class="dl">"</span>
+          <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="dl">'</span><span class="s1">Friends</span><span class="dl">'</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">HomeScreen</span><span class="p">.</span><span class="nx">contextType</span> <span class="o">=</span> <span class="nx">FriendsContext</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c1">// FriendsScreen.js</span>
+
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StyleSheet</span><span class="p">,</span> <span class="nx">Text</span><span class="p">,</span> <span class="nx">View</span><span class="p">,</span> <span class="nx">Button</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-native</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FriendsContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./FriendsContext</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">FriendsScreen</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="nx">FriendsScreen</span><span class="p">.</span><span class="nx">contextType</span> <span class="o">=</span> <span class="nx">FriendsContext</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="c1">// FriendsScreen.js</span>
+
+<span class="c1">// ...</span>
+
+<span class="kd">class</span> <span class="nx">Friends</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">friends</span> <span class="nx">here</span><span class="o">!&lt;</span><span class="sr">/Text</span><span class="err">&gt;
+</span>
+        <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">possibleFriends</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">friend</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">Button</span>
+              <span class="nx">key</span><span class="o">=</span><span class="p">{</span> <span class="nx">friend</span> <span class="p">}</span>
+              <span class="nx">title</span><span class="o">=</span><span class="p">{</span> <span class="s2">`Add </span><span class="p">${</span> <span class="nx">friend</span> <span class="p">}</span><span class="s2">`</span> <span class="p">}</span>
+              <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">addFriend</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+              <span class="p">}</span>
+            <span class="sr">/</span><span class="err">&gt;
+</span>          <span class="p">))</span>
+        <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div data-snack-id="LRiuwyses" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="элемент-tabnavigation">Элемент TabNavigation</h4>
+<div class="presentation">
+<div data-snack-id="Euhpe45NX" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="элемент-drawernavigation">Элемент DrawerNavigation</h4>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Button</span><span class="p">,</span> <span class="nx">View</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-native</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createDrawerNavigator</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-navigation/drawer</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NavigationContainer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-navigation/native</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">HomeScreen</span><span class="p">({</span> <span class="nx">navigation</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="na">flex</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">alignItems</span><span class="p">:</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span><span class="p">,</span> <span class="na">justifyContent</span><span class="p">:</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span> <span class="p">}}</span><span class="o">&gt;</span> 
+      <span class="o">&lt;</span><span class="nx">Button</span>
+        <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">navigation</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="dl">'</span><span class="s1">Notifications</span><span class="dl">'</span><span class="p">)}</span>
+        <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Go to notifications</span><span class="dl">"</span>
+      <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">NotificationsScreen</span><span class="p">({</span> <span class="nx">navigation</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{{</span>  <span class="na">flex</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="na">alignItems</span><span class="p">:</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span><span class="p">,</span>  <span class="na">justifyContent</span><span class="p">:</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span>  <span class="p">}}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">navigation</span><span class="p">.</span><span class="nx">goBack</span><span class="p">()}</span> <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Go back home</span><span class="dl">"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">Drawer</span> <span class="o">=</span> <span class="nx">createDrawerNavigator</span><span class="p">();</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">NavigationContainer</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Drawer</span><span class="p">.</span><span class="nx">Navigator</span> <span class="nx">initialRouteName</span><span class="o">=</span><span class="dl">"</span><span class="s2">Home</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Drawer</span><span class="p">.</span><span class="nx">Screen</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">Home</span><span class="dl">"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">HomeScreen</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">Drawer</span><span class="p">.</span><span class="nx">Screen</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">Notifications</span><span class="dl">"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">NotificationsScreen</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/Drawer.Navigator</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/NavigationContainer</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div data-snack-id="dDVL3UsQ3" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h4 id="возврат-к-предыдущему-экрану">Возврат к предыдущему экрану</h4>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Button</span><span class="p">,</span> <span class="nx">View</span><span class="p">,</span> <span class="nx">Text</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-native</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NavigationContainer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-navigation/native</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createStackNavigator</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-navigation/stack</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">DetailsScreen</span><span class="p">({</span> <span class="nx">navigation</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{{</span> <span class="na">flex</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">alignItems</span><span class="p">:</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span><span class="p">,</span> <span class="na">justifyContent</span><span class="p">:</span> <span class="dl">'</span><span class="s1">center</span><span class="dl">'</span> <span class="p">}}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="nx">Details</span> <span class="nx">Screen</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">Button</span>
+        <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Go to Details... again</span><span class="dl">"</span>
+        <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">navigation</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">Details</span><span class="dl">'</span><span class="p">)}</span>
+      <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Go to Home</span><span class="dl">"</span> <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">navigation</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="dl">'</span><span class="s1">Home</span><span class="dl">'</span><span class="p">)}</span> <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Go back</span><span class="dl">"</span> <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">navigation</span><span class="p">.</span><span class="nx">goBack</span><span class="p">()}</span> <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">Button</span>
+        <span class="nx">title</span><span class="o">=</span><span class="dl">"</span><span class="s2">Go back to first screen in stack</span><span class="dl">"</span>
+        <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">navigation</span><span class="p">.</span><span class="nx">popToTop</span><span class="p">()}</span>
+      <span class="sr">/</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/View</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<h3 id="использование-redux">Использование Redux</h3>
+<h4 id="основные-понятия">Основные понятия</h4>
+<p>Redux это контейнер состояний для приложений на React и полезный инструмент для управления состоянием приложений. Он предназначен для использования совместно с React.js, но его можно использовать и отдельно и с другими фронтенд фреймворками. Redux целесообразно использовать в больших и сложных приложениях, чем приложение сложнее, тем больше оно выиграет от использования redux.</p>
+<p>Редьюсеры - это чистые функции, которые принимают предыдущее состояние и действие. Они возвращают новое состояние. Действие - это объект с типом и необязательными данными. Редьюсеры инкапсулируют то, как состояние приложения меняется в ответ на определенные действия, которые управляют хранилищем данных.</p>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">myReducer</span><span class="p">(</span><span class="nx">previousState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// use the action type and payload </span>
+  <span class="c1">// to create a new state based on</span>
+  <span class="c1">// the previous state.</span>
+  <span class="k">return</span> <span class="nx">newState</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<p>Так как редьюсеры должны быть читсыми функциями, внутри них нельзя использовать обращения к API, навигационные вызовы, вызывать нечитые функции (Math.random(), Date.now()), ну и конечно, напрямую обращаться к интерфейсу приложения.</p>
+<p>Если в приложении используется несколько состояний, то можно иметь несколько редьюсеров.</p>
+<p>Действия - это объекты JavaScript, у которых есть обязательное поле <code class="language-plaintext highlighter-rouge">type</code> и необязательное <code class="language-plaintext highlighter-rouge">payload</code>. Они представляют собой запросы, которые приложение отправляет к хранилищу. Большинство изменений состояния приложения инициируются пользователем (прямо или косвенно) - тап по кнопке, выбор пункта меню, AJAX-запрос и так далее. Даже первоначальная заргузка страницы может быть связана с действием. Дейтсвия часто создаются генераторами действий.</p>
+<p>Генератор действия - это функция, которая возвращает объект действия. Это может показаться излишним, но такой полход повышает переносимость и тестируемость приложений.</p>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="k">export</span> <span class="kd">function</span> <span class="nx">addTodo</span><span class="p">({</span> <span class="nx">task</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ADD_TODO</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nx">task</span><span class="p">,</span>
+      <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// example returned value:</span>
+<span class="c1">// {</span>
+<span class="c1">//   type: 'ADD_TODO',</span>
+<span class="c1">//   todo: { task: '🛒 get some milk', completed: false },</span>
+<span class="c1">// }</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<p>Объект действия, возвращенный из генератора затем передается всем редьюсерам, используемым в приложении. Если конкретный редьюсер обрабатывает данное действие, то он возвращает новое состояние (или часть состояния), а если нет - то прежнее. Новое состояние автоматически передается в приложение React, а оттуда вызывается перерендеринг всех конпонентов.</p>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">ADD_TODO</span><span class="dl">'</span><span class="p">:</span>
+      <span class="kd">const</span> <span class="nx">newState</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">];</span>
+      <span class="k">return</span> <span class="nx">newState</span><span class="p">;</span>
+
+    <span class="c1">// Deal with more cases like </span>
+    <span class="c1">// 'TOGGLE_TODO', 'DELETE_TODO',...</span>
+
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<h4 id="создание-редьюсера">Создание редьюсера</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>npm <span class="nb">install </span>redux react-redux
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="c1">// FriendsReducer.js</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">redux</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">INITIAL_STATE</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">current</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">possible</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">'</span><span class="s1">Alice</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Sammy</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">],</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">friendsReducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">INITIAL_STATE</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="na">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">combineReducers</span><span class="p">({</span>
+  <span class="na">friends</span><span class="p">:</span> <span class="nx">friendsReducer</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">// FriendsActions.js</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">addFriend</span> <span class="o">=</span> <span class="nx">friendsIndex</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ADD_FRIEND</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="nx">friendsIndex</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="c1">// FriendsReducer.js</span>
+<span class="c1">// ...</span>
+<span class="kd">const</span> <span class="nx">friendsReducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">INITIAL_STATE</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">ADD_FRIEND</span><span class="dl">'</span><span class="p">:</span>
+      <span class="c1">// Pulls current and possible out of previous state</span>
+      <span class="c1">// We do not want to alter state directly in case</span>
+      <span class="c1">// another action is altering it at the same time</span>
+      <span class="kd">const</span> <span class="p">{</span>
+        <span class="nx">current</span><span class="p">,</span>
+        <span class="nx">possible</span><span class="p">,</span>
+      <span class="p">}</span> <span class="o">=</span> <span class="nx">state</span><span class="p">;</span>
+
+      <span class="c1">// Pull friend out of friends.possible</span>
+      <span class="c1">// Note that action.payload === friendIndex</span>
+      <span class="kd">const</span> <span class="nx">addedFriend</span> <span class="o">=</span> <span class="nx">possible</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+      <span class="c1">// And put friend in friends.current</span>
+      <span class="nx">current</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">addedFriend</span><span class="p">);</span>
+
+      <span class="c1">// Finally, update the redux state</span>
+      <span class="kd">const</span> <span class="nx">newState</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">current</span><span class="p">,</span> <span class="nx">possible</span> <span class="p">};</span>
+  
+      <span class="k">return</span> <span class="nx">newState</span><span class="p">;</span>
+
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// ...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<h4 id="добавление-редьюсера-к-приложению">Добавление редьюсера к приложению</h4>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="c1">// App.js</span>
+<span class="c1">// ...</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Provider</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-redux</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">redux</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">friendsReducer</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./FriendsReducer</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">friendsReducer</span><span class="p">);</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">Provider</span> <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">NavigationContainer</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Navigator</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Screen</span>
+              <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">Home</span><span class="dl">"</span>
+              <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">HomeScreen</span><span class="p">}</span>
+            <span class="sr">/</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">Stack</span><span class="p">.</span><span class="nx">Screen</span>
+              <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">Friends</span><span class="dl">"</span>
+              <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">FriendsScreen</span><span class="p">}</span>
+            <span class="sr">/</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/Stack.Navigator</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/NavigationContainer</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/Provider</span><span class="err">&gt;
+</span>    <span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="c1">// HomeScreen.js</span>
+<span class="c1">// ...</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-redux</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// ...</span>
+          <span class="o">&lt;</span><span class="nx">Text</span><span class="o">&gt;</span><span class="nx">You</span> <span class="nx">have</span> <span class="p">{</span> 
+            <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">friends</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">length</span> 
+          <span class="p">}</span> <span class="nx">friends</span><span class="p">.</span><span class="o">&lt;</span><span class="sr">/Text</span><span class="err">&gt;
+</span><span class="c1">// ...</span>
+<span class="kd">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">friends</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">state</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">friends</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">)(</span><span class="nx">HomeScreen</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="c1">// FriendsScreen.js</span>
+<span class="c1">// ...</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-redux</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">bindActionCreators</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">redux</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">addFriend</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./FriendsActions</span><span class="dl">'</span><span class="p">;</span>
+<span class="c1">// ...</span>
+        <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">friends</span><span class="p">.</span><span class="nx">possible</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">friend</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">Button</span>
+              <span class="nx">key</span><span class="o">=</span><span class="p">{</span> <span class="nx">friend</span> <span class="p">}</span>
+              <span class="nx">title</span><span class="o">=</span><span class="p">{</span> <span class="s2">`Add </span><span class="p">${</span> <span class="nx">friend</span> <span class="p">}</span><span class="s2">`</span> <span class="p">}</span>
+              <span class="nx">onPress</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">addFriend</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+              <span class="p">}</span>
+            <span class="sr">/</span><span class="err">&gt;
+</span>          <span class="p">))</span>
+        <span class="p">}</span>
+<span class="c1">// ...</span>
+<span class="kd">const</span> <span class="nx">mapStateToProps</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">friends</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">state</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">friends</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">mapDispatchToProps</span> <span class="o">=</span> <span class="nx">dispatch</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="nx">bindActionCreators</span><span class="p">({</span>
+    <span class="nx">addFriend</span><span class="p">,</span>
+  <span class="p">},</span> <span class="nx">dispatch</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span> <span class="nx">mapDispatchToProps</span><span class="p">)(</span><span class="nx">FriendsScreen</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div data-snack-id="jSjM-xOb8" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+<h3 id="использование-fetch-api">Использование Fetch API</h3>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://mywebsite.com/endpoint/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">Accept</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="na">firstParam</span><span class="p">:</span> <span class="dl">'</span><span class="s1">yourValue</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">secondParam</span><span class="p">:</span> <span class="dl">'</span><span class="s1">yourOtherValue</span><span class="dl">'</span>
+  <span class="p">})</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">getMoviesFromApi</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://reactnative.dev/movies.json</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">json</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nx">movies</span><span class="p">;</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">getMoviesFromApiAsync</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span>
+      <span class="dl">'</span><span class="s1">https://reactnative.dev/movies.json</span><span class="dl">'</span>
+    <span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">json</span><span class="p">.</span><span class="nx">movies</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div data-snack-id="7jt9kldnZ" data-snack-platform="web" data-snack-preview="true" data-snack-theme="light" style="overflow:hidden;background:#F9F9F9;border:1px solid var(--color-border);border-radius:4px;height:505px;width:100%"></div>
+<script async="" src="https://snack.expo.dev/embed.js"></script>
+</div>
+</section>
+<footer class="page__meta">
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2022-09-27T12:49:07+00:00">September 27, 2022</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager disabled" href="#">Предыдущая</a>
+<a class="pagination--pager" href="/text/md24/" title="Progressive Web Apps
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

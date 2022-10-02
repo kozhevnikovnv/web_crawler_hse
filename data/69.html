@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Черновик учебника | Михаил Коротеев</title>
+<meta content="Настройка среды программирование" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Черновик учебника" property="og:title"/>
+<meta content="https://koroteev.site/text/os_np/" property="og:url"/>
+<meta content="Настройка среды программирование" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Черновик учебника" name="twitter:title"/>
+<meta content="Настройка среды программирование" name="twitter:description"/>
+<meta content="https://koroteev.site/text/os_np/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2022-09-27T12:49:07+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/text/os_np/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--textbook_page wide">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<nav class="toc page__content">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#настройка-среды-программирование">Настройка среды программирование</a>
+<ul>
+<li><a href="#выбор-операционной-системы-и-средств-разработки">Выбор операционной системы и средств разработки</a>
+<ul>
+<li><a href="#какие-ос-подходят-для-разработки">Какие ОС подходят для разработки?</a></li>
+<li><a href="#от-чего-зависит-выбор-рабочей-ос">От чего зависит выбор рабочей ОС?</a></li>
+<li><a href="#чем-коварен-перенос-программы-в-другую-ос">Чем коварен перенос программы в другую ОС?</a></li>
+</ul>
+</li>
+<li><a href="#установка-необходимых-программ">Установка необходимых программ</a>
+<ul>
+<li><a href="#что-нужно-для-написания-программ">Что нужно для написания программ?</a></li>
+<li><a href="#как-установить-интерпретатор-python">Как установить интерпретатор Python?</a></li>
+<li><a href="#каким-текстовым-редактором-пользоваться">Каким текстовым редактором пользоваться?</a></li>
+<li><a href="#зачем-нужна-интегрированная-среда-разработки">Зачем нужна интегрированная среда разработки?</a></li>
+<li><a href="#как-пользоваться-менеджером-пакетов">Как пользоваться менеджером пакетов?</a></li>
+</ul>
+</li>
+<li><a href="#работа-с-виртуальными-окружениями">Работа с виртуальными окружениями</a>
+<ul>
+<li><a href="#зачем-нужны-локальные-окружения">Зачем нужны локальные окружения?</a></li>
+<li><a href="#как-создать-виртуальное-окружение-в-python">Как создать виртуальное окружение в Python?</a></li>
+<li><a href="#как-работать-с-виртуальным-окружением-в-python">Как работать с виртуальным окружением в Python?</a></li>
+</ul>
+</li>
+<li><a href="#типичная-структура-программного-проекта">Типичная структура программного проекта</a>
+<ul>
+<li><a href="#зачем-следовать-типичной-структуре">Зачем следовать типичной структуре?</a></li>
+<li><a href="#что-такое-метаинформация">Что такое метаинформация?</a></li>
+<li><a href="#что-такое-зависимости-проекта">Что такое зависимости проекта?</a></li>
+<li><a href="#что-такое-зависимости-разработки">Что такое зависимости разработки?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#безопасность-сетевых-приложений">Безопасность сетевых приложений</a>
+<ul>
+<li><a href="#как-криптография-помогает-обеспечивать-безопасность">Как криптография помогает обеспечивать безопасность?</a></li>
+<li><a href="#каковы-основные-правила-криптографии">Каковы основные правила криптографии?</a></li>
+<li><a href="#что-такое-симметричное-шифрование">Что такое симметричное шифрование?</a></li>
+<li><a href="#что-такое-асимметричное-шифрование">Что такое асимметричное шифрование?</a></li>
+<li><a href="#как-асимметричное-шифрование-обеспечивает-аутентификацию">Как асимметричное шифрование обеспечивает аутентификацию?</a></li>
+<li><a href="#что-такое-электронный-сертификат">Что такое электронный сертификат?</a></li>
+<li><a href="#что-такое-хеш-функция">Что такое хеш функция?</a></li>
+<li><a href="#что-такое-электронная-подпись">Что такое электронная подпись?</a></li>
+<li><a href="#что-такое-протокол-рукопожатия">Что такое протокол рукопожатия?</a></li>
+<li><a href="#как-работает-протокол-tls">Как работает протокол TLS?</a></li>
+</ul>
+</li>
+<li><a href="#основы-компьютерных-сетей">Основы компьютерных сетей</a>
+<ul>
+<li><a href="#основы-сетевого-взаимодействия">Основы сетевого взаимодействия</a></li>
+<li><a href="#настройка-сети-в-linux">Настройка сети в Linux</a></li>
+<li><a href="#веб-сервер">Веб-сервер</a>
+<ul>
+<li><a href="#зачем-нужна-служба-http">Зачем нужна служба HTTP?</a></li>
+<li><a href="#как-работает-веб-сервер-изнутри">Как работает веб-сервер изнутри?</a></li>
+<li><a href="#какие-веб-сервера-самые-популярные">Какие веб-сервера самые популярные?</a></li>
+<li><a href="#как-установить-и-настроить-веб-сервер-apache2-в-linux">Как установить и настроить веб-сервер Apache2 в Linux?</a></li>
+<li><a href="#как-обеспечить-безопасность-веб-службы">Как обеспечить безопасность веб-службы?</a></li>
+<li><a href="#как-настроить-виртуальные-хосты">Как настроить виртуальные хосты?</a></li>
+<li><a href="#как-установить-и-настроить-nginx">Как установить и настроить Nginx?</a></li>
+<li><a href="#как-мониторить-работу-веб-сервера">Как мониторить работу веб-сервера?</a></li>
+</ul>
+</li>
+<li><a href="#ftp-сервер">FTP-сервер</a>
+<ul>
+<li><a href="#зачем-нужна-служба-ftp">Зачем нужна служба FTP?</a></li>
+<li><a href="#как-устроен-протокол-ftp">Как устроен протокол FTP?</a></li>
+<li><a href="#как-работает-ftp-сервер-изнутри">Как работает FTP-сервер изнутри?</a></li>
+<li><a href="#как-установить-ftp-сервер-на-linux">Как установить FTP-сервер на Linux?</a></li>
+<li><a href="#как-обеспечить-безопасность-ftp-сервера">Как обеспечить безопасность FTP-сервера?</a></li>
+<li><a href="#как-настроить-права-доступа-к-ftp-службе-и-ресурсам">Как настроить права доступа к FTP-службе и ресурсам?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#-разработка-веб-приложений">-Разработка веб-приложений</a>
+<ul>
+<li><a href="#основы-протокола-http">Основы протокола HTTP</a></li>
+<li><a href="#получение-удаленных-ресурсов">Получение удаленных ресурсов</a></li>
+<li><a href="#парсинг-веб-страниц">Парсинг веб-страниц</a></li>
+<li><a href="#создание-интернет-роботов">Создание интернет-роботов</a></li>
+<li><a href="#работа-с-внешним-api">Работа с внешним API</a></li>
+<li><a href="#простейший-веб-сервер">Простейший веб-сервер</a></li>
+<li><a href="#создание-веб-сервиса">Создание веб-сервиса</a></li>
+</ul>
+</li>
+<li><a href="#-разработка-клиент-серверных-приложений">-Разработка клиент-серверных приложений</a>
+<ul>
+<li><a href="#хранение-данных-и-файлов-пользователя-на-сервере">Хранение данных и файлов пользователя на сервере</a></li>
+<li><a href="#загрузка-файлов-от-пользователя">Загрузка файлов от пользователя</a></li>
+<li><a href="#обеспечение-доступа-к-локальным-файлам-сервера">Обеспечение доступа к локальным файлам сервера</a></li>
+<li><a href="#разграничение-доступа">Разграничение доступа</a></li>
+<li><a href="#использование-субд">Использование СУБД</a></li>
+<li><a href="#преобразование-файлов-на-лету">Преобразование файлов на лету</a></li>
+<li><a href="#выполнение-сценариев">Выполнение сценариев</a></li>
+<li><a href="#толстый-или-тонкий-клиент">Толстый или тонкий клиент</a></li>
+</ul>
+</li>
+<li><a href="#-создание-кроссплатформенного-приложения">-Создание кроссплатформенного приложения</a>
+<ul>
+<li><a href="#выбор-платформы-для-сервера">Выбор платформы для сервера</a></li>
+<li><a href="#клиент-на-windows">Клиент на Windows</a></li>
+<li><a href="#клиент-на-nix">Клиент на *nix</a></li>
+<li><a href="#браузерный-клиент">Браузерный клиент</a></li>
+<li><a href="#мобильный-клиент">Мобильный клиент</a></li>
+<li><a href="#обеспечение-омниканальности">Обеспечение омниканальности</a></li>
+</ul>
+</li>
+<li><a href="#архитектура-сетевых-приложений">Архитектура сетевых приложений</a>
+<ul>
+<li><a href="#монолитное-веб-приложение">Монолитное веб-приложение</a></li>
+<li><a href="#двухзвенное-приложение">Двухзвенное приложение</a></li>
+<li><a href="#трехзвенное-приложение">Трехзвенное приложение</a></li>
+<li><a href="#безсерверное-приложение">Безсерверное приложение</a></li>
+<li><a href="#микросервисная-архитектура">Микросервисная архитектура</a></li>
+<li><a href="#облачные-приложения">Облачные приложения</a></li>
+</ul>
+</li>
+<li><a href="#-разработка-многопользовательских-приложений">-Разработка многопользовательских приложений</a>
+<ul>
+<li><a href="#отслеживание-разных-пользователей">Отслеживание разных пользователей</a></li>
+<li><a href="#сохранение-сессии">Сохранение сессии</a></li>
+<li><a href="#идентификация-аутентификация">Идентификация, аутентификация</a></li>
+<li><a href="#хранение-паролей-и-персональных-данных">Хранение паролей и персональных данных</a></li>
+<li><a href="#вопросы-безопасности-приложений">Вопросы безопасности приложений</a></li>
+</ul>
+</li>
+<li><a href="#непрерывная-интеграция-приложений">Непрерывная интеграция приложений</a>
+<ul>
+<li><a href="#жизненный-цикл-разработки-приложения">Жизненный цикл разработки приложения</a></li>
+<li><a href="#автоматизированное-тестирование">Автоматизированное тестирование</a></li>
+<li><a href="#тестовые-среды-и-управление-конфигурациями">Тестовые среды и управление конфигурациями</a></li>
+<li><a href="#контейнеризация-приложений">Контейнеризация приложений</a></li>
+</ul>
+</li>
+<li><a href="#развертывание-сетевых-приложений">Развертывание сетевых приложений</a>
+<ul>
+<li><a href="#подготовка-сетевой-инфраструктуры">Подготовка сетевой инфраструктуры</a></li>
+<li><a href="#контейнеризация-сетевых-приложений">Контейнеризация сетевых приложений</a></li>
+<li><a href="#деплой-на-выделенном-сервере">Деплой на выделенном сервере</a></li>
+<li><a href="#деплой-на-облачном-провайдере">Деплой на облачном провайдере</a></li>
+<li><a href="#мониторинг-серверного-приложения">Мониторинг серверного приложения</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork" style="width: 95%">
+<meta content="Черновик учебника" itemprop="headline"/>
+<meta content="Настройка среды программирование" itemprop="description"/>
+<meta content="2022-09-27T12:49:07+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Черновик учебника
+</h1>
+<p class="page__meta">
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          8 мин на чтение
+        
+        
+          
+         (14.646 символов)
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<h2 id="настройка-среды-программирование">Настройка среды программирование</h2>
+<h3 id="выбор-операционной-системы-и-средств-разработки">Выбор операционной системы и средств разработки</h3>
+<h4 id="какие-ос-подходят-для-разработки">Какие ОС подходят для разработки?</h4>
+<h4 id="от-чего-зависит-выбор-рабочей-ос">От чего зависит выбор рабочей ОС?</h4>
+<h4 id="чем-коварен-перенос-программы-в-другую-ос">Чем коварен перенос программы в другую ОС?</h4>
+<h3 id="установка-необходимых-программ">Установка необходимых программ</h3>
+<h4 id="что-нужно-для-написания-программ">Что нужно для написания программ?</h4>
+<h4 id="как-установить-интерпретатор-python">Как установить интерпретатор Python?</h4>
+<h4 id="каким-текстовым-редактором-пользоваться">Каким текстовым редактором пользоваться?</h4>
+<h4 id="зачем-нужна-интегрированная-среда-разработки">Зачем нужна интегрированная среда разработки?</h4>
+<h4 id="как-пользоваться-менеджером-пакетов">Как пользоваться менеджером пакетов?</h4>
+<h3 id="работа-с-виртуальными-окружениями">Работа с виртуальными окружениями</h3>
+<h4 id="зачем-нужны-локальные-окружения">Зачем нужны локальные окружения?</h4>
+<h4 id="как-создать-виртуальное-окружение-в-python">Как создать виртуальное окружение в Python?</h4>
+<h4 id="как-работать-с-виртуальным-окружением-в-python">Как работать с виртуальным окружением в Python?</h4>
+<h3 id="типичная-структура-программного-проекта">Типичная структура программного проекта</h3>
+<h4 id="зачем-следовать-типичной-структуре">Зачем следовать типичной структуре?</h4>
+<h4 id="что-такое-метаинформация">Что такое метаинформация?</h4>
+<h4 id="что-такое-зависимости-проекта">Что такое зависимости проекта?</h4>
+<h4 id="что-такое-зависимости-разработки">Что такое зависимости разработки?</h4>
+<h2 id="безопасность-сетевых-приложений">Безопасность сетевых приложений</h2>
+<h3 id="как-криптография-помогает-обеспечивать-безопасность">Как криптография помогает обеспечивать безопасность?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>При работе сетевых приложений остро встают вопросы обеспечения безопасности.</li>
+<li>Конфиденциальность - это когда вы уверены, что ваши данные не прочитает кто угодно.</li>
+<li>Целостность - это когда вы уверены, что сообщение по сети дошло в неизменном виде.</li>
+<li>Аутентификация - это когда вы уверены, что собеседник именно тот, за кого себя выдает.</li>
+<li>Криптография занимается разработкой алгоритмов - криптографических примитивов.</li>
+<li>Также существуют криптографические протоколы - правила применения примитивов.</li>
+</ol>
+</div>
+<h3 id="каковы-основные-правила-криптографии">Каковы основные правила криптографии?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Криптографические протоколы и алгоритмы должны быть открыты.</li>
+<li>Абсолютной защиты не существует. Криптоанализ носит вероятностный характер.</li>
+<li>Криптография - не решение всех проблем. Есть, например, социальная инженерия.</li>
+<li>Криптографические алгоритмы бесполезны, если применяются неправильно.</li>
+<li>Не стоит изобретать велосипед. Рекомендуется использовать готовые реализации.</li>
+<li>Не стоит использовать один ключ для шифрования всего.</li>
+<li>Шифр считается небезопасным, если можно получить хоть какую-то информацию.</li>
+</ol>
+</div>
+<h3 id="что-такое-симметричное-шифрование">Что такое симметричное шифрование?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Шифрование нужно для сокрытия данных.</li>
+<li>Симметричный шифр состоит из двух алгоритмов - шифрования и дешифрования.</li>
+<li>Симметричные шифры используют один ключ для шифрования и для дешифровки.</li>
+<li>Симметричные шифры более простые и быстрые.</li>
+<li>Эффективность симметричных шифров экспоненциально растет от длины ключа.</li>
+<li>Рекомендуемый стандартный шифр на сегодня - AES  с ключом 256 бит.</li>
+<li>Шифр AES реализован аппаратно в процессорах AMD и Intel.</li>
+<li>Для работы симметричных шифров нужно, чтобы обе стороны знали общий ключ.</li>
+</ol>
+</div>
+<h3 id="что-такое-асимметричное-шифрование">Что такое асимметричное шифрование?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>В асимметричном шифровании один ключ используется для шифрования, другой для расшифровки.</li>
+<li>В состав асимметричного шифра входит алгоритм генерации ключей.</li>
+<li>Ключи всегда существуют в паре - открытый и закрытый.</li>
+<li>Открытый ключ можно публиковать и отправлять всем, закрытый - держать в строгой тайне.</li>
+<li>Если закрытый ключ скомпрометирован - надо сгенерировать новую пару.</li>
+<li>Обычно сообщение шифруют открытым ключом Боба, то есть получателя..</li>
+<li>Такое сообщение сможет расшифровать только Боб своим закрытым ключом.</li>
+<li>Распространенный алгоритмы асимметричного шифрования - RSA.</li>
+</ol>
+</div>
+<h3 id="как-асимметричное-шифрование-обеспечивает-аутентификацию">Как асимметричное шифрование обеспечивает аутентификацию?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Можно иметь две пары ключей - ключи отправителя и ключи получателя.</li>
+<li>Алиса шифрует сообщение своим закрытым ключом и открытым ключом Боба.</li>
+<li>Боб расшифровывает сообщение своим закрытым и открытым ключом Алисы.</li>
+<li>Секретность обеспечивается тем, что закрытый ключ Боба не знает никто кроме него.</li>
+<li>При этом Боб уверен, что сообщение отправила Алиса, ведь никто не знает ее закрытого ключа.</li>
+<li>Такая система хорошо работает только между доверенными сторонами.</li>
+<li>С ростом числа участников количество пар ключей растет в квадратичной зависимости.</li>
+<li>Для аутентификации можно сообщить другой стороне свой открытый ключ.</li>
+</ol>
+</div>
+<h3 id="что-такое-электронный-сертификат">Что такое электронный сертификат?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Открытый ключ не может подтвердить принадлежность другой стороны.</li>
+<li>Мы можем быть уверены, что сообщение отправлено тем, кто знает закрытый ключ в пару к этому открытому, но кто это?</li>
+<li>Для этого нужно, чтобы кто-то кому мы доверяем подтвердил, что данный открытый ключ принадлежит определенному лицу.</li>
+<li>Центр сертификации заверяет открытые ключи и подтверждает личность их владельцев.</li>
+<li>Для этого он добавляет к ключу служебную информацию, шифрует его своим ключом и получается цифровой сертификат.</li>
+<li>Цифровой сертификат используется как усиленный открытый ключ.</li>
+<li>Центрами сертификации выступают авторитетные организации в сфере ИБ.</li>
+<li>Обычно получение сертификата - платная услуга, но можно получить бесплатный.</li>
+<li>Существуют самоподписанные сертификаты - они хороши для тестирования и обучения.</li>
+</ol>
+</div>
+<h3 id="что-такое-хеш-функция">Что такое хеш функция?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Хеш функция принимает строку любой длины и выдает результат фиксированной длины.</li>
+<li>Результат называется хеш или дайджест.</li>
+<li>При изменении сообщения даже немного дайджест изменяется полностью и непредсказуемо.</li>
+<li>По дайджесту невозможно восстановить сообщение.</li>
+<li>Хеши не используются для шифрования, это одностороннее преобразование.</li>
+<li>Существует возможность коллизии, но ей можно пренебречь.</li>
+<li>Хеши используются для защиты от случайных повреждений данных</li>
+<li>Распространенные алгоритмы хеширования - MD5, SHA-1, SHA-256.</li>
+</ol>
+</div>
+<h3 id="что-такое-электронная-подпись">Что такое электронная подпись?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Хеши не гарантируют защиты от целенаправленного искажения данных.</li>
+<li>Дайджест может быть дополнен цифровым сертификатом отправителя и зашифрован.</li>
+<li>Это называется цифровая подпись.</li>
+<li>Документ подписанный ЭЦП нельзя изменить - он перестанет соответствовать подписи.</li>
+<li>Подпись подделать тоже нельзя - для этого надо знать закрытый ключ отправителя.</li>
+</ol>
+</div>
+<h3 id="что-такое-протокол-рукопожатия">Что такое протокол рукопожатия?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Специальные алгоритмы могут обеспечить общий секрет при обмене данными по открытому каналу.</li>
+<li>Такие алгоритмы основаны на односторонних функциях.</li>
+<li>Самый распространенный алгоритм - протокол Диффи-Хеллмана.</li>
+<li>Существуют более сложные модификации, например схема эль Гамаля.</li>
+<li>Современные протоколы основаны на эллиптических кривых.</li>
+<li>Протокол рукопожатия может дать возможность использовать симметричный шифр.</li>
+</ol>
+</div>
+<h3 id="как-работает-протокол-tls">Как работает протокол TLS?</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Протокол TLS или раньше SSL используется для обеспечения безопасности сетевых соединений.</li>
+<li>Он может работать в паре с любым другим протоколом прикладного уровня.</li>
+<li>При установке соединения стороны сначала обмениваются поддерживаемыми параметрами.</li>
+<li>Затем они могут проверить сертификаты друг друга, если это необходимо и требуется.</li>
+<li>Обмен сертификатами или просто открытыми ключами дает возможность шифровать трафик.</li>
+<li>TLS в сочетании с HTTP называется HTTPS и очень широко используется.</li>
+<li>В реальной жизни нет причин не использовать TLS.</li>
+</ol>
+</div>
+<h2 id="основы-компьютерных-сетей">Основы компьютерных сетей</h2>
+<h3 id="основы-сетевого-взаимодействия">Основы сетевого взаимодействия</h3>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Устройство, обеспечивающее компьютеру обмен данными по сети - сетевой адаптер</li>
+<li>У каждого сетевого адаптера есть физический адрес - MAC.</li>
+<li>Сетевые адаптеры могут быть проводные, беспроводные, виртуальные. Каждый конкретный адаптер поддерживает определенную архитектуру сети.</li>
+<li>В компьютере может быть несколько сетевых адаптеров.</li>
+<li>При подключении к сети адаптеру назначается сетевой адрес - IP, использующийся для сетевой маршрутизации.</li>
+<li>Кроме адреса самого компьютера важными параметрами сетевого подключения являются маска сети, адрес шлюза, адрес DNS сервера.</li>
+<li>Разные программы на одном хосте могут использовать разные сетевые порты для разграничения собственного сетевого трафика.</li>
+</ol>
+</div>
+<h3 id="настройка-сети-в-linux">Настройка сети в Linux</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>ifconfig
+	enp0s3: <span class="nv">flags</span><span class="o">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+	        inet 10.4.23.11  netmask 255.255.255.0  broadcast 10.4.23.255
+	        inet6 fe80::a00:27ff:fed7:e759  prefixlen 64  scopeid 0x20&lt;<span class="nb">link</span><span class="o">&gt;</span>
+	        ether 08:00:27:d7:e7:59  txqueuelen 1000  <span class="o">(</span>Ethernet<span class="o">)</span>
+	        RX packets 200633  bytes 247164183 <span class="o">(</span>247.1 MB<span class="o">)</span>
+	        RX errors 0  dropped 4685  overruns 0  frame 0
+	        TX packets 16379  bytes 1754936 <span class="o">(</span>1.7 MB<span class="o">)</span>
+	        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+	lo: <span class="nv">flags</span><span class="o">=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+	        inet 127.0.0.1  netmask 255.0.0.0
+	        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+	        loop  txqueuelen 1000  <span class="o">(</span>Local Loopback<span class="o">)</span>
+	        RX packets 2987  bytes 171636 <span class="o">(</span>171.6 KB<span class="o">)</span>
+	        RX errors 0  dropped 0  overruns 0  frame 0
+	        TX packets 2987  bytes 171636 <span class="o">(</span>171.6 KB<span class="o">)</span>
+	        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ping 127.0.0.1
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>ping 127.0.0.1
+ping 192.168.56.101
+ping 192.168.56.1
+ping 192.168.56.15
+ping 8.8.8.8
+ping ya.ru
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>nc localhost 22
+	SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.5
+	hello
+	Invalid SSH identification string.
+	^C
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>nc <span class="nt">-z</span> <span class="nt">-v</span> localhost 1-100
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>nc <span class="nt">-l</span> 8080
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>arp <span class="nt">-n</span> 
+	Address                  HWtype  HWaddress           Flags Mask            Iface
+	10.4.23.31               ether   80:6d:97:08:2d:23   C                     enp0s3
+	10.4.23.1                ether   b0:fa:eb:06:b1:cc   C                     enp0s3
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>netstat <span class="nt">-tlpn</span>
+	Active Internet connections <span class="o">(</span>only servers<span class="o">)</span>
+	Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+	tcp        0      0 127.0.0.53:53           0.0.0.0:<span class="k">*</span>               LISTEN      42650/systemd-resol 
+	tcp        0      0 0.0.0.0:22              0.0.0.0:<span class="k">*</span>               LISTEN      630/sshd: /usr/sbin 
+	tcp6       0      0 :::22 
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>netstat <span class="nt">-tpn</span>
+	Active Internet connections <span class="o">(</span>w/o servers<span class="o">)</span>
+	Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+	tcp        0      0 10.4.23.11:22           10.4.23.31:40926        ESTABLISHED 1935/sshd: user <span class="o">[</span><span class="nb">pr 
+	</span>tcp        0      0 192.168.56.101:22       192.168.56.1:36344      ESTABLISHED 15920/sshd: user <span class="o">[</span>p
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="notice--info">
+<p>Выводы:</p>
+<ol>
+<li>Команда ifconfig (ipconfig в Windows) показывает основные настройки установленных в системе сетевых адаптеров.</li>
+<li>Утилита позволяет проверить соединение до хоста, указанного по IP или доменному имени.</li>
+<li>Для диагностики сети можно пинговать собственно компьютер, шлюз, другой компьютер в сети, хост в интернете по IP а затем и по доменному имени.</li>
+<li>Затем нужно попробовать пропинговать этот компьютер с другого из той же сети.</li>
+<li>Утилита Netcat (команда nc) используется для открытия соединения с хостом к определенному порту, для сканирования или прослушивания портов.</li>
+<li>Команда arp -n показывает все хосты в локальной сети.</li>
+<li>Команда netstat показывает все активные сетевые соединения, она удобна для просмотра работающих серверов и открытых портов.</li>
+</ol>
+</div>
+<h3 id="веб-сервер">Веб-сервер</h3>
+<h4 id="зачем-нужна-служба-http">Зачем нужна служба HTTP?</h4>
+<h4 id="как-работает-веб-сервер-изнутри">Как работает веб-сервер изнутри?</h4>
+<h4 id="какие-веб-сервера-самые-популярные">Какие веб-сервера самые популярные?</h4>
+<h4 id="как-установить-и-настроить-веб-сервер-apache2-в-linux">Как установить и настроить веб-сервер Apache2 в Linux?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>apache2
+systemctl status apache2
+systemctl start apache2
+netstat <span class="nt">-tlpn</span>
+curl 10.4.23.11 80
+<span class="nb">sudo </span>ufw status
+<span class="nb">sudo </span>ufw app list
+<span class="nb">sudo </span>ufw allow <span class="s1">'Apache'</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h4 id="как-обеспечить-безопасность-веб-службы">Как обеспечить безопасность веб-службы?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>openssl req <span class="nt">-new</span> <span class="nt">-x509</span> <span class="nt">-days</span> 30 <span class="nt">-keyout</span> server.key <span class="nt">-out</span> server.pem
+
+<span class="nb">sudo </span>a2enmod ssl
+<span class="nb">sudo </span>a2ensite default-ssl
+<span class="nb">cd</span> /etc/apache2/sites-available/
+<span class="nb">sudo </span>vim default-ssl.conf
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h4 id="как-настроить-виртуальные-хосты">Как настроить виртуальные хосты?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo mkdir</span> /var/www/test.com
+<span class="nb">sudo chown</span> <span class="nt">-R</span> <span class="nv">$USER</span>:<span class="nv">$USER</span> /var/www/test.com
+<span class="nb">sudo chmod</span> <span class="nt">-R</span> 755 /var/www/test.com
+<span class="nb">sudo </span>vim /var/www/test.com/index.html
+<span class="nb">sudo </span>vim /etc/apache2/sites-available/test.com.conf
+<span class="nb">sudo </span>a2ensite test.com.conf
+<span class="nb">sudo </span>systemctl restart apache2
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Welcome to test.com!<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Success!  The test.com virtual host is working!<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;VirtualHost</span> <span class="na">*:80</span><span class="nt">&gt;</span>
+    ServerAdmin webmaster@localhost
+    ServerName test.com
+    ServerAlias www.test.com
+    DocumentRoot /var/www/ytest.com
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h4 id="как-установить-и-настроить-nginx">Как установить и настроить Nginx?</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>nginx
+<span class="nb">sudo </span>ufw app list
+<span class="nb">sudo </span>ufw allow <span class="s1">'Nginx Full'</span>
+<span class="nb">sudo </span>ufw status
+systemctl status nginx
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>nano /etc/nginx/sites-available/test.com
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/test.com/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name test.com www.test.com;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo ln</span> <span class="nt">-s</span> /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
+<span class="nb">sudo </span>systemctl restart nginx
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>server {
+
+    listen 443 ssl;
+    listen 80;
+
+    server_name test.com;
+    ssl_certificate /etc/ssl/your_domain.crt;
+    ssl_certificate_key /etc/ssl/your_domain.key;
+    ssl_session_cache shared:SSL:10m;
+	ssl_session_timeout 10m;
+	keepalive_timeout 70;
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+	ssl_prefer_server_ciphers on;
+}
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h4 id="как-мониторить-работу-веб-сервера">Как мониторить работу веб-сервера?</h4>
+<h3 id="ftp-сервер">FTP-сервер</h3>
+<h4 id="зачем-нужна-служба-ftp">Зачем нужна служба FTP?</h4>
+<h4 id="как-устроен-протокол-ftp">Как устроен протокол FTP?</h4>
+<h4 id="как-работает-ftp-сервер-изнутри">Как работает FTP-сервер изнутри?</h4>
+<h4 id="как-установить-ftp-сервер-на-linux">Как установить FTP-сервер на Linux?</h4>
+<h4 id="как-обеспечить-безопасность-ftp-сервера">Как обеспечить безопасность FTP-сервера?</h4>
+<h4 id="как-настроить-права-доступа-к-ftp-службе-и-ресурсам">Как настроить права доступа к FTP-службе и ресурсам?</h4>
+<h2 id="-разработка-веб-приложений">-Разработка веб-приложений</h2>
+<h3 id="основы-протокола-http">Основы протокола HTTP</h3>
+<h3 id="получение-удаленных-ресурсов">Получение удаленных ресурсов</h3>
+<h3 id="парсинг-веб-страниц">Парсинг веб-страниц</h3>
+<h3 id="создание-интернет-роботов">Создание интернет-роботов</h3>
+<h3 id="работа-с-внешним-api">Работа с внешним API</h3>
+<h3 id="простейший-веб-сервер">Простейший веб-сервер</h3>
+<h3 id="создание-веб-сервиса">Создание веб-сервиса</h3>
+<h2 id="-разработка-клиент-серверных-приложений">-Разработка клиент-серверных приложений</h2>
+<h3 id="хранение-данных-и-файлов-пользователя-на-сервере">Хранение данных и файлов пользователя на сервере</h3>
+<h3 id="загрузка-файлов-от-пользователя">Загрузка файлов от пользователя</h3>
+<h3 id="обеспечение-доступа-к-локальным-файлам-сервера">Обеспечение доступа к локальным файлам сервера</h3>
+<h3 id="разграничение-доступа">Разграничение доступа</h3>
+<h3 id="использование-субд">Использование СУБД</h3>
+<h3 id="преобразование-файлов-на-лету">Преобразование файлов на лету</h3>
+<h3 id="выполнение-сценариев">Выполнение сценариев</h3>
+<h3 id="толстый-или-тонкий-клиент">Толстый или тонкий клиент</h3>
+<h2 id="-создание-кроссплатформенного-приложения">-Создание кроссплатформенного приложения</h2>
+<h3 id="выбор-платформы-для-сервера">Выбор платформы для сервера</h3>
+<h3 id="клиент-на-windows">Клиент на Windows</h3>
+<h3 id="клиент-на-nix">Клиент на *nix</h3>
+<h3 id="браузерный-клиент">Браузерный клиент</h3>
+<h3 id="мобильный-клиент">Мобильный клиент</h3>
+<h3 id="обеспечение-омниканальности">Обеспечение омниканальности</h3>
+<h2 id="архитектура-сетевых-приложений">Архитектура сетевых приложений</h2>
+<h3 id="монолитное-веб-приложение">Монолитное веб-приложение</h3>
+<h3 id="двухзвенное-приложение">Двухзвенное приложение</h3>
+<h3 id="трехзвенное-приложение">Трехзвенное приложение</h3>
+<h3 id="безсерверное-приложение">Безсерверное приложение</h3>
+<h3 id="микросервисная-архитектура">Микросервисная архитектура</h3>
+<h3 id="облачные-приложения">Облачные приложения</h3>
+<h2 id="-разработка-многопользовательских-приложений">-Разработка многопользовательских приложений</h2>
+<h3 id="отслеживание-разных-пользователей">Отслеживание разных пользователей</h3>
+<h3 id="сохранение-сессии">Сохранение сессии</h3>
+<h3 id="идентификация-аутентификация">Идентификация, аутентификация</h3>
+<h3 id="хранение-паролей-и-персональных-данных">Хранение паролей и персональных данных</h3>
+<h3 id="вопросы-безопасности-приложений">Вопросы безопасности приложений</h3>
+<h2 id="непрерывная-интеграция-приложений">Непрерывная интеграция приложений</h2>
+<h3 id="жизненный-цикл-разработки-приложения">Жизненный цикл разработки приложения</h3>
+<h3 id="автоматизированное-тестирование">Автоматизированное тестирование</h3>
+<h3 id="тестовые-среды-и-управление-конфигурациями">Тестовые среды и управление конфигурациями</h3>
+<h3 id="контейнеризация-приложений">Контейнеризация приложений</h3>
+<h2 id="развертывание-сетевых-приложений">Развертывание сетевых приложений</h2>
+<h3 id="подготовка-сетевой-инфраструктуры">Подготовка сетевой инфраструктуры</h3>
+<h3 id="контейнеризация-сетевых-приложений">Контейнеризация сетевых приложений</h3>
+<h3 id="деплой-на-выделенном-сервере">Деплой на выделенном сервере</h3>
+<h3 id="деплой-на-облачном-провайдере">Деплой на облачном провайдере</h3>
+<h3 id="мониторинг-серверного-приложения">Мониторинг серверного приложения</h3>
+</section>
+<footer class="page__meta">
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2022-09-27T12:49:07+00:00">September 27, 2022</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/text/os_lx/" title="Черновик учебника
+">Предыдущая</a>
+<a class="pagination--pager" href="/text/test/" title="Тест
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

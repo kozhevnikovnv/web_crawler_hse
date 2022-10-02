@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Web разработка | Михаил Коротеев</title>
+<meta content="" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="website" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Web разработка" property="og:title"/>
+<meta content="https://koroteev.site/wd/" property="og:url"/>
+<meta content="" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Web разработка" name="twitter:title"/>
+<meta content="" name="twitter:description"/>
+<meta content="https://koroteev.site/wd/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<link href="https://koroteev.site/wd/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--course">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<nav class="nav__list">
+<input id="ac-toc" name="accordion-toc" type="checkbox"/>
+<label for="ac-toc">Выпадающее меню</label>
+<ul class="nav__items">
+<li>
+<a href="/wd/"><span class="nav__sub-title">Содержание курса</span></a>
+</li>
+<li>
+<a href="/wd/0/0-intro/"><span class="nav__sub-title">Ландшафт веб разработки</span></a>
+</li>
+<li>
+<span class="nav__sub-title">Создание статических сайтов</span>
+<ul>
+<li><a href="/wd/1/1-html/">Основы HTML и CSS</a></li>
+<li><a href="/wd/1/2-css/">Основы CSS</a></li>
+<li><a href="/wd/1/3-flexbox/">Flexbox и Grid</a></li>
+<li><a href="/wd/1/4-adv-css/">Продвинутый CSS</a></li>
+<li><a href="/wd/1/5-bootstrap/">Bootstrap</a></li>
+<li><a href="/wd/1/6-deploy/">Деплой статичных сайтов</a></li>
+</ul>
+</li>
+<li>
+<span class="nav__sub-title">Клиентское программирование</span>
+<ul>
+<li><a href="/wd/2/1-javascript/">Основы JavaScript</a></li>
+<li><a href="/wd/2/2-dom/">DOM</a></li>
+<li><a href="/wd/2/3-fetch/">Fetch API</a></li>
+<li><a href="/wd/3/1-react/">React.js</a></li>
+<li><a href="/wd/3/2-redux/">Redux</a></li>
+<li><a href="/wd/3/3-typescript/">TypeScript</a></li>
+</ul>
+</li>
+<li>
+<span class="nav__sub-title">Серверное программирование</span>
+<ul>
+<li><a href="/wd/4/1-npm/">NPM</a></li>
+<li><a href="/wd/4/2-express/">Express</a></li>
+<li><a href="/wd/4/3-ORM/">ORM</a></li>
+<li><a href="/wd/4/4-CMS/">CMS</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="Web разработка" itemprop="headline"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Web разработка
+</h1>
+</header>
+<section class="page__content" itemprop="text">
+<aside class="sidebar__right">
+<nav class="toc">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#о-курсе">О курсе</a></li>
+<li><a href="#тематический-план">Тематический план</a></li>
+<li><a href="#программа-курса">Программа курса</a></li>
+<li><a href="#предварительные-требования">Предварительные требования</a></li>
+<li><a href="#источники-информации">Источники информации</a></li>
+<li><a href="#программное-обеспечение">Программное обеспечение</a></li>
+<li><a href="#для-студентов-финансового-университета">Для студентов Финансового университета</a></li>
+</ul>
+</nav>
+</aside>
+<h2 id="о-курсе">О курсе</h2>
+<!-- Современному специалисту в области информатики, независимо от специализации, придется работать с сетевыми приложениями, серверным ПО. Серьезное промышленное окружение для разработки предполагает использование специализированных операционных систем, чаще всего из семейства UNIX в качестве основного окружения.
+
+После изучения этого курса вы будете больше понимать в технологиях и инструментах, которые используются для поддержки сложного процесса производства программ. Вы будете знать основные принципы работы операционных систем, большинство основных концепций разработки, будете уметь настраивать сложное окружение для разработки и сможете автоматизировать свою работу на профессиональном уровне. -->
+<h2 id="тематический-план">Тематический план</h2>
+<!-- Данный курс призван познакомить с современными инфраструктурными решениями для разработки программного обеспечения, технологиями сетевого программирования. Программа данного курса включает:
+* Основы операционной системы Linux
+* Основы скриптов на bash
+* Удаленное администрирование
+* Использование Linux для разработки
+* Вопросы настройки окружения разработчика
+* Разработка сетевых и асинхронных приложений на Python.
+* Использование СКВ Git и GitHub
+* Настройка сетевых подключений и служб, основы администрирования ОС 
+* Вопросы развертывания программ на удаленном сервере -->
+<h2 id="программа-курса">Программа курса</h2>
+<table>
+<tr>
+<th> Название занятия </th>
+<!-- <th> Учебник </th> -->
+<th> Методичка </th>
+<!-- <th> Видео </th> -->
+<th> Слайды </th>
+<!-- <th> Тест </th> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 1. <a href="/wd/0/0-intro/"> <b> WD0 Ландшафт веб-разработки </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Основные понятия разработки для мобильных платформ </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/presentation/d/1JSRyjipEm-PvPSNh2iza1fXexVeKrumjDx5lVn-YbiY/edit?usp=sharing">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Установка IDE WebStorm и знакомство с ней </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 2. <a href="/wd/1/1-html/"> <b> WD1 Основы HTML </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Основы HTML и CSS </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/presentation/d/1JQ5CwfBAgPKxXPhuwtoZvrWgmcn2n1uZX-0TWAyLiVc/edit?usp=sharing">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Работа с простыми элементами HTML </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/13EFX54nKq19hSzC6GXCyTVC3zueS-HK9R4dz2J7wpQk/edit?usp=sharing">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Принципы дизайна </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1VPSH6iXLU8MOkrwVt-OygrHdvoO3jMM0/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 3. <a href="/wd/1/2-css/"> <b> WD2 Основы CSS </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Основы CSS </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/presentation/d/1xAj0_woRLqRAScmzivI7aNJ5EYMokklBBqkvbA6LYpk/edit?usp=sharing">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Работа с простыми стилями </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 4. <a href="/wd/1/3-flexbox/"> <b> WD3 Flexbox и Grid </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Flexbox и Grid </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/presentation/d/1djFwaybU-bkjt0MkorFf6QjsTqXHGtzCuRu74zA5qLE/edit?usp=sharing">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Резиновая верстка с Flexbox </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Верстка на сетке с CSS Grid </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 5. <a href="/wd/1/4-adv-css/"> <b> WD4 Продвинутый CSS </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: CSS-препроцессоры: SASS </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Использование SASS </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1_2Oy7UoDHtoocNTqi8FwntFDp8qc_U7N/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 6. <a href="/wd/1/5-bootstrap/"> <b> WD5 Bootstrap </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Фреймворк Bootstrap </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://drive.google.com/open?id=1o2QyFWIDVOHH7dr5br9JIq_aI_JBZyb2FPv3UWjMzlM">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Hello World на Bootstrap </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1_IckXT5Y6g-vDBizEVtWtJCMjwSwG_tW/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Навигация на сайте </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1cQLXqkIEbf69GCrDffEmTiET1psLAbw2/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Основные компоненты Bootstrap </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1kA3sVGjS9vEc32OK4s0rGEtY0Vom25zz/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 7. <a href="/wd/1/6-deploy/"> <b> WD5 Деплой статичных сайтов </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Хостинг </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Развертывание статичного сайта на GitHub Pages </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Google development tools </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1uUVn5Z_byHJLeAuVhyhDfzDw3r2csdlP19-54kl3xRY/edit?usp=sharing">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 8. <a href="/wd/2/1-javascript/"> <b> JS1 Введение в JavaScript </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Синтаксис языка Javascript </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/presentation/d/1_9IIFQh2WFH3feCWkAHxOsYgi2fLdr8PlaEaGW88PkU/edit?usp=sharing">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Hello, world на JavaScript </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1P-T8fbSkT_mqEnyHXJlPJOc4Pag_npVb/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Переменные и типы данных </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/16WPr1DUWe6Bp80j_AT6WMD0nRo2yIQ7t/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Операторы управления </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1Y4N8oo9pN6-yvNcrUwUgOcoTt3sIajDo/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Массивы и функции </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/191BahgI0KdEpM5ruroiQZ-kn3yEo_roi/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Методы и конструкторы объектов </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1i2Q245zsSne_wVRlPqCVDBavMPqpiSYW/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Игра BlackJack </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1IkshSUprLN6kPMoTX4wv8Y_4PSweQluf/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Классы </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1mSKPwWwz5djLlKDkeLyjyHs0vNasXjSR/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Стрелочные функции </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1aZxNTs0ZPtFNI-DNJ9EHYwBL1WdhFORI/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Функции высших порядков </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1a1W9U7A7uupRxhvtzIGTZes8tVim8i2p/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Оператор Switch </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1CwtFW919Gk30CObpOE6NtE1GTsQq4Uwu/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Работа с формами </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1z0CCAGPtGvq6y2__zuFMp2giIgsLOLOY/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 9. <a href="/wd/2/2-dom/"> <b> JS2 Объектная модель документа (DOM) </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Объектная модель документа </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Манипуляции с DOM </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 10. <a href="/wd/2/3-fetch/"> <b> JS3 Fetch API </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: AJAX и Fetch API </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Динамическое получение данных </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 11. <a href="/wd/3/1-react/"> <b> JS4 Фреймворк react.js </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Основы react.js </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://drive.google.com/open?id=1YknItmGxv1dYZlvSfWvCeF6T-4bFjHaJxKWvYOEqYaQ">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Hello World на react </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/14tIkyWEhbBvuEqnmfUI5npykL4yNkkNj/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Метод render() </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1rpi33BskSyUsYEWsOurOfT2UmI1Jl7CO/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Основы JSX </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1hMSfnlGiltFJaIi4E65X0XDlp6iDNP5R/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Компилятор babel </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1ABMBmofGiYXJYRmt3pIJLCm4nhvYr6eg/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Сервер node.js </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1xp0kLSsXWkk8JhNPPcfMo1XhCTMbEf3z/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Props, State и состояния </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1VvWtkQEMEIgLAYwABpGwQKx9kwR0lIxn/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Жизненный цикл компонента </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1SgcCjH_EkROy80ZmIGaN3yQWlfdkdq85/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Формы </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1UHlsEvnqPhD0inQdEaGrH9Z2vISrRwAM/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Лекция: Продвинутый react.js. Хуки </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Хуки </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1btq6_4bjdC6UXa488-Z7OpDaGx0GeLMq/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Структура приложения React </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1zZzpWq-fo74oDt4VRbqFNF_Y4Ri3g9-E/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Навигация и фильтрация в React </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1gFbJQg-T2gfX_48gHQY10aghjPi51T-B/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Список дел </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/17ZfCgeFReLKH00GVSRc3H9fIhO0Q_mHV/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Условный рендер </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/11MJ_e4lkOT2GNGWSeZ0B993Ssy_Qvy3p/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Классовые компоненты </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/document/d/1j5Tei-2ui8t3giYVZKMG4k_5iRqjL9MK/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 12. <a href="/wd/3/2-redux/"> <b> JS5 Redux </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Redux. Управление состоянием приложения </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Использование Redux </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 13. <a href="/wd/3/3-typescript/"> <b> JS6 TypeScript </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Основы TypeScript </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Использование TypeScript </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 14. <a href="/wd/4/1-npm/"> <b> SP0 NPM </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Серверный JavaScript - node.js, npm </td>
+<!--       <td> 
+        <a href="/text/wd41/">Глава</a>
+       </td> -->
+<td>
+<a href="/text/wd41/">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td>
+<a href="/pres/wd41/">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Установка и настройка node.js </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 15. <a href="/wd/4/2-express/"> <b> SP1 Серверный фреймворк Express </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Основы Express </td>
+<!--       <td> 
+        <a href="/text/wd42/">Глава</a>
+       </td> -->
+<td>
+<a href="/text/wd42/">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td>
+<a href="/pres/wd42/">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Создание серверного приложения на Express </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 16. <a href="/wd/4/3-ORM/"> <b> SP2 ORM </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Объектно-реляционные отображения (ORM) </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="/pres/wd43/">Слайды</a>
+</td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Работа с базой данных </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="6"> 17. <a href="/wd/4/4-CMS/"> <b> SP3 CMS </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Системы управления содержимым (CMS) </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+<tr>
+<td> Практика: Создание простого сайта на движке </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--  <td>  </td> -->
+</tr>
+</table>
+<h2 id="предварительные-требования">Предварительные требования</h2>
+<p>Для плодотворного изучения данного курса будут необходимы такие навыки:</p>
+<ul>
+<li>Знакомство с основными концепциями программирования</li>
+<li>Знакомство с объектно-ориентированным программированием</li>
+<li>Основы функционирования компьютера и компьютерных сетей</li>
+</ul>
+<!-- Материалы курса
+--- -->
+<!-- Вы можете познакомиться со всеми материалами курса - презентациями к лекциям, методических рекомендациям к лабораторным работам на [Google Диске](https://drive.google.com/drive/folders/13uDCR9sfJC_QriEBwJlzACwsNhbMxmUV?usp=sharing).
+
+- Плейлист с видео по данному курсу досупен на [YouTube](https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9).  -->
+<h2 id="источники-информации">Источники информации</h2>
+<!-- Основная литература
+
+* Э. Таненбаум. Современные операционные системы
+* М. Кофлер. Linux. Полное руководство
+* В. Олифер. Компьютерные сети. Принципы, технологии, протоколы
+* Е. Немет. Unix и Linux.Руководство системного администратора.
+* [Pro git](https://git-scm.com/book/ru/v2)
+
+Дополнительная литература
+
+* Б.Уорд. Внутреннее устройство Linux
+* Д. Н. Колисниченко. Командная строка Linux
+* У. Шоттс. Командная строка Linux. Полное руководство
+* Д. Тейлор. Сценарии командной оболочки. Linux, OS X и UNIX
+* Д.Н. Колисниченко. Linux. От новичка к профессионалу
+* Э. Свейгард. Автоматизация рутинных задач с помощью Python
+* Э. Таненбаум. Компьютерные сети -->
+<p>Основное</p>
+<ul>
+<li><a href="https://roadmap.sh/frontend">Дорожная карта Frontend-разработчика</a></li>
+<li><a href="https://roadmap.sh/backend">Дорожная карта Backend-разработчика</a></li>
+</ul>
+<p>Интернет-ресурсы</p>
+<ul>
+<li><a href="https://www.youtube.com/user/TechGuyWeb">Канал Traversy Media</a></li>
+<li><a href="learn.javascript.ru">Учебник JavaScript</a></li>
+<li><a href="ru.reactjs.org">Учебник React.js</a></li>
+</ul>
+<h2 id="программное-обеспечение">Программное обеспечение</h2>
+<ul>
+<li>WebStorm</li>
+<li>React.js</li>
+<li>Twitter Bootstrap 4</li>
+<li>NPM</li>
+<li>Django</li>
+<li>Flask</li>
+<li>Google Chrome</li>
+</ul>
+<h2 id="для-студентов-финансового-университета">Для студентов Финансового университета</h2>
+<p><a href="https://docs.google.com/document/d/1Nh6ZUEumYHVXDbQgNbKZbryfwPbpAwmJe_W6w7rSNCc/edit?usp=sharing">Балльно-рейтинговая система</a></p>
+<!-- [Программа экзамена](https://docs.google.com/document/d/1VD4kMGFQRyyyYlSJUaBCFDOJ3exduoo9P3q4KGglrfM/edit?usp=sharing)
+
+[Инструкция по работе в лаборатории](https://docs.google.com/document/d/1dH6XGbeIX3u_xf12GhgpQwCfwg5Cf5jTMX82WkrdhEk/edit?usp=sharing) -->
+<p><a href="https://docs.google.com/document/d/1zeSRD8l_7VCUbvPoKeHvHijRWHn5z4d5Vfbh0T2kLWE/edit?usp=sharing">Методические указания по составлению тестовых заданий</a></p>
+<p><a href="https://docs.google.com/document/d/1vAZ40-ShXw-O5TKnngj3BJa0XwF5Ie1Kj9cGRTOXQRQ/edit?usp=sharing">Программа экзамена</a></p>
+</section>
+<footer class="page__meta">
+</footer>
+</div>
+</article>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

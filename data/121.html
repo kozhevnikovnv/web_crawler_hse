@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Знакомство с node.js и npm</title>
+<meta charset="utf-8"/>
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<link href="/assets/shower/themes/ribbon/styles/styles.css" rel="stylesheet"/>
+<style>
+        .shower {
+            --slide-ratio: calc(16 / 12);
+        }
+    </style>
+<style>
+
+        html{
+            background-color: #000;
+        }
+
+        body{
+            min-height: 0;
+            background-color: #000;
+        }
+
+        #cover h2 {
+            margin: 30px 0 0;
+            /*color: white;*/
+            text-align: center;
+            font-size: 70px;
+        }
+
+        #cover p {
+            margin: 10px 0 0;
+            text-align: center;
+            color: white;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        #cover p a {
+            /*color: white;*/
+        }
+
+        #temp {
+            display: none;
+            visibility: hidden;
+        }
+
+        section {
+            font-size: 20px;
+        }
+
+        section h2 {
+            font-size: 50px;
+        }
+
+        .slide{
+            line-height: 1.2em;
+            font-size: 1em;
+        }
+
+        .slide ol, .slide ul {
+            line-height: 1em;
+        }
+
+        .slide pre {
+            overflow-x: hidden; 
+            overflow-y: hidden; 
+            line-height: 1.2em;
+            /*font-size: 1em;*/
+        }
+
+        img {
+            max-height: 550px;
+            width: auto;
+        }
+
+        img#cover{
+            height: 100%;
+            width: auto;
+        }
+
+        .slide .shout {
+            font-size: 120px;
+        }
+
+        .mjx-chtml{
+        	font-size: 25px !important;
+        }
+
+        section > div.presentation, section > img{
+		  margin: 0;
+		  position: absolute;
+		  top: 460px;
+		  left: 50%;
+		  -ms-transform: translate(-50%, -50%);
+		  transform: translate(-50%, -50%);
+		}
+    </style>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+	   MathJax.Hub.Config({
+	     extensions: ["tex2jax.js"],
+	     jax: ["input/TeX", "output/HTML-CSS"],
+	     tex2jax: {
+	       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+	       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+	       processEscapes: true
+	     },
+	     "HTML-CSS": { availableFonts: ["TeX"] }
+	   });
+	</script>
+</head>
+<body class="shower list">
+<div id="temp">
+<h3 id="что-такое-nodejs-и-зачем-он-нужен">Что такое node.js и зачем он нужен?</h3>
+<div class="notice--info">
+<ol>
+<li>Node.js - это среда исполнения JavaSript.</li>
+<li>Первая версия платформы выпущена в 2009 году.</li>
+<li>Сейчас пользуется высокой популярностью.</li>
+<li>Сейчас платформа использует JavaScript движок V8 от Google, который используется в браузере Google Chrome.</li>
+<li>Позволяет создавать серверные приложения.</li>
+<li>Использует циклю событий с асинхронными функциями.</li>
+</ol>
+</div>
+<h3 id="что-нужно-знать-перед-изучением-nodejs">Что нужно знать перед изучением node.js</h3>
+<div class="notice--info">
+<ol>
+<li>Основы JavaScript</li>
+<li>HTTP</li>
+<li>JSON</li>
+<li>Стрелочные функции</li>
+<li>Промисы</li>
+<li>Шаблон проектирования MVC</li>
+</ol>
+</div>
+<h3 id="как-установить-nodejs-на-компьютер">Как установить node.js на компьютер?</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> build-essential
+curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_12.x | <span class="nb">sudo</span> <span class="nt">-E</span> bash -
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> nodejs
+<span class="nb">sudo </span>apt update
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>Установка из официального сайта на Windows.
+На Linux - установка из официального и кастомного репозитория.
+Команда node без параметров запускает интерактивный интерпретатор (RELP)
+Команда node filename  позволяет запускать программы на JavaScript.
+В node нет окружения браузера, а значит - объекта document.
+Но зато мы можем работать с файловой системой</p>
+<h3 id="что-такое-npm-и-зачем-нужен-он">Что такое NPM и зачем нужен он?</h3>
+<div class="presentation">
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>npm <span class="nt">-v</span>
+npm <span class="nb">help
+
+</span>node
+
+node app.js
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>npm <span class="nb">install </span>lodash
+
+npm <span class="nb">install</span> <span class="nt">-g</span> lodash
+
+npm <span class="nb">install</span> <span class="nt">-D</span> lodash
+
+npm <span class="nb">install</span> <span class="nt">-save</span> lodash
+
+npm remove gulp <span class="nt">--save-dev</span>
+
+npm update lodash <span class="nt">--save</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node index.js"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"live-server"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>npm start
+<span class="nv">$ </span>npm run dev
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="notice--info">
+<ol>
+<li>Программа управления пакетами node.js - Node package manager</li>
+<li>Примерно аналогично программе pip в python, только для пакетов JavaScript</li>
+<li>Устанавливается вместе с node.js (изучать необязательно)</li>
+<li>Позволяет легко устанавливать пакеты/модули в систему</li>
+<li>Модули на практике это библиотеки JavaScript</li>
+<li>Облегчает совместную разработку и повторное использование кода</li>
+<li>позволяет создавать пользовательские скрипты</li>
+</ol>
+</div>
+<h3 id="как-выглядит-hello-world-на-nodejs">Как выглядит Hello world на node.js?</h3>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello, world!</span><span class="dl">"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>node index.js
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>node index
+</pre></td></tr></tbody></table></code></pre></div></div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span>
+	<span class="nx">concole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">hello</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello from function!</span><span class="dl">"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<p>Функции, классы.</p>
+<h3 id="зачем-нужен-файл-packagejson">Зачем нужен файл package.json?</h3>
+<div class="presentation">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"docker_web_app"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node.js on docker"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first last &lt;first.last@example.com&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node server.js"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.16.1"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="notice--info">
+<ol>
+<li>Манифест приложения, показывает основную информацию о приложении</li>
+<li>Перечисление зависимостей (имя и версия)</li>
+<li>Указания, если версия должна обновляться</li>
+<li>Может использоваться для создания скриптов</li>
+<li>Легко создать с помощью npm init</li>
+</ol>
+</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>npm init
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="как-импортировать-модули-и-файлы-в-программу">Как импортировать модули и файлы в программу?</h3>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="c1">//person.js</span>
+<span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John Doe</span><span class="dl">'</span><span class="p">,</span>
+	<span class="na">age</span><span class="p">:</span> <span class="mi">30</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">person</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1">//index.js</span>
+<span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./person</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<p>Импорт переменной из другого файла
+Импорт функции, класса
+Импорт стандартного модуля
+Импорт стороннего модуля</p>
+<h3 id="как-создать-простое-серверное-приложение">Как создать простое серверное приложение?</h3>
+<p>Простой сервер</p>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">127.0.0.1</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">})</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Server running at http://</span><span class="p">${</span><span class="nx">hostname</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">/`</span><span class="p">);</span>
+<span class="p">})</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+<p>Работа с файлом index.html</p>
+<div class="presentation">
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">127.0.0.1</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">html</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+		<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
+		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+	<span class="p">})</span>
+
+	<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Server running at http://</span><span class="p">${</span><span class="nx">hostname</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">/`</span><span class="p">);</span>
+	<span class="p">})</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</div>
+</div>
+<header class="caption">
+<h1>Знакомство с node.js и npm</h1>
+<!-- <p>Yours Truly, Famous Inc.</p> -->
+</header>
+<section class="slide">
+<h2 class="shout">Знакомство с node.js и npm</h2>
+</section>
+<footer class="badge">
+<a href="https://github.com/shower/shower">Build with shower</a>
+</footer>
+<script src="/assets/shower/shower.js"></script>
+<!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+<script type="text/javascript">
+        
+        const content = document.querySelector('#temp');
+        const childern = content.childNodes;
+
+        let current_slide;
+        let points;
+        let code;
+        let image;
+        let misc;
+
+        function commit() {
+            if (current_slide) {
+
+                const elems = [image, code, points, misc];
+
+                let slide;
+
+                elems.forEach(elem => {
+                    if (elem) {
+                        // console.log("ИТЕРАЦИЯ " + current_slide);
+                        // console.log([image, code, points, misc]);
+
+                        slide = document.createElement('section');
+                        slide.className = "slide";
+                        let slide_header = document.createElement('h2');
+                        slide_header.innerHTML = current_slide;
+                        slide.appendChild(slide_header);
+
+                        slide.appendChild(elem);
+
+                        document.body.appendChild(slide);
+
+                        fit_in_slide(elem);
+                    }
+                });
+
+                misc = undefined;
+                points = undefined;
+                image = undefined;
+                code = undefined;
+            }
+        }
+
+        function fit_in_slide(element) {
+            console.log("ИТЕРАЦИЯ " + current_slide);
+            console.log(element);
+
+            let ratio = Math.min(
+            	550 / element.offsetHeight,
+            	// 1600 / element.offsetWidth,
+            	);
+
+
+            let new_size = Math.sqrt(ratio) / 1.2;
+            if (new_size > 2.5) {
+                new_size = 2.5
+            }
+            element.style["font-size"] = new_size + "em";
+
+            new_size = Math.pow(ratio, 1.1) * 12;
+            if (new_size > 30) {
+                new_size = 30
+            }
+
+            ratio = Math.min(
+            	550 / element.offsetHeight,
+            	1600 / element.offsetWidth,
+            	);
+
+            new_size = Math.pow(ratio, 1.1) * 12;
+            if (new_size > 30) {
+                new_size = 30
+            }
+
+            console.log(element.innerHTML);            
+            console.log(element.querySelectorAll("*"));            
+            console.log(element.querySelectorAll("pre"));
+
+            element.querySelectorAll("pre").forEach(e => {
+                e.style["font-size"] = new_size + "px";
+                e.style["line-height"] = new_size * 1.2 + "px";
+            });
+
+            element.querySelectorAll("span").forEach(e => {
+            	console.log("found");
+                e.style["font-size"] = new_size + "px";
+                e.style["line-height"] = new_size * 1.2 + "px";
+            });
+
+            console.log(
+                // realHeight, ratio, 
+                new_size, 
+                element.offsetHeight,
+                element.offsetWidth);
+
+            return element;
+        }
+
+        childern.forEach(elem => {
+            if (elem.tagName == "H3") {
+                commit();
+                let slide = document.createElement('section');
+                slide.className = "slide";
+                let slide_header = document.createElement('h2');
+                slide_header.className = "shout shrink"
+                slide_header.innerHTML = elem.innerHTML;
+                slide.appendChild(slide_header);
+
+                // slide.appendChild(elem);
+
+                document.body.appendChild(slide);
+            }
+
+            if (elem.tagName == "H3" || elem.tagName == "H4") {
+                commit();
+                current_slide = elem.innerHTML;
+            }
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("notice--info")) {
+                let list = elem.getElementsByTagName('ol')[0];
+
+                list.childNodes.forEach(elem => {
+                    elem.className = "next";
+                });
+
+                points = list;
+                // points = fit_in_slide(points);
+            } 
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("highlighter-rouge")) {
+                code = elem;
+                commit()
+                // code = fit_in_slide(code);
+            } 
+
+            else if (elem.tagName == "DIV" && elem.classList.contains("presentation")) {
+                misc = elem;
+                // misc = fit_in_slide(misc);
+                commit();
+            } 
+
+            else if (elem.tagName == "P" && elem.getElementsByTagName('img').length > 0) {
+                image = elem.getElementsByTagName('img')[0];
+                image.style.width = "auto";
+                commit();
+            } 
+        });
+
+        commit();
+
+        content.remove();
+
+    </script>
+<div class="progress"></div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

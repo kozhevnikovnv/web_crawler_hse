@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Воспроизводимость исследований в области машинного обучения | Михаил Коротеев</title>
+<meta content="Смотрите, к чему приводит палочная система оценки результативности научных исследований. Кризис воспроизводимости обсуждается серьезно. И уже довольно понятно, что большинство научных статей, написанных ради галочки из-под палки - полный мусор. А этот мусор сильно загрязняет информационное пространство и затрудняет поиск нужной информации." name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="Михаил Коротеев" property="article:author"/>
+<meta content="article" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Воспроизводимость исследований в области машинного обучения" property="og:title"/>
+<meta content="https://koroteev.site/scipop/ml-reproducibility-papers-without-code/" property="og:url"/>
+<meta content="Смотрите, к чему приводит палочная система оценки результативности научных исследований. Кризис воспроизводимости обсуждается серьезно. И уже довольно понятно, что большинство научных статей, написанных ради галочки из-под палки - полный мусор. А этот мусор сильно загрязняет информационное пространство и затрудняет поиск нужной информации." property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Воспроизводимость исследований в области машинного обучения" name="twitter:title"/>
+<meta content="Смотрите, к чему приводит палочная система оценки результативности научных исследований. Кризис воспроизводимости обсуждается серьезно. И уже довольно понятно, что большинство научных статей, написанных ради галочки из-под палки - полный мусор. А этот мусор сильно загрязняет информационное пространство и затрудняет поиск нужной информации." name="twitter:description"/>
+<meta content="https://koroteev.site/scipop/ml-reproducibility-papers-without-code/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<meta content="2021-05-05T00:00:00+00:00" property="article:published_time"/>
+<link href="https://koroteev.site/scipop/ml-reproducibility-papers-without-code/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--single None">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<div itemscope="" itemtype="https://schema.org/Person">
+<div class="author__avatar">
+<img alt="Михаил Коротеев" itemprop="image" src="/assets/images/avatar3.jpg"/>
+</div>
+<div class="author__content">
+<h3 class="author__name" itemprop="name">Михаил Коротеев</h3>
+<div class="author__bio" itemprop="description">
+<p>Есть такая профессия - Родину автоматизировать.</p>
+</div>
+</div>
+<div class="author__urls-wrapper">
+<button class="btn btn--inverse">Связаться со мной</button>
+<ul class="author__urls social-icons">
+<li><a href="https://koroteev.site" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fas fa-fw fa-link"></i><span class="label">Website</span></a></li>
+<li><a href="https://github.com/koroteevmv" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-github"></i><span class="label">GitHub</span></a></li>
+<li><a href="https://www.youtube.com/channel/UCPe6h6MY8XZpLV7oRLqRUwQ" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-youtube"></i><span class="label">YouTube</span></a></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i><span class="label">Vkontakte</span></a></li>
+<!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+</ul>
+</div>
+</div>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="Воспроизводимость исследований в области машинного обучения" itemprop="headline"/>
+<meta content="Смотрите, к чему приводит палочная система оценки результативности научных исследований. Кризис воспроизводимости обсуждается серьезно. И уже довольно понятно, что большинство научных статей, написанных ради галочки из-под палки - полный мусор. А этот мусор сильно загрязняет информационное пространство и затрудняет поиск нужной информации." itemprop="description"/>
+<meta content="2021-05-05T00:00:00+00:00" itemprop="datePublished"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Воспроизводимость исследований в области машинного обучения
+</h1>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-calendar-alt"></i>
+<time datetime="2021-05-05T00:00:00+00:00">May 5, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-clock"></i>
+        
+          7 мин на чтение
+        
+                
+      </span>
+</p>
+</header>
+<section class="page__content" itemprop="text">
+<aside class="sidebar__right sticky">
+<nav class="toc">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#воспроизведение-результатов-статей-о-машинном-обучении">Воспроизведение результатов статей о машинном обучении</a></li>
+<li><a href="#усилия-по-воспроизводимости-машинного-обучения">Усилия по воспроизводимости машинного обучения.</a></li>
+<li><a href="#документы-без-кода">Документы без кода</a></li>
+<li><a href="#воспроизводимые-исследования-в-области-машинного-обучения">Воспроизводимые исследования в области машинного обучения</a></li>
+</ul>
+</nav>
+</aside>
+<p><a href="https://thenextweb.com/news/list-non-reproducible-research-machine-learning-papers-syndication">Оригинал</a></p>
+<p>14 февраля исследователь, разочарованный воспроизведением результатов исследовательской работы по машинному обучению, открыл учетную запись Reddit под именем ContributionSecure14 и разместил <a href="https://www.reddit.com/r/MachineLearning/comments/lk03ef/d_list_of_unreproducible_papers/">субреддит r/MachineLearning</a>: «Я только что потратил неделю на реализацию метода из статьи в качестве основы для соего исследования и мне так и не удалось воспроизвести результаты. Я понял сегодня после того, как немного погуглил, что некоторые другие также не смогли воспроизвести результаты. Есть ли список таких бумаг? Это сэкономит людям много времени и сил ».</p>
+<p>Этот пост задел других пользователей r/MachineLearning, крупнейшего Reddit-сообщества машинного обучения.</p>
+<p>«Проще составить список воспроизводимых…», - ответил один пользователь.</p>
+<p>«Вероятно, 50% -75% всех бумаг невоспроизводимы. Это печально, но это правда », - написал другой пользователь. «Подумайте об этом, большинство статей оптимизированы для участия в конференции. Чаще всего авторы знают, что доклад, который они пытаются представить на конференции, не очень хорош! Поэтому им не нужно беспокоиться о воспроизводимости, потому что никто не будет пытаться их воспроизвести».</p>
+<p>Несколько других пользователей разместили ссылки на документы по машинному обучению, которые им не удалось реализовать, и выразили разочарование по поводу того, что реализация кода не является требованием на конференциях по машинному обучению.</p>
+<p>На следующий день ContributionSecure14 создал «<a href="https://www.paperswithoutcode.com/">Документы без кода</a>» - веб-сайт, который призван создать централизованный список документов по машинному обучению, которые невозможно реализовать.</p>
+<p>«Я не уверен, хорошая это или плохая идея, но я подумал, что было бы полезно собрать список статей, которые люди пытались воспроизвести, но потерпели неудачу», - ContributionSecure14 <a href="https://www.reddit.com/r/MachineLearning/comments/lk8ad0/p_burnedpapers_where_unreproducible_papers_come/">написал на r/MachineLearning</a>. «Это даст авторам возможность либо выпустить свой код, либо предоставить ссылки, либо отозвать статью. Я надеюсь, что это будет стимулировать более здоровую культуру исследования машинного обучения, не публиковать невоспроизводимые работы».</p>
+<h2 id="воспроизведение-результатов-статей-о-машинном-обучении">Воспроизведение результатов статей о машинном обучении</h2>
+<p><img alt="alt_text" src="/assets/images/2021-05-05/image1.jpg" title="image_tooltip"/></p>
+<p>Исследователи регулярно публикуют статьи на таких онлайн-платформах, как arXiv и OpenReview. В этих документах описываются концепции и методы, которые обсуждают новые проблемы в системах машинного обучения или вводят новые способы решения известных проблем. Многие из этих статей находят свое отражение в основных конференциях по искусственному интеллекту, таких как NeurIPS, ICML, ICLR и CVPR.</p>
+<p>Наличие исходного кода, сопровождающего исследовательскую работу, очень помогает в проверке правильности техники машинного обучения и построении на ней. Но это не является требованием для конференций по машинному обучению. В результате многим студентам и исследователям, читающим эти статьи, сложно воспроизвести свои результаты.</p>
+<p>«Невоспроизводимая работа тратит время и силы исследователей, и авторы должны стремиться к тому, чтобы существовала хотя бы одна публичная реализация своей работы», - сказал ContributionSecure14, пожелавший остаться неизвестным. «Публикация статьи с эмпирическими результатами в открытом доступе бессмысленна, если другие не могут основываться на бумаге или использовать ее в качестве основы».</p>
+<p>Но ContributionSecure14 также признает, что иногда у исследователей машинного обучения есть законные причины не выпускать свой код. Например, некоторые авторы могут обучать свои модели во внутренней инфраструктуре или использовать большие внутренние наборы данных для предварительного обучения. В таких случаях исследователи не могут публиковать код или данные вместе со своей статьей из-за политики компании.</p>
+<p>«Если авторы из-за таких обстоятельств публикуют статью без кода, я лично считаю, что они несут академическую ответственность за тесное сотрудничество с другими исследователями, пытающимися воспроизвести их статью», - говорит ContributionSecure14. «Нет смысла публиковать статью в открытом доступе, если другие не могут использовать ее. Должна быть по крайней мере одна общедоступная эталонная реализация, которую другие могли бы использовать в качестве основы».</p>
+<p>В некоторых случаях, даже если авторы публикуют и исходный код, и данные в своей статье, другим исследователям машинного обучения все еще трудно воспроизвести результаты. Это может быть связано с разными причинами. Например, авторы могут выбрать лучшие результаты из нескольких экспериментов и представить их как новейшие достижения. В других случаях исследователи могли использовать такие приемы, как настройка параметров своей модели машинного обучения на набор тестовых данных, чтобы улучшить результаты. В таких случаях, даже если результаты воспроизводимы, они не имеют отношения к делу, потому что модель машинного обучения была адаптирована к конкретным условиям и не будет хорошо работать с ранее невидимыми данными.</p>
+<p>«Я думаю, что необходимо иметь воспроизводимый код в качестве предварительного условия для независимой проверки достоверности результатов, заявленных в статье, но [одного кода] недостаточно», - сказал ContributionSecure14.</p>
+<h2 id="усилия-по-воспроизводимости-машинного-обучения">Усилия по воспроизводимости машинного обучения.</h2>
+<p><img alt="alt_text" src="/assets/images/2021-05-05/image4.jpg" title="image_tooltip"/></p>
+<p><a href="https://paperswithcode.com/">Papers With Code</a> предоставляет репозиторий реализации кода для научных статей.</p>
+<p>Проблема воспроизводимости не ограничивается небольшими исследовательскими группами по машинному обучению. Даже крупные технологические компании, которые ежегодно тратят миллионы долларов на исследования ИИ, часто не могут подтвердить результаты своих работ. В октябре 2020 года группа из 31 ученого написала <a href="https://www.nature.com/articles/s41586-020-2766-y.epdf?sharing_token=IKEjJGNcs02x-u2ZebGiatRgN0jAjWel9jnR3ZoTv0M3qEeZVaYZS89U0ri_i4YI_lJ0an-lE15Ncv2e1v5F7I2jYVuc7_mR1WrnlDjpWJ6ANzSjO0KJiERmpzE097VzbFgywD7RRHVOYg305JycIUX7UQDWkLlgHtsoU72ppNwLIpOTA4XtFD65GIE64GKpAvFnn8C8JtrXUeYFG6wdpx21AQI3t-jw7hysz0zy-qQ%3D&amp;tracking_referrer=www.technologyreview.com">совместную статью в Nature</a>, критикуя отсутствие прозрачности и воспроизводимости в статье об использовании ИИ в медицинской визуализации, опубликованной группой исследователей ИИ в Google. «[Отсутствие] достаточно документированных методов и компьютерного кода, лежащих в основе исследования, эффективно подрывает его научную ценность. Этот недостаток ограничивает доказательства, необходимые другим для проспективной проверки и клинического применения таких технологий », - пишут авторы. «Научный прогресс зависит от способности независимых исследователей тщательно анализировать результаты исследования, воспроизводить основные результаты исследования, используя его материалы, и использовать их в будущих исследованиях».</p>
+<p>В последние годы наблюдается рост внимания к кризису воспроизводимости ИИ. Примечательная работа в этом отношении включает усилия Джоэл Пино, ученого по машинному обучению из Монреальского университета Макгилла и Facebook AI, которая на таких конференциях, как NeurIPS, настаивает на прозрачности и воспроизводимости исследований машинного обучения.</p>
+<p>«Лучшая воспроизводимость означает, что со статьей будет проще работать. Часто процесс рецензирования бывает коротким и ограниченным, и истинное влияние статьи мы видим гораздо позже. Документ продолжает жить, и как сообщество у нас есть шанс продолжить работу, изучить код и критически оценить свой вклад», - Пино говорил <a href="https://www.nature.com/articles/d41586-019-03895-5">Nature</a> в интервью в 2019 году.</p>
+<p>В NeurIPS Пино помогал в разработке стандартов и процессов, которые могут помочь исследователям и рецензентам оценить воспроизводимость статей о машинном обучении. Ее усилия привели к увеличению количества отправляемых кодов и данных в NeurIPS.</p>
+<p>Еще один интересный проект - это «<a href="https://paperswithcode.com/">Документы с кодом»</a> (отсюда и название «Документы без кода»), веб-сайт, который предоставляет реализации для научных исследований, опубликованных и представленных в различных местах. В Papers With Code в настоящее время реализовано более 40 000 исследовательских работ по машинному обучению.</p>
+<p>«PapersWithCode играет важную роль в выделении воспроизводимых документов. Однако это не решает проблему невоспроизводимых документов», - говорится в сообщении ContributionSecure14.</p>
+<p>Когда исследовательская работа по машинному обучению не включает код реализации, другие исследователи, которые ее читают, должны попытаться реализовать его самостоятельно - а это нетривиальный процесс, который может занять несколько недель и в конечном итоге привести к неудаче.</p>
+<p>«Если им не удастся реализовать это успешно, они могут связаться с авторами (которые могут не ответить) или просто отказаться от этого», - сказал ContributionSecure14. «Это может случиться с несколькими исследователями, которые не знают о предыдущих или текущих попытках воспроизвести статью, что приведет к коллективной потере продуктивности в течение многих недель».</p>
+<h2 id="документы-без-кода">Документы без кода</h2>
+<p><img alt="alt_text" src="/assets/images/2021-05-05/image2.jpg" title="image_tooltip"/>
+Документы без кода отслеживают документы по машинному обучению, которые имеют невоспроизводимые результаты.</p>
+<p>Документы без кода включают <a href="https://www.paperswithoutcode.com/">страницу</a> для отправки, где исследователи могут отправлять невоспроизводимые статьи о машинном обучении вместе с деталями своих усилий, например, сколько времени они потратили на попытки воспроизвести результаты. Если заявка действительна, Papers Without Code свяжется с первоначальными авторами статьи и запросит разъяснения или публикацию деталей реализации. Если авторы не ответят вовремя, статья будет добавлена ​​в список <a href="https://papers.paperswithoutcode.com/">невоспроизводимых статей по машинному обучению</a>.</p>
+<p>«PapersWithoutCode решает проблему централизации информации о предыдущих или текущих попытках воспроизвести статью и позволяет исследователям (включая первоначального автора) объединиться и реализовать общедоступную реализацию», - сказал ContributionSecure14. «Как только статья будет успешно воспроизведена, ее можно будет опубликовать на PapersWithCode или GitHub, где ее смогут использовать другие исследователи. В этом смысле я бы сказал, что цели PapersWithoutCode синергичны с целями PapersWithCode и сообщества машинного обучения в целом».</p>
+<p>Есть надежда, что «Документы без кода» помогут создать культуру, стимулирующую воспроизводимость исследований в области машинного обучения. На данный момент на сайт поступило более 10 запросов, и один автор уже пообещал загрузить свой код.</p>
+<p>«Я понимаю, что это может быть спорным вопросом в академических кругах, и главным приоритетом является защита репутации авторов при обслуживании более широкого сообщества машинного обучения», - сказал ContributionSecure14.</p>
+<p>Документы без кода могут стать центром диалога между первоначальными авторами статей о машинном обучении и исследователями, которые пытаются воспроизвести свою работу.</p>
+<p>«Вместо статичного списка невоспроизводимых работ мы надеемся создать среду, в которой исследователи могут сотрудничать для воспроизведения статьи», - сказал ContributionSecure14.</p>
+<h2 id="воспроизводимые-исследования-в-области-машинного-обучения">Воспроизводимые исследования в области машинного обучения</h2>
+<p><img alt="alt_text" src="/assets/images/2021-05-05/image3.jpg" title="image_tooltip"/></p>
+<p>Создание культуры воспроизводимой работы в области машинного обучения потребует согласованных усилий всех исследователей и ученых.</p>
+<p>Например, если вы работаете над исследованием, основанным на работе, выполненной в другой статье, вам следует самостоятельно опробовать код или модель машинного обучения.</p>
+<p>«Не основывайтесь на утверждениях или «выводах», которые потенциально могут быть необоснованными только потому, что об этом говорится в документе», - говорит ContributionSecure14, добавляя, что сюда входят статьи из крупных лабораторий или работы, которые были приняты на авторитетной конференции.</p>
+<p>Еще один хороший ресурс - это «<a href="https://www.cs.mcgill.ca/~jpineau/ReproducibilityChecklist.pdf">Контрольный список воспроизводимости машинного обучения»</a> профессора Пино. Контрольный список содержит четкие рекомендации о том, как сделать описание, код и данные статьи о машинном обучении понятными и воспроизводимыми для других исследователей.</p>
+<p>ContributionSecure14 считает, что исследователи машинного обучения могут сыграть решающую роль в продвижении культуры воспроизводимости.</p>
+<p>«Публикация оказывается под сильным давлением за счет академической глубины и воспроизводимости, и не так много сдержек и противовесов, чтобы предотвратить такое поведение», - сказал ContributionSecure14. «Это изменится только в том случае, если нынешнее и будущее поколение исследователей машинного обучения будет отдавать приоритет качеству над количеством в своих собственных исследованиях».</p>
+</section>
+<footer class="page__meta">
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-tags"></i> Метки: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/tags/#article" rel="tag">article</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#machine-learning" rel="tag">machine-learning</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#reproducibility" rel="tag">reproducibility</a><span class="sep">, </span>
+<a class="page__taxonomy-item" href="/tags/#translation" rel="tag">translation</a>
+</span>
+</p>
+<p class="page__taxonomy">
+<strong><i aria-hidden="true" class="fas fa-fw fa-folder-open"></i> Разделы: </strong>
+<span itemprop="keywords">
+<a class="page__taxonomy-item" href="/categories/#scipop" rel="tag">scipop</a>
+</span>
+</p>
+<p class="page__date"><strong><i aria-hidden="true" class="fas fa-fw fa-calendar-alt"></i> Дата изменения:</strong> <time datetime="2021-05-05T00:00:00+00:00">May 5, 2021</time></p>
+</footer>
+<nav class="pagination">
+<a class="pagination--pager" href="/scipop/mlops-transformation-3-principles/" title="MLOps меняет процесс разработки моделей машинного обучения
+">Предыдущая</a>
+<a class="pagination--pager" href="/scipop/ml-overview-landscape/" title="Обзор MLOps
+">Следующая</a>
+</nav>
+</div>
+</article>
+<div class="page__related">
+<h4 class="page__related-title">Вам также может понравиться</h4>
+<div class="grid__wrapper">
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="http://brightmagazine.ru/wp-content/uploads/2022/10/christina-wocintechchat-com-qZYNQp_Lm3o-unsplash.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="http://brightmagazine.ru/ie/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-brains/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-09-26T00:00:00+00:00">September 26, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Вместе с заместителем декана по учебной работе Финансового университета при Правительстве РФ, кандидатом экономических наук, Михаилом Коротеевым разбираемся ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<div class="archive__item-teaser">
+<img alt="" src="https://brightmagazine.ru/wp-content/uploads/2022/05/pexels-george-morina-4960341.jpg"/>
+</div>
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://brightmagazine.ru/proit/">Сколько получают IT-специалисты в России?
+</a> <a href="/talks/bright-it-salaries/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-05-04T00:00:00+00:00">May 4, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Среди молодых специалистов России укоренился стереотип о том, что программисты, специалисты по ИТ «несправедливо» много зарабатывают. Насколько он оправдан, ...</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gUz40uPfZcCO6ar7dw7PCqs">Android-разработка
+</a> <a href="/course/android-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2022-03-16T00:00:00+00:00">March 16, 2022</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по разработке мобильных приложений для Android на языке Java.
+</p>
+</article>
+</div>
+<div class="grid__item">
+<article class="archive__item" itemscope="" itemtype="https://schema.org/CreativeWork">
+<h2 class="archive__item-title no_toc" itemprop="headline">
+<a href="https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9">UNIX
+</a> <a href="/course/linux-playlist/" rel="permalink"><i aria-hidden="true" class="fas fa-link" title="permalink"></i><span class="sr-only">Permalink</span></a>
+</h2>
+<p class="page__meta">
+<span class="page__meta-date">
+<i aria-hidden="true" class="far fa-fw fa-calendar-alt"></i>
+<time datetime="2021-06-20T00:00:00+00:00">June 20, 2021</time>
+</span>
+<span class="page__meta-sep"></span>
+<span class="page__meta-readtime">
+<i aria-hidden="true" class="far fa-fw fa-clock"></i>
+        
+          менее 1 мин на чтение
+        
+                
+      </span>
+</p>
+<p class="archive__item-excerpt" itemprop="description">Цикл видеолекций по операционной системе Linux.
+</p>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

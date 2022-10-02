@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Мобильная разработка | Михаил Коротеев</title>
+<meta content="" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="website" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Мобильная разработка" property="og:title"/>
+<meta content="https://koroteev.site/md/" property="og:url"/>
+<meta content="" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Мобильная разработка" name="twitter:title"/>
+<meta content="" name="twitter:description"/>
+<meta content="https://koroteev.site/md/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<link href="https://koroteev.site/md/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--course">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<nav class="nav__list">
+<input id="ac-toc" name="accordion-toc" type="checkbox"/>
+<label for="ac-toc">Выпадающее меню</label>
+<ul class="nav__items">
+<li>
+<a href="/md/"><span class="nav__sub-title">Содержание курса</span></a>
+</li>
+<li>
+<span class="nav__sub-title">Разработка нативных приложений для Android</span>
+<ul>
+<li><a href="/md/0/0-introdiction/">Введение в мобильные платформы</a></li>
+<li><a href="/md/1/0-java/">Основы языка Java</a></li>
+<li><a href="/md/1/1-ui-elements/">Элементы интерфейса</a></li>
+<li><a href="/md/1/2-acivities/">Активности</a></li>
+<li><a href="/md/1/3-interactive/">Интерактивные возможности</a></li>
+<li><a href="/md/1/4-content/">Хранение данных</a></li>
+<li><a href="/md/1/5-services/">Сервисы</a></li>
+<li><a href="/md/1/6-testing/">Тестирование и безопасность</a></li>
+</ul>
+</li>
+<li>
+<span class="nav__sub-title">Разработка кроссплатформенных приложений</span>
+<ul>
+<li><a href="/md/2/1-mobile-first/">Адаптивная верстка</a></li>
+<li><a href="/md/2/2-react-native/">Фреймворк react native</a></li>
+<li><a href="/md/2/3-flutter/">Flutter</a></li>
+<li><a href="/md/2/4-pwa/">Progressive Web Apps</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="Мобильная разработка" itemprop="headline"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Мобильная разработка
+</h1>
+</header>
+<section class="page__content" itemprop="text">
+<aside class="sidebar__right">
+<nav class="toc">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#о-курсе">О курсе</a></li>
+<li><a href="#программа-курса">Программа курса</a></li>
+<li><a href="#тематический-план">Тематический план</a></li>
+<li><a href="#предварительные-требования">Предварительные требования</a></li>
+<li><a href="#источники-информации">Источники информации</a></li>
+<li><a href="#программное-обеспечение">Программное обеспечение</a></li>
+<li><a href="#для-студентов-финансового-университета">Для студентов Финансового университета</a></li>
+</ul>
+</nav>
+</aside>
+<h2 id="о-курсе">О курсе</h2>
+<p>Мобильные устройства и мобильные приложения стали неотъемлемой частью нашего мира. Разработка мобильных приложений - это одна из перспективных отраслей программирования, спрос на специалистов по мобильной разработке стабильно растет.</p>
+<p>В этом курсе мы изучаем основные приемы разработки мобильных приложения для ОС Android. После его освоения вы сумеете создавать нативные и веб-приложения для мобильных устройств на Android на языках программирования Java и JavaScript, познакомитесь с Android SDK - основным фреймворком для этой операционной системой и IDE Android Studio.</p>
+<h2 id="программа-курса">Программа курса</h2>
+<table>
+<tr>
+<th> Название занятия </th>
+<th> Методичка </th>
+<th> Видео </th>
+<th> Слайды </th>
+<th> Тест </th>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/0/0-introdiction/"> <b> MD0 Введение в мобильную разработку </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Основные понятия разработки для мобильных платформ </td>
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/1wQW0hq-Db2HmH7xGobxnc7ZQP2J2XtSTHiIkkr8omNE/edit?usp=sharing">Слайды</a>
+</td>
+<td>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfWQa4NqEeXnldrpDkBWI8sQgfg33w4Kjdb5Sx0PsCtMYdzGA/closedform">Тест</a>
+</td>
+</tr>
+<tr>
+<td> Лабораторная: Установка Android Studio </td>
+<td>
+<a href="https://drive.google.com/open?id=1CiWHhr-Rs56IhRCj15C5SKTeqbstlURMOgn0fYcAWf0">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=tc7HoVrETOk">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Знакомство с интерфейсом Android Studio </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=jKyuM0ciuBM">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Создание первого проекта в Android Studio </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=8p9znyCGyHw">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Структура кода Android проекта </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=5v8xEiE1BNg">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/1/0-java/"> <b> SD0 Основы языка программирования Java </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Основы языка программирования Java </td>
+<td> </td>
+<td> </td>
+<td>
+<a href="https://drive.google.com/open?id=1AcQk1BfcwgLGYYNNDgiCo0aGT5ZIcjvOlMGSRLgBxis">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/1/1-ui-elements/"> <b> MD1 Элементы пользовательского интерфейса </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Элементы пользовательского интерфейса </td>
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/1SnEA1RD-VsTlizTZu899pKSbtBMvZPEdRLboXTenwLE/edit?usp=sharing">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Основные элементы </td>
+<td>
+<a href="https://docs.google.com/document/d/1iEl_ObV2JyzzVT-33mcOOyaObE206SwLOXeDS64__d0">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=fqlE8OaA0wM">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Представления элементов </td>
+<td>
+<a href="https://drive.google.com/open?id=1KZ4g3gUdVBrJhVm25DEtQED9RzWkXBigd-MQEXCo7VM">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: LinearLayout </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=s4T0QDe6Ie8">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: RelativeLayout </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=rFhjGmLvTzc">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: TableLayout </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=VuNcCZ7JGKc">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: ConstraintLayout </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=v5VwDmxxcik">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: WebView </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=TQGJO_JDUh0">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Работа с ресурсами </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Стили и темы </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/1/2-acivities/"> <b> MD2 Работа с активностями </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Жизненный цикл активности, интенты </td>
+<td> </td>
+<td> </td>
+<td>
+<a href="https://docs.google.com/presentation/d/1hCST-D89fr1NoRsR60hoWanlT_UWQI-qSNzcUaWCGu0/edit?usp=sharing">Слайды</a>
+</td>
+<td>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSdvrdtBhJ0NRLu-nuppWy9boizDnoRwgY96xt6W1At-t1XtKg/viewform">Тест</a>
+</td>
+</tr>
+<tr>
+<td> Практика: Создание обработчика событий </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=TObESO3SZR4">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Обработка нескольких событий </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=Rr8DOanMPj8">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Кликер </td>
+<td>
+<a href="https://drive.google.com/open?id=1Wk5-fK_VYJJ12lAjyn0EgWa-tnUJlB-iGO2-7UdC2qw">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=Rr8DOanMPj8">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Угадай число </td>
+<td>
+<a href="https://drive.google.com/open?id=1vFXCZSOrgFg21WeVGqjNhECYzWNWkQE36jgDBgK-Y8s">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=Py6ai_AI0JU">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Простой калькулятор </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=ur63IBa4rwg">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Второе окно </td>
+<td>
+<a href="https://drive.google.com/open?id=1a_u1b-DL4SJdhIB-p_58ExwtN6Sk1HEaO2RVt4Q2dtg">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=V_zg5KNxP48">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Жизненный цикл активности </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=SnlEPgtjSf4">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Фильтры намерений </td>
+<td>
+<a href="https://docs.google.com/document/d/13_9IJRAu5jOpYTIF2cCsYY8A9-rc1t-mHCWBZ0Zb00Q/edit?usp=sharing">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=f9qb2EFotb8">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Возврат результата </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=fVqwsoTCoUU">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Использование системных активностей </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=EK1m0O0UEQw">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Работа с действием Send </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=xUCXJmnBToM">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Работа с изображениями </td>
+<td>
+<a href="https://drive.google.com/file/d/1pzvEgRVl4zaKf20ZaVXkeaiVgtcuEllq/view?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/1/3-interactive/"> <b> MD3 Интерактивные возможности мобильных приложений </b> </a> </td>
+</tr>
+<tr>
+<td> Практика: Создание главного меню приложения </td>
+<td>
+<a href="https://drive.google.com/open?id=1hjqa2GJNZEqUVF54g4_DKuR4ILUUEdp17ZdelN8_MTQ">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Главное меню </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=3pGbaWf9lt8">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Контекстное меню </td>
+<td>
+<a href="https://drive.google.com/open?id=1Eoot6nUlr17mcksjWcZE3dDZoIYMXdqy-cz891RMCtc">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=2Bsn6jJcsCg">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Всплывающее меню </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=0qbGA7zliac">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: ListView </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=UlcGSP4OpO8">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/1/4-content/"> <b> MD4 Хранение данных </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Работа с поставщиками контента </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=45Q1Z2nPrcY">Видео</a>
+</td>
+<td>
+<a href="https://docs.google.com/presentation/d/1HSfm8Qx3sa1iuGojPWCFAScSBnLcb7VuR2NyBA_VR3E/edit?usp=sharing">Слайды</a>
+</td>
+<td>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSdEM7JuKJpehPQR9eNL7EnSHjabultJoCm-7WLAJKYzOTrHbA/viewform">Тест</a>
+</td>
+</tr>
+<tr>
+<td> Практика: Простое хранение данных </td>
+<td>
+<a href="https://docs.google.com/document/d/1RY0JzWo_KveOSGHYe8KHNiQoyBfOAcznE4o3odRr7vU/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Файл общих настроек </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=ELmKfOjzIEU">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Внутреннее хранилище </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=ieQKoc75c_Y">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Работа с базой данных </td>
+<td>
+<a href="https://docs.google.com/document/d/1LY39DY560CzUeNTPIB_GVECyKm8Y5CXbORLg8cF5raw/edit?usp=sharing">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=s2KDyr005Mg">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/1/5-services/"> <b> MD5 Сервисы </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Сервисы, приемники сообщений и параллелизм </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=hcGYuf30If4">Видео</a>
+</td>
+<td>
+<a href="https://docs.google.com/presentation/d/1wLCJpd5S9O9fHRtSsKd539TpYLFW7YY--gkhqBm2wi8/edit?usp=sharing">Слайды</a>
+</td>
+<td>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSccJOlT0tiM2ZYrXseHF9L4tKYIyvNrZYzaUa8GjAJ5BapzCw/viewform">Тест</a>
+</td>
+</tr>
+<tr>
+<td> Практика: Создание фонового потока </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=lwTePPpVf-k">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Управление интерфейсом через Handler </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=OqsJInROJOk">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Жизненный цикл сервиса </td>
+<td>
+<a href="https://docs.google.com/document/d/1Zf_mqdHIHmpHc7L9jZTrYLdmzLhGJhbNjt_BbR8gDk8/edit?usp=sharing">Методичка</a>
+</td>
+<td>
+<a href="https://www.youtube.com/watch?v=LWQeNGNT_Fw">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Возврат данных через Pending Intent </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=MO-9VbPsCmk">Видео</a>
+</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Работа с уведомлениями </td>
+<td>
+<a href="https://docs.google.com/document/d/19w60-HgYANo6dxV1tqwLtsNCro545pSqWD_FjTGsCJs/edit?usp=sharing">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Всплывающие уведомления </td>
+<td>
+<a href="https://docs.google.com/document/d/1A9QyVOgk6DnqCLZ1mM8MBxFNzuXxas0W/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Работа с сервисами </td>
+<td>
+<a href="https://docs.google.com/document/d/1OsrJVX_g70yCgmh8qrLUJ6OUCm9iNJZj/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Работа с широковещательными сообщениями </td>
+<td>
+<a href="https://docs.google.com/document/d/1TIlfkfYIAU7uEqgpITmipwPKZmlt95EV/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/1/6-testing/"> <b> MD6 Тестирование и безопасность мобильных приложений </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Разработка поддерживаемых мобильных приложений </td>
+<td> </td>
+<td>
+<a href="https://www.youtube.com/watch?v=wp4RVj9v-d4">Видео</a>
+</td>
+<td>
+<a href="https://docs.google.com/presentation/d/1aPe8-S315R2nWZYzCXqbXyRj0GT4BHAUSnHwDZYzrB0/edit?usp=sharing">Слайды</a>
+</td>
+<td>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSdX50zyja5azLnlFoizpIVBWH0A8mruK1mNoivIaCRwkQD1ag/viewform">Тест</a>
+</td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/2/1-mobile-first/"> <b> CD0 Адаптация веб-сайтов для мобильных устройств </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Подход mobile first </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/2/2-react-native/"> <b> CD2 Фреймворк react native </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Основы react native </td>
+<td>
+<a href="/text/md22/">Методичка</a>
+</td>
+<td> </td>
+<td>
+<a href="/pres/md22/">Слайды</a>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Hello, world на react native </td>
+<td>
+<a href="https://docs.google.com/document/d/1g_fbM64cz3ByDQrwq4R3J4x1wNJGXbKe/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Стили </td>
+<td>
+<a href="https://docs.google.com/document/d/1wgLVfU0gOrzFkCTdDMzbNIFKZlWoBSAv/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Гибкие компоненты </td>
+<td>
+<a href="https://docs.google.com/document/d/1TZzlvQN72y3VTRiJxJaehYqEzyw_8JiF/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Основные компоненты </td>
+<td>
+<a href="https://docs.google.com/document/d/1bmWFUNl4pYErzizlNuQAN5EA0Gg2lJLO/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Универсальная навигация </td>
+<td>
+<a href="https://docs.google.com/document/d/1foNi8NeCmD4CTcXzQjyP3h4Ze_9mDwu6/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Анимация </td>
+<td>
+<a href="https://docs.google.com/document/d/158llrkBTOxnIAUYI9IrIMXwZNGFGwQXH/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Форма регистрации </td>
+<td>
+<a href="https://docs.google.com/document/d/1DUOJMkiSB6WYtawv70C3eaZxvjTiuwMC/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Установка среды разработки </td>
+<td>
+<a href="https://docs.google.com/document/d/1JIcDTW3O5gMS680mcxSi9_vxSFE1A0WV/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Передача данных с формы </td>
+<td>
+<a href="https://docs.google.com/document/d/1_WkwZASBsciTSv6zG71csfe1uh4WdzxO/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Компоненты для Android и iOS </td>
+<td>
+<a href="https://docs.google.com/document/d/1VJFfo3Qi5-os6sFceG3MIGgH7WhpZyNM/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Файловая система </td>
+<td>
+<a href="https://docs.google.com/document/d/1aRBGhe9u_IodvZGumckO9YYSCceIojeO/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Социальная сеть </td>
+<td>
+<a href="https://docs.google.com/document/d/16dsAbid4P_G4ZcqA1okEqaRAlJgFNQaZ/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Фрагменты на React Native </td>
+<td>
+<a href="https://docs.google.com/document/d/1ZI8yzpAvApBjhSnUxBoaeYP8QTHOh9P-/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Работа с базой данных </td>
+<td>
+<a href="https://docs.google.com/document/d/1BvutWjMT_DBS56gYeXm3vtApjpBhGHt1/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Использование библиотеки EXPO </td>
+<td>
+<a href="https://docs.google.com/document/d/1Jtr81NtE8jLwJeu3004qtMRQ7SS_aVhs/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> Практика: Приложение для финансов </td>
+<td>
+<a href="https://docs.google.com/document/d/122us1YRqVj6hGDA1_RPoYNhKdPzrvEFc/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Методичка</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/2/3-flutter/"> <b> CD3 Фреймворк Flutter </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Flutter </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/md/2/4-pwa/"> <b> CD4 Прогрессивные веб-приложения (PWA) </b> </a> </td>
+</tr>
+<tr>
+<td> Лекция: Прогрессивные веб-приложения </td>
+<td> </td>
+<td> </td>
+<td>
+<a href="/pres/md24/">Слайды</a>
+</td>
+<td> </td>
+</tr>
+</table>
+<h2 id="тематический-план">Тематический план</h2>
+<p>Программа данного курса включает:</p>
+<ul>
+<li>Виды и структура мобильных приложений</li>
+<li>Элементы пользовательского интерфейса</li>
+<li>Многооконные приложения</li>
+<li>Хранение данных и доступ к ним</li>
+<li>Выполнение операций в фоновом режиме</li>
+<li>Тестирование и безопасность мобильных приложений</li>
+<li>Основы библиотеки React Native</li>
+<li>Дизайн мобильных приложений</li>
+</ul>
+<h2 id="предварительные-требования">Предварительные требования</h2>
+<p>Для плодотворного изучения данного курса будут необходимы такие навыки:</p>
+<ul>
+<li>Знание основ языка программирования Java</li>
+<li>Знакомство с веб-программированием</li>
+</ul>
+<h2 id="источники-информации">Источники информации</h2>
+<p>Основное:</p>
+<ul>
+<li><a href="https://roadmap.sh/android">Дорожная карта Android-разработчика</a></li>
+</ul>
+<p>Программирование нативных приложений:</p>
+<ul>
+<li>C.Aliferi - Android Programming cookbook (2015) - 151p - учебник в примерах для опытных разработчиков.</li>
+<li>M.Burton - Android app development for dummies (2015) - 377p - для начинающих.</li>
+<li>O.Swift - Android app development and programming guide learn in a day - 145p - быстрый и простой.</li>
+<li>R.Meier - Professional android 4 application development (2014) - 868p - очень основательный, но объемный.</li>
+<li>R.Rogers - Android application development - 338p - структурированный материал по темам для продвинутых.</li>
+<li>W.Lee - Beginning android application development - 450p - много примеров, но мало объяснений.</li>
+<li>Б. Харди и др. - Android программирование для профессионалов (2016) - 640p - современно, основательно и на русском.</li>
+<li>П. Дейтел и др. - Android для разработчиков (2016) - 512p - 8 продвинутых приложений с разбором.</li>
+</ul>
+<p>Веб-приложения:</p>
+<ul>
+<li>J.Stark - Building android apps with HTML, CSS, and JavaScript (2010) - 164p - единственный учебник о разработке веб-приложений.</li>
+</ul>
+<p>Интернет-ресурсы:</p>
+<ul>
+<li><a href="http://developer.android.com">Официальная документация</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLrCZzMib1e9qLzDXvYnpnJdUsGr3t7fSu">Видеокурс по мобильной разработке от технопарка</a></li>
+<li><a href="https://www.youtube.com/user/vitaxafication/featured">Канал StartAndroid</a></li>
+<li><a href="https://www.youtube.com/user/TechGuyWeb">Канал Traversy Media (web-технологии, react, react native)</a></li>
+</ul>
+<h2 id="программное-обеспечение">Программное обеспечение</h2>
+<ul>
+<li>Java JDK 8</li>
+<li>Android Studio</li>
+<li>Git SCM</li>
+<li>NPM, node.js</li>
+</ul>
+<h2 id="для-студентов-финансового-университета">Для студентов Финансового университета</h2>
+<p><a href="https://docs.google.com/document/d/1kCppFw0YwVo-jFZaZMoMcmCSoCJ58gZUKDZc4ky_SzE/edit?usp=sharing">Балльно-рейтинговая система</a></p>
+<p><a href="https://docs.google.com/document/d/113zbEInzqOKJTEFnyd7mvhx3JklP859YfQdLdaVGosQ/edit?usp=sharing">Методичка по выполнению курсовой работы</a></p>
+<p><a href="https://docs.google.com/document/d/19I5il2N-HTfrfMYtxrK3caU28cLS2ZOALamjTcQuuaU/edit?usp=sharing">Программа экзамена</a></p>
+<p><a href="https://docs.google.com/document/d/1zeSRD8l_7VCUbvPoKeHvHijRWHn5z4d5Vfbh0T2kLWE/edit?usp=sharing">Методические указания по составлению тестовых заданий</a></p>
+</section>
+<footer class="page__meta">
+</footer>
+</div>
+</article>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html class="no-js" lang="ru">
+<head>
+<meta charset="utf-8"/>
+<!-- begin _includes/seo.html --><title>Машинное обучение | Михаил Коротеев</title>
+<meta content="" name="description"/>
+<meta content="Михаил Коротеев" name="author"/>
+<meta content="website" property="og:type"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="Михаил Коротеев" property="og:site_name"/>
+<meta content="Машинное обучение" property="og:title"/>
+<meta content="https://koroteev.site/ml/" property="og:url"/>
+<meta content="" property="og:description"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" property="og:image"/>
+<meta content="@koroteev_m" name="twitter:site"/>
+<meta content="Машинное обучение" name="twitter:title"/>
+<meta content="" name="twitter:description"/>
+<meta content="https://koroteev.site/ml/" name="twitter:url"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="https://koroteev.site/assets/images/android-chrome-192x192.png" name="twitter:image"/>
+<link href="https://koroteev.site/ml/" rel="canonical"/>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Михаил Коротеев",
+      "url": "https://koroteev.site/"
+    
+  }
+</script>
+<meta content="77706580" name="yandex-verification"/>
+<!-- end _includes/seo.html -->
+<link href="/feed.xml" rel="alternate" title="Михаил Коротеев Feed" type="application/atom+xml"/>
+<!-- https://t.co/dKP3o1e -->
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+<!-- For all browsers -->
+<link href="/assets/css/main.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" rel="stylesheet"/>
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+<!-- start custom head snippets -->
+<style type="text/css">
+.accordion {
+  border: 1px solid white;
+  padding: 0 10px;
+  margin: 0 auto;
+  list-style: none outside;
+}
+
+.accordion > * + * { border-top: 1px solid white; }
+
+.accordion-item-hd {
+  display: block;
+  padding: 15px 30px 15px 0;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+  max-height: 1000px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+  transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(0);
+  transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+  display: block;
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 6px );
+  /*minus half font-size*/
+  right: 0;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.accordion-item-bd {
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+  transition: max-height .15s ease-out, margin-bottom .3s ease-out, padding .3s ease-out;
+}
+
+.accordion-item-input {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1;
+  overflow: hidden;
+  position: absolute;
+  left: -9999px;
+}
+</style>
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- end custom head snippets -->
+</head>
+<body class="layout--course">
+<nav class="skip-links">
+<h2 class="screen-reader-text">Skip links</h2>
+<ul>
+<li><a class="screen-reader-shortcut" href="#site-nav">Skip to primary navigation</a></li>
+<li><a class="screen-reader-shortcut" href="#main">Skip to content</a></li>
+<li><a class="screen-reader-shortcut" href="#footer">Skip to footer</a></li>
+</ul>
+</nav>
+<!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+<div class="masthead">
+<div class="masthead__inner-wrap">
+<div class="masthead__menu">
+<nav class="greedy-nav" id="site-nav">
+<a class="site-logo" href="/"><img alt="" src="/assets/images/android-chrome-192x192.png"/></a>
+<a class="site-title" href="/">
+          Михаил Коротеев
+          <span class="site-subtitle">Личный сайт</span>
+</a>
+<ul class="visible-links"><li class="masthead__menu-item">
+<a href="/os">UNIX</a>
+</li><li class="masthead__menu-item">
+<a href="/ml">ML</a>
+</li><li class="masthead__menu-item">
+<a href="/md">Android</a>
+</li><li class="masthead__menu-item">
+<a href="/courses">Все курсы</a>
+</li><li class="masthead__menu-item">
+<a href="/blog/">Блог</a>
+</li><li class="masthead__menu-item">
+<a href="/science">Проекты</a>
+</li></ul>
+<button class="greedy-nav__toggle hidden" type="button">
+<span class="visually-hidden">Выпадающее меню</span>
+<div class="navicon"></div>
+</button>
+<ul class="hidden-links hidden"></ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="initial-content">
+<div id="main" role="main">
+<div class="sidebar sticky">
+<nav class="nav__list">
+<input id="ac-toc" name="accordion-toc" type="checkbox"/>
+<label for="ac-toc">Выпадающее меню</label>
+<ul class="nav__items">
+<li>
+<a href="/ml/"><span class="nav__sub-title">Содержание курса</span></a>
+</li>
+<li>
+<a href="/ml/0/0-intro/"><span class="nav__sub-title">Введение в машинное обучение</span></a>
+</li>
+<li>
+<a href="/ml/1/1-regression/"><span class="nav__sub-title">Задача регрессии</span></a>
+</li>
+<li>
+<a href="/ml/1/2-classification/"><span class="nav__sub-title">Классификация</span></a>
+</li>
+<li>
+<a href="/ml/1/4-metrics/"><span class="nav__sub-title">Метрики качества и диагностика</span></a>
+</li>
+<li>
+<a href="/ml/1/5-preprocessing/"><span class="nav__sub-title">Предобработка данных</span></a>
+</li>
+<li>
+<a href="/ml/1/6-unsupervised/"><span class="nav__sub-title">Методы обучения без учителя</span></a>
+</li>
+<li>
+<a href="/ml/1/7-ensembles/"><span class="nav__sub-title">Практическое применение</span></a>
+</li>
+</ul>
+</nav>
+</div>
+<article class="page" itemscope="" itemtype="https://schema.org/CreativeWork">
+<meta content="Машинное обучение" itemprop="headline"/>
+<div class="page__inner-wrap">
+<header>
+<h1 class="page__title" id="page-title" itemprop="headline">Машинное обучение
+</h1>
+</header>
+<section class="page__content" itemprop="text">
+<aside class="sidebar__right">
+<nav class="toc">
+<header><h4 class="nav__title"><i class="fas fa-file-alt"></i> Содержание</h4></header>
+<ul class="toc__menu">
+<li><a href="#о-курсе">О курсе</a></li>
+<li><a href="#программа-курса">Программа курса</a></li>
+<li><a href="#тематический-план">Тематический план</a></li>
+<li><a href="#предварительные-требования">Предварительные требования</a></li>
+<li><a href="#источники-информации">Источники информации</a></li>
+<li><a href="#программное-обеспечение">Программное обеспечение</a></li>
+<li><a href="#для-студентов-финансового-университета">Для студентов Финансового университета</a></li>
+</ul>
+</nav>
+</aside>
+<h2 id="о-курсе">О курсе</h2>
+<p>Этот курс научит вас использовать самые распространенные инструменты для анализа данных и машинного обучения. После освоения данного курса вы научитесь применять классические модели регрессии и классификации, писать код для обучения и тестирования моделей, вести проекты в области построения интеллектуальных систем.</p>
+<h2 id="программа-курса">Программа курса</h2>
+<table>
+<tr>
+<th> Название занятия </th>
+<th> Методичка </th>
+<!--     <th> Видео </th> -->
+<th> Слайды </th>
+<!--     <th> Тест </th> -->
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/ml/0/0-intro/"> <b> ML0 Введение в машинное обучение </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Основные понятия машинного обучения 
+         </td>
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="/pres/ml0/">Слайды</a>
+</td>
+<!--       <td> 
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-ITK3OXO500ick1DNDByVAo2hifNryFBJUt59Kr51RL49ew/viewform">Тест</a>
+       </td> -->
+</tr>
+<tr>
+<td>   Практика: Работа с numpy 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML0.1_numpy">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Работа с pandas 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML0.2_pandas">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Простой анализ данных 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML0.3_analysis">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Работа с matplotlib 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML0.4_matplotlib">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/ml/1/1-regression/"> <b> ML1 Регрессия </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Задача регрессии 
+         </td>
+<td>
+<a href="https://docs.google.com/document/d/109cbi22vJoh_KCpNc61Rg5WhwLP06j8dqd307aqeIFw/edit?usp=sharing">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td>
+<a href="/pres/ml1/">Слайды</a>
+</td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Парная линейная регрессия 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML1.1_sgd">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Множественная регрессия 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML1.2_regression">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/ml/1/2-classification/"> <b> ML2 Классификация </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Задача классификации 
+         </td>
+<td>
+<a href="https://docs.google.com/document/d/1P8YLjLdb11-oHW-e_ZLI04ueuxPLZRc6YZkCT3g1t5A/edit?usp=sharing">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://docs.google.com/presentation/d/15M561VmvYHbgSpldXmkmg7DeQfYlZ2lA2cbsOEVELf8/edit?usp=sharing">Слайды</a>
+</td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Простая классификация 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML2.1_classification">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Классификация изображений 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML2.2%20_images">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Классификация текстов 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML2.3_text">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/ml/1/4-metrics/"> <b> ML4 Диагностика моделей машинного обучения </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Метрики качества и диагностика моделей 
+         </td>
+<td>
+<a href="https://docs.google.com/document/d/13K2w3oJdoda1ayaxpvgNL2oI_hhSTAlmlQgkqcrx6qU/edit?usp=sharing">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://drive.google.com/open?id=1TG8lJck8wNLEZe3x2gTJu5TgFvBHTzpec3M026f1uHQ">Слайды</a>
+</td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Диагностика и кривые обучения 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML4.1_curves">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/ml/1/5-preprocessing/"> <b> ML5 Предобработка  данных </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Задачи и методы предварительной обработки и очистки данных 
+         </td>
+<td> </td>
+<!--       <td>  </td> -->
+<td>
+<a href="https://drive.google.com/open?id=1hfQiVYnMjRzE9Ui7M-dzbxn9fxQ8Sb3yXfdnRTHea5Y">Слайды</a>
+</td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Простая предобработка 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML5.1_preprocessing">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Комплексная предобработка данных 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML5.2_eda">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/ml/1/6-unsupervised/"> <b> ML6 Методы обучения без учителя </b> </a> </td>
+</tr>
+<tr>
+<td>   Лекция: Кластеризация как задача машинного обучения 
+         </td>
+<td>
+<a href="https://docs.google.com/document/d/1SuEu5IVM6fyfowTn8K17pYFyXp2JB4ZamauXDiLNui8/edit?usp=sharing">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Кластеризация данных 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/tree/main/ML6.1_clustering">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Лекция: Понижение размерности как задача машинного обучения 
+         </td>
+<td>
+<a href="https://docs.google.com/document/d/1irFhMqnYlLB_gd9XQDL49_NfBZbUvg9VzEmEPTj-xbo/edit?usp=sharing">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td>   Практика: Понижение размерности для визуализации данных 
+         </td>
+<td>
+<a href="https://github.com/koroteevmv/ML_course/blob/main/ML6.2_pca">Методичка</a>
+</td>
+<!--       <td>  </td> -->
+<td> </td>
+<!--       <td>  </td> -->
+</tr>
+<tr>
+<td class="" colspan="5"> <a href="/ml/1/7-ensembles/"> <b> ML7 Практическое применение моделей машинного обучения </b> </a> </td>
+</tr>
+</table>
+<h2 id="тематический-план">Тематический план</h2>
+<p>Данный курс является первой частью одноименной дисциплины и включает следующие темы:</p>
+<ul>
+<li>Основные понятия машинного обучения</li>
+<li>Задача и методы регрессии</li>
+<li>Задача и методы классификации</li>
+<li>Метрики качества и диагностика моделей</li>
+<li>Предобработка данных</li>
+<li>Кластеризация и понижение размерности</li>
+<li>Обнаружение аномалий</li>
+<li>Ансамблевые модели</li>
+</ul>
+<h2 id="предварительные-требования">Предварительные требования</h2>
+<p>Для плодотворного изучения данного курса будут необходимы такие навыки:</p>
+<ul>
+<li>Уверенное знание синтаксиса Python</li>
+<li>Знакомство с основными понятиями математической статистики и теории вероятностей</li>
+</ul>
+<!-- Материалы курса
+---
+Вы можете познакомиться со всеми материалами курса - презентациями к лекциям, методических рекомендациям к лабораторным работам на [Google Диске](https://drive.google.com/drive/folders/13uDCR9sfJC_QriEBwJlzACwsNhbMxmUV?usp=sharing).
+
+Плейлист с видео по данному курсу досупен на [YouTube](https://www.youtube.com/playlist?list=PLhgyvraU60gU8OAhjtcipU_sO7UYvkQl9). -->
+<h2 id="источники-информации">Источники информации</h2>
+<p>Основная литература</p>
+<ul>
+<li><a href="https://i.am.ai/roadmap">Дорожная карта развития специалиста по машинному обучению</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN">Классический курс от Andrew Ng</a></li>
+<li>A. Geron. Hand on Machine Learning with scikit-learn and Tensorflow - 2017 (564p)</li>
+</ul>
+<p>Дополнительная литература</p>
+<ul>
+<li>C. Albon. Machine learning with Python Handbook - 2018 (427p)</li>
+<li>L.P. Coelho, W. Richert. Building machine learning systems with Python - 2015 (326p)</li>
+<li>J. Grus. Data science from scratch - 2015 (330p)</li>
+<li>W. McKiney. Pandas: powerful Python data analysis toolkit - 2016 (1971p)</li>
+<li><a href="https://drive.google.com/file/d/1BRWqtKKaK4CdUh10z3zeyrs9mk-6QJvc/view?usp=sharing">М.В. Коротеев. Учебное пособие по дисциплине “Анализ данных и машинное обучение” - 2018.</a></li>
+</ul>
+<p>Видео-ресурсы</p>
+<ul>
+<li><a href="http://cs229.stanford.edu/syllabus.html">Конспекты к курсу Ng</a></li>
+<li><a href="https://github.com/vkosuri/CourseraMachineLearning">Материалы к куру Ngна гитхабе</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLeo1K3hjS3uuASpe-1LjfG5f14Bnozjwy">Pandas tutorial</a></li>
+<li><a href="https://www.youtube.com/user/consumerchampion/playlists">Канал Python programmer - много контента по программированию на питоне</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLzH6n4zXuckpfMu_4Ff8E7Z1behQks5ba">Серия Data analysis от Computerphile</a></li>
+</ul>
+<h2 id="программное-обеспечение">Программное обеспечение</h2>
+<ul>
+<li>Python 3 Anaconda</li>
+<li>библиотеки numpy, pandas, matplotlib, scikit-learn</li>
+<li>Tensorflow 2</li>
+<li>PyTorch</li>
+</ul>
+<h2 id="для-студентов-финансового-университета">Для студентов Финансового университета</h2>
+<p><a href="https://docs.google.com/document/d/1fxhyzWiGAxFlBRx9fZlogzZPh7i3RVgHeU9oPsBHpT4/edit?usp=sharing">Балльно-рейтинговая система</a></p>
+<p><a href="https://docs.google.com/document/d/1b3Py3FyRpE3e7IMyX-ZZj1OYbU_Cpq80/edit?usp=sharing&amp;ouid=116003821381017651142&amp;rtpof=true&amp;sd=true">Программа экзамена</a></p>
+<p><a href="https://docs.google.com/document/d/1zeSRD8l_7VCUbvPoKeHvHijRWHn5z4d5Vfbh0T2kLWE/edit?usp=sharing">Методические указания по составлению тестовых заданий</a></p>
+<p><a href="https://docs.google.com/document/d/14OH1NKH-cqIDMQbvRMBtXG5l0noIQknKqSwEg4wyYNQ/edit?usp=sharing">Методические указания по курсовой работе</a></p>
+</section>
+<footer class="page__meta">
+</footer>
+</div>
+</article>
+</div>
+</div>
+<div class="page__footer" id="footer">
+<footer>
+<!-- start custom footer snippets -->
+<!-- end custom footer snippets -->
+<div class="page__footer-follow">
+<ul class="social-icons">
+<li><strong>Связаться со мной:</strong></li>
+<li><a href="https://vk.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-vk"></i> Vkontakte</a></li>
+<li><a href="https://twitter.com/koroteev_m" rel="nofollow noopener noreferrer"><i aria-hidden="true" class="fab fa-fw fa-twitter-square"></i> Twitter</a></li>
+<li><a href="/feed.xml"><i aria-hidden="true" class="fas fa-fw fa-rss-square"></i> RSS-лента</a></li>
+</ul>
+</div>
+<div class="page__footer-copyright">© 2022 Михаил Коротеев. Сайт работает на <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+</footer>
+</div>
+<script src="/assets/js/main.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1K09X3NDBE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1K09X3NDBE', { 'anonymize_ip': false});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(77706580, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img alt="" src="https://mc.yandex.ru/watch/77706580" style="position:absolute; left:-9999px;"/></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+     extensions: ["tex2jax.js"],
+     jax: ["input/TeX", "output/HTML-CSS"],
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+       processEscapes: true
+     },
+     "HTML-CSS": { availableFonts: ["TeX"] }
+   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>
